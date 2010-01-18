@@ -493,17 +493,24 @@ public final class MPayment extends X_C_Payment
 				setErrorMessage("No Payment Processor");
 			else
 			{
-				approved = pp.processCC ();
-				if (approved)
-					setErrorMessage(null);
-				else
-					setErrorMessage("From " +  getCreditCardName() + ": " + getR_RespMsg());
+				// Validate before trying to process
+				String msg = pp.validate();
+				if (msg!=null && msg.trim().length()>0) {
+					setErrorMessage(Msg.getMsg(getCtx(), msg));
+				} else {
+					// Process if validation succeeds
+					approved = pp.processCC ();
+					if (approved)
+						setErrorMessage(null);
+					else
+						setErrorMessage("From " +  getCreditCardName() + ": " + getR_RespMsg());
+				}
 			}
 		}
 		catch (Exception e)
 		{
 			log.log(Level.SEVERE, "processOnline", e);
-			setErrorMessage("Payment Processor Error");
+			setErrorMessage("Payment Processor Error: " + e.getMessage());
 		}
 		setIsApproved(approved);
 		return approved;
