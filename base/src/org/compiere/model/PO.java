@@ -91,9 +91,9 @@ public abstract class PO
 	implements Serializable, Comparator, Evaluatee
 {
 	/**
-	 *
+	 * 
 	 */
-	private static final long serialVersionUID = 8413360272600437423L;
+	private static final long serialVersionUID = 4112064325136026951L;
 
 	private static final String USE_TIMEOUT_FOR_UPDATE = "org.adempiere.po.useTimeoutForUpdate";
 
@@ -2229,10 +2229,10 @@ public abstract class PO
 		return save();
 	}	//	save
 
-	public boolean saveReplica (boolean isFromReplication)
+	public void saveReplica (boolean isFromReplication) throws AdempiereException
 	{
 		setReplication(isFromReplication);
-		return save();
+		saveEx();
 	}
 
 	/**
