@@ -288,6 +288,10 @@ public final class MPayment extends X_C_Payment
 		setAccountNo(ba.getAccountNo());
 		setIsReceipt (X_C_Order.PAYMENTRULE_DirectDebit.equals	//	AR only
 				(preparedPayment.getPaymentRule()));
+		if ( MPaySelectionCheck.PAYMENTRULE_DirectDebit.equals(preparedPayment.getPaymentRule()) )
+			setTenderType(MPayment.TENDERTYPE_DirectDebit);
+		else if ( MPaySelectionCheck.PAYMENTRULE_DirectDeposit.equals(preparedPayment.getPaymentRule()))
+			setTenderType(MPayment.TENDERTYPE_DirectDeposit);
 		//
 		int check = MPaymentValidate.validateRoutingNo(getRoutingNo()).length()
 			+ MPaymentValidate.validateAccountNo(getAccountNo()).length();
@@ -1277,7 +1281,7 @@ public final class MPayment extends X_C_Payment
 	public void setC_DocType_ID (boolean isReceipt)
 	{
 		setIsReceipt(isReceipt);
-		String sql = "SELECT C_DocType_ID FROM C_DocType WHERE AD_Client_ID=? AND DocBaseType=? ORDER BY IsDefault DESC";
+		String sql = "SELECT C_DocType_ID FROM C_DocType WHERE IsActive='Y' AND AD_Client_ID=? AND DocBaseType=? ORDER BY IsDefault DESC";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try

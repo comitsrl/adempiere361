@@ -610,6 +610,21 @@ public class MProduct extends X_M_Product
 		if (m_precision != null && is_ValueChanged("C_UOM_ID"))
 			m_precision = null;
 		
+		// AttributeSetInstance reset
+		if (is_ValueChanged(COLUMNNAME_M_AttributeSet_ID))
+		{
+			MAttributeSetInstance asi = new MAttributeSetInstance(getCtx(), getM_AttributeSetInstance_ID(), get_TrxName());
+			setM_AttributeSetInstance_ID(0);
+			// Delete the old m_attributesetinstance
+			try {
+				asi.deleteEx(true, get_TrxName());
+			} catch (AdempiereException ex)
+			{
+				log.saveError("Error", "Error deleting the AttributeSetInstance");
+				return false;
+			}
+		}
+
 		return true;
 	}	//	beforeSave
 
