@@ -1,5 +1,5 @@
 /******************************************************************************
- * Product: Adempiere ERP & CRM Smart Business Solution                       *
+ * Product: Adempiere ERP & CRM Smart Business Solution                        *
  * Copyright (C) 1999-2006 ComPiere, Inc. All Rights Reserved.                *
  * This program is free software; you can redistribute it and/or modify it    *
  * under the terms version 2 of the GNU General Public License as published   *
@@ -22,6 +22,7 @@ import java.util.logging.Level;
 
 import org.compiere.ldap.LdapProcessor;
 import org.compiere.model.AdempiereProcessor;
+import org.compiere.model.AdempiereProcessor2;
 import org.compiere.model.AdempiereProcessorLog;
 import org.compiere.model.MAcctProcessor;
 import org.compiere.model.MAlertProcessor;
@@ -39,7 +40,7 @@ import org.compiere.wf.MWorkflowProcessor;
 
 /**
  *	Adempiere Server Base
- *	
+ *
  *  @author Jorg Janke
  *  @version $Id: AdempiereServer.java,v 1.3 2006/10/09 00:23:26 jjanke Exp $
  */
@@ -70,7 +71,7 @@ public abstract class AdempiereServer extends Thread
 		throw new IllegalArgumentException("Unknown Processor");
 	}	//	 create
 
-	
+
 	/**************************************************************************
 	 * 	Server Base Class
 	 * 	@param model model
@@ -93,7 +94,7 @@ public abstract class AdempiereServer extends Thread
 	protected					AdempiereProcessor 	p_model;
 	/** Initial nap is seconds		*/
 	private int					m_initialNap = 0;
-	
+
 	/**	Miliseconds to sleep - 10 Min default	*/
 	private long				m_sleepMS = 600000;
 	/** Sleeping					*/
@@ -110,16 +111,16 @@ public abstract class AdempiereServer extends Thread
 	private long 				m_runTotalMS = 0;
 	/** When to run next			*/
 	private long 				m_nextWork = 0;
-	
+
 	/**	Logger						*/
 	protected CLogger	log = CLogger.getCLogger(getClass());
 	/**	Context						*/
 	private Properties	m_ctx = null;
 	/** System						*/
-	protected static MSystem p_system = null;		
+	protected static MSystem p_system = null;
 	/** Client						*/
-	protected MClient	p_client = null;		
-	
+	protected MClient	p_client = null;
+
 	/**
 	 * 	Get Server Context
 	 *	@return context
@@ -128,7 +129,7 @@ public abstract class AdempiereServer extends Thread
 	{
 		return m_ctx;
 	}	//	getCtx
-	
+
 	/**
 	 * @return Returns the sleepMS.
 	 */
@@ -136,8 +137,8 @@ public abstract class AdempiereServer extends Thread
 	{
 		return m_sleepMS;
 	}	//	getSleepMS
-	
-	
+
+
 	/**
 	 * 	Sleep for set time
 	 *	@return true if not interrupted
@@ -175,7 +176,7 @@ public abstract class AdempiereServer extends Thread
 		doWork();
 		long now = System.currentTimeMillis();
 		//	---------------
-		
+
 		p_runCount++;
 		m_runLastMS = now - p_startWork;
 		m_runTotalMS += m_runLastMS;
@@ -185,7 +186,7 @@ public abstract class AdempiereServer extends Thread
 		//
 		log.fine(getName() + ": " + getStatistics());
 	}	//	runNow
-	
+
 	/**************************************************************************
 	 * 	Run async
 	 */
@@ -201,7 +202,7 @@ public abstract class AdempiereServer extends Thread
 			log.log(Level.SEVERE, getName() + ": pre-nap interrupted", e);
 			return;
 		}
-		
+
 		m_start = System.currentTimeMillis();
 		while (true)
 		{
@@ -223,21 +224,44 @@ public abstract class AdempiereServer extends Thread
 				log.info (getName() + ": interrupted");
 				break;
 			}
-			
+
 			//	---------------
 			p_startWork = System.currentTimeMillis();
 			doWork();
 			now = System.currentTimeMillis();
 			//	---------------
-			
+
 			p_runCount++;
 			m_runLastMS = now - p_startWork;
 			m_runTotalMS += m_runLastMS;
 			//
 			m_sleepMS = calculateSleep();
-			m_nextWork = now + m_sleepMS;
+			Timestamp lastRun = new Timestamp(now);
+			if (p_model instanceof AdempiereProcessor2)
+			{
+				AdempiereProcessor2 ap = (AdempiereProcessor2) p_model;
+				if (ap.isIgnoreProcessingTime())
+				{
+					lastRun = new Timestamp(p_startWork);
+					if (m_nextWork <= 0)
+						m_nextWork = p_startWork;
+					m_nextWork = m_nextWork + m_sleepMS;
+					while (m_nextWork < now)
+					{
+						m_nextWork = m_nextWork + m_sleepMS;
+					}
+				}
+				else
+				{
+					m_nextWork = now + m_sleepMS;
+				}
+			}
+			else
+			{
+				m_nextWork = now + m_sleepMS;
+			}
 			//
-			p_model.setDateLastRun(new Timestamp(now));
+			p_model.setDateLastRun(lastRun);
 			p_model.setDateNextRun(new Timestamp(m_nextWork));
 			p_model.save();
 			//
@@ -254,12 +278,12 @@ public abstract class AdempiereServer extends Thread
 	 */
 	public String getStatistics()
 	{
-		return "Run #" + p_runCount 
+		return "Run #" + p_runCount
 			+ " - Last=" + TimeUtil.formatElapsed(m_runLastMS)
 			+ " - Total=" + TimeUtil.formatElapsed(m_runTotalMS)
 			+ " - Next " + TimeUtil.formatElapsed(m_nextWork - System.currentTimeMillis());
 	}	//	getStatistics
-	
+
 	/**
 	 * 	Do the actual Work
 	 */
@@ -289,7 +313,7 @@ public abstract class AdempiereServer extends Thread
 	{
 		return p_model.getDateNextRun(requery);
 	}	//	getDateNextRun
-	
+
 	/**
 	 * 	Get the date Last run
 	 * 	@return date lext run
@@ -307,7 +331,7 @@ public abstract class AdempiereServer extends Thread
 	{
 		return p_model.getDescription();
 	}	//	getDescription
-	
+
 	/**
 	 * 	Get Model
 	 *	@return Model
@@ -316,7 +340,7 @@ public abstract class AdempiereServer extends Thread
 	{
 		return p_model;
 	}	//	getModel
-	
+
 	/**
 	 * 	Calculate Sleep ms
 	 *	@return miliseconds
@@ -349,7 +373,7 @@ public abstract class AdempiereServer extends Thread
 	{
 		return m_sleeping;
 	}	//	isSleeping
-	
+
 	/**
 	 * 	String Representation
 	 *	@return info
@@ -379,7 +403,7 @@ public abstract class AdempiereServer extends Thread
 		long ms = (now-m_start) / 1000;
 		return (int)ms;
 	}	//	getSecondsAlive
-	
+
 	/**
 	 * 	Get Start Time
 	 *	@return start time
@@ -390,7 +414,7 @@ public abstract class AdempiereServer extends Thread
 			return null;
 		return new Timestamp (m_start);
 	}	//	getStartTime
-	
+
 	/**
 	 * 	Get Processor Logs
 	 *	@return logs

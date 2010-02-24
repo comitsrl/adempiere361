@@ -1,5 +1,5 @@
 /******************************************************************************
- * Product: Adempiere ERP & CRM Smart Business Solution                       *
+ * Product: Adempiere ERP & CRM Smart Business Solution                        *
  * Copyright (C) 1999-2006 ComPiere, Inc. All Rights Reserved.                *
  * This program is free software; you can redistribute it and/or modify it    *
  * under the terms version 2 of the GNU General Public License as published   *
@@ -15,6 +15,9 @@
  * or via info@compiere.org or http://www.compiere.org/license.html           *
  *****************************************************************************/
 package org.compiere.server;
+
+import it.sauronsoftware.cron4j.Predictor;
+import it.sauronsoftware.cron4j.SchedulingPattern;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -42,7 +45,7 @@ import org.compiere.util.Trx;
 
 /**
  *	Scheduler
- *	
+ *
  *  @author Jorg Janke
  *  @version $Id: Scheduler.java,v 1.5 2006/07/30 00:53:33 jjanke Exp $
  */
@@ -65,6 +68,9 @@ public class Scheduler extends AdempiereServer
 	private StringBuffer 		m_summary = new StringBuffer();
 	/** Transaction					*/
 	private Trx					m_trx = null;
+
+	private it.sauronsoftware.cron4j.Scheduler cronScheduler;
+	private Predictor predictor;
 
 	/**
 	 * 	Work
@@ -91,18 +97,18 @@ public class Scheduler extends AdempiereServer
 			log.log(Level.WARNING, process.toString(), e);
 			m_summary.append(e.toString());
 		}
-		finally 
+		finally
 		{
 			if (m_trx != null)
 				m_trx.close();
 		}
-		
+
 		//
 		int no = m_model.deleteLog();
 		m_summary.append("Logs deleted=").append(no);
 		//
 		MSchedulerLog pLog = new MSchedulerLog(m_model, m_summary.toString());
-		pLog.setReference("#" + String.valueOf(p_runCount) 
+		pLog.setReference("#" + String.valueOf(p_runCount)
 			+ " - " + TimeUtil.formatElapsed(new Timestamp(p_startWork)));
 		pLog.save();
 	}	//	doWork
@@ -129,8 +135,8 @@ public class Scheduler extends AdempiereServer
 			AD_Table_ID, Record_ID);
 		pi.setAD_User_ID(getAD_User_ID());
 		pi.setAD_Client_ID(m_model.getAD_Client_ID());
-		pi.setAD_PInstance_ID(pInstance.getAD_PInstance_ID());		
-		if (!process.processIt(pi, m_trx) && pi.getClassName() != null) 
+		pi.setAD_PInstance_ID(pInstance.getAD_PInstance_ID());
+		if (!process.processIt(pi, m_trx) && pi.getClassName() != null)
 			return "Process failed: (" + pi.getClassName() + ") " + pi.getSummary();
 
 		//	Report
@@ -151,7 +157,7 @@ public class Scheduler extends AdempiereServer
 			
 			if (notice)
 			{
-				MNote note = new MNote(getCtx(), 
+				MNote note = new MNote(getCtx(),
 						AD_Message_ID, userIDs[i].intValue(), m_trx.getTrxName());
 				note.setClientOrg(m_model.getAD_Client_ID(), m_model.getAD_Org_ID());
 				note.setTextMsg(m_model.getName());
@@ -159,7 +165,7 @@ public class Scheduler extends AdempiereServer
 				note.setRecord(AD_Table_ID, Record_ID);
 				note.save();
 				//	Attachment
-				MAttachment attachment = new MAttachment (getCtx(), 
+				MAttachment attachment = new MAttachment (getCtx(),
 						MNote.Table_ID, note.getAD_Note_ID(), m_trx.getTrxName());
 				attachment.setClientOrg(m_model.getAD_Client_ID(), m_model.getAD_Org_ID());
 				attachment.addEntry(report);
@@ -175,7 +181,7 @@ public class Scheduler extends AdempiereServer
 		//
 		return pi.getSummary();
 	}	//	runReport
-	
+
 	/**
 	 * 	Run Process
 	 *	@param process process
@@ -201,11 +207,11 @@ public class Scheduler extends AdempiereServer
 		pi.setAD_PInstance_ID(pInstance.getAD_PInstance_ID());
 		MUser from = new MUser(getCtx(), pi.getAD_User_ID(), null);
 		
-		//notify supervisor if error				
-		if ( !process.processIt(pi, m_trx) ) 
+		//notify supervisor if error
+		if ( !process.processIt(pi, m_trx) )
 		{
 			int supervisor = m_model.getSupervisor_ID();
-			if (supervisor > 0) 
+			if (supervisor > 0)
 			{
 				MUser user = new MUser(getCtx(), supervisor, null);
 				boolean email = user.isNotificationEMail();
@@ -214,14 +220,14 @@ public class Scheduler extends AdempiereServer
 				if (email || notice)
 					ProcessInfoUtil.setLogFromDB(pi);
 				
-				if (email) 
+				if (email)
 				{
 					MClient client = MClient.get(m_model.getCtx(), m_model.getAD_Client_ID());
 					client.sendEMail(from, user, process.getName(), pi.getSummary() + " " + pi.getLogInfo(), null);
 				}
 				if (notice) {
 					int AD_Message_ID = 442; //ProcessRunError
-					MNote note = new MNote(getCtx(), 
+					MNote note = new MNote(getCtx(),
 							AD_Message_ID, supervisor, null);
 					note.setClientOrg(m_model.getAD_Client_ID(), m_model.getAD_Org_ID());
 					note.setTextMsg(pi.getSummary());
@@ -230,28 +236,28 @@ public class Scheduler extends AdempiereServer
 					note.save();
 				}
 			}
-		} 
-		else 
-		{			
+		}
+		else
+		{
 			Integer[] userIDs = m_model.getRecipientAD_User_IDs();
 			if (userIDs.length > 0) 
 			{
 				ProcessInfoUtil.setLogFromDB(pi);
-				for (int i = 0; i < userIDs.length; i++) 
+				for (int i = 0; i < userIDs.length; i++)
 				{
 					MUser user = new MUser(getCtx(), userIDs[i].intValue(), null);
-					boolean email = user.isNotificationEMail();
-					boolean notice = user.isNotificationNote();
-					
-					if (email) 
+						boolean email = user.isNotificationEMail();
+						boolean notice = user.isNotificationNote();
+						
+					if (email)
 					{
-						MClient client = MClient.get(m_model.getCtx(), m_model.getAD_Client_ID());					
+						MClient client = MClient.get(m_model.getCtx(), m_model.getAD_Client_ID());
 						client.sendEMail(from, user, process.getName(), pi.getSummary() + " " + pi.getLogInfo(), null);
 					}
 					if (notice) {
 						int AD_Message_ID = 441; //ProcessOK
-						MNote note = new MNote(getCtx(), 
-								AD_Message_ID, userIDs[i].intValue(), null);
+						MNote note = new MNote(getCtx(),
+									AD_Message_ID, userIDs[i].intValue(), null);
 						note.setClientOrg(m_model.getAD_Client_ID(), m_model.getAD_Org_ID());
 						note.setTextMsg(pi.getSummary());
 						//note.setDescription();
@@ -318,25 +324,25 @@ public class Scheduler extends AdempiereServer
 						if (env.length() == 0)
 						{
 							log.warning(sPara.getColumnName()
-								+ " - not in environment =" + columnName 
+								+ " - not in environment =" + columnName
 								+ "(" + variable + ")");
 							break;
 						}
 						else
 							value = env;
 					}	//	@variable@
-					
+
 					//	No Value
 					if (value == null)
 					{
 						log.fine(sPara.getColumnName() + " - empty");
 						break;
 					}
-					
+
 					//	Convert to Type
 					try
 					{
-						if (DisplayType.isNumeric(sPara.getDisplayType()) 
+						if (DisplayType.isNumeric(sPara.getDisplayType())
 							|| DisplayType.isID(sPara.getDisplayType()))
 						{
 							BigDecimal bd = null;
@@ -384,7 +390,7 @@ public class Scheduler extends AdempiereServer
 		}	//	instance parameter loop
 	}	//	fillParameter
 
-	
+
 	/**
 	 * 	Get Server Info
 	 *	@return info
@@ -394,4 +400,34 @@ public class Scheduler extends AdempiereServer
 		return "#" + p_runCount + " - Last=" + m_summary.toString();
 	}	//	getServerInfo
 
+	@Override
+	public void run() {
+		String cronPattern = (String) m_model.getCronPattern();
+		if (cronPattern != null && cronPattern.trim().length() > 0 && SchedulingPattern.validate(cronPattern)) {
+			cronScheduler = new it.sauronsoftware.cron4j.Scheduler();
+			cronScheduler.schedule(cronPattern, new Runnable() {
+				public void run() {
+					runNow();
+					long next = predictor.nextMatchingTime();
+					p_model.setDateNextRun(new Timestamp(next));
+					p_model.save();
+				}
+			});
+			predictor = new Predictor(cronPattern);
+			long next = predictor.nextMatchingTime();
+			p_model.setDateNextRun(new Timestamp(next));
+			p_model.save();
+			cronScheduler.start();
+			while (true) {
+				if (!sleep()) {
+					cronScheduler.stop();
+					break;
+				} else if (!cronScheduler.isStarted()) {
+					break;
+				}
+			}
+		} else {
+			super.run();
+		}
+	}
 }	//	Scheduler
