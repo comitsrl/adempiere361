@@ -22,8 +22,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -77,10 +77,12 @@ import org.compiere.util.ValueNamePair;
 public final class MPayment extends X_C_Payment 
 	implements DocAction, ProcessCall
 {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 5273805787122033169L;
+
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 6200327948230438741L;
 
 	/**
 	 * 	Get Payments Of BPartner
@@ -91,28 +93,11 @@ public final class MPayment extends X_C_Payment
 	 */
 	public static MPayment[] getOfBPartner (Properties ctx, int C_BPartner_ID, String trxName)
 	{
-		ArrayList<MPayment> list = new ArrayList<MPayment>();
-		String sql = "SELECT * FROM C_Payment WHERE C_BPartner_ID=?";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try
-		{
-			pstmt = DB.prepareStatement(sql, trxName);
-			pstmt.setInt(1, C_BPartner_ID);
-			rs = pstmt.executeQuery();
-			while (rs.next())
-				list.add(new MPayment(ctx,rs, trxName));
-		}
-		catch (Exception e)
-		{
-			s_log.log(Level.SEVERE, sql, e);
-		}
-		finally
-		{
-			DB.close(rs, pstmt);
-			rs = null;
-			pstmt = null;
-		}
+		//FR: [ 2214883 ] Remove SQL code and Replace for Query - red1
+		final String whereClause = "C_BPartner_ID=?";
+		List <MPayment> list = new Query(ctx, I_C_Payment.Table_Name, whereClause, trxName)
+		.setParameters(C_BPartner_ID)
+		.list();
 
 		//
 		MPayment[] retValue = new MPayment[list.size()];
