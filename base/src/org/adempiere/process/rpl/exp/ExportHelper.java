@@ -26,7 +26,7 @@
  *                                                                    *
  * Sponsors:                                                          *
  *  - E-evolution (http://www.e-evolution.com/)                       *
- **********************************************************************/
+ *********************************************************************/
 package org.adempiere.process.rpl.exp;
 
 import java.sql.SQLException;
@@ -54,8 +54,6 @@ import org.compiere.model.Query;
 import org.compiere.model.X_EXP_FormatLine;
 import org.compiere.util.CLogger;
 import org.compiere.util.DisplayType;
-import org.compiere.util.Env;
-import org.compiere.util.Language;
 import org.compiere.util.Msg;
 import org.compiere.util.Trx;
 import org.w3c.dom.Document;
@@ -83,12 +81,6 @@ public class ExportHelper {
 	/** XML Document 			*/
 	private Document outDocument = null; 
 	
-	/** Date Time Format		*/
-	private SimpleDateFormat	m_dateTimeFormat = null;
-
-	/** Date Format				*/
-	private SimpleDateFormat	m_dateFormat = null;
-	
 	/** Custom Date Format		*/
 	private SimpleDateFormat	m_customDateFormat = null;
 	
@@ -102,15 +94,10 @@ public class ExportHelper {
 	public ExportHelper(MClient client, MReplicationStrategy rplStrategy) {
 		m_AD_Client_ID = client.getAD_Client_ID();
 		m_rplStrategy = rplStrategy;
-		
-		m_dateTimeFormat = DisplayType.getDateFormat(DisplayType.DateTime, Language.getLanguage(Env.getAD_Language(client.getCtx())));
-		m_dateFormat 	 = DisplayType.getDateFormat(DisplayType.Date, Language.getLanguage(Env.getAD_Language(client.getCtx())));
 	}
 	
 	public ExportHelper(Properties ctx , int AD_Client_ID) {
 		m_AD_Client_ID = AD_Client_ID;
-		m_dateTimeFormat = DisplayType.getDateFormat(DisplayType.DateTime, Language.getLanguage(Env.getAD_Language(ctx)));
-		m_dateFormat 	 = DisplayType.getDateFormat(DisplayType.Date, Language.getLanguage(Env.getAD_Language(ctx)));
 	}
 	
 		/**
@@ -224,8 +211,6 @@ public class ExportHelper {
 					throw new Exception(Msg.getMsg (po.getCtx(), "ExportNoneColumnKeyNotSupported"));//TODO: Create Mesagge.
 				}
 				
-				// TODO - get proper Export Format!
-				String version = "3.2.0";		
 				outDocument = createNewDocument();
 		
 
@@ -443,7 +428,7 @@ public class ExportHelper {
 				
 				Collection<PO> instances = new Query(masterPO.getCtx(),tableEmbedded.getTableName(), whereClause.toString(),masterPO.get_TrxName())
                                 				.setClient_ID()
-                                				.setParameters(new Object[] { value })
+                                				.setParameters(value)
                                 				.list();
 
 				for (PO instance : instances)

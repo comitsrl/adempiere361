@@ -1,5 +1,5 @@
 /******************************************************************************
- * Product: Adempiere ERP & CRM Smart Business Solution                        *
+ * Product: Adempiere ERP & CRM Smart Business Solution                       *
  * Copyright (C) 1999-2006 ComPiere, Inc. All Rights Reserved.                *
  * This program is free software; you can redistribute it and/or modify it    *
  * under the terms version 2 of the GNU General Public License as published   *
@@ -124,8 +124,8 @@ public class MScheduler extends X_AD_Scheduler
 	public AdempiereProcessorLog[] getLogs ()
 	{
 		final String whereClause = MSchedulerLog.COLUMNNAME_AD_Scheduler_ID+"=?";
-		List<MSchedulerLog> list = new Query(getCtx(), MSchedulerLog.Table_Name, whereClause, get_TrxName())
-		.setParameters(new Object[]{getAD_Scheduler_ID()})
+		List<MSchedulerLog> list = new Query(getCtx(), I_AD_SchedulerLog.Table_Name, whereClause, get_TrxName())
+		.setParameters(getAD_Scheduler_ID())
 		.setOrderBy("Created DESC")
 		.list();
 		MSchedulerLog[] retValue = new MSchedulerLog[list.size ()];
@@ -168,8 +168,8 @@ public class MScheduler extends X_AD_Scheduler
 			return m_parameter;
 		//
 		final String whereClause = MSchedulerPara.COLUMNNAME_AD_Scheduler_ID+"=?";
-		List<MSchedulerPara> list = new Query(getCtx(), MSchedulerPara.Table_Name, whereClause, get_TrxName())
-		.setParameters(new Object[]{getAD_Scheduler_ID()})
+		List<MSchedulerPara> list = new Query(getCtx(), I_AD_Scheduler_Para.Table_Name, whereClause, get_TrxName())
+		.setParameters(getAD_Scheduler_ID())
 		.setOnlyActiveRecords(true)
 		.list();
 		m_parameter = new MSchedulerPara[list.size()];
@@ -187,9 +187,9 @@ public class MScheduler extends X_AD_Scheduler
 		if (!reload && m_recipients != null)
 			return m_recipients;
 		//
-		String whereClause = MSchedulerRecipient.COLUMNNAME_AD_Scheduler_ID+"=?";
-		final List<MSchedulerRecipient> list = new Query(getCtx(), MSchedulerRecipient.Table_Name, whereClause, get_TrxName())
-		.setParameters(new Object[]{getAD_Scheduler_ID()})
+		final String whereClause = MSchedulerRecipient.COLUMNNAME_AD_Scheduler_ID+"=?";
+		List<MSchedulerRecipient> list = new Query(getCtx(), I_AD_SchedulerRecipient.Table_Name, whereClause, get_TrxName())
+		.setParameters(getAD_Scheduler_ID())
 		.setOnlyActiveRecords(true)
 		.list();
 		m_recipients = new MSchedulerRecipient[list.size()];
