@@ -33,6 +33,11 @@ import org.compiere.util.WebUtil;
 
 public class WHelp extends HttpServlet
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2586562865823315494L;
+	
 	protected CLogger	log = CLogger.getCLogger(getClass());
 
 	public void init(ServletConfig config)
