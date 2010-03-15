@@ -350,7 +350,7 @@ public class PrintManager
             }
             
             // Overwrite printing arguments with arguments supplied
-            if (args != null || args.trim().length() != 0)
+            if (args != null && args.trim().length() > 0)
             {
             	printingArgs = args;
             }
