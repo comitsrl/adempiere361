@@ -13,20 +13,17 @@
  *****************************************************************************/
 package test.functional;
 
-import org.compiere.model.MInOutLine;
-import org.compiere.model.MInvoice;
-import org.compiere.model.MInvoiceLine;
+import org.compiere.model.MAsset;
+import org.compiere.model.MAssetDelivery;
 import org.compiere.util.Env;
 
 import test.AdempiereTestCase;
 
 /**
- * @author Teo Sarca, www.arhipac.ro //red1 reused for InvoiceLine test
+ * @author Teo Sarca, www.arhipac.ro //red1 borrows from MInvoiceTest
  */
-public class MInvoiceTest extends AdempiereTestCase
+public class MAssetTest extends AdempiereTestCase
 {
-	public static final int BPARTNER_TreeFarm = 114;
-	
 	@Override
 	protected void setUp() throws Exception
 	{
@@ -35,21 +32,13 @@ public class MInvoiceTest extends AdempiereTestCase
 	}
 	
 	public void testQuery() throws Exception
-	{
-		MInvoice.setIsPaid(getCtx(), BPARTNER_TreeFarm, getTrxName());
-		
-		MInvoice[] invoices = MInvoice.getOfBPartner(getCtx(), BPARTNER_TreeFarm, getTrxName());
-		assertTrue("Partner "+BPARTNER_TreeFarm+" should have invoices", invoices.length > 0);
-		
-		for (MInvoice invoice : invoices)
-		{
-			invoice.getLines(true); // test query
-			invoice.getTaxes(true); // test query
-		}
-		//test MinvoiceLine getOfInOutLine
-		MInOutLine iol = new MInOutLine(getCtx(),101,getTrxName()); //get InOutLine thats from InvoiceLine
-		MInvoiceLine invl = MInvoiceLine.getOfInOutLine(iol);
-		assertTrue("getOfInOutLine must work",invl.get_ID()>0);
+	{ //test with mock A_Asset and A_Asset_Delivery record
+		MAsset asset = new MAsset(getCtx(), 1000000, getTrxName());
+		MAssetDelivery[] assets = asset.getDeliveries();
+		assertTrue("assets must have values", assets.length > 0);
+		MAsset getstmt = MAsset.getFromShipment(getCtx(), 1000000, getTrxName());
+		assertTrue("stmt must be active", getstmt.isActive() == true);
+
 	}
 
 }

@@ -13,20 +13,16 @@
  *****************************************************************************/
 package test.functional;
 
-import org.compiere.model.MInOutLine;
-import org.compiere.model.MInvoice;
-import org.compiere.model.MInvoiceLine;
+import org.compiere.model.MMenu;
 import org.compiere.util.Env;
 
 import test.AdempiereTestCase;
 
 /**
- * @author Teo Sarca, www.arhipac.ro //red1 reused for InvoiceLine test
+ * @author Teo Sarca, www.arhipac.ro //red1 borrows from MInvoiceTest
  */
-public class MInvoiceTest extends AdempiereTestCase
+public class MMenuTest extends AdempiereTestCase
 {
-	public static final int BPARTNER_TreeFarm = 114;
-	
 	@Override
 	protected void setUp() throws Exception
 	{
@@ -36,20 +32,9 @@ public class MInvoiceTest extends AdempiereTestCase
 	
 	public void testQuery() throws Exception
 	{
-		MInvoice.setIsPaid(getCtx(), BPARTNER_TreeFarm, getTrxName());
-		
-		MInvoice[] invoices = MInvoice.getOfBPartner(getCtx(), BPARTNER_TreeFarm, getTrxName());
-		assertTrue("Partner "+BPARTNER_TreeFarm+" should have invoices", invoices.length > 0);
-		
-		for (MInvoice invoice : invoices)
-		{
-			invoice.getLines(true); // test query
-			invoice.getTaxes(true); // test query
-		}
-		//test MinvoiceLine getOfInOutLine
-		MInOutLine iol = new MInOutLine(getCtx(),101,getTrxName()); //get InOutLine thats from InvoiceLine
-		MInvoiceLine invl = MInvoiceLine.getOfInOutLine(iol);
-		assertTrue("getOfInOutLine must work",invl.get_ID()>0);
+		MMenu[] menus = MMenu.get(getCtx(), "AD_Menu_ID=100",null); //red1 tested with null and IsActive - no failures
+		assertTrue("atrributes must have values", menus.length > 0);		
+
 	}
 
 }

@@ -13,20 +13,16 @@
  *****************************************************************************/
 package test.functional;
 
-import org.compiere.model.MInOutLine;
-import org.compiere.model.MInvoice;
-import org.compiere.model.MInvoiceLine;
+import org.compiere.model.MContactInterest;
 import org.compiere.util.Env;
 
 import test.AdempiereTestCase;
 
 /**
- * @author Teo Sarca, www.arhipac.ro //red1 reused for InvoiceLine test
+ * @author Teo Sarca, www.arhipac.ro //red1 borrows from MInvoiceTest
  */
-public class MInvoiceTest extends AdempiereTestCase
+public class MContactInterestTest extends AdempiereTestCase
 {
-	public static final int BPARTNER_TreeFarm = 114;
-	
 	@Override
 	protected void setUp() throws Exception
 	{
@@ -35,21 +31,10 @@ public class MInvoiceTest extends AdempiereTestCase
 	}
 	
 	public void testQuery() throws Exception
-	{
-		MInvoice.setIsPaid(getCtx(), BPARTNER_TreeFarm, getTrxName());
-		
-		MInvoice[] invoices = MInvoice.getOfBPartner(getCtx(), BPARTNER_TreeFarm, getTrxName());
-		assertTrue("Partner "+BPARTNER_TreeFarm+" should have invoices", invoices.length > 0);
-		
-		for (MInvoice invoice : invoices)
-		{
-			invoice.getLines(true); // test query
-			invoice.getTaxes(true); // test query
-		}
-		//test MinvoiceLine getOfInOutLine
-		MInOutLine iol = new MInOutLine(getCtx(),101,getTrxName()); //get InOutLine thats from InvoiceLine
-		MInvoiceLine invl = MInvoiceLine.getOfInOutLine(iol);
-		assertTrue("getOfInOutLine must work",invl.get_ID()>0);
+	{ //red1 tested InterestArea_ID with true and false conditions (101 retValue not null, 100 - retValue = null)
+		MContactInterest retValue  = MContactInterest.get(getCtx(), 101, 104, true, getTrxName());
+		assertTrue("interest area must have record",retValue.get_ID()>0);		
+
 	}
 
 }
