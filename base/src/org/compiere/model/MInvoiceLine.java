@@ -1004,7 +1004,7 @@ public class MInvoiceLine extends X_C_InvoiceLine
 		if (lcs.length == 1)
 		{
 			MLandedCost lc = lcs[0];
-			if (lc.getM_InOut_ID() != 0)
+			if (lc.getM_InOut_ID() != 0 && lc.getM_InOutLine_ID() == 0)
 			{
 				//	Create List
 				ArrayList<MInOutLine> list = new ArrayList<MInOutLine>();
