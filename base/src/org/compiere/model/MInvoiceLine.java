@@ -1065,6 +1065,8 @@ public class MInvoiceLine extends X_C_InvoiceLine
 				MLandedCostAllocation lca = new MLandedCostAllocation (this, lc.getM_CostElement_ID());
 				lca.setM_Product_ID(iol.getM_Product_ID());
 				lca.setM_AttributeSetInstance_ID(iol.getM_AttributeSetInstance_ID());
+				BigDecimal base = iol.getBase(lc.getLandedCostDistribution()); 
+				lca.setBase(base);
 				lca.setAmt(getLineNetAmt());
 				// MZ Goodwill
 				// add set Qty from InOutLine
