@@ -119,8 +119,10 @@ public class HtmlDashboard extends JPanel implements MouseListener,
 			ins = new InputStreamReader(url.openStream());
 			BufferedReader bufferedReader = new BufferedReader( ins );
 			String cssLine;
+			result += "<style type=\"text/css\">";
 			while ((cssLine = bufferedReader.readLine()) != null) 
 				result += cssLine + "\n";
+			result += "</style>";
 		} catch (IOException e1) {
 			log.log(Level.SEVERE, e1.getLocalizedMessage(), e1);
 		}
@@ -322,7 +324,7 @@ public class HtmlDashboard extends JPanel implements MouseListener,
 			html.setCursor(Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR ));
 			*/
 			int AD_Window_ID=Integer.parseInt(url.getRef());
-			AWindow frame = new AWindow();
+			AWindow frame = new AWindow(getGraphicsConfiguration());
 			if (!frame.initWindow(AD_Window_ID, null))//MQuery.getEqualQuery(TableName + "_ID", Record_ID)))
 				return;
 			AEnv.addToWindowManager(frame);
