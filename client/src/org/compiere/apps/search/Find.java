@@ -116,7 +116,7 @@ public final class Find extends CDialog
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6414604433732835411L;
+	private static final long serialVersionUID = -5064336990363669996L;
 	private int m_AD_Tab_ID;
 
 	/**
@@ -209,6 +209,7 @@ public final class Find extends CDialog
 	public static final int		FIELDLENGTH = 20;
 	/** Reference ID for Yes/No	*/
 	public static final int		AD_REFERENCE_ID_YESNO = 319;
+	
 	
 	//
 	private CPanel southPanel = new CPanel();
@@ -486,6 +487,29 @@ public final class Find extends CDialog
 				// replace the original field by the YN List field
 				m_findFields[i] = ynfield;
 				mField = ynfield;
+			}
+
+			// Make Buttons searchable
+			if  ( mField.getVO().displayType == DisplayType.Button )
+			{
+				GridFieldVO vo = mField.getVO();
+				if ( vo.AD_Reference_Value_ID > 0 )
+				{
+					GridFieldVO postedvo = vo.clone(vo.ctx, vo.WindowNo, vo.TabNo, vo.AD_Window_ID, vo.AD_Tab_ID, vo.tabReadOnly);
+					postedvo.IsDisplayed = true;
+					postedvo.displayType = DisplayType.List;
+
+					postedvo.lookupInfo = MLookupFactory.getLookupInfo (postedvo.ctx, postedvo.WindowNo, postedvo.AD_Column_ID, postedvo.displayType,
+							Env.getLanguage(postedvo.ctx), postedvo.ColumnName, postedvo.AD_Reference_Value_ID,
+							postedvo.IsParent, postedvo.ValidationCode);
+					postedvo.lookupInfo.InfoFactoryClass = postedvo.InfoFactoryClass;
+
+					GridField postedfield = new GridField(postedvo);
+
+					// replace the original field by the Posted List field
+					m_findFields[i] = postedfield;
+					mField = postedfield;
+				}
 			}
 
 			if (columnName.equals("Value"))
