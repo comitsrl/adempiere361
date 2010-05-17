@@ -23,7 +23,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 
@@ -53,10 +53,13 @@ import org.compiere.util.Trx;
  */
 public class MCost extends X_M_Cost
 {
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -127982599769472918L;
+
+
+
+    	/**
+         * 
+         */
+        private static final long serialVersionUID = -127982599769472918L;
 
 
 	/**
@@ -683,7 +686,7 @@ public class MCost extends X_M_Cost
 			s_log.config(product.getName());
 
 			//	Cost Elements
-			Collection <MCostElement> ces = MCostElement.getCostElementsWithCostingMethods(product);
+			List <MCostElement> ces = MCostElement.getCostElementsWithCostingMethods(product);
 
 			MAcctSchema[] mass = MAcctSchema.getClientAcctSchema(product.getCtx(),
 				product.getAD_Client_ID(), product.get_TrxName());
@@ -751,7 +754,7 @@ public class MCost extends X_M_Cost
 	{
 		s_log.config(product.getName());
 		//	Cost Elements
-		Collection <MCostElement> ces = MCostElement.getCostElementsWithCostingMethods(product);
+		List <MCostElement> ces = MCostElement.getCostElementsWithCostingMethods(product);
 
 			MAcctSchema[] mass = MAcctSchema.getClientAcctSchema(product.getCtx(),
 				product.getAD_Client_ID(), product.get_TrxName());
