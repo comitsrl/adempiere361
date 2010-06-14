@@ -342,9 +342,6 @@
 				<include name="it/**" />
 			</fileset>
 			<!-- Mail				-->
-			<zipfileset src="lib/activation.jar">
-				<patternset refid="manifest.exclude" />
-			</zipfileset>
 			<zipfileset src="lib/mail.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
