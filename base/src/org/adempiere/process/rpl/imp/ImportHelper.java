@@ -85,6 +85,11 @@ public class ImportHelper {
 	
 	/** Custom Date Format			*/
 	private SimpleDateFormat	m_customDateFormat = null;
+	/** Set change PO			*/
+	boolean isChanged= false;
+	
+	/** ReplicationEvent	**/
+	int ReplicationMode = -1;
 	
 	/** Context						*/
 	private Properties ctx = null;
@@ -125,7 +130,7 @@ public class ImportHelper {
 			throw new Exception(Msg.getMsg(ctx, "XMLVersionAttributeMandatory"));
 		}
 		///Getting Attributes.
-		int ReplicationMode = new Integer(rootElement.getAttribute("ReplicationMode"));
+		ReplicationMode = new Integer(rootElement.getAttribute("ReplicationMode"));
 		String ReplicationType = rootElement.getAttribute("ReplicationType");
 		int ReplicationEvent = new Integer(rootElement.getAttribute("ReplicationEvent"));
 		
@@ -161,8 +166,13 @@ public class ImportHelper {
 			throw new Exception(Msg.getMsg(ctx, "EXPFormatNotFound"));
 		}
 		log.info("expFormat = " + expFormat.toString());
-		
+		isChanged = false;
 		PO po = importElement(ctx, result, rootElement, expFormat, ReplicationType, trxName);
+		if(!po.is_Changed() && !isChanged)
+		{
+		    log.info("Object not changed = " + po.toString());
+		    return;
+		}
 		
 		if(po != null)
 		{
@@ -179,22 +189,20 @@ public class ImportHelper {
         			{
         				if(X_AD_ReplicationTable.REPLICATIONTYPE_Broadcast.equals(ReplicationType))
         				{
-        				    po.saveReplica(true);
-        					MReplicationStrategy rplStrategy = new MReplicationStrategy(client.getCtx(), client.getAD_ReplicationStrategy_ID(), null);
+        					MReplicationStrategy rplStrategy = new MReplicationStrategy(client.getCtx(), client.getAD_ReplicationStrategy_ID(), po.get_TrxName());
         					ExportHelper expHelper = new ExportHelper(client, rplStrategy);
         					expHelper.exportRecord(	po, 
         								MReplicationStrategy.REPLICATION_TABLE,
         								X_AD_ReplicationTable.REPLICATIONTYPE_Merge,
         								ModelValidator.TYPE_AFTER_CHANGE);
+        					po.saveReplica(true);
         					
         				}
         				else if(X_AD_ReplicationTable.REPLICATIONTYPE_Merge.equals(ReplicationType)
         					||  X_AD_ReplicationTable.REPLICATIONTYPE_Reference.equals(ReplicationType))
         				{
-        					if(po.is_Changed())
-        					{	
+
         						po.saveReplica(true);
-        					}	
         				}
         				/*else if (X_AD_ReplicationTable.REPLICATIONTYPE_Reference.equals(ReplicationType))
         				{
@@ -217,11 +225,15 @@ public class ImportHelper {
 		    	{
 		    		   Env.setContext(po.getCtx(), "#AD_Client_ID", po.getAD_Client_ID());
 				   DocAction document = (DocAction)po;
-				   document.processIt(document.getDocAction());		   
+				   if(!document.processIt(document.getDocAction()))
+				   {    
+				       log.info("PO.toString() = can not " + po.get_Value("DocAction"));
+				   }
 				   po.saveEx();
 		    	}	
 		}	
 		result.append("Save Successful ;");		
+		ReplicationMode = -1;
 	}
 
 	/**
@@ -333,9 +345,15 @@ public class ImportHelper {
 		} 
 		else if (MEXPFormatLine.TYPE_EmbeddedEXPFormat.equals(line.getType())) 
 		{
-			if(po.is_Changed())
+
+			if(po.is_Changed() &&  MReplicationStrategy.REPLICATION_DOCUMENT == ReplicationMode)
 			{	
+			   	isChanged = true;
 				po.saveReplica(true);
+			}
+			else
+			{
+				return value;
 			}
 			
 			// Embedded Export Format It is used for Parent-Son records like Order&OrderLine
@@ -354,7 +372,16 @@ public class ImportHelper {
 				log.info("=== BEGIN RECURSION CALL ===");
 				embeddedPo = importElement(ctx, result, referencedElement, referencedExpFormat,ReplicationType, po.get_TrxName());
 				log.info("embeddedPo = " + embeddedPo);
+				if(!embeddedPo.is_Changed())
+				{
+				    log.info("Object not changed = " + po.toString());
+				    continue;
+				}
+				else
+				{	
 				embeddedPo.saveReplica(true);
+				isChanged = true;
+				}	
 				result.append(" Embedded Save Successful ; ");
 				
 			}
@@ -599,7 +626,7 @@ public class ImportHelper {
 				log.info("referencedNode = " + referencedNode);
 				if (referencedNode == null) 
 				{					
-					throw new IllegalArgumentException("referencedNode can't be null!");
+					throw new IllegalArgumentException("referencedNode can't be found!");
 				}
 				record_ID = getID(ctx, referencedExpFormat, referencedNode, uniqueFormatLine.getValue(), trxName);
 
