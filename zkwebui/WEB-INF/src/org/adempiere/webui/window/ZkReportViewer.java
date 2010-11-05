@@ -95,10 +95,7 @@ import org.zkoss.zul.Vbox;
  */
 public class ZkReportViewer extends Window implements EventListener {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1934299122532841552L;
+	private static final long serialVersionUID = 4640088641140012438L;
 	/** Window No					*/
 	private int                 m_WindowNo;
 	/**	Print Context				*/
@@ -122,7 +119,6 @@ public class ZkReportViewer extends Window implements EventListener {
 	//
 	private StatusBarPanel statusBar = new StatusBarPanel();
 	private Toolbar toolBar = new Toolbar();
-	private Toolbarbutton bPrint = new Toolbarbutton();
 	private Toolbarbutton bSendMail = new Toolbarbutton();
 	private Toolbarbutton bArchive = new Toolbarbutton();
 	private Toolbarbutton bCustomize = new Toolbarbutton();
@@ -232,14 +228,7 @@ public class ZkReportViewer extends Window implements EventListener {
 		bFind.addEventListener(Events.ON_CLICK, this);
 		
 		toolBar.appendChild(new Separator("vertical"));
-
-		bPrint.setImage("/images/Print24.png");
-		bPrint.setTooltiptext("Print");
-		toolBar.appendChild(bPrint);
-		bPrint.addEventListener(Events.ON_CLICK, this);
-
-		toolBar.appendChild(new Separator("vertical"));
-
+		
 		bSendMail.setImage("/images/SendMail24.png");
 		bSendMail.setTooltiptext("Send Mail");
 		toolBar.appendChild(bSendMail);
@@ -560,8 +549,6 @@ public class ZkReportViewer extends Window implements EventListener {
 			cmd_export();
 		else if (e.getTarget() == previewType)
 			cmd_render();
-		else if (e.getTarget() == bPrint)
-			cmd_print();
 		else if (e.getTarget() == bSendMail)
 			cmd_sendMail();
 		else if (e.getTarget() == bArchive)
@@ -615,15 +602,6 @@ public class ZkReportViewer extends Window implements EventListener {
 		AEnv.zoom(query);
 	}	//	cmd_window
 	
-	/**************************************************************************
-	 * 	Print Report
-	 */
-	private void cmd_print()
-	{
-		m_reportEngine.getPrintInfo().setWithDialog(false);
-		m_reportEngine.print();
-	}	//	cmd_print
-
 	/**
 	 * 	Send Mail
 	 */
