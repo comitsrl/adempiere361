@@ -979,10 +979,12 @@ public class CalloutOrder extends CalloutEngine
 			// else ignore
 			if (mField.getColumnName().equals("PriceActual"))
 			{
+				PriceEntered = (BigDecimal) value;
 				mTab.setValue("PriceEntered", value);
 			}
 			else if (mField.getColumnName().equals("PriceEntered"))
 			{
+				PriceActual = (BigDecimal) value;
 				mTab.setValue("PriceActual", value);
 			}
 		}
@@ -1013,6 +1015,7 @@ public class CalloutOrder extends CalloutEngine
 			//
 			log.fine("QtyChanged -> PriceActual=" + pp.getPriceStd() 
 				+ ", PriceEntered=" + PriceEntered + ", Discount=" + pp.getDiscount());
+			PriceActual = pp.getPriceStd();
 			mTab.setValue("PriceActual", pp.getPriceStd());
 			mTab.setValue("Discount", pp.getDiscount());
 			mTab.setValue("PriceEntered", PriceEntered);
