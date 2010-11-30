@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_Warehouse
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 3.6.0LTS+P20101124 - $Id$ */
 public class X_M_Warehouse extends PO implements I_M_Warehouse, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20101129L;
 
     /** Standard Constructor */
     public X_M_Warehouse (Properties ctx, int M_Warehouse_ID, String trxName)
@@ -39,6 +39,8 @@ public class X_M_Warehouse extends PO implements I_M_Warehouse, I_Persistent
       /** if (M_Warehouse_ID == 0)
         {
 			setC_Location_ID (0);
+			setIsDisallowNegativeInv (false);
+// N
 			setM_Warehouse_ID (0);
 			setName (null);
 			setSeparator (null);
@@ -118,6 +120,30 @@ public class X_M_Warehouse extends PO implements I_M_Warehouse, I_Persistent
 	public String getDescription () 
 	{
 		return (String)get_Value(COLUMNNAME_Description);
+	}
+
+	/** Set Disallow Negative Inventory.
+		@param IsDisallowNegativeInv 
+		Negative Inventory is not allowed in this warehouse
+	  */
+	public void setIsDisallowNegativeInv (boolean IsDisallowNegativeInv)
+	{
+		set_Value (COLUMNNAME_IsDisallowNegativeInv, Boolean.valueOf(IsDisallowNegativeInv));
+	}
+
+	/** Get Disallow Negative Inventory.
+		@return Negative Inventory is not allowed in this warehouse
+	  */
+	public boolean isDisallowNegativeInv () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsDisallowNegativeInv);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set In Transit.

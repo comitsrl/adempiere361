@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_Warehouse
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 3.6.0LTS+P20101124
  */
 public interface I_M_Warehouse 
 {
@@ -118,6 +118,19 @@ public interface I_M_Warehouse
 	  * The record is active in the system
 	  */
 	public boolean isActive();
+
+    /** Column name IsDisallowNegativeInv */
+    public static final String COLUMNNAME_IsDisallowNegativeInv = "IsDisallowNegativeInv";
+
+	/** Set Disallow Negative Inventory.
+	  * Negative Inventory is not allowed in this warehouse
+	  */
+	public void setIsDisallowNegativeInv (boolean IsDisallowNegativeInv);
+
+	/** Get Disallow Negative Inventory.
+	  * Negative Inventory is not allowed in this warehouse
+	  */
+	public boolean isDisallowNegativeInv();
 
     /** Column name IsInTransit */
     public static final String COLUMNNAME_IsInTransit = "IsInTransit";
