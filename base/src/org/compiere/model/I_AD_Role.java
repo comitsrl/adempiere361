@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Role
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 3.6.0LTS+P20101124
  */
 public interface I_AD_Role 
 {
@@ -235,6 +235,19 @@ public interface I_AD_Role
 	  */
 	public BigDecimal getAmtApproval();
 
+    /** Column name AmtApprovalAccum */
+    public static final String COLUMNNAME_AmtApprovalAccum = "AmtApprovalAccum";
+
+	/** Set Approval Amount Accumulated.
+	  * The approval amount limit for this role accumulated on a period
+	  */
+	public void setAmtApprovalAccum (BigDecimal AmtApprovalAccum);
+
+	/** Get Approval Amount Accumulated.
+	  * The approval amount limit for this role accumulated on a period
+	  */
+	public BigDecimal getAmtApprovalAccum();
+
     /** Column name C_Currency_ID */
     public static final String COLUMNNAME_C_Currency_ID = "C_Currency_ID";
 
@@ -291,6 +304,19 @@ public interface I_AD_Role
 	  * User who created this records
 	  */
 	public int getCreatedBy();
+
+    /** Column name DaysApprovalAccum */
+    public static final String COLUMNNAME_DaysApprovalAccum = "DaysApprovalAccum";
+
+	/** Set Days Approval Accumulated.
+	  * The days approval indicates the days to take into account to verify the accumulated approval amount.
+	  */
+	public void setDaysApprovalAccum (int DaysApprovalAccum);
+
+	/** Get Days Approval Accumulated.
+	  * The days approval indicates the days to take into account to verify the accumulated approval amount.
+	  */
+	public int getDaysApprovalAccum();
 
     /** Column name Description */
     public static final String COLUMNNAME_Description = "Description";

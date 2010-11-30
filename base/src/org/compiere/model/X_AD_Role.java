@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Role
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 3.6.0LTS+P20101124 - $Id$ */
 public class X_AD_Role extends PO implements I_AD_Role, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20101130L;
 
     /** Standard Constructor */
     public X_AD_Role (Properties ctx, int AD_Role_ID, String trxName)
@@ -501,6 +501,26 @@ public class X_AD_Role extends PO implements I_AD_Role, I_Persistent
 		return bd;
 	}
 
+	/** Set Approval Amount Accumulated.
+		@param AmtApprovalAccum 
+		The approval amount limit for this role accumulated on a period
+	  */
+	public void setAmtApprovalAccum (BigDecimal AmtApprovalAccum)
+	{
+		set_Value (COLUMNNAME_AmtApprovalAccum, AmtApprovalAccum);
+	}
+
+	/** Get Approval Amount Accumulated.
+		@return The approval amount limit for this role accumulated on a period
+	  */
+	public BigDecimal getAmtApprovalAccum () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_AmtApprovalAccum);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
 	public I_C_Currency getC_Currency() throws RuntimeException
     {
 		return (I_C_Currency)MTable.get(getCtx(), I_C_Currency.Table_Name)
@@ -575,6 +595,26 @@ public class X_AD_Role extends PO implements I_AD_Role, I_Persistent
 	public String getConnectionProfile () 
 	{
 		return (String)get_Value(COLUMNNAME_ConnectionProfile);
+	}
+
+	/** Set Days Approval Accumulated.
+		@param DaysApprovalAccum 
+		The days approval indicates the days to take into account to verify the accumulated approval amount.
+	  */
+	public void setDaysApprovalAccum (int DaysApprovalAccum)
+	{
+		set_Value (COLUMNNAME_DaysApprovalAccum, Integer.valueOf(DaysApprovalAccum));
+	}
+
+	/** Get Days Approval Accumulated.
+		@return The days approval indicates the days to take into account to verify the accumulated approval amount.
+	  */
+	public int getDaysApprovalAccum () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_DaysApprovalAccum);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
 	}
 
 	/** Set Description.
