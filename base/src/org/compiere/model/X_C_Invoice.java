@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_Invoice
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 3.6.0LTS+P20101124 - $Id$ */
 public class X_C_Invoice extends PO implements I_C_Invoice, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20101208L;
 
     /** Standard Constructor */
     public X_C_Invoice (Properties ctx, int C_Invoice_ID, String trxName)
@@ -298,6 +298,31 @@ public class X_C_Invoice extends PO implements I_C_Invoice, I_Persistent
 	public int getC_CashLine_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_C_CashLine_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_CashPlanLine getC_CashPlanLine() throws RuntimeException
+    {
+		return (I_C_CashPlanLine)MTable.get(getCtx(), I_C_CashPlanLine.Table_Name)
+			.getPO(getC_CashPlanLine_ID(), get_TrxName());	}
+
+	/** Set Cash Plan Line.
+		@param C_CashPlanLine_ID Cash Plan Line	  */
+	public void setC_CashPlanLine_ID (int C_CashPlanLine_ID)
+	{
+		if (C_CashPlanLine_ID < 1) 
+			set_Value (COLUMNNAME_C_CashPlanLine_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_CashPlanLine_ID, Integer.valueOf(C_CashPlanLine_ID));
+	}
+
+	/** Get Cash Plan Line.
+		@return Cash Plan Line	  */
+	public int getC_CashPlanLine_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_CashPlanLine_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_Invoice
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 3.6.0LTS+P20101124
  */
 public interface I_C_Invoice 
 {
@@ -164,6 +164,17 @@ public interface I_C_Invoice
 	public int getC_CashLine_ID();
 
 	public I_C_CashLine getC_CashLine() throws RuntimeException;
+
+    /** Column name C_CashPlanLine_ID */
+    public static final String COLUMNNAME_C_CashPlanLine_ID = "C_CashPlanLine_ID";
+
+	/** Set Cash Plan Line	  */
+	public void setC_CashPlanLine_ID (int C_CashPlanLine_ID);
+
+	/** Get Cash Plan Line	  */
+	public int getC_CashPlanLine_ID();
+
+	public I_C_CashPlanLine getC_CashPlanLine() throws RuntimeException;
 
     /** Column name C_Charge_ID */
     public static final String COLUMNNAME_C_Charge_ID = "C_Charge_ID";
