@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_Order
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 3.6.0LTS+P20101124 - $Id$ */
 public class X_C_Order extends PO implements I_C_Order, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20101208L;
 
     /** Standard Constructor */
     public X_C_Order (Properties ctx, int C_Order_ID, String trxName)
@@ -79,6 +79,8 @@ public class X_C_Order extends PO implements I_C_Order, I_Persistent
 			setIsDropShip (false);
 // N
 			setIsInvoiced (false);
+			setIsPayScheduleValid (false);
+// N
 			setIsPrinted (false);
 			setIsSelected (false);
 			setIsSelfService (false);
@@ -1347,6 +1349,30 @@ public class X_C_Order extends PO implements I_C_Order, I_Persistent
 	public boolean isInvoiced () 
 	{
 		Object oo = get_Value(COLUMNNAME_IsInvoiced);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Pay Schedule valid.
+		@param IsPayScheduleValid 
+		Is the Payment Schedule is valid
+	  */
+	public void setIsPayScheduleValid (boolean IsPayScheduleValid)
+	{
+		set_Value (COLUMNNAME_IsPayScheduleValid, Boolean.valueOf(IsPayScheduleValid));
+	}
+
+	/** Get Pay Schedule valid.
+		@return Is the Payment Schedule is valid
+	  */
+	public boolean isPayScheduleValid () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsPayScheduleValid);
 		if (oo != null) 
 		{
 			 if (oo instanceof Boolean) 

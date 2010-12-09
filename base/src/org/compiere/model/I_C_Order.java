@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_Order
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 3.6.0LTS+P20101124
  */
 public interface I_C_Order 
 {
@@ -742,6 +742,19 @@ public interface I_C_Order
 	  * Is this invoiced?
 	  */
 	public boolean isInvoiced();
+
+    /** Column name IsPayScheduleValid */
+    public static final String COLUMNNAME_IsPayScheduleValid = "IsPayScheduleValid";
+
+	/** Set Pay Schedule valid.
+	  * Is the Payment Schedule is valid
+	  */
+	public void setIsPayScheduleValid (boolean IsPayScheduleValid);
+
+	/** Get Pay Schedule valid.
+	  * Is the Payment Schedule is valid
+	  */
+	public boolean isPayScheduleValid();
 
     /** Column name IsPrinted */
     public static final String COLUMNNAME_IsPrinted = "IsPrinted";

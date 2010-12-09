@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_PaymentTerm
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 3.6.0LTS+P20101124
  */
 public interface I_C_PaymentTerm 
 {
@@ -337,6 +337,19 @@ public interface I_C_PaymentTerm
 	  * Net Days in which payment is due
 	  */
 	public int getNetDays();
+
+    /** Column name PaymentTermUsage */
+    public static final String COLUMNNAME_PaymentTermUsage = "PaymentTermUsage";
+
+	/** Set Payment Term Usage.
+	  * Payment term usage indicates if this payment term is used for sales, purchases or both.
+	  */
+	public void setPaymentTermUsage (String PaymentTermUsage);
+
+	/** Get Payment Term Usage.
+	  * Payment term usage indicates if this payment term is used for sales, purchases or both.
+	  */
+	public String getPaymentTermUsage();
 
     /** Column name Processing */
     public static final String COLUMNNAME_Processing = "Processing";
