@@ -51,10 +51,6 @@ UPDATE AD_Field SET SeqNo=120,Updated=TO_DATE('2010-11-29 12:35:26','YYYY-MM-DD 
 UPDATE AD_Column SET Callout='org.compiere.model.CalloutOrder.warehouse',Updated=TO_DATE('2010-11-29 12:44:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=2202
 ;
 
--- Nov 29, 2010 1:02:58 PM COT
-UPDATE AD_Message_Trl SET MsgText='No se permite inventario negativo en este almacén',Updated=TO_DATE('2010-11-29 13:02:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Message_ID=1000000 AND AD_Language LIKE 'es_%'
-;
-
 -- Nov 29, 2010 1:03:25 PM COT
 UPDATE AD_Message_Trl SET MsgText='Existen inventarios negativos en este almacén',Updated=TO_DATE('2010-11-29 13:03:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Message_ID=53118 AND AD_Language LIKE 'es_%'
 ;
