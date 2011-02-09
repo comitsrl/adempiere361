@@ -1260,7 +1260,7 @@ public final class DB
     		if (rs.next())
     			retValue = rs.getInt(1);
     		else
-    			log.info("No Value " + sql);
+    			log.fine("No Value " + sql);
     	}
     	catch (SQLException e)
     	{
@@ -1341,7 +1341,7 @@ public final class DB
     		if (rs.next())
     			retValue = rs.getString(1);
     		else
-    			log.info("No Value " + sql);
+    			log.fine("No Value " + sql);
     	}
     	catch (SQLException e)
     	{
@@ -1422,7 +1422,7 @@ public final class DB
     		if (rs.next())
     			retValue = rs.getBigDecimal(1);
     		else
-    			log.info("No Value " + sql);
+    			log.fine("No Value " + sql);
     	}
     	catch (SQLException e)
     	{
@@ -1505,7 +1505,7 @@ public final class DB
     		if (rs.next())
     			retValue = rs.getTimestamp(1);
     		else
-    			log.info("No Value " + sql);
+    			log.fine("No Value " + sql);
     	}
     	catch (SQLException e)
     	{
