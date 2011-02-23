@@ -25,14 +25,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for T_CashFlow
  *  @author Adempiere (generated) 
- *  @version 3.6.0LTS+P20101124 - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_T_CashFlow extends PO implements I_T_CashFlow, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20101208L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_T_CashFlow (Properties ctx, int T_CashFlow_ID, String trxName)

@@ -24,14 +24,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for M_Replenish
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_M_Replenish extends PO implements I_M_Replenish, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_M_Replenish (Properties ctx, int M_Replenish_ID, String trxName)

@@ -23,7 +23,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for I_HR_Movement
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.010
  */
 public interface I_I_HR_Movement 
 {
@@ -102,7 +102,7 @@ public interface I_I_HR_Movement
 	  */
 	public int getC_BPartner_ID();
 
-	public org.compiere.model.I_C_BPartner getC_BPartner() throws RuntimeException;
+	public I_C_BPartner getC_BPartner() throws RuntimeException;
 
     /** Column name ConceptValue */
     public static final String COLUMNNAME_ConceptValue = "ConceptValue";

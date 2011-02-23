@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_Payment
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_C_Payment extends PO implements I_C_Payment, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_C_Payment (Properties ctx, int C_Payment_ID, String trxName)
@@ -59,8 +59,8 @@ public class X_C_Payment extends PO implements I_C_Payment, I_Persistent
 // N
 			setIsDelayedCapture (false);
 			setIsOnline (false);
-			setIsOverUnderPayment (false);
-// N
+			setIsOverUnderPayment (true);
+// Y
 			setIsPrepayment (false);
 			setIsReceipt (false);
 			setIsReconciled (false);

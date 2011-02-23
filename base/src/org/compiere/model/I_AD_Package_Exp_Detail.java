@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Package_Exp_Detail
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.010
  */
 public interface I_AD_Package_Exp_Detail 
 {
@@ -179,6 +179,8 @@ public interface I_AD_Package_Exp_Detail
 
 	/** Get Package Exp.	  */
 	public int getAD_Package_Exp_ID();
+
+	public I_AD_Package_Exp getAD_Package_Exp() throws RuntimeException;
 
     /** Column name AD_PrintFormat_ID */
     public static final String COLUMNNAME_AD_PrintFormat_ID = "AD_PrintFormat_ID";

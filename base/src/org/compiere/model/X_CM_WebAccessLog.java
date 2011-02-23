@@ -24,14 +24,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for CM_WebAccessLog
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_CM_WebAccessLog extends PO implements I_CM_WebAccessLog, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_CM_WebAccessLog (Properties ctx, int CM_WebAccessLog_ID, String trxName)

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_ProductPriceVendorBreak
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.010
  */
 public interface I_M_ProductPriceVendorBreak 
 {
@@ -152,10 +152,10 @@ public interface I_M_ProductPriceVendorBreak
     /** Column name M_ProductPriceVendorBreak_ID */
     public static final String COLUMNNAME_M_ProductPriceVendorBreak_ID = "M_ProductPriceVendorBreak_ID";
 
-	/** Set Product Price Vendor Break	  */
+	/** Set Product Price Break	  */
 	public void setM_ProductPriceVendorBreak_ID (int M_ProductPriceVendorBreak_ID);
 
-	/** Get Product Price Vendor Break	  */
+	/** Get Product Price Break	  */
 	public int getM_ProductPriceVendorBreak_ID();
 
     /** Column name PriceLimit */

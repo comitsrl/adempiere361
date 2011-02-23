@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for HR_Concept
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_HR_Concept extends PO implements I_HR_Concept, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_HR_Concept (Properties ctx, int HR_Concept_ID, String trxName)
@@ -181,9 +181,9 @@ public class X_HR_Concept extends PO implements I_HR_Concept, I_Persistent
 	public void setHR_Concept_Category_ID (int HR_Concept_Category_ID)
 	{
 		if (HR_Concept_Category_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_HR_Concept_Category_ID, null);
+			set_Value (COLUMNNAME_HR_Concept_Category_ID, null);
 		else 
-			set_ValueNoCheck (COLUMNNAME_HR_Concept_Category_ID, Integer.valueOf(HR_Concept_Category_ID));
+			set_Value (COLUMNNAME_HR_Concept_Category_ID, Integer.valueOf(HR_Concept_Category_ID));
 	}
 
 	/** Get Payroll Concept Category.

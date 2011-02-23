@@ -27,14 +27,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for I_HR_Movement
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_I_HR_Movement extends PO implements I_I_HR_Movement, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20101013L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_I_HR_Movement (Properties ctx, int I_HR_Movement_ID, String trxName)
@@ -113,9 +113,9 @@ public class X_I_HR_Movement extends PO implements I_I_HR_Movement, I_Persistent
 		return (String)get_Value(COLUMNNAME_BPartner_Value);
 	}
 
-	public org.compiere.model.I_C_BPartner getC_BPartner() throws RuntimeException
+	public I_C_BPartner getC_BPartner() throws RuntimeException
     {
-		return (org.compiere.model.I_C_BPartner)MTable.get(getCtx(), org.compiere.model.I_C_BPartner.Table_Name)
+		return (I_C_BPartner)MTable.get(getCtx(), I_C_BPartner.Table_Name)
 			.getPO(getC_BPartner_ID(), get_TrxName());	}
 
 	/** Set Business Partner .

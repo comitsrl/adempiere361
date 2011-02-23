@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_OrderPaySchedule
  *  @author Adempiere (generated) 
- *  @version 3.6.0LTS+P20101124 - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_C_OrderPaySchedule extends PO implements I_C_OrderPaySchedule, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20101208L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_C_OrderPaySchedule (Properties ctx, int C_OrderPaySchedule_ID, String trxName)

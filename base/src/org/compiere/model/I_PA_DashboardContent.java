@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for PA_DashboardContent
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.010
  */
 public interface I_PA_DashboardContent 
 {
@@ -196,10 +196,10 @@ public interface I_PA_DashboardContent
     /** Column name PA_DashboardContent_ID */
     public static final String COLUMNNAME_PA_DashboardContent_ID = "PA_DashboardContent_ID";
 
-	/** Set PA_DashboardContent_ID	  */
+	/** Set Dashboard Content	  */
 	public void setPA_DashboardContent_ID (int PA_DashboardContent_ID);
 
-	/** Get PA_DashboardContent_ID	  */
+	/** Get Dashboard Content	  */
 	public int getPA_DashboardContent_ID();
 
     /** Column name PA_Goal_ID */

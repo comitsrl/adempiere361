@@ -60,7 +60,7 @@ public final class Adempiere
 	/** Main Version String         */
 	// Conventions for naming second number is even for stable, and odd for unstable
 	// the releases will have a suffix (a) for alpha - (b) for beta - (t) for trunk - (s) for stable - and (LTS) for long term support
-	static public String	MAIN_VERSION	= "360LTS.010_P20110222";
+	static public String	MAIN_VERSION	= "360LTS.010";
 	/** Detail Version as date      Used for Client/Server		*/
 	static public String	DATE_VERSION	= "2010-06-14";
 	/** Database Version as date    Compared with AD_System		*/

@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_CashPlan
  *  @author Adempiere (generated) 
- *  @version 3.6.0LTS+P20101124 - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_C_CashPlan extends PO implements I_C_CashPlan, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20101208L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_C_CashPlan (Properties ctx, int C_CashPlan_ID, String trxName)
@@ -41,9 +41,7 @@ public class X_C_CashPlan extends PO implements I_C_CashPlan, I_Persistent
       super (ctx, C_CashPlan_ID, trxName);
       /** if (C_CashPlan_ID == 0)
         {
-			setC_Activity_ID (0);
 			setC_CashPlan_ID (0);
-			setC_Project_ID (0);
 			setDateDoc (new Timestamp( System.currentTimeMillis() ));
 // @#Date@
 			setDocumentNo (null);
@@ -318,7 +316,7 @@ public class X_C_CashPlan extends PO implements I_C_CashPlan, I_Persistent
 	  */
 	public void setDocumentNo (String DocumentNo)
 	{
-		set_ValueNoCheck (COLUMNNAME_DocumentNo, DocumentNo);
+		set_Value (COLUMNNAME_DocumentNo, DocumentNo);
 	}
 
 	/** Get Document No.

@@ -24,14 +24,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for M_ProductPriceVendorBreak
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_M_ProductPriceVendorBreak extends PO implements I_M_ProductPriceVendorBreak, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_M_ProductPriceVendorBreak (Properties ctx, int M_ProductPriceVendorBreak_ID, String trxName)
@@ -182,8 +182,8 @@ public class X_M_ProductPriceVendorBreak extends PO implements I_M_ProductPriceV
 		return ii.intValue();
 	}
 
-	/** Set Product Price Vendor Break.
-		@param M_ProductPriceVendorBreak_ID Product Price Vendor Break	  */
+	/** Set Product Price Break.
+		@param M_ProductPriceVendorBreak_ID Product Price Break	  */
 	public void setM_ProductPriceVendorBreak_ID (int M_ProductPriceVendorBreak_ID)
 	{
 		if (M_ProductPriceVendorBreak_ID < 1) 
@@ -192,8 +192,8 @@ public class X_M_ProductPriceVendorBreak extends PO implements I_M_ProductPriceV
 			set_ValueNoCheck (COLUMNNAME_M_ProductPriceVendorBreak_ID, Integer.valueOf(M_ProductPriceVendorBreak_ID));
 	}
 
-	/** Get Product Price Vendor Break.
-		@return Product Price Vendor Break	  */
+	/** Get Product Price Break.
+		@return Product Price Break	  */
 	public int getM_ProductPriceVendorBreak_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_M_ProductPriceVendorBreak_ID);

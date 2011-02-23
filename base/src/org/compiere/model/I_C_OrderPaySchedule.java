@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_OrderPaySchedule
  *  @author Adempiere (generated) 
- *  @version 3.6.0LTS+P20101124
+ *  @version 360LTS.010
  */
 public interface I_C_OrderPaySchedule 
 {

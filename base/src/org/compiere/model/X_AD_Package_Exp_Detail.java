@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Package_Exp_Detail
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.010 - $Id$ */
 public class X_AD_Package_Exp_Detail extends PO implements I_AD_Package_Exp_Detail, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20100614L;
+	private static final long serialVersionUID = 20110222L;
 
     /** Standard Constructor */
     public X_AD_Package_Exp_Detail (Properties ctx, int AD_Package_Exp_Detail_ID, String trxName)
@@ -292,14 +292,19 @@ public class X_AD_Package_Exp_Detail extends PO implements I_AD_Package_Exp_Deta
         return new KeyNamePair(get_ID(), String.valueOf(getAD_Package_Exp_Detail_ID()));
     }
 
+	public I_AD_Package_Exp getAD_Package_Exp() throws RuntimeException
+    {
+		return (I_AD_Package_Exp)MTable.get(getCtx(), I_AD_Package_Exp.Table_Name)
+			.getPO(getAD_Package_Exp_ID(), get_TrxName());	}
+
 	/** Set Package Exp..
 		@param AD_Package_Exp_ID Package Exp.	  */
 	public void setAD_Package_Exp_ID (int AD_Package_Exp_ID)
 	{
 		if (AD_Package_Exp_ID < 1) 
-			set_Value (COLUMNNAME_AD_Package_Exp_ID, null);
+			set_ValueNoCheck (COLUMNNAME_AD_Package_Exp_ID, null);
 		else 
-			set_Value (COLUMNNAME_AD_Package_Exp_ID, Integer.valueOf(AD_Package_Exp_ID));
+			set_ValueNoCheck (COLUMNNAME_AD_Package_Exp_ID, Integer.valueOf(AD_Package_Exp_ID));
 	}
 
 	/** Get Package Exp..

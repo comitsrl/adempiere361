@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_BankAccount
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.010
  */
 public interface I_C_BankAccount 
 {
@@ -237,6 +237,15 @@ public interface I_C_BankAccount
 	  * Default value
 	  */
 	public boolean isDefault();
+
+    /** Column name PaymentExportClass */
+    public static final String COLUMNNAME_PaymentExportClass = "PaymentExportClass";
+
+	/** Set Payment Export Class	  */
+	public void setPaymentExportClass (String PaymentExportClass);
+
+	/** Get Payment Export Class	  */
+	public String getPaymentExportClass();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";
