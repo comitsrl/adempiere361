@@ -340,7 +340,7 @@ public class SubCheckout extends PosSubPanel implements ActionListener
 				{
 					if (order.processIt(DocAction.ACTION_Complete) )
 					{
-						order.save();
+						order.saveEx();
 					}
 					else
 					{
