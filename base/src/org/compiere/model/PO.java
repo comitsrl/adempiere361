@@ -1224,28 +1224,15 @@ public abstract class PO
 		{
 			for (int i1 = 0; i1 < from.m_oldValues.length; i1++)
 			{
-				if (from.p_info.isVirtualColumn(i1)
-					|| from.p_info.isKey(i1))		//	KeyColumn
+				if (! from.p_info.isAllowCopy(i1))
 					continue;
 				String colName = from.p_info.getColumnName(i1);
-				//  Ignore Standard Values
-				if (colName.startsWith("Created")
-					|| colName.startsWith("Updated")
-					|| colName.equals("IsActive")
-					|| colName.equals("AD_Client_ID")
-					|| colName.equals("AD_Org_ID")
-					|| colName.equals("Processing")
-					)
-					;	//	ignore
-				else
+				for (int i2 = 0; i2 < to.m_oldValues.length; i2++)
 				{
-					for (int i2 = 0; i2 < to.m_oldValues.length; i2++)
+					if (to.p_info.getColumnName(i2).equals(colName))
 					{
-						if (to.p_info.getColumnName(i2).equals(colName))
-						{
-							to.m_newValues[i2] = from.m_oldValues[i1];
-							break;
-						}
+						to.m_newValues[i2] = from.m_oldValues[i1];
+						break;
 					}
 				}
 			}	//	from loop
@@ -1254,21 +1241,9 @@ public abstract class PO
 		{
 			for (int i = 0; i < from.m_oldValues.length; i++)
 			{
-				if (from.p_info.isVirtualColumn(i)
-					|| from.p_info.isKey(i))		//	KeyColumn
+				if (! from.p_info.isAllowCopy(i))
 					continue;
-				String colName = from.p_info.getColumnName(i);
-				//  Ignore Standard Values
-				if (colName.startsWith("Created")
-					|| colName.startsWith("Updated")
-					|| colName.equals("IsActive")
-					|| colName.equals("AD_Client_ID")
-					|| colName.equals("AD_Org_ID")
-					|| colName.equals("Processing")
-					)
-					;	//	ignore
-				else
-					to.m_newValues[i] = from.m_oldValues[i];
+				to.m_newValues[i] = from.m_oldValues[i];
 			}
 		}	//	same class
 	}	//	copy

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Column
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.013
  */
 public interface I_AD_Column 
 {
@@ -327,6 +327,19 @@ public interface I_AD_Column
 	  * The record is active in the system
 	  */
 	public boolean isActive();
+
+    /** Column name IsAllowCopy */
+    public static final String COLUMNNAME_IsAllowCopy = "IsAllowCopy";
+
+	/** Set Allow Copy.
+	  * Determine if a column must be copied when pushing the button to copy record
+	  */
+	public void setIsAllowCopy (boolean IsAllowCopy);
+
+	/** Get Allow Copy.
+	  * Determine if a column must be copied when pushing the button to copy record
+	  */
+	public boolean isAllowCopy();
 
     /** Column name IsAllowLogging */
     public static final String COLUMNNAME_IsAllowLogging = "IsAllowLogging";

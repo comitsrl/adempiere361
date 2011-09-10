@@ -335,8 +335,17 @@ public class DataEngine
 					;
 				}
 				//	-- Parent, TableDir (and unqualified Search) --
-				else if ( (IsParent && DisplayType.isLookup(AD_Reference_ID)) 
-						|| AD_Reference_ID == DisplayType.TableDir
+				else if ( /* (IsParent && DisplayType.isLookup(AD_Reference_ID))
+				// Test case - create a IsParent column with a different name than parent with ref table -- reporting on this column break  
+				 * or try to report on any column here:
+				 * 
+select t.tablename, c.columnname, c.ad_reference_id, c.AD_Reference_Value_ID
+from ad_column  c join ad_table t on c.AD_TABLE_ID=t.AD_TABLE_ID
+where c.isparent = 'Y' and  not
+(c.ad_reference_id = 19
+or (c.ad_reference_id = 30 and c.AD_Reference_Value_ID is null))
+order by 1,2
+						|| */ AD_Reference_ID == DisplayType.TableDir
 						|| (AD_Reference_ID == DisplayType.Search && AD_Reference_Value_ID == 0)
 					)
 				{

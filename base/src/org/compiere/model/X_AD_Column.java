@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Column
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.013 - $Id$ */
 public class X_AD_Column extends PO implements I_AD_Column, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20110909L;
 
     /** Standard Constructor */
     public X_AD_Column (Properties ctx, int AD_Column_ID, String trxName)
@@ -47,6 +47,8 @@ public class X_AD_Column extends PO implements I_AD_Column, I_Persistent
 			setColumnName (null);
 			setEntityType (null);
 // U
+			setIsAllowCopy (true);
+// Y
 			setIsAlwaysUpdateable (false);
 // N
 			setIsAutocomplete (false);
@@ -467,6 +469,30 @@ public class X_AD_Column extends PO implements I_AD_Column, I_Persistent
 	public String getInfoFactoryClass () 
 	{
 		return (String)get_Value(COLUMNNAME_InfoFactoryClass);
+	}
+
+	/** Set Allow Copy.
+		@param IsAllowCopy 
+		Determine if a column must be copied when pushing the button to copy record
+	  */
+	public void setIsAllowCopy (boolean IsAllowCopy)
+	{
+		set_Value (COLUMNNAME_IsAllowCopy, Boolean.valueOf(IsAllowCopy));
+	}
+
+	/** Get Allow Copy.
+		@return Determine if a column must be copied when pushing the button to copy record
+	  */
+	public boolean isAllowCopy () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsAllowCopy);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set Allow Logging.
