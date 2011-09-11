@@ -15,7 +15,7 @@ CREATE OR REPLACE VIEW AD_FIELD_VT AS
    fgt.NAME AS FieldGroup, vr.Code AS ValidationCode,
    f.Included_Tab_ID, fg.FieldGroupType, fg.IsCollapsedByDefault,
    COALESCE(f.InfoFactoryClass, c.InfoFactoryClass) as InfoFactoryClass,
-   c.IsAutocomplete, c.IsAllowCopy
+   c.IsAutocomplete, COALESCE(f.IsAllowCopy, c.IsAllowCopy) AS IsAllowCopy
   FROM AD_FIELD f 
    INNER JOIN AD_FIELD_TRL trl ON (f.AD_Field_ID = trl.AD_Field_ID)
     INNER JOIN AD_TAB t ON (f.AD_Tab_ID = t.AD_Tab_ID)
