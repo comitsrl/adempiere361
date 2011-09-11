@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Field
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.013 - $Id$ */
 public class X_AD_Field extends PO implements I_AD_Field, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20110911L;
 
     /** Standard Constructor */
     public X_AD_Field (Properties ctx, int AD_Field_ID, String trxName)
@@ -428,6 +428,30 @@ public class X_AD_Field extends PO implements I_AD_Field, I_Persistent
 	public String getInfoFactoryClass () 
 	{
 		return (String)get_Value(COLUMNNAME_InfoFactoryClass);
+	}
+
+	/** IsAllowCopy AD_Reference_ID=319 */
+	public static final int ISALLOWCOPY_AD_Reference_ID=319;
+	/** Yes = Y */
+	public static final String ISALLOWCOPY_Yes = "Y";
+	/** No = N */
+	public static final String ISALLOWCOPY_No = "N";
+	/** Set Allow Copy.
+		@param IsAllowCopy 
+		Determine if a column must be copied when pushing the button to copy record
+	  */
+	public void setIsAllowCopy (String IsAllowCopy)
+	{
+
+		set_Value (COLUMNNAME_IsAllowCopy, IsAllowCopy);
+	}
+
+	/** Get Allow Copy.
+		@return Determine if a column must be copied when pushing the button to copy record
+	  */
+	public String getIsAllowCopy () 
+	{
+		return (String)get_Value(COLUMNNAME_IsAllowCopy);
 	}
 
 	/** Set Centrally maintained.

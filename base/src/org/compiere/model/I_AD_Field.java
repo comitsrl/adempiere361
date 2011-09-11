@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Field
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.013
  */
 public interface I_AD_Field 
 {
@@ -303,6 +303,19 @@ public interface I_AD_Field
 	  * The record is active in the system
 	  */
 	public boolean isActive();
+
+    /** Column name IsAllowCopy */
+    public static final String COLUMNNAME_IsAllowCopy = "IsAllowCopy";
+
+	/** Set Allow Copy.
+	  * Determine if a column must be copied when pushing the button to copy record
+	  */
+	public void setIsAllowCopy (String IsAllowCopy);
+
+	/** Get Allow Copy.
+	  * Determine if a column must be copied when pushing the button to copy record
+	  */
+	public String getIsAllowCopy();
 
     /** Column name IsCentrallyMaintained */
     public static final String COLUMNNAME_IsCentrallyMaintained = "IsCentrallyMaintained";
