@@ -14,6 +14,9 @@
 
 package org.adempiere.webui;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Page;
@@ -21,25 +24,47 @@ import org.zkoss.zk.ui.sys.IdGenerator;
 
 public class AdempiereIdGenerator implements IdGenerator {
 
+	private static final String DEFAULT_ZK_COMP_PREFIX = "zk_comp_";
+	private static final String DESKTOP_ID_ATTRIBUTE = "org.adempiere.comp.id";
+	public static final String ZK_COMPONENT_PREFIX_ATTRIBUTE = "zk_component_prefix";
+
 	@Override
 	public String nextComponentUuid(Desktop desktop, Component comp) {
-		String id = (String) comp.getAttribute("zk_component_ID");
-		if (id != null && id.length() > 0)
-			return id;
-		String prefix = (String) comp.getAttribute("zk_component_prefix");
+		String prefix = (String) comp.getAttribute(ZK_COMPONENT_PREFIX_ATTRIBUTE);
 		if (prefix == null || prefix.length() == 0)
-			prefix = "zk_comp_";
-		int     i = Integer.parseInt(desktop.getAttribute("Id_Num").toString());
-		i++;// Start from 1
-		desktop.setAttribute("Id_Num", String.valueOf(i));
+			prefix = DEFAULT_ZK_COMP_PREFIX;
+		else {
+			Pattern pattern = Pattern.compile("[^a-zA-Z_0-9]");
+			Matcher matcher = pattern.matcher(prefix);
+			StringBuffer sb = new StringBuffer();
+			while(matcher.find()) {
+				matcher.appendReplacement(sb, "_");
+			}
+			matcher.appendTail(sb);
+			prefix = sb.toString();
+		}
+		int i = 0;
+		try {
+			String number = null;
+			if (desktop.getAttribute(DESKTOP_ID_ATTRIBUTE) != null) {
+				number = desktop.getAttribute(DESKTOP_ID_ATTRIBUTE).toString();
+				i = Integer.parseInt(number);
+				i++;// Start from 1
+			}
+		} catch (Throwable t) {
+			i = 1;
+		}
+		desktop.setAttribute(DESKTOP_ID_ATTRIBUTE, String.valueOf(i));
+		if (!prefix.endsWith("_"))
+			prefix = prefix + "_";
 		return prefix + i;
 	}
 
 	@Override
 	public String nextDesktopId(Desktop desktop) {
-		if (desktop.getAttribute("Id_Num") == null) {
+		if (desktop.getAttribute(DESKTOP_ID_ATTRIBUTE) == null) {
 			String number = "0";
-			desktop.setAttribute("Id_Num", number);
+			desktop.setAttribute(DESKTOP_ID_ATTRIBUTE, number);
 		}
 		return null;
 	}

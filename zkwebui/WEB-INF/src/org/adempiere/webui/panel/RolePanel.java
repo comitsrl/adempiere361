@@ -27,19 +27,20 @@ import java.sql.Timestamp;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import org.adempiere.webui.AdempiereIdGenerator;
 import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.component.ComboItem;
 import org.adempiere.webui.component.Combobox;
 import org.adempiere.webui.component.ConfirmPanel;
 import org.adempiere.webui.component.Label;
 import org.adempiere.webui.component.Window;
+import org.adempiere.webui.editor.WDateEditor;
 import org.adempiere.webui.exception.ApplicationException;
 import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.theme.ITheme;
 import org.adempiere.webui.theme.ThemeManager;
 import org.adempiere.webui.util.UserPreference;
 import org.adempiere.webui.window.LoginWindow;
-import org.adempiere.webui.editor.WDateEditor;
 import org.compiere.model.MRole;
 import org.compiere.model.MSysConfig;
 import org.compiere.model.MUser;
@@ -74,7 +75,7 @@ import org.zkoss.zul.Image;
 public class RolePanel extends Window implements EventListener, Deferrable
 {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 4485820129703005679L;
 
@@ -251,6 +252,8 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstClient.setAutocomplete(true);
         lstClient.setAutodrop(true);
         lstClient.setId("lstClient");
+        lstClient.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstClient.getId());
+
         lstClient.addEventListener(Events.ON_SELECT, this);
         lstClient.setWidth("220px");
 
@@ -258,6 +261,8 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstOrganisation.setAutocomplete(true);
         lstOrganisation.setAutodrop(true);
         lstOrganisation.setId("lstOrganisation");
+        lstOrganisation.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstOrganisation.getId());
+
         lstOrganisation.addEventListener(Events.ON_SELECT, this);
         lstOrganisation.setWidth("220px");
 
@@ -294,7 +299,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
         if (lstRole.getSelectedIndex() == -1 && lstRole.getItemCount() > 0)
         	lstRole.setSelectedIndex(0);
         //
-        
+
 		// If we have only one role, we can hide the combobox - metas-2009_0021_AP1_G94
 		if (lstRole.getItemCount() == 1 && ! MSysConfig.getBooleanValue("ALogin_ShowOneRole", true))
 		{
@@ -307,7 +312,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
 			lblRole.setVisible(true);
 			lstRole.setVisible(true);
 		}
-        
+
         updateClientList();
     }
 
@@ -410,7 +415,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
             if(eventCompId.equals(lstRole.getId()))
                 updateClientList();
             else if(eventCompId.equals(lstClient.getId())) {
-        		setUserID();
+            	setUserID();
                 updateOrganisationList();
             }
             else if(eventCompId.equals(lstOrganisation.getId()))
@@ -425,17 +430,18 @@ public class RolePanel extends Window implements EventListener, Deferrable
             wndLogin.loginCancelled();
         }
     }
+    
+    private void setUserID() {
+    	// Carlos Ruiz - globalqss - Wrong #AD_User_ID when user with the same name from two Ten.  
+    	// https://sourceforge.net/tracker/index.php?func=detail&aid=2984836&group_id=176962&atid=955896
+    	Env.setContext(m_ctx, "#AD_Client_ID", (String) lstClient.getSelectedItem().getValue());
+    	MUser user = MUser.get (m_ctx, m_userName, m_password);
+    	if (user != null) {
+    		Env.setContext(m_ctx, "#AD_User_ID", user.getAD_User_ID() );
+    		Env.setContext(m_ctx, "#SalesRep_ID", user.getAD_User_ID() );
+    	}
+    }
 
-	private void setUserID() {
-		// Carlos Ruiz - globalqss - Wrong #AD_User_ID when user with the same name from two Ten.  
-		// https://sourceforge.net/tracker/index.php?func=detail&aid=2984836&group_id=176962&atid=955896
-		Env.setContext(m_ctx, "#AD_Client_ID", (String) lstClient.getSelectedItem().getValue());
-		MUser user = MUser.get (m_ctx, m_userName, m_password);
-		if (user != null) {
-			Env.setContext(m_ctx, "#AD_User_ID", user.getAD_User_ID() );
-			Env.setContext(m_ctx, "#SalesRep_ID", user.getAD_User_ID() );
-		}
-	}
     /**
      *  validate Roles
      *
@@ -449,7 +455,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
 
         if(lstItemRole == null || lstItemRole.getValue() == null)
         {
-            throw new WrongValueException(lstRole, Msg.getMsg(m_ctx, "FillMandatory") + lblRole.getValue());
+        	throw new WrongValueException(lstRole, Msg.getMsg(m_ctx, "FillMandatory") + lblRole.getValue());
         }
         else if(lstItemClient == null || lstItemClient.getValue() == null)
         {

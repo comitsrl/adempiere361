@@ -25,6 +25,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.logging.Level;
 
+import org.adempiere.webui.AdempiereIdGenerator;
 import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.event.ToolbarListener;
 import org.adempiere.webui.session.SessionManager;
@@ -58,12 +59,14 @@ public class CWindowToolbar extends FToolbar implements EventListener
 	private static final String TOOLBAR_BUTTON_STYLE = "background-color: transparent; display:inline-block; margin-left: 1px; margin-right: 1px; width: 26px; height: 24px;";
 
 	private static final String EMBEDDED_TOOLBAR_BUTTON_STYLE = "background-color: transparent; display:inline-block; margin-left: 1px; margin-right: 1px; width: 20px; height: 18px;";
-	
+
     private static CLogger log = CLogger.getCLogger(CWindowToolbar.class);
 
     private ToolBarButton btnIgnore;
 
     private ToolBarButton btnHelp, btnNew, btnCopy, btnDelete, btnDeleteSelection, btnSave;
+
+    private ToolBarButton btnSaveAndCreate; // Elaine 2009/03/02 - Save & Create
 
     private ToolBarButton btnRefresh, btnFind, btnLock, btnAttachment;
 
@@ -78,7 +81,9 @@ public class CWindowToolbar extends FToolbar implements EventListener
     private ToolBarButton btnZoomAcross, btnActiveWorkflows, btnRequests, btnProductInfo;
 
     private ToolBarButton btnChat;
-    
+
+    private ToolBarButton btnExport;
+
     private HashMap<String, ToolBarButton> buttons = new HashMap<String, ToolBarButton>();
 
 //    private ToolBarButton btnExit;
@@ -127,16 +132,24 @@ public class CWindowToolbar extends FToolbar implements EventListener
         addSeparator();
         btnHelp = createButton("Help", "Help","Help");
         btnNew = createButton("New", "New", "New");
+
+        btnNew.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "btnNew");
+
         btnCopy = createButton("Copy", "Copy", "Copy");
         btnDelete = createButton("Delete", "Delete", "Delete");
         btnDeleteSelection = createButton("DeleteSelection", "DeleteSelection", "DeleteSelection");
         btnSave = createButton("Save", "Save", "Save");
+        btnSave.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "btnSave");
+
+        btnSaveAndCreate = createButton("SaveCreate", "SaveCreate", "SaveCreate");
         addSeparator();
         btnRefresh = createButton("Refresh", "Refresh", "Refresh");
         btnFind = createButton("Find", "Find", "Find");
         btnAttachment = createButton("Attachment", "Attachment", "Attachment");
         btnChat = createButton("Chat", "Chat", "Chat");
         btnGridToggle = createButton("Toggle", "Multi", "Multi");
+        btnGridToggle.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "btnGridToggle");
+
         btnHistoryRecords = createButton("HistoryRecords", "HistoryX", "History");
         addSeparator();
         btnParentRecord = createButton("ParentRecord", "Parent", "Parent");
@@ -168,6 +181,11 @@ public class CWindowToolbar extends FToolbar implements EventListener
         btnProductInfo.setDisabled(!isAllowProductInfo); // Elaine 2008/07/22
         btnArchive.setDisabled(false); // Elaine 2008/07/28
         btnLock.setDisabled(!isPersonalLock); // Elaine 2008/12/04
+
+        if (MRole.getDefault().isCanExport())
+        {
+        	btnExport = createButton("Export", "Export", "Export");
+        }
 
         configureKeyMap();
 
@@ -275,6 +293,7 @@ public class CWindowToolbar extends FToolbar implements EventListener
 		ctrlKeyMap.put(VK_P, btnPrint);
 		ctrlKeyMap.put(VK_N, btnNew);
 		ctrlKeyMap.put(VK_S, btnSave);
+		ctrlKeyMap.put(VK_Q, btnSaveAndCreate);
 		ctrlKeyMap.put(VK_D, btnDelete);
 		ctrlKeyMap.put(VK_F, btnFind);
 	}
@@ -430,6 +449,18 @@ public class CWindowToolbar extends FToolbar implements EventListener
     	return !btnSave.isDisabled();
     }
 
+    // Elaine 2009/03/02 - Save & Create
+    public void enableSaveAndCreate(boolean enabled)
+    {
+    	this.btnSaveAndCreate.setDisabled(!enabled);
+    }
+
+    public boolean isSaveAndCreateEnable()
+    {
+    	return !btnSaveAndCreate.isDisabled();
+    }
+    //
+
 //    public void enableExit(boolean enabled)
 //    {
 //    	this.btnExit.setDisabled(!enabled);
@@ -472,7 +503,7 @@ public class CWindowToolbar extends FToolbar implements EventListener
     {
         this.btnChat.setDisabled(!enabled);
     }
-    
+
     public void enablePrint(boolean enabled)
     {
     	this.btnPrint.setDisabled(!enabled);
@@ -589,5 +620,14 @@ public class CWindowToolbar extends FToolbar implements EventListener
 	 */
 	public void setWindowNo(int windowNo) {
 		this.windowNo = windowNo;
+	}
+
+	/**
+	 * Enable/disable export button
+	 * @param b
+	 */
+	public void enableExport(boolean b) {
+		if (btnExport != null)
+			btnExport.setDisabled(!b);
 	}
 }
