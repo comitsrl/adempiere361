@@ -23,6 +23,7 @@
 
 package org.adempiere.webui.panel;
 
+import java.sql.Timestamp;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -38,6 +39,7 @@ import org.adempiere.webui.theme.ITheme;
 import org.adempiere.webui.theme.ThemeManager;
 import org.adempiere.webui.util.UserPreference;
 import org.adempiere.webui.window.LoginWindow;
+import org.adempiere.webui.editor.WDateEditor;
 import org.compiere.model.MRole;
 import org.compiere.model.MSysConfig;
 import org.compiere.model.MUser;
@@ -83,7 +85,8 @@ public class RolePanel extends Window implements EventListener, Deferrable
     private KeyNamePair rolesKNPairs[];
 
     private Combobox lstRole, lstClient, lstOrganisation, lstWarehouse;
-    private Label lblRole, lblClient, lblOrganisation, lblWarehouse;
+    private Label lblRole, lblClient, lblOrganisation, lblWarehouse, lblDate;
+	private WDateEditor lstDate;
     private Button btnOk, btnCancel;
 
 	/** Context					*/
@@ -187,6 +190,18 @@ public class RolePanel extends Window implements EventListener, Deferrable
     	tr.appendChild(td);
     	td.appendChild(lstWarehouse);
 
+    	tr = new Tr();
+        tr.setId("rowDate");
+        table.appendChild(tr);
+    	td = new Td();
+    	tr.appendChild(td);
+    	td.setSclass(ITheme.LOGIN_LABEL_CLASS);
+    	td.appendChild(lblDate.rightAlign());
+    	td = new Td();
+    	td.setSclass(ITheme.LOGIN_FIELD_CLASS);
+    	tr.appendChild(td);
+    	td.appendChild(lstDate.getComponent());
+
     	div = new Div();
     	div.setSclass(ITheme.LOGIN_BOX_FOOTER_CLASS);
         ConfirmPanel pnlButtons = new ConfirmPanel(true);
@@ -221,6 +236,10 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lblWarehouse.setId("lblWarehouse");
         lblWarehouse.setValue(res.getString("Warehouse"));
 
+        lblDate = new Label();
+        lblDate.setId("lblDate");
+        lblDate.setValue(res.getString("Date"));
+
         lstRole = new Combobox();
         lstRole.setAutocomplete(true);
         lstRole.setAutodrop(true);
@@ -248,6 +267,9 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstWarehouse.setId("lstWarehouse");
         lstWarehouse.addEventListener(Events.ON_SELECT, this);
         lstWarehouse.setWidth("220px");
+
+        lstDate = new WDateEditor();
+        lstDate.setValue(new Timestamp(System.currentTimeMillis()));
 
         btnOk = new Button();
         btnOk.setId("btnOk");
@@ -453,7 +475,10 @@ public class RolePanel extends Window implements EventListener, Deferrable
 			throw new WrongValueException(msg);
 		}
 
-        msg = login.loadPreferences(orgKNPair, warehouseKNPair, null, null);
+		Timestamp date = (Timestamp)lstDate.getValue();
+
+        msg = login.loadPreferences(orgKNPair, warehouseKNPair, date, null);
+
         if(!(msg == null || msg.length() == 0))
         {
         	throw new WrongValueException(msg);
