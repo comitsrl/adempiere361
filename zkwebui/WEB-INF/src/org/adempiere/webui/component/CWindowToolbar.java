@@ -66,8 +66,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
 
     private ToolBarButton btnHelp, btnNew, btnCopy, btnDelete, btnDeleteSelection, btnSave;
 
-    private ToolBarButton btnSaveAndCreate; // Elaine 2009/03/02 - Save & Create
-
     private ToolBarButton btnRefresh, btnFind, btnLock, btnAttachment;
 
     private ToolBarButton btnGridToggle;
@@ -81,8 +79,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
     private ToolBarButton btnZoomAcross, btnActiveWorkflows, btnRequests, btnProductInfo;
 
     private ToolBarButton btnChat;
-
-    private ToolBarButton btnExport;
 
     private HashMap<String, ToolBarButton> buttons = new HashMap<String, ToolBarButton>();
 
@@ -140,8 +136,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
         btnDeleteSelection = createButton("DeleteSelection", "DeleteSelection", "DeleteSelection");
         btnSave = createButton("Save", "Save", "Save");
         btnSave.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "btnSave");
-
-        btnSaveAndCreate = createButton("SaveCreate", "SaveCreate", "SaveCreate");
         addSeparator();
         btnRefresh = createButton("Refresh", "Refresh", "Refresh");
         btnFind = createButton("Find", "Find", "Find");
@@ -181,11 +175,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
         btnProductInfo.setDisabled(!isAllowProductInfo); // Elaine 2008/07/22
         btnArchive.setDisabled(false); // Elaine 2008/07/28
         btnLock.setDisabled(!isPersonalLock); // Elaine 2008/12/04
-
-        if (MRole.getDefault().isCanExport())
-        {
-        	btnExport = createButton("Export", "Export", "Export");
-        }
 
         configureKeyMap();
 
@@ -293,7 +282,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
 		ctrlKeyMap.put(VK_P, btnPrint);
 		ctrlKeyMap.put(VK_N, btnNew);
 		ctrlKeyMap.put(VK_S, btnSave);
-		ctrlKeyMap.put(VK_Q, btnSaveAndCreate);
 		ctrlKeyMap.put(VK_D, btnDelete);
 		ctrlKeyMap.put(VK_F, btnFind);
 	}
@@ -448,18 +436,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
     public boolean isSaveEnable() {
     	return !btnSave.isDisabled();
     }
-
-    // Elaine 2009/03/02 - Save & Create
-    public void enableSaveAndCreate(boolean enabled)
-    {
-    	this.btnSaveAndCreate.setDisabled(!enabled);
-    }
-
-    public boolean isSaveAndCreateEnable()
-    {
-    	return !btnSaveAndCreate.isDisabled();
-    }
-    //
 
 //    public void enableExit(boolean enabled)
 //    {
@@ -622,12 +598,4 @@ public class CWindowToolbar extends FToolbar implements EventListener
 		this.windowNo = windowNo;
 	}
 
-	/**
-	 * Enable/disable export button
-	 * @param b
-	 */
-	public void enableExport(boolean b) {
-		if (btnExport != null)
-			btnExport.setDisabled(!b);
-	}
 }
