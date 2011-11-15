@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=gksudo "su -c adempiere '/opt/Adempiere/utils/RUN_Server2Stop.sh'"
+Terminal=true
+MultipleArgs=true
+Type=Application
+Categories=Applications;
+Icon=adempiere-stop.png
+Encoding=UTF-8
+Name=Stop Server
+Name[es]=Detener Servidor

@@ -1,0 +1,25 @@
+    <!-- ADempiere ERP -->
+    <Menu>
+       <Name>ADempiere ERP</Name>
+       <Directory>adempiere.directory</Directory>
+       <NotDeleted/>
+       <Include>
+        <Filename>adempiere-startserver.desktop</Filename>
+        <Filename>adempiere-stopserver.desktop</Filename>
+        <Filename>adempiere-homepage.desktop</Filename>
+        <Filename>adempiere-client.desktop</Filename>
+        <Filename>adempiere-webclient.desktop</Filename>
+        <Filename>adempiere-backup.desktop</Filename>
+        <Filename>adempiere-restore.desktop</Filename>
+       </Include>
+      <Menu>
+	    <Name>Get Help</Name>
+	    <Directory>adempiere-gethelp.directory</Directory>
+	    <NotDeleted/>
+	    <Include>
+	     <Filename>adempiere-gotoonlineforum.desktop</Filename>
+	     <Filename>adempiere-readdocumentation.desktop</Filename>
+	    </Include>
+      </Menu>
+    </Menu>
+    <!-- End of Adempiere -->

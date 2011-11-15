@@ -1,0 +1,119 @@
+#!/bin/sh
+
+if [ "$1" != "configure" ]
+then
+    exit 0
+fi
+
+if [ -z "$2" ]
+then
+    MODE=install
+else
+    MODE=upgrade
+fi
+
+if [ -x "/etc/init.d/adempiere" ]; then
+	update-rc.d adempiere defaults >/dev/null
+	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+		invoke-rc.d adempiere start || exit 0
+	else
+		/etc/init.d/adempiere start || exit 0
+	fi
+fi
+
+echo "Executing Post-install steps..."
+
+if [ "$MODE" = "install" ]
+then
+    if `grep -q ^adempiere: /etc/group`
+    then
+	    echo ""
+    else
+	    /usr/sbin/groupadd adempiere
+    fi
+    id adempiere > /dev/null 2>&1
+    status=$?
+    if test $status -eq 0
+    then
+            groups adempiere | grep adempiere > /dev/null
+	    status=$?
+            if test $status != 0
+            then
+                    /usr/sbin/usermod -G adempiere adempiere
+            fi
+    else
+            /usr/sbin/useradd -g adempiere -d /opt/Adempiere -s /bin/bash adempiere
+    fi
+
+# End MODE=install
+fi
+
+if [ "$MODE" = "install" ]
+then
+    # Start Menu icons
+    
+    mergefile()
+    {
+        MENUFILE="$1"
+    
+        if [ -z "$MENUFILE" ]
+        then
+            return
+        fi
+    
+    	TFILE="$(mktemp)" || TFILE="/tmp/adempiereapplications.tmp"
+    	(sed -n '1,/<\/Menu>/p' "$MENUFILE" ; cat /opt/Adempiere/utils/unix/adempiere-merge-debian.menu ; sed -n '1,/<\/Menu>/!p' "$MENUFILE" ) > "$TFILE"
+    	cp -f "$TFILE" "$MENUFILE"
+    	rm -f "$TFILE"
+    }
+    
+    if [ -f /etc/xdg/menus/gnome-applications.menu ]
+    then
+    	mergefile /etc/xdg/menus/gnome-applications.menu
+    fi
+    if [ -f /etc/xdg/menus/kde-applications.menu ]
+    then
+    	mergefile /etc/xdg/menus/kde-applications.menu
+    fi
+    if [ -f /etc/xdg/menus/applications.menu ]
+    then
+    	mergefile /etc/xdg/menus/applications.menu
+    fi
+    
+# End MODE=install
+fi
+
+/bin/chown -R adempiere:adempiere /opt/Adempiere
+/bin/chown adempiere:adempiere /etc/default/adempiere
+/bin/chown adempiere:adempiere /etc/init.d/adempiere
+/bin/chown adempiere:adempiere /etc/xdg/menus/adempiere.menu
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-backup.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-client.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-gotoonlineforum.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-homepage.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-readdocumentation.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-restore.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-startserver.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-stopserver.desktop
+/bin/chown adempiere:adempiere /usr/share/applications/adempiere-webclient.desktop
+/bin/chown adempiere:adempiere /usr/share/desktop-directories/adempiere.directory
+/bin/chown adempiere:adempiere /usr/share/desktop-directories/adempiere-gethelp.directory
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-backup.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-gethelp.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-gotoonlineforum.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-readdocumentation.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-restore.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-start.png
+/bin/chown adempiere:adempiere /usr/share/pixmaps/adempiere-stop.png
+
+CONFIGURATION=/etc/default/adempiere
+[ -f "$CONFIGURATION" ] && . "$CONFIGURATION"
+
+if [ "$CONFIGURE_RUN" != "true" ]
+then
+    echo "You must run '/etc/init.d/adempiere configure' as the root user to configure the application."
+    echo
+fi
+
+exit 0

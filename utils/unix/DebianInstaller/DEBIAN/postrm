@@ -1,0 +1,73 @@
+#!/bin/sh
+
+case "$1" in
+remove|purge)
+    ;;
+*)
+    exit 0
+    ;;
+esac
+
+if [ "$1" = "purge" ] ; then
+	update-rc.d adempiere remove >/dev/null || exit 0
+fi
+
+
+case "$1" in
+purge)
+    rm -fr /opt/Adempiere
+    # rm -fr /etc/default/adempiere
+    # rm -fr /etc/init.d/adempiere
+    # rm -fr /etc/xdg/menus/adempiere.menu
+    rm -fr /usr/share/desktop-directories/adempiere-gethelp.directory
+    rm -fr /usr/share/desktop-directories/adempiere.directory
+    rm -fr /usr/share/pixmaps/adempiere-restore.png
+    rm -fr /usr/share/pixmaps/adempiere.png
+    rm -fr /usr/share/pixmaps/adempiere-gethelp.png
+    rm -fr /usr/share/pixmaps/adempiere-gotoonlineforum.png
+    rm -fr /usr/share/pixmaps/adempiere-backup.png
+    rm -fr /usr/share/pixmaps/adempiere-stop.png
+    rm -fr /usr/share/pixmaps/adempiere-start.png
+    rm -fr /usr/share/pixmaps/adempiere-readdocumentation.png
+    rm -fr /usr/share/applications/adempiere-gotoonlineforum.desktop
+    rm -fr /usr/share/applications/adempiere-homepage.desktop
+    rm -fr /usr/share/applications/adempiere-webclient.desktop
+    rm -fr /usr/share/applications/adempiere-readdocumentation.desktop
+    rm -fr /usr/share/applications/adempiere-stopserver.desktop
+    rm -fr /usr/share/applications/adempiere-restore.desktop
+    rm -fr /usr/share/applications/adempiere-startserver.desktop
+    rm -fr /usr/share/applications/adempiere-backup.desktop
+    rm -fr /usr/share/applications/adempiere-client.desktop
+    ;;
+*)
+    ;;
+esac
+
+mergefile()
+{
+    MENUFILE="$1"
+    if [ -z "$MENUFILE" ]
+    then
+        return
+    fi
+
+	TFILE="$(mktemp)" || TFILE="/tmp/adempiereapplications.tmp"
+	sed -n '/<\!\-- Adempiere \-->/,/<\!\-- End of Adempiere \-->/!p' "$MENUFILE" > "$TFILE"
+	cp -f "$TFILE" "$MENUFILE"
+	rm -f "$TFILE"
+}
+
+if [ -f /etc/xdg/menus/gnome-applications.menu ]
+then
+	mergefile /etc/xdg/menus/gnome-applications.menu
+fi
+if [ -f /etc/xdg/menus/kde-applications.menu ]
+then
+	mergefile /etc/xdg/menus/kde-applications.menu
+fi
+if [ -f /etc/xdg/menus/applications.menu ]
+then
+	mergefile /etc/xdg/menus/applications.menu
+fi
+
+exit 0

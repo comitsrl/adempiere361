@@ -1,0 +1,10 @@
+[Desktop Entry]
+Terminal=false
+MultipleArgs=true
+Type=Link
+URL=http://localhost:8080/admin
+Categories=Applications;
+Icon=adempiere.png
+Encoding=UTF-8
+Name=ADempiere Homepage
+Name[es]=Página Principal ADempiere

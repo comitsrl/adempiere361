@@ -1,0 +1,10 @@
+[Desktop Entry]
+Terminal=false
+MultipleArgs=true
+Type=Link
+URL=http://www.adempiere.com
+Categories=Applications;
+Icon=adempiere-readdocumentation.png
+Encoding=UTF-8
+Name=Read Documentation
+Name[es]=Leer Documentación

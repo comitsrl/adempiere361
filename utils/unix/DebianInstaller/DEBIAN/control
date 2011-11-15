@@ -1,0 +1,12 @@
+Package: adempiere
+Version: 3.6.0
+Section: web
+Priority: extra
+Architecture: all
+Pre-Depends: sun-java6-jdk, postgresql-8.4, adduser
+Suggests: firefox
+Installed-Size: 968668
+Maintainer: Carlos Ruiz  <carg67@gmail.com>
+Description: ADempiere ERP
+             ADempiere Business Suite ERP/CRM/MFG/SCM/POS.
+Homepage: http://sourceforge.net/projects/adempiere/

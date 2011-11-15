@@ -1,0 +1,7 @@
+    <!-- Adempiere -->
+    <Menu>
+      <Name>Adempiere</Name>
+      <MergeFile>adempiere.menu</MergeFile>
+    </Menu>
+    <!-- End of Adempiere -->
+

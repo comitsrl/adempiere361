@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=gksudo "su -c adempiere '/opt/Adempiere/utils/RUN_Server2.sh'"
+Terminal=true
+MultipleArgs=true
+Type=Application
+Categories=Applications;
+Icon=adempiere-start.png
+Encoding=UTF-8
+Name=Start Server
+Name[es]=Iniciar Servidor

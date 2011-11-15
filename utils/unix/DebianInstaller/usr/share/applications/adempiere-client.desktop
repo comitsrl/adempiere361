@@ -1,0 +1,10 @@
+[Desktop Entry]
+Exec=/opt/Adempiere/RUN_Adempiere.sh
+Terminal=false
+MultipleArgs=true
+Type=Application
+Categories=Applications;
+Icon=adempiere.png
+Encoding=UTF-8
+Name=ADempiere Swing Client
+Name[es]=Cliente Swing ADempiere
