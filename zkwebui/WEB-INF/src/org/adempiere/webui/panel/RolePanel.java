@@ -247,6 +247,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstRole.setId("lstRole");
         lstRole.addEventListener(Events.ON_SELECT, this);
         lstRole.setWidth("220px");
+        lstRole.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstRole.getId());
 
         lstClient = new Combobox();
         lstClient.setAutocomplete(true);
