@@ -271,6 +271,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstWarehouse.setAutocomplete(true);
         lstWarehouse.setAutodrop(true);
         lstWarehouse.setId("lstWarehouse");
+        lstWarehouse.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstWarehouse.getId());
         lstWarehouse.addEventListener(Events.ON_SELECT, this);
         lstWarehouse.setWidth("220px");
 
