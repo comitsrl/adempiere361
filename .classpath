@@ -68,6 +68,8 @@
 	<classpathentry exported="true" kind="lib" path="tools/lib/xml-apis.jar"/>
 	<classpathentry exported="true" kind="lib" path="packages/liberoHR.jar" sourcepath="/adempiere361liberoHR"/>
 	<classpathentry exported="true" kind="lib" path="packages/liberoMFG.jar" sourcepath="/adempiere361libero"/>
+	<classpathentry exported="true" kind="lib" path="zkpackages/liberozkHR.jar"/>
+	<classpathentry exported="true" kind="lib" path="zkpackages/liberozkMFG.jar"/>
 	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/iReport.jar"/>
 	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-3.7.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="glassfishfacet/lib/appserv-rt.jar"/>
