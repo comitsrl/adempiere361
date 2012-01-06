@@ -43,7 +43,8 @@ public class Tab extends org.zkoss.zul.Tab
 	@Override
 	public void onClose() {
 		Tabpanel tp = (Tabpanel) getLinkedPanel();
-		tp.onClose();
+		if (tp != null)
+			tp.onClose();
 	}
 
 }
