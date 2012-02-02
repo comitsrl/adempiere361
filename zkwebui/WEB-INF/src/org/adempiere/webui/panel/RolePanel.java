@@ -247,13 +247,13 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstRole.setId("lstRole");
         lstRole.addEventListener(Events.ON_SELECT, this);
         lstRole.setWidth("220px");
-        lstRole.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstRole.getId());
+        lstRole.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "unq" + lstRole.getId());
 
         lstClient = new Combobox();
         lstClient.setAutocomplete(true);
         lstClient.setAutodrop(true);
         lstClient.setId("lstClient");
-        lstClient.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstClient.getId());
+        lstClient.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "unq" + lstClient.getId());
 
         lstClient.addEventListener(Events.ON_SELECT, this);
         lstClient.setWidth("220px");
@@ -262,7 +262,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstOrganisation.setAutocomplete(true);
         lstOrganisation.setAutodrop(true);
         lstOrganisation.setId("lstOrganisation");
-        lstOrganisation.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstOrganisation.getId());
+        lstOrganisation.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "unq" + lstOrganisation.getId());
 
         lstOrganisation.addEventListener(Events.ON_SELECT, this);
         lstOrganisation.setWidth("220px");
@@ -271,7 +271,7 @@ public class RolePanel extends Window implements EventListener, Deferrable
         lstWarehouse.setAutocomplete(true);
         lstWarehouse.setAutodrop(true);
         lstWarehouse.setId("lstWarehouse");
-        lstWarehouse.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, lstWarehouse.getId());
+        lstWarehouse.setAttribute(AdempiereIdGenerator.ZK_COMPONENT_PREFIX_ATTRIBUTE, "unq" + lstWarehouse.getId());
         lstWarehouse.addEventListener(Events.ON_SELECT, this);
         lstWarehouse.setWidth("220px");
 
