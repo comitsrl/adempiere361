@@ -68,7 +68,7 @@ public class RModel implements Serializable
 	 *  @param col
 	 *  @return RColumn
 	 */
-	protected RColumn getRColumn (int col)
+	public RColumn getRColumn (int col)
 	{
 		if (col < 0 || col > m_data.cols.size())
 			throw new java.lang.IllegalArgumentException("Column invalid");
