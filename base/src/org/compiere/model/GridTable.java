@@ -2726,6 +2726,22 @@ public class GridTable extends AbstractTableModel
 	}
 
 	/**
+	 * get where clause for row
+	 * @param row
+	 * @return where clause
+	 */
+	public String getWhereClause(int row)
+	{
+		if (row < 0 || m_sort.size() == 0 || m_inserting)
+			return null;
+
+		Object[] rowData = getDataAtRow(row);
+		String where = getWhereClause(rowData);
+
+		return where;
+	}
+
+	/**
 	 *	Refresh Row - ignore changes
 	 *  @param row row
 	 *  @param fireStatusEvent
@@ -2801,11 +2817,42 @@ public class GridTable extends AbstractTableModel
 	 */
 	public void dataRefreshAll(boolean fireStatusEvent)
 	{
+		dataRefreshAll(fireStatusEvent, -1);
+	}
+
+	/**
+	 *	Refresh all Rows - ignore changes
+	 *  @param fireStatusEvent
+	 */
+	public void dataRefreshAll(boolean fireStatusEvent, int rowToRetained)
+	{
 		log.info("");
 		m_inserting = false;	//	should not happen
 		dataIgnore();
+		String retainedWhere = null;
+		if (rowToRetained >= 0)
+		{
+			retainedWhere = getWhereClause(rowToRetained);
+		}
 		close(false);
-		open(m_maxRows);
+		if (retainedWhere != null)
+		{
+			String whereClause = m_whereClause;
+			if (m_whereClause == null || m_whereClause.trim().length() == 0)
+			{
+				m_whereClause = retainedWhere;
+			}
+			else
+			{
+				m_whereClause = "(" + m_whereClause + ") OR (" + retainedWhere + ") ";
+			}
+			open(m_maxRows);
+			m_whereClause = whereClause;
+		}
+		else
+		{
+			open(m_maxRows);
+		}
 		//	Info
 		m_rowData = null;
 		m_changed = false;
