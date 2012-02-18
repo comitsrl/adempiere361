@@ -2736,6 +2736,9 @@ public class GridTable extends AbstractTableModel
 			return null;
 
 		Object[] rowData = getDataAtRow(row);
+		if (rowData == null)
+			return null;
+
 		String where = getWhereClause(rowData);
 
 		return where;
