@@ -3,7 +3,7 @@ Version: 3.6.0
 Section: web
 Priority: extra
 Architecture: all
-Pre-Depends: sun-java6-jdk, postgresql-8.4, adduser
+Pre-Depends: openjdk-6-jdk, postgresql-8.4|postgresql-9.1, adduser
 Suggests: firefox
 Installed-Size: 968668
 Maintainer: Carlos Ruiz  <carg67@gmail.com>

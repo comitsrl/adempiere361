@@ -206,6 +206,7 @@ configure_perform()
     sed -i "s:^ADEMPIERE_WEB_PORT=.*:ADEMPIERE_WEB_PORT=${ADEMPIERE_WEB_PORT}:" ${ADEMPIERE_HOME}/AdempiereEnv.properties
     sed -i "s:^ADEMPIERE_SSL_PORT=.*:ADEMPIERE_SSL_PORT=${ADEMPIERE_SSL_PORT}:" ${ADEMPIERE_HOME}/AdempiereEnv.properties
     sed -i "s:^ADEMPIERE_APPS_SERVER=.*:ADEMPIERE_APPS_SERVER=0.0.0.0:" ${ADEMPIERE_HOME}/AdempiereEnv.properties
+    sed -i "s:^ADEMPIERE_JAVA_TYPE=.*:ADEMPIERE_JAVA_TYPE=OpenJDK:" ${ADEMPIERE_HOME}/AdempiereEnv.properties
     sed -i "s:^ADEMPIERE_KEYSTORE=.*:ADEMPIERE_KEYSTORE=${ADEMPIERE_HOME}/keystore/myKeystore:" ${ADEMPIERE_HOME}/AdempiereEnv.properties
     chown adempiere:adempiere ${ADEMPIERE_HOME}/AdempiereEnv.properties
     chmod 600 ${ADEMPIERE_HOME}/AdempiereEnv.properties
