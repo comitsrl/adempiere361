@@ -39,7 +39,7 @@ esac
 # adjust these variables to your environment
 ADEMPIERE_USER=adempiere
 ADEMPIERE_HOME=/opt/Adempiere
-JAVA_HOME=/usr/lib/jvm/java-6-sun
+JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 PATH=$PATH:${JAVA_HOME}/bin
 SU=su
 STOPMESSAGE="INFO.*Server\].*Shutdown complete" # Message when using java 6
