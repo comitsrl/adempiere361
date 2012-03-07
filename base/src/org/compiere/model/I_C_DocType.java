@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_DocType
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.015
  */
 public interface I_C_DocType 
 {
@@ -310,6 +310,15 @@ public interface I_C_DocType
 	  * The record is active in the system
 	  */
 	public boolean isActive();
+
+    /** Column name IsChargeOrProductMandatory */
+    public static final String COLUMNNAME_IsChargeOrProductMandatory = "IsChargeOrProductMandatory";
+
+	/** Set Mandatory Charge or Product	  */
+	public void setIsChargeOrProductMandatory (boolean IsChargeOrProductMandatory);
+
+	/** Get Mandatory Charge or Product	  */
+	public boolean isChargeOrProductMandatory();
 
     /** Column name IsCreateCounter */
     public static final String COLUMNNAME_IsCreateCounter = "IsCreateCounter";
