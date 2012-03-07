@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_UserDef_Field
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_AD_UserDef_Field extends PO implements I_AD_UserDef_Field, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20120307L;
 
     /** Standard Constructor */
     public X_AD_UserDef_Field (Properties ctx, int AD_UserDef_Field_ID, String trxName)
@@ -41,12 +41,15 @@ public class X_AD_UserDef_Field extends PO implements I_AD_UserDef_Field, I_Pers
 			setAD_Field_ID (0);
 			setAD_UserDef_Field_ID (0);
 			setAD_UserDef_Tab_ID (0);
-			setDefaultValue (null);
-			setIsDisplayed (false);
+			setIsDisplayed (true);
+// 'Y'
 			setIsReadOnly (false);
+// 'N'
 			setIsSameLine (false);
+// 'N'
 			setName (null);
 			setSeqNo (0);
+// 0
         } */
     }
 

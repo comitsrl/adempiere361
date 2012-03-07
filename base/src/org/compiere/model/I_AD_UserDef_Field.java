@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_UserDef_Field
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.015
  */
 public interface I_AD_UserDef_Field 
 {

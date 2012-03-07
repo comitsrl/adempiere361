@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_UserDef_Tab
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.015
  */
 public interface I_AD_UserDef_Tab 
 {
@@ -203,6 +203,19 @@ public interface I_AD_UserDef_Tab
 	  * Alphanumeric identifier of the entity
 	  */
 	public String getName();
+
+    /** Column name ReadOnlyLogic */
+    public static final String COLUMNNAME_ReadOnlyLogic = "ReadOnlyLogic";
+
+	/** Set Read Only Logic.
+	  * Logic to determine if field is read only (applies only when field is read-write)
+	  */
+	public void setReadOnlyLogic (String ReadOnlyLogic);
+
+	/** Get Read Only Logic.
+	  * Logic to determine if field is read only (applies only when field is read-write)
+	  */
+	public String getReadOnlyLogic();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";
