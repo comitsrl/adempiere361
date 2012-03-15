@@ -604,9 +604,11 @@ public class InfoProductPanel extends InfoPanel implements EventListener
 		//	Pick init
 		fillPicks(M_PriceList_ID);
 		int M_PriceList_Version_ID = findPLV (M_PriceList_ID);
-		//	Set Value or Name
-		if (value.startsWith("@") && value.endsWith("@"))
-			fieldName.setText(value.substring(1,value.length()-1));
+		//	Set Value
+		if (value != null && value.length() > 0 && value.startsWith("@") && value.endsWith("@")) {
+			String values[] = value.substring(1,value.length()-1).split("_");
+			fieldValue.setText(values[0]);
+		}
 		else
 			fieldValue.setText(value);
 		//	Set Warehouse
