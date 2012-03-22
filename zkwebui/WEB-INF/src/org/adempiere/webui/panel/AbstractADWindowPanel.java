@@ -498,7 +498,7 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
     							if (pindex >= 0)
     								setActiveTab(pindex);
     						}
-    						gTab.setCurrentRow(i);
+    						gTab.navigate(i);
     						return true;
     					}
     				}
