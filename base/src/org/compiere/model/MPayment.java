@@ -2377,7 +2377,7 @@ public final class MPayment extends X_C_Payment
 		reversal.closeIt();
 		reversal.setDocStatus(DOCSTATUS_Reversed);
 		reversal.setDocAction(DOCACTION_None);
-		reversal.save(get_TrxName());
+		reversal.saveEx(get_TrxName());
 
 		//	Unlink & De-Allocate
 		deAllocate();
@@ -2416,7 +2416,7 @@ public final class MPayment extends X_C_Payment
 				log.warning("Automatic allocation - reversal line not saved");
 		}
 		alloc.processIt(DocAction.ACTION_Complete);
-		alloc.save(get_TrxName());
+		alloc.saveEx(get_TrxName());
 		//
 		StringBuffer info = new StringBuffer (reversal.getDocumentNo());
 		info.append(" - @C_AllocationHdr_ID@: ").append(alloc.getDocumentNo());
@@ -2426,7 +2426,7 @@ public final class MPayment extends X_C_Payment
 		{
 			MBPartner bp = new MBPartner (getCtx(), getC_BPartner_ID(), get_TrxName());
 			bp.setTotalOpenBalance();
-			bp.save(get_TrxName());
+			bp.saveEx(get_TrxName());
 		}		
 		// After reverseCorrect
 		m_processMsg = ModelValidationEngine.get().fireDocValidate(this,ModelValidator.TIMING_AFTER_REVERSECORRECT);
