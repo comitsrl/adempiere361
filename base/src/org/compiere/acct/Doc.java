@@ -28,14 +28,13 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.logging.Level;
 
-import org.adempiere.exceptions.DBException;
+import org.adempiere.exceptions.AverageCostingNegativeQtyException;
 import org.compiere.model.MAccount;
 import org.compiere.model.MAcctSchema;
 import org.compiere.model.MConversionRate;
 import org.compiere.model.MDocType;
 import org.compiere.model.MNote;
 import org.compiere.model.MPeriod;
-import org.compiere.model.MTable;
 import org.compiere.model.ModelValidationEngine;
 import org.compiere.model.ModelValidator;
 import org.compiere.model.PO;
@@ -108,12 +107,6 @@ import org.compiere.util.Trx;
  */
 public abstract class Doc
 {
-	/** AD_Table_ID's of documents          */
-	private static int[]  documentsTableID = null;
-	
-	/** Table Names of documents          */
-	private static String[]  documentsTableName = null;
-
 	/**************************************************************************
 	 * 	 Document Types
 	 *  --------------
@@ -197,141 +190,29 @@ public abstract class Doc
 	
 	/**
 	 *  Create Posting document
-	 *	@param ass accounting schema
+	 *	@param as accounting schema
 	 *  @param AD_Table_ID Table ID of Documents
 	 *  @param Record_ID record ID to load
 	 *  @param trxName transaction name
 	 *  @return Document or null
 	 */
-	public static Doc get (MAcctSchema[] ass, int AD_Table_ID, int Record_ID, String trxName)
+	public static Doc get (MAcctSchema as, int AD_Table_ID, int Record_ID, String trxName)
 	{
-		String TableName = null;
-		for (int i = 0; i < getDocumentsTableID().length; i++)
-		{
-			if (getDocumentsTableID()[i] == AD_Table_ID)
-			{
-				TableName = getDocumentsTableName()[i];
-				break;
-			}
-		}
-		if (TableName == null)
-		{
-			s_log.severe("Not found AD_Table_ID=" + AD_Table_ID);
-			return null;
-		}
-		//
-		Doc doc = null;
-		StringBuffer sql = new StringBuffer("SELECT * FROM ")
-			.append(TableName)
-			.append(" WHERE ").append(TableName).append("_ID=? AND Processed='Y'");
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try
-		{
-			pstmt = DB.prepareStatement (sql.toString(), trxName);
-			pstmt.setInt (1, Record_ID);
-			rs = pstmt.executeQuery ();
-			if (rs.next ())
-			{
-				doc = get (ass, AD_Table_ID, rs, trxName);
-			}
-			else
-				s_log.severe("Not Found: " + TableName + "_ID=" + Record_ID);
-		}
-		catch (Exception e)
-		{
-			s_log.log (Level.SEVERE, sql.toString(), e);
-		}
-		finally
-		{
-			DB.close(rs, pstmt);
-			rs = null; 
-			pstmt = null;
-		}
-		return doc;
+		return DocManager.getDocument(as, AD_Table_ID, Record_ID, trxName);
 	}	//	get
 	
 	/**
 	 *  Create Posting document
-	 *	@param ass accounting schema
+	 *	@param as accounting schema
 	 *  @param AD_Table_ID Table ID of Documents
 	 *  @param rs ResultSet
 	 *  @param trxName transaction name
 	 *  @return Document
 	 * @throws AdempiereUserError 
 	 */
-	public static Doc get (MAcctSchema[] ass, int AD_Table_ID, ResultSet rs, String trxName) throws AdempiereUserError
+	public static Doc get (MAcctSchema as, int AD_Table_ID, ResultSet rs, String trxName)
 	{
-		Doc doc = null;
-		
-		/* Classname of the Doc class follows this convention:
-		 * if the prefix (letters before the first underscore _) is 1 character, then the class is Doc_TableWithoutPrefixWithoutUnderscores
-		 * otherwise Doc_WholeTableWithoutUnderscores
-		 * i.e. following this query
-              SELECT t.ad_table_id, tablename, 
-              	CASE 
-              		WHEN instr(tablename, '_') = 2 
-              		THEN 'Doc_' || substr(tablename, 3) 
-              		WHEN instr(tablename, '_') > 2 
-              		THEN 'Doc_' || 
-              		ELSE '' 
-              	REPLACE
-              		(
-              			tablename, '_', ''
-              		)
-              	END AS classname 
-              FROM ad_table t, ad_column C 
-              WHERE t.ad_table_id = C.ad_table_id AND
-              	C.columnname = 'Posted' AND
-              	isview = 'N' 
-              ORDER BY 1
-		 * This is:
-		 * 224		GL_Journal			Doc_GLJournal
-		 * 259		C_Order				Doc_Order
-		 * 318		C_Invoice			Doc_Invoice
-		 * 319		M_InOut				Doc_InOut
-		 * 321		M_Inventory			Doc_Inventory
-		 * 323		M_Movement			Doc_Movement
-		 * 325		M_Production		Doc_Production
-		 * 335		C_Payment			Doc_Payment
-		 * 392		C_BankStatement		Doc_BankStatement
-		 * 407		C_Cash				Doc_Cash
-		 * 472		M_MatchInv			Doc_MatchInv
-		 * 473		M_MatchPO			Doc_MatchPO
-		 * 623		C_ProjectIssue		Doc_ProjectIssue
-		 * 702		M_Requisition		Doc_Requisition
-		 * 735		C_AllocationHdr		Doc_AllocationHdr
-		 * 53027	PP_Order			Doc_PPOrder
-		 * 53035	PP_Cost_Collector	Doc_PPCostCollector
-		 * 53037	DD_Order			Doc_DDOrder
-		 * 53092	HR_Process			Doc_HRProcess
-		 */
-		
-		String tableName = MTable.getTableName(Env.getCtx(), AD_Table_ID);
-		String packageName = "org.compiere.acct";
-		String className = null;
-
-		int firstUnderscore = tableName.indexOf("_");
-		if (firstUnderscore == 1)
-			className = packageName + ".Doc_" + tableName.substring(2).replaceAll("_", "");
-		else
-			className = packageName + ".Doc_" + tableName.replaceAll("_", "");
-		
-		try
-		{
-			Class<?> cClass = Class.forName(className);
-			Constructor<?> cnstr = cClass.getConstructor(new Class[] {MAcctSchema[].class, ResultSet.class, String.class});
-			doc = (Doc) cnstr.newInstance(ass, rs, trxName);
-		}
-		catch (Exception e)
-		{
-			s_log.log(Level.SEVERE, "Doc Class invalid: " + className + " (" + e.toString() + ")");
-			throw new AdempiereUserError("Doc Class invalid: " + className + " (" + e.toString() + ")");
-		}
-
-		if (doc == null)
-			s_log.log(Level.SEVERE, "Unknown AD_Table_ID=" + AD_Table_ID);
-		return doc;
+		return DocManager.getDocument(as, AD_Table_ID, rs, trxName);
 	}   //  get
 
 	/**
@@ -346,10 +227,7 @@ public abstract class Doc
 	public static String postImmediate (MAcctSchema[] ass, 
 		int AD_Table_ID, int Record_ID, boolean force, String trxName)
 	{
-		Doc doc = get (ass, AD_Table_ID, Record_ID, trxName);
-		if (doc != null)
-			return doc.post (force, true);	//	repost
-		return "NoDoc";
+		return DocManager.postDocument(ass, AD_Table_ID, Record_ID, force, true, trxName);
 	}   //  post
 
 	/**	Static Log						*/
@@ -363,18 +241,18 @@ public abstract class Doc
 	
 	/**************************************************************************
 	 *  Constructor
-	 * 	@param ass accounting schemata
+	 * 	@param as accounting schema
 	 * 	@param clazz Document Class
 	 * 	@param rs result set
 	 * 	@param defaultDocumentType default document type or null
 	 * 	@param trxName trx
 	 */
-	Doc (MAcctSchema[] ass, Class<?> clazz, ResultSet rs, String defaultDocumentType, String trxName)
+	Doc (MAcctSchema as, Class<?> clazz, ResultSet rs, String defaultDocumentType, String trxName)
 	{
 		p_Status = STATUS_Error;
-		m_ass = ass;
-		m_ctx = new Properties(m_ass[0].getCtx());
-		m_ctx.setProperty("#AD_Client_ID", String.valueOf(m_ass[0].getAD_Client_ID()));
+		m_as = as;
+		m_ctx = new Properties(m_as.getCtx());
+		m_ctx.setProperty("#AD_Client_ID", String.valueOf(m_as.getAD_Client_ID()));
 		
 		String className = clazz.getName();
 		className = className.substring(className.lastIndexOf('.')+1);
@@ -399,21 +277,22 @@ public abstract class Doc
 		setDocumentType (defaultDocumentType);
 		m_trxName = trxName;
 		m_manageLocalTrx = false;
-		if (m_trxName == null) {
+		if (m_trxName == null)
+		{
 			m_trxName = "Post" + m_DocumentType + p_po.get_ID();
 			m_manageLocalTrx = true;
 		}
 		p_po.set_TrxName(m_trxName);
 
 		//	Amounts
-		m_Amounts[0] = Env.ZERO;
-		m_Amounts[1] = Env.ZERO;
-		m_Amounts[2] = Env.ZERO;
-		m_Amounts[3] = Env.ZERO;
+		for(int i = 0; i < m_Amounts.length; i++)
+		{
+			m_Amounts[i] = Env.ZERO;
+		}
 	}   //  Doc
 
-	/** Accounting Schema Array     */
-	private MAcctSchema[]    	m_ass = null;
+	/** Accounting Schema */
+	private MAcctSchema    		m_as = null;
 	/** Properties					*/
 	private Properties			m_ctx = null;
 	/** Transaction Name			*/
@@ -518,7 +397,7 @@ public abstract class Doc
 	 * 	Get Persistent Object
 	 *	@return po
 	 */
-	protected PO getPO()
+	public PO getPO()
 	{
 		return p_po;
 	}	//	getPO
@@ -550,10 +429,10 @@ public abstract class Doc
 		else
 			return "Invalid DocStatus='" + m_DocStatus + "' for DocumentNo=" + getDocumentNo();
 		//
-		if (p_po.getAD_Client_ID() != m_ass[0].getAD_Client_ID())
+		if (p_po.getAD_Client_ID() != m_as.getAD_Client_ID())
 		{
 			String error = "AD_Client_ID Conflict - Document=" + p_po.getAD_Client_ID()
-				+ ", AcctSchema=" + m_ass[0].getAD_Client_ID();
+				+ ", AcctSchema=" + m_as.getAD_Client_ID();
 			log.severe(error);
 			return error;
 		}
@@ -612,45 +491,43 @@ public abstract class Doc
 		//  Create Fact per AcctSchema
 		m_fact = new ArrayList<Fact>();
 
-		//  for all Accounting Schema
-		boolean OK = true;
 		getPO().setDoc(this);
 		try
 		{
-			for (int i = 0; OK && i < m_ass.length; i++)
-			{
 				//	if acct schema has "only" org, skip
 				boolean skip = false;
-				if (m_ass[i].getAD_OrgOnly_ID() != 0)
+			if (m_as.getAD_OrgOnly_ID() != 0)
 				{
 					//	Header Level Org
-					skip = m_ass[i].isSkipOrg(getAD_Org_ID());
+				skip = m_as.isSkipOrg(getAD_Org_ID());
 					//	Line Level Org
 					if (p_lines != null)
 					{
 						for (int line = 0; skip && line < p_lines.length; line++)
 						{
-							skip = m_ass[i].isSkipOrg(p_lines[line].getAD_Org_ID());
+						skip = m_as.isSkipOrg(p_lines[line].getAD_Org_ID());
 							if (!skip)
 								break;
 						}
 					}
 				}
-				if (skip)
-					continue;
+			if (!skip)
+			{
 				//	post
-				log.info("(" + i + ") " + p_po);
-				p_Status = postLogic (i);
-				if (!p_Status.equals(STATUS_Posted))
-					OK = false;
+				p_Status = postLogic ();
 			}
+		}
+		catch (AverageCostingNegativeQtyException e)
+		{
+			log.log(Level.INFO, e.getLocalizedMessage(), e);
+			p_Status = STATUS_NotPosted;
+			p_Error = e.toString();
 		}
 		catch (Exception e)
 		{
 			log.log(Level.SEVERE, "", e);
 			p_Status = STATUS_Error;
 			p_Error = e.toString();
-			OK = false;
 		}
 
 		String validatorMsg = null;
@@ -660,7 +537,6 @@ public abstract class Doc
 			if (validatorMsg != null) {
 				p_Status = STATUS_Error;
 				p_Error = validatorMsg;
-				OK = false;
 			}
 		}
 
@@ -672,7 +548,6 @@ public abstract class Doc
 			if (validatorMsg != null) {
 				p_Status = STATUS_Error;
 				p_Error = validatorMsg;
-				OK = false;
 			}
 		}
 		  
@@ -699,7 +574,8 @@ public abstract class Doc
 				.append(", Amount=").append(getAmount())
 				.append(", Sta=").append(p_Status)
 				.append(" - PeriodOpen=").append(isPeriodOpen())
-				.append(", Balanced=").append(isBalanced());
+				.append(", Balanced=").append(isBalanced())
+				.append(", Schema=").append(m_as.getName());
 			note.setTextMsg(Text.toString());
 			note.saveEx();
 			p_Error = Text.toString();
@@ -723,11 +599,12 @@ public abstract class Doc
 	 * 	Delete Accounting
 	 *	@return number of records
 	 */
-	private int deleteAcct()
+	protected int deleteAcct()
 	{
 		StringBuffer sql = new StringBuffer ("DELETE Fact_Acct WHERE AD_Table_ID=")
 			.append(get_Table_ID())
-			.append(" AND Record_ID=").append(p_po.get_ID());
+			.append(" AND Record_ID=").append(p_po.get_ID())
+			.append(" AND C_AcctSchema_ID=").append(m_as.getC_AcctSchema_ID());
 		int no = DB.executeUpdate(sql.toString(), getTrxName());
 		if (no != 0)
 			log.info("deleted=" + no);
@@ -736,19 +613,16 @@ public abstract class Doc
 
 	/**
 	 *  Posting logic for Accounting Schema index
-	 *  @param  index   Accounting Schema index
 	 *  @return posting status/error code
 	 */
-	private final String postLogic (int index)
+	private final String postLogic ()
 	{
-		log.info("(" + index + ") " + p_po);
-		
 		//  rejectUnbalanced
-		if (!m_ass[index].isSuspenseBalancing() && !isBalanced())
+		if (!m_as.isSuspenseBalancing() && !isBalanced())
 			return STATUS_NotBalanced;
 
 		//  rejectUnconvertible
-		if (!isConvertible(m_ass[index]))
+		if (!isConvertible(m_as))
 			return STATUS_NotConvertible;
 
 		//  rejectPeriodClosed
@@ -756,12 +630,12 @@ public abstract class Doc
 			return STATUS_PeriodClosed;
 
 		//  createFacts
-		ArrayList<Fact> facts = createFacts (m_ass[index]);
+		ArrayList<Fact> facts = createFacts (m_as);
 		if (facts == null)
 			return STATUS_Error;
 		
 		// call modelValidator
-		String validatorMsg = ModelValidationEngine.get().fireFactsValidate(m_ass[index], facts, getPO());
+		String validatorMsg = ModelValidationEngine.get().fireFactsValidate(m_as, facts, getPO());
 		if (validatorMsg != null) {
 			p_Error = validatorMsg;
 			return STATUS_Error;
@@ -851,17 +725,9 @@ public abstract class Doc
 					}
 				}
 			}
-			//  Commit Doc
-			if (!save(getTrxName()))     //  contains unlock & document status update
-			{
-				log.log(Level.SEVERE, "(doc not saved) ... rolling back");
-				if (m_manageLocalTrx) {
-					trx.rollback();
-					trx.close();
-				}
+
 				unlock();
-				return STATUS_Error;
-			}
+
 			//	Success
 			if (m_manageLocalTrx) {
 				trx.commit(true);
@@ -1544,25 +1410,6 @@ public abstract class Doc
 		MAccount acct = MAccount.get (as.getCtx(), C_ValidCombination_ID);
 		return acct;
 	}	//	getAccount
-
-	
-	/**************************************************************************
-	 *  Save to Disk - set posted flag
-	 *  @param trxName transaction name
-	 *  @return true if saved
-	 */
-	private final boolean save (String trxName)
-	{
-		log.fine(toString() + "->" + p_Status);
-
-		StringBuffer sql = new StringBuffer("UPDATE ");
-		sql.append(get_TableName()).append(" SET Posted='").append(p_Status)
-			.append("',Processing='N' ")
-			.append("WHERE ")
-			.append(get_TableName()).append("_ID=").append(p_po.get_ID());
-		int no = DB.executeUpdate(sql.toString(), trxName);
-		return no == 1;
-	}   //  save
 
 	/**
 	 *  Get DocLine with ID
@@ -2295,60 +2142,4 @@ public abstract class Doc
 	public ArrayList<Fact> getFacts() {
 		return m_fact;
 	}
-
-	/*
-	 * Array of tables with Post column
-	 */
-	public static int[] getDocumentsTableID() {
-		fillDocumentsTableArrays();
-		return documentsTableID;
-	}
-
-	public static String[] getDocumentsTableName() {
-		fillDocumentsTableArrays();
-		return documentsTableName;
-	}
-
-	private static void fillDocumentsTableArrays() {
-		if (documentsTableID == null) {
-			String sql = "SELECT t.AD_Table_ID, t.TableName " +
-					"FROM AD_Table t, AD_Column c " +
-					"WHERE t.AD_Table_ID=c.AD_Table_ID AND " +
-					"c.ColumnName='Posted' AND " +
-					"IsView='N' " +
-					"ORDER BY t.AD_Table_ID";
-			ArrayList<Integer> tableIDs = new ArrayList<Integer>();
-			ArrayList<String> tableNames = new ArrayList<String>();
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			try
-			{
-				pstmt = DB.prepareStatement(sql, null);
-				rs = pstmt.executeQuery();
-				while (rs.next())
-				{
-					tableIDs.add(rs.getInt(1));
-					tableNames.add(rs.getString(2));
-				}
-			}
-			catch (SQLException e)
-			{
-				throw new DBException(e, sql);
-			}
-			finally
-			{
-				DB.close(rs, pstmt);
-				rs = null; pstmt = null;
-			}
-			//	Convert to array
-			documentsTableID = new int[tableIDs.size()];
-			documentsTableName = new String[tableIDs.size()];
-			for (int i = 0; i < documentsTableID.length; i++)
-			{
-				documentsTableID[i] = tableIDs.get(i);
-				documentsTableName[i] = tableNames.get(i);
-			}
-		}
-	}
-	
 }   //  Doc

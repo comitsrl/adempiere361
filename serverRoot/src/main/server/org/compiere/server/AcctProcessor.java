@@ -25,7 +25,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
-import org.compiere.acct.Doc;
+import org.compiere.acct.DocManager;
 import org.compiere.model.MAcctProcessor;
 import org.compiere.model.MAcctProcessorLog;
 import org.compiere.model.MAcctSchema;
@@ -106,8 +106,8 @@ public class AcctProcessor extends AdempiereServer
 		BigDecimal value = new BigDecimal(Long.toString(mili));
 		
 		//first pass, collect all ts (FR 2962094 - required for weighted average costing)
-		int[] documentsTableID = Doc.getDocumentsTableID();
-		String[] documentsTableName = Doc.getDocumentsTableName();
+		int[] documentsTableID = DocManager.getDocumentsTableID();
+		String[] documentsTableName = DocManager.getDocumentsTableName();
 		for (int i = 0; i < documentsTableID.length; i++)
 		{
 			int AD_Table_ID = documentsTableID[i];
@@ -191,17 +191,8 @@ public class AcctProcessor extends AdempiereServer
 					boolean ok = true;
 					try
 					{
-						Doc doc = Doc.get (m_ass, AD_Table_ID, rs, null);
-						if (doc == null)
-						{
-							log.severe(getName() + ": No Doc for " + TableName);
-							ok = false;
-						}
-						else
-						{
-							String error = doc.post(false, false);   //  post no force/repost
+						String error = DocManager.postDocument(m_ass, AD_Table_ID, rs, false, false, null);
 							ok = error == null;
-						}
 					}
 					catch (Exception e)
 					{

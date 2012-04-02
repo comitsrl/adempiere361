@@ -38,7 +38,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
-import org.compiere.acct.Doc;
+import org.compiere.acct.DocManager;
 import org.compiere.model.MAcctSchema;
 import org.compiere.model.MClient;
 import org.compiere.model.MCost;
@@ -134,8 +134,8 @@ public class ClientAcctProcessor extends SvrProcess
 		BigDecimal value = new BigDecimal(Long.toString(mili));
 		
 		//first pass, collect all ts (FR 2962094 - required for weighted average costing)
-		int[] documentsTableID = Doc.getDocumentsTableID();
-		String[] documentsTableName = Doc.getDocumentsTableName();
+		int[] documentsTableID = DocManager.getDocumentsTableID();
+		String[] documentsTableName = DocManager.getDocumentsTableName();
 		for (int i = 0; i < documentsTableID.length; i++)
 		{
 			int AD_Table_ID = documentsTableID[i];
@@ -220,22 +220,12 @@ public class ClientAcctProcessor extends SvrProcess
 					// Run every posting document in own transaction
 					String innerTrxName = Trx.createTrxName("CAP");
 					Trx innerTrx = Trx.get(innerTrxName, true);
-					String postStatus = Doc.STATUS_NotPosted; 
-					Doc doc = Doc.get (m_ass, AD_Table_ID, rs, innerTrxName);
+
 					try
 					{
-						if (doc == null)
-						{
-							log.severe(getName() + ": No Doc for " + TableName);
-							ok = false;
-						}
-						else
-						{
-							String error = doc.post(false, false);   //  post no force/repost
+						String error = DocManager.postDocument(m_ass, AD_Table_ID, rs, false, false, innerTrxName);
 							ok = (error == null);
-							postStatus = doc.getPostStatus();
 						}
-					}
 					catch (Exception e)
 					{
 						log.log(Level.SEVERE, getName() + ": " + TableName, e);
@@ -243,18 +233,7 @@ public class ClientAcctProcessor extends SvrProcess
 					}
 					finally
 					{
-						if (ok)
 							innerTrx.commit();
-						else {
-							innerTrx.rollback();
-							// save the posted status error (out of trx)
-							StringBuffer sqlupd = new StringBuffer("UPDATE ")
-								.append(doc.get_TableName()).append(" SET Posted='").append(postStatus)
-								.append("',Processing='N' ")
-								.append("WHERE ")
-								.append(doc.get_TableName()).append("_ID=").append(doc.get_ID());
-							DB.executeUpdateEx(sqlupd.toString(), null);
-						}
 						innerTrx.close();
 						innerTrx = null;
 					}
