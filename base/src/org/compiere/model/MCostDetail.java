@@ -21,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.UUID;
 import java.util.logging.Level;
 
 import org.compiere.model.X_M_CostHistory;
@@ -1210,6 +1211,8 @@ public class MCostDetail extends X_M_CostDetail
 		history.setNewCostPrice(cost.getCurrentCostPrice());
 		history.setNewCAmt(cost.getCumulatedAmt());
 		history.setNewCQty(cost.getCumulatedQty());
+		/* just for 361 compatibility */
+		history.setM_CostHistory_UU(UUID.randomUUID().toString());
 		if (!history.save())
 			return false;
 		
