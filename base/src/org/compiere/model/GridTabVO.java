@@ -104,7 +104,7 @@ public class GridTabVO implements Evaluatee, Serializable
 			// FR XXX
 			MUserDefTab userDef = MUserDefTab.get(vo.ctx, vo.AD_Tab_ID, vo.AD_Window_ID);
 			vo.Name = rs.getString("Name");
-			if (userDef != null)
+			if (userDef != null && userDef.getName() != null)
 				vo.Name = userDef.getName();
 			Env.setContext(vo.ctx, vo.WindowNo, vo.TabNo, GridTab.CTX_Name, vo.Name);
 
@@ -166,7 +166,7 @@ public class GridTabVO implements Evaluatee, Serializable
 			if (userDef != null)
 				vo.IsReadOnly = userDef.isReadOnly();
 			vo.ReadOnlyLogic = rs.getString("ReadOnlyLogic");
-			if (userDef != null)
+			if (userDef != null && userDef.get_ValueAsString("ReadOnlyLogic") != null)
 				vo.ReadOnlyLogic = userDef.get_ValueAsString("ReadOnlyLogic");
 			
 			if (rs.getString("IsInsertRecord").equals("N"))
