@@ -113,8 +113,6 @@ public final class FactLine extends X_Fact_Acct
 		reversal.convert();
 		reversal.setDescription(description);
 
-		/* Carlos Ruiz - globalqss
-		 * IDEMPIERE-198 GL Distribution Generate Wrong Fact Entry when the Create Reversal is NO */
 		reversal.setC_BPartner_ID(getC_BPartner_ID());
 		reversal.setM_Product_ID(getM_Product_ID());
 		reversal.setC_Project_ID(getC_Project_ID());
