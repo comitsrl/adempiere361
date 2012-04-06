@@ -42,15 +42,15 @@ public class Doc_Payment extends Doc
 {
 	/**
 	 *  Constructor
-	 * 	@param ass accounting schemata
+	 * 	@param ass accounting schema
 	 * 	@param rs record
 	 * 	@param trxName trx
 	 */
-	public Doc_Payment (MAcctSchema[] ass, ResultSet rs, String trxName)
+	public Doc_Payment (MAcctSchema as, ResultSet rs, String trxName)
 	{
-		super (ass, MPayment.class, rs, null, trxName);
+		super (as, MPayment.class, rs, null, trxName);
 	}	//	Doc_Payment
-	
+
 	/**	Tender Type				*/
 	private String		m_TenderType = null;
 	/** Prepayment				*/
@@ -74,7 +74,7 @@ public class Doc_Payment extends Doc
 		return null;
 	}   //  loadDocumentDetails
 
-	
+
 	/**************************************************************************
 	 *  Get Source Currency Balance - always zero
 	 *  @return Zero (always balanced)
@@ -116,7 +116,7 @@ public class Doc_Payment extends Doc
 			return facts;
 		}
 
-		int AD_Org_ID = getBank_Org_ID();		//	Bank Account Org	
+		int AD_Org_ID = getBank_Org_ID();		//	Bank Account Org
 		if (getDocumentType().equals(DOCTYPE_ARReceipt))
 		{
 			//	Asset
@@ -124,7 +124,7 @@ public class Doc_Payment extends Doc
 				getC_Currency_ID(), getAmount(), null);
 			if (fl != null && AD_Org_ID != 0)
 				fl.setAD_Org_ID(AD_Org_ID);
-			//	
+			//
 			MAccount acct = null;
 			if (getC_Charge_ID() != 0)
 				acct = MCharge.getAccount(getC_Charge_ID(), as, getAmount());
@@ -153,7 +153,7 @@ public class Doc_Payment extends Doc
 			if (fl != null && AD_Org_ID != 0
 				&& getC_Charge_ID() == 0)		//	don't overwrite charge
 				fl.setAD_Org_ID(AD_Org_ID);
-			
+
 			//	Asset
 			fl = fact.createLine(null, getAccount(Doc.ACCTTYPE_BankInTransit, as),
 				getC_Currency_ID(), null, getAmount());
@@ -184,5 +184,5 @@ public class Doc_Payment extends Doc
 		MBankAccount ba = MBankAccount.get(getCtx(), m_C_BankAccount_ID);
 		return ba.getAD_Org_ID();
 	}	//	getBank_Org_ID
-	
+
 }   //  Doc_Payment
