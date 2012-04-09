@@ -205,6 +205,7 @@ public class InvoiceGenerateRMA extends SvrProcess
         {
             processMsg.append(" (NOT Processed)");
             log.warning("Invoice Processing failed: " + invoice + " - " + invoice.getProcessMsg());
+            throw new IllegalStateException("Invoice Processing failed: " + invoice + " - " + invoice.getProcessMsg());
         }
         
         if (!invoice.save())
