@@ -26,6 +26,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Properties;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MBPartner;
 import org.compiere.model.MConversionRate;
 import org.compiere.model.MDocType;
@@ -314,7 +315,10 @@ public class OrderManager
     public static MOrder prepareOrder(Properties ctx,int orderId,String trxName) throws OperationException
     {
         MOrder order = new MOrder(ctx,orderId,trxName);
-        order.processIt(DocumentEngine.ACTION_Prepare);
+        // added AdempiereException by zuhri
+        if(!order.processIt(DocumentEngine.ACTION_Prepare))
+        	throw new AdempiereException("Failed when processing document " + order.getProcessMsg());
+        // end added by zuhri
         return order;
     }
     

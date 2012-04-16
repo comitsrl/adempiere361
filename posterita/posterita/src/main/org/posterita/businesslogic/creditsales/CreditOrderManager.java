@@ -33,6 +33,7 @@ import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MBPartner;
 import org.compiere.model.MCashLine;
 import org.compiere.model.MInOut;
@@ -136,7 +137,10 @@ public class CreditOrderManager
     {
         MOrder completedOrder = OrderManager.completeOrder(ctx,order);
         MInvoice customerInvoice = POSManager.createCustomerInvoice(ctx, order);
-        customerInvoice.processIt(DocumentEngine.ACTION_Complete);
+        // added AdempiereException by zuhri
+        if(!customerInvoice.processIt(DocumentEngine.ACTION_Complete))
+        	throw new AdempiereException("Failed when processing document - " + customerInvoice.getProcessMsg());
+        // end added by zuhri
         return completedOrder;
     }
     

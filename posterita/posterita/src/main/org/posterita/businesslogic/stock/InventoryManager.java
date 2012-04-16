@@ -35,6 +35,7 @@ import java.util.Properties;
 
 import javax.swing.text.NumberFormatter;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MDocType;
 import org.compiere.model.MInventory;
 import org.compiere.model.MInventoryLine;
@@ -511,7 +512,10 @@ public class InventoryManager
     			addInventoryLine(ctx, inventory.get_ID(),line[j].getProduct().get_ID(), line[j].getQtyCsv(), line[j].getQtyCount(), true, trxName);
     		}
     		
-    		existingInv.processIt(DocumentEngine.ACTION_Void);
+    		// Added AdempiereException by zuhri
+    		if(!existingInv.processIt(DocumentEngine.ACTION_Void))
+    			throw new AdempiereException("Failed when processing document  - " + existingInv.getProcessMsg());
+    		// end added by zuhri
     		PoManager.save(existingInv);
     	}
     	
