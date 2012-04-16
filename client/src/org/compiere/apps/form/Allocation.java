@@ -738,7 +738,10 @@ public class Allocation
 		//	Should start WF
 		if (alloc.get_ID() != 0)
 		{
-			alloc.processIt(DocAction.ACTION_Complete);
+			// added Adempiere Exception by zuhri
+			if(!alloc.processIt(DocAction.ACTION_Complete))
+				throw new AdempiereException("Failed when Processing Document - " + alloc.getProcessMsg());
+			// end added by zuhri
 			alloc.saveEx();
 		}
 		
