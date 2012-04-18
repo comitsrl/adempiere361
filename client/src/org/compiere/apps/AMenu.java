@@ -192,7 +192,7 @@ public final class AMenu extends CFrame
 		//
 
 		// Auto Expand Tree - nmicoud IDEMPIERE 195
-		if (MRole.getDefault().isMenuAutoExpand() || MUser.get(m_ctx).isMenuAutoExpand())
+		if (MUser.get(m_ctx).isMenuAutoExpand())
 			treePanel.expandTree(true);
 		// Auto Expand Tree - nmicoud IDEMPIERE 195
 
