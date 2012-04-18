@@ -708,7 +708,20 @@ public class MCost extends X_M_Cost
 			s_log.config(product.getName());
 
 			//	Cost Elements
-			List <MCostElement> ces = MCostElement.getCostElementsWithCostingMethods(product);
+			MCostElement[] ces = MCostElement.getCostingMethods(product);
+			MCostElement ce = null;
+			for (MCostElement element : ces) {
+				if (X_M_CostElement.COSTINGMETHOD_StandardCosting.equals(element.getCostingMethod()))
+				{
+					ce = element;
+					break;
+				}
+			}
+			if (ce == null)
+			{
+				s_log.fine("No Standard Costing in System");
+				return;
+			}
 
 			MAcctSchema[] mass = MAcctSchema.getClientAcctSchema(product.getCtx(),
 				product.getAD_Client_ID(), product.get_TrxName());
@@ -721,8 +734,6 @@ public class MCost extends X_M_Cost
 				//	Create Std Costing
 				if (MAcctSchema.COSTINGLEVEL_Client.equals(cl))
 				{
-					for(MCostElement ce : ces)
-					{
 						MCost cost = MCost.get (product, M_ASI_ID,
 							as, 0, ce.getM_CostElement_ID(), product.get_TrxName());
 						if (cost.is_new())
@@ -734,7 +745,6 @@ public class MCost extends X_M_Cost
 								s_log.warning("Not created: Std.Cost for " + product.getName()
 									+ " - " + as.getName());
 						}
-					}
 				}
 				else if (MAcctSchema.COSTINGLEVEL_Organization.equals(cl))
 				{
@@ -742,8 +752,6 @@ public class MCost extends X_M_Cost
 						orgs = MOrg.getOfClient(product);
 					for (MOrg o : orgs)
 					{
-						for(MCostElement ce : ces)
-						{
 							MCost cost = MCost.get (product, M_ASI_ID,
 								as, o.getAD_Org_ID(), ce.getM_CostElement_ID(), product.get_TrxName());
 							if (cost.is_new())
@@ -757,7 +765,6 @@ public class MCost extends X_M_Cost
 										+ " - " + o.getName()
 										+ " - " + as.getName());
 							}
-						}
 					}	//	for all orgs
 				}
 				else
