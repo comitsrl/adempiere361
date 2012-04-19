@@ -56,13 +56,13 @@ import org.compiere.Adempiere;
 import org.compiere.apps.wf.WFActivity;
 import org.compiere.apps.wf.WFPanel;
 import org.compiere.grid.tree.VTreePanel;
-import org.compiere.model.HardCodedIDs;
 import org.compiere.model.MRole;
 import org.compiere.model.MSession;
 import org.compiere.model.MSysConfig;
 import org.compiere.model.MSystem;
 import org.compiere.model.MTreeNode;
 import org.compiere.model.MUser;
+import org.compiere.model.SystemIDs;
 import org.compiere.swing.CButton;
 import org.compiere.swing.CFrame;
 import org.compiere.swing.CPanel;
@@ -90,7 +90,7 @@ import org.compiere.util.Splash;
  * 
  */
 public final class AMenu extends CFrame
-	implements ActionListener, PropertyChangeListener, ChangeListener
+	implements ActionListener, PropertyChangeListener, ChangeListener, SystemIDs
 {
 	/**
 	 * generated serialVersionUID
@@ -677,7 +677,7 @@ public final class AMenu extends CFrame
 	//			+ " INNER JOIN AD_TABLE t ON (t.AD_Window_ID=m.AD_Window_ID) "
 	//			+ "WHERE t.AD_Table_ID=?", 417);
 		if (m_request_Menu_ID == 0)
-			m_request_Menu_ID = HardCodedIDs.WINDOW_MY_REQUESTS;	//	My Requests
+			m_request_Menu_ID = WINDOW_MY_REQUESTS;	//	My Requests
 		(new AMenuStartItem (m_request_Menu_ID, true, Msg.translate(m_ctx, "R_Request_ID"), this)).start();		//	async load
 	}   //  gotoRequests
 

@@ -21,7 +21,8 @@ package org.compiere.model;
  *  @author Carlos Ruiz, Nicolas Micoud, ...
  */
 
-public class HardCodedIDs {
+public interface SystemIDs 
+{
 
 	public final static int REFERENCE_POSTING_TYPE = 125;
 		
