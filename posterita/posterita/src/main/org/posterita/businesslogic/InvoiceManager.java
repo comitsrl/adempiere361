@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MBPartner;
 import org.compiere.model.MBPartnerLocation;
 import org.compiere.model.MCharge;
@@ -364,7 +365,10 @@ public class InvoiceManager extends AbstractDocumentManager
             throw new OperationException("Cannot complete a payment which has been voided");
         
         
-        invoice.processIt(DocumentEngine.ACTION_Complete);
+        // added AdempiereException by zuhri
+        if(!invoice.processIt(DocumentEngine.ACTION_Complete))
+        	throw new AdempiereException("Failed when processing document " + invoice.getProcessMsg());
+        // end added by zuhri
         
         return invoice;
     }
@@ -385,7 +389,10 @@ public class InvoiceManager extends AbstractDocumentManager
         
         MClient.getAll(ctx);
         
-        invoice.processIt(DocumentEngine.ACTION_Complete);
+        // added AdempiereException by zuhri
+        if(!invoice.processIt(DocumentEngine.ACTION_Complete))
+        	throw new AdempiereException("Failed when processing document " + invoice.getProcessMsg());
+        // end added by zuhri
            
         if(invoice.isSOTrx()==true)
         {

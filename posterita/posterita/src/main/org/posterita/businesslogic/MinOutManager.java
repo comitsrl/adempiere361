@@ -28,6 +28,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MBPartner;
 import org.compiere.model.MBPartnerLocation;
 import org.compiere.model.MDocType;
@@ -356,7 +357,10 @@ public class MinOutManager extends AbstractDocumentManager
         refInOut.setDescription("Material Receipt");
         refInOut.setC_Invoice_ID(invoice.getRef_Invoice_ID());        
         PoManager.save(refInOut);
-        refInOut.processIt(DocumentEngine.ACTION_Complete);
+        // added AdempiereException by zuhri
+        if(!refInOut.processIt(DocumentEngine.ACTION_Complete))
+        	throw new AdempiereException("Failed when processing document - " + refInOut.getProcessMsg());
+        // end added by zuhri
         return refInOut;
     }
     

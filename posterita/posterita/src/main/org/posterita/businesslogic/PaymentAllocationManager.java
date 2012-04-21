@@ -30,6 +30,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import org.adempiere.exceptions.AdempiereException;
 import org.compiere.model.MAllocationHdr;
 import org.compiere.model.MAllocationLine;
 import org.compiere.model.MInvoice;
@@ -193,7 +194,10 @@ public class PaymentAllocationManager
             
         }
         
-        alloc.processIt(DocumentEngine.ACTION_Complete);
+        // added AdempiereException by zuhri
+        if(!alloc.processIt(DocumentEngine.ACTION_Complete))
+        	throw new AdempiereException("Failed when processing document - " + alloc.getProcessMsg());
+        // end added by zuhri
         PoManager.save(alloc);
     }
     
