@@ -92,6 +92,7 @@ public class MInOut extends X_M_InOut implements DocAction
 		MOrderLine[] oLines = order.getLines(true, "M_Product_ID");
 		for (int i = 0; i < oLines.length; i++)
 		{
+			// Calculate how much is left to deliver (ordered - delivered)
 			BigDecimal qty = oLines[i].getQtyOrdered().subtract(oLines[i].getQtyDelivered());
 			//	Nothing to deliver
 			if (qty.signum() == 0)
@@ -158,7 +159,8 @@ public class MInOut extends X_M_InOut implements DocAction
 			return null;
 
 		return retValue;
-	}	//	createFrom
+
+	}
 
 	/**
 	 * 	Create new Shipment by copying
@@ -1682,7 +1684,10 @@ public class MInOut extends X_M_InOut implements DocAction
 		log.fine(dropShipment.toString());
 
 		dropShipment.setDocAction(DocAction.ACTION_Complete);
-		dropShipment.processIt(DocAction.ACTION_Complete);
+		// added AdempiereException by Zuhri
+		if (!dropShipment.processIt(DocAction.ACTION_Complete))
+			throw new AdempiereException("Failed when processing document - " + dropShipment.getProcessMsg());
+		// end added
 		dropShipment.saveEx();
 
 		return dropShipment;
@@ -1901,7 +1906,10 @@ public class MInOut extends X_M_InOut implements DocAction
 			if (counterDT.getDocAction() != null)
 			{
 				counter.setDocAction(counterDT.getDocAction());
-				counter.processIt(counterDT.getDocAction());
+				// added AdempiereException by zuhri
+				if (!counter.processIt(counterDT.getDocAction()))
+					throw new AdempiereException("Failed when processing document - " + counter.getProcessMsg());
+				// end added
 				counter.saveEx(get_TrxName());
 			}
 		}
