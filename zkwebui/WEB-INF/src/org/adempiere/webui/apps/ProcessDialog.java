@@ -20,6 +20,7 @@ import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.window.FDialog;
 import org.adempiere.webui.window.SimplePDFViewer;
 import org.compiere.apps.ProcessCtl;
+import org.compiere.model.SystemIDs;
 import org.compiere.print.ReportEngine;
 import org.compiere.process.ProcessInfo;
 import org.compiere.process.ProcessInfoUtil;
@@ -74,7 +75,7 @@ import com.lowagie.text.pdf.PdfWriter;
  *  @author     arboleda - globalqss
  *  - Implement ShowHelp option on processes and reports
  */
-public class ProcessDialog extends Window implements EventListener//, ASyncProcess
+public class ProcessDialog extends Window implements EventListener, SystemIDs//, ASyncProcess
 {
 	/**
 	 * generate serial version ID
@@ -409,9 +410,9 @@ public class ProcessDialog extends Window implements EventListener//, ASyncProce
 		{
 			log.config("");
 			//	Print invoices
-			if (m_AD_Process_ID == 119)
+			if (m_AD_Process_ID == PROCESS_C_INVOICE_GENERATE)
 				printInvoices();
-			else if (m_AD_Process_ID == 118)
+			else if (m_AD_Process_ID == PROCESS_M_INOUT_GENERATE)
 				printShipments();
 		}
 

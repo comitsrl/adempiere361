@@ -47,6 +47,7 @@ import org.compiere.model.MQuery;
 import org.compiere.model.MRole;
 import org.compiere.model.MSysConfig;
 import org.compiere.model.MUser;
+import org.compiere.model.SystemIDs;
 import org.compiere.print.AReport;
 import org.compiere.print.ArchiveEngine;
 import org.compiere.print.MPrintFormat;
@@ -94,7 +95,7 @@ import org.zkoss.zul.Vbox;
  * 
  * @author Low Heng Sin
  */
-public class ZkReportViewer extends Window implements EventListener {
+public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 	
 	private static final long serialVersionUID = 4640088641140012438L;
 	/** Window No					*/
@@ -948,7 +949,7 @@ public class ZkReportViewer extends Window implements EventListener {
 	 */
 	private void cmd_customize()
 	{
-		int AD_Window_ID = 240;		//	hardcoded
+		int AD_Window_ID = WINDOW_PRINTFORMAT;		//	hardcoded
 		int AD_PrintFormat_ID = m_reportEngine.getPrintFormat().get_ID();
 		AEnv.zoom(AD_Window_ID, MQuery.getEqualQuery("AD_PrintFormat_ID", AD_PrintFormat_ID));
 	}	//	cmd_customize

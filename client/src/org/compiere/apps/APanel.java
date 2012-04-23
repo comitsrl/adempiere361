@@ -89,6 +89,7 @@ import org.compiere.model.MRole;
 import org.compiere.model.MToolBarButtonRestrict;
 import org.compiere.model.MUser;
 import org.compiere.model.MWindow;
+import org.compiere.model.SystemIDs;
 import org.compiere.model.X_AD_ToolBarButton;
 import org.compiere.plaf.CompiereColor;
 import org.compiere.print.AReport;
@@ -143,7 +144,7 @@ import org.compiere.util.Util;
  *  @sponsor www.metas.de
  */
 public final class APanel extends CPanel
-	implements DataStatusListener, ChangeListener, ActionListener, ASyncProcess
+	implements DataStatusListener, ChangeListener, ActionListener, ASyncProcess, SystemIDs
 {
 	/**
 	 * 
@@ -2492,7 +2493,7 @@ public final class APanel extends CPanel
 			record_ID = Env.getContextAsInt (m_ctx, m_curWindowNo, "AD_Language_ID");
 		//	Record_ID - Change Log ID
 		if (record_ID == -1
-			&& (vButton.getProcess_ID() == 306 || vButton.getProcess_ID() == 307))
+			&& (vButton.getProcess_ID() == PROCESS_AD_CHANGELOG_UNDO || vButton.getProcess_ID() == PROCESS_AD_CHANGELOG_REDO))
 		{
 			Integer id = (Integer)m_curTab.getValue("AD_ChangeLog_ID");
 			record_ID = id.intValue();

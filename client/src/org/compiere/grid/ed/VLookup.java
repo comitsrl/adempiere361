@@ -64,6 +64,7 @@ import org.compiere.model.MOrderLine;
 import org.compiere.model.MProductPrice;
 import org.compiere.model.MQuery;
 import org.compiere.model.MRole;
+import org.compiere.model.SystemIDs;
 import org.compiere.swing.CButton;
 import org.compiere.swing.CMenuItem;
 import org.compiere.swing.CTextField;
@@ -102,7 +103,7 @@ import org.eevolution.model.I_PP_Product_BOMLine;
  *  @sponsor www.metas.de
  */
 public class VLookup extends JComponent
-	implements VEditor, ActionListener, FocusListener
+	implements VEditor, ActionListener, FocusListener, SystemIDs
 {
 	/**
 	 * 
@@ -176,7 +177,7 @@ public class VLookup extends JComponent
 	 */
 	public static VLookup createBPartner (int WindowNo)
 	{
-		int AD_Column_ID = 3499;    //  C_Invoice.C_BPartner_ID
+		int AD_Column_ID = COLUMN_C_INVOICE_C_BPARTNER_ID;    //  C_Invoice.C_BPartner_ID
 		try
 		{
 			Lookup lookup = MLookupFactory.get (Env.getCtx(), WindowNo,
@@ -197,7 +198,7 @@ public class VLookup extends JComponent
 	 */
 	public static VLookup createProduct (int WindowNo)
 	{
-		int AD_Column_ID = 3840;    //  C_InvoiceLine.M_Product_ID
+		int AD_Column_ID = COLUMN_C_INVOICELINE_M_PRODUCT_ID;    //  C_InvoiceLine.M_Product_ID
 		try
 		{
 			Lookup lookup = MLookupFactory.get (Env.getCtx(), WindowNo, 0,
@@ -218,7 +219,7 @@ public class VLookup extends JComponent
 	 */
 	public static VLookup createUser (int WindowNo)
 	{
-		int AD_Column_ID = 10443;    //  AD_WF_Activity.AD_User_UD
+		int AD_Column_ID = COLUMN_AD_WF_ACTIVITY_AD_USER_ID;    //  AD_WF_Activity.AD_User_UD
 		try
 		{
 			Lookup lookup = MLookupFactory.get (Env.getCtx(), WindowNo, 0,
