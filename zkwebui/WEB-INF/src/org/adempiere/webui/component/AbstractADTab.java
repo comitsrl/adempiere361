@@ -150,6 +150,7 @@ public abstract class AbstractADTab extends AbstractUIPart implements IADTab
 					if (adtab.getTabLevel() < currentLevel || i == 0)
 					{
 						parents.add(i);
+						currentLevel = adtab.getTabLevel();
 					}
 				}
 				Collections.reverse(parents);
@@ -182,8 +183,7 @@ public abstract class AbstractADTab extends AbstractUIPart implements IADTab
 					GridField[] fields = adtab.getGridTab().getFields();
 					for (GridField gf : fields)
 					{
-						if (gf.getValue() != null) // preserve value of tab above if null on current tab
-							gf.updateContext();
+						gf.updateContext();
 					}
 				}
 			}
