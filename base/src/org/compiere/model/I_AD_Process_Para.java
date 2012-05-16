@@ -421,4 +421,17 @@ public interface I_AD_Process_Para
  Can contain fixed format elements, Variables: "_lLoOaAcCa09"
 	  */
 	public String getVFormat();
+	
+	  /** Column name IsEncrypted */
+    public static final String COLUMNNAME_IsEncrypted = "IsEncrypted";
+
+	/** Set Encrypted.
+	  * Display or Storage is encrypted
+	  */
+	public void setIsEncrypted (boolean IsEncrypted);
+
+	/** Get Encrypted.
+	  * Display or Storage is encrypted
+	  */
+	public boolean isEncrypted();
 }

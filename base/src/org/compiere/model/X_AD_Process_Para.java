@@ -569,4 +569,22 @@ public class X_AD_Process_Para extends PO implements I_AD_Process_Para, I_Persis
 	{
 		return (String)get_Value(COLUMNNAME_VFormat);
 	}
+
+	@Override
+	public void setIsEncrypted(boolean IsEncrypted) {
+		// TODO Auto-generated method stub
+		set_Value (COLUMNNAME_IsEncrypted, Boolean.valueOf(IsEncrypted));
+	}
+
+	@Override
+	public boolean isEncrypted() {
+		Object oo = get_Value(COLUMNNAME_IsEncrypted);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
 }
