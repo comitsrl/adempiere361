@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for I_Inventory
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_I_Inventory extends PO implements I_I_Inventory, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20120528L;
 
     /** Standard Constructor */
     public X_I_Inventory (Properties ctx, int I_Inventory_ID, String trxName)
@@ -74,6 +74,79 @@ public class X_I_Inventory extends PO implements I_I_Inventory, I_Persistent
       return sb.toString();
     }
 
+	public I_C_Charge getC_Charge() throws RuntimeException
+    {
+		return (I_C_Charge)MTable.get(getCtx(), I_C_Charge.Table_Name)
+			.getPO(getC_Charge_ID(), get_TrxName());	}
+
+	/** Set Charge.
+		@param C_Charge_ID 
+		Additional document charges
+	  */
+	public void setC_Charge_ID (int C_Charge_ID)
+	{
+		if (C_Charge_ID < 1) 
+			set_Value (COLUMNNAME_C_Charge_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Charge_ID, Integer.valueOf(C_Charge_ID));
+	}
+
+	/** Get Charge.
+		@return Additional document charges
+	  */
+	public int getC_Charge_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_Charge_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_DocType getC_DocType() throws RuntimeException
+    {
+		return (I_C_DocType)MTable.get(getCtx(), I_C_DocType.Table_Name)
+			.getPO(getC_DocType_ID(), get_TrxName());	}
+
+	/** Set Document Type.
+		@param C_DocType_ID 
+		Document type or rules
+	  */
+	public void setC_DocType_ID (int C_DocType_ID)
+	{
+		if (C_DocType_ID < 0) 
+			set_Value (COLUMNNAME_C_DocType_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_DocType_ID, Integer.valueOf(C_DocType_ID));
+	}
+
+	/** Get Document Type.
+		@return Document type or rules
+	  */
+	public int getC_DocType_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_DocType_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set Charge Name.
+		@param ChargeName 
+		Name of the Charge
+	  */
+	public void setChargeName (String ChargeName)
+	{
+		set_Value (COLUMNNAME_ChargeName, ChargeName);
+	}
+
+	/** Get Charge Name.
+		@return Name of the Charge
+	  */
+	public String getChargeName () 
+	{
+		return (String)get_Value(COLUMNNAME_ChargeName);
+	}
+
 	/** Set Current Cost Price.
 		@param CurrentCostPrice 
 		The currently used cost price
@@ -109,6 +182,23 @@ public class X_I_Inventory extends PO implements I_I_Inventory, I_Persistent
 	public String getDescription () 
 	{
 		return (String)get_Value(COLUMNNAME_Description);
+	}
+
+	/** Set Document Type Name.
+		@param DocTypeName 
+		Name of the Document Type
+	  */
+	public void setDocTypeName (String DocTypeName)
+	{
+		set_Value (COLUMNNAME_DocTypeName, DocTypeName);
+	}
+
+	/** Get Document Type Name.
+		@return Name of the Document Type
+	  */
+	public String getDocTypeName () 
+	{
+		return (String)get_Value(COLUMNNAME_DocTypeName);
 	}
 
 	/** Set Import Error Message.
@@ -454,6 +544,26 @@ public class X_I_Inventory extends PO implements I_I_Inventory, I_Persistent
 	public BigDecimal getQtyCount () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_QtyCount);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
+	/** Set Internal Use Qty.
+		@param QtyInternalUse 
+		Internal Use Quantity removed from Inventory
+	  */
+	public void setQtyInternalUse (BigDecimal QtyInternalUse)
+	{
+		set_Value (COLUMNNAME_QtyInternalUse, QtyInternalUse);
+	}
+
+	/** Get Internal Use Qty.
+		@return Internal Use Quantity removed from Inventory
+	  */
+	public BigDecimal getQtyInternalUse () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_QtyInternalUse);
 		if (bd == null)
 			 return Env.ZERO;
 		return bd;

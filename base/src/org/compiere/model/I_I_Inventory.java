@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for I_Inventory
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.015
  */
 public interface I_I_Inventory 
 {
@@ -61,6 +61,49 @@ public interface I_I_Inventory
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
+
+    /** Column name C_Charge_ID */
+    public static final String COLUMNNAME_C_Charge_ID = "C_Charge_ID";
+
+	/** Set Charge.
+	  * Additional document charges
+	  */
+	public void setC_Charge_ID (int C_Charge_ID);
+
+	/** Get Charge.
+	  * Additional document charges
+	  */
+	public int getC_Charge_ID();
+
+	public I_C_Charge getC_Charge() throws RuntimeException;
+
+    /** Column name C_DocType_ID */
+    public static final String COLUMNNAME_C_DocType_ID = "C_DocType_ID";
+
+	/** Set Document Type.
+	  * Document type or rules
+	  */
+	public void setC_DocType_ID (int C_DocType_ID);
+
+	/** Get Document Type.
+	  * Document type or rules
+	  */
+	public int getC_DocType_ID();
+
+	public I_C_DocType getC_DocType() throws RuntimeException;
+
+    /** Column name ChargeName */
+    public static final String COLUMNNAME_ChargeName = "ChargeName";
+
+	/** Set Charge Name.
+	  * Name of the Charge
+	  */
+	public void setChargeName (String ChargeName);
+
+	/** Get Charge Name.
+	  * Name of the Charge
+	  */
+	public String getChargeName();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -103,6 +146,19 @@ public interface I_I_Inventory
 	  * Optional short description of the record
 	  */
 	public String getDescription();
+
+    /** Column name DocTypeName */
+    public static final String COLUMNNAME_DocTypeName = "DocTypeName";
+
+	/** Set Document Type Name.
+	  * Name of the Document Type
+	  */
+	public void setDocTypeName (String DocTypeName);
+
+	/** Get Document Type Name.
+	  * Name of the Document Type
+	  */
+	public String getDocTypeName();
 
     /** Column name I_ErrorMsg */
     public static final String COLUMNNAME_I_ErrorMsg = "I_ErrorMsg";
@@ -317,6 +373,19 @@ public interface I_I_Inventory
 	  * Counted Quantity
 	  */
 	public BigDecimal getQtyCount();
+
+    /** Column name QtyInternalUse */
+    public static final String COLUMNNAME_QtyInternalUse = "QtyInternalUse";
+
+	/** Set Internal Use Qty.
+	  * Internal Use Quantity removed from Inventory
+	  */
+	public void setQtyInternalUse (BigDecimal QtyInternalUse);
+
+	/** Get Internal Use Qty.
+	  * Internal Use Quantity removed from Inventory
+	  */
+	public BigDecimal getQtyInternalUse();
 
     /** Column name SerNo */
     public static final String COLUMNNAME_SerNo = "SerNo";
