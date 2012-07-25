@@ -18,7 +18,6 @@ package org.compiere.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for GL_JournalLine
@@ -130,20 +129,20 @@ public interface I_GL_JournalLine
 	  */
 	public int getAD_OrgTrx_ID();
 
-    /** Column name Alias */
-    public static final String COLUMNNAME_Alias = "Alias";
+    /** Column name Alias_ValidCombination_ID */
+    public static final String COLUMNNAME_Alias_ValidCombination_ID = "Alias_ValidCombination_ID";
 
-	/** Set Alias.
-	  * Defines an alternate method of indicating an account combination.
+	/** Set Alias List.
+	  * Valid Account Alias List
 	  */
-	public void setAlias (int Alias);
+	public void setAlias_ValidCombination_ID (int Alias_ValidCombination_ID);
 
-	/** Get Alias.
-	  * Defines an alternate method of indicating an account combination.
+	/** Get Alias List.
+	  * Valid Account Alias List
 	  */
-	public int getAlias();
+	public int getAlias_ValidCombination_ID();
 
-	public I_C_ValidCombination getAl() throws RuntimeException;
+	public I_C_ValidCombination getAlias_ValidCombination() throws RuntimeException;
 
     /** Column name AmtAcctCr */
     public static final String COLUMNNAME_AmtAcctCr = "AmtAcctCr";
@@ -565,32 +564,6 @@ public interface I_GL_JournalLine
 	  */
 	public int getUpdatedBy();
 
-    /** Column name UserElement1_ID */
-    public static final String COLUMNNAME_UserElement1_ID = "UserElement1_ID";
-
-	/** Set User Element 1.
-	  * User defined accounting Element
-	  */
-	public void setUserElement1_ID (int UserElement1_ID);
-
-	/** Get User Element 1.
-	  * User defined accounting Element
-	  */
-	public int getUserElement1_ID();
-
-    /** Column name UserElement2_ID */
-    public static final String COLUMNNAME_UserElement2_ID = "UserElement2_ID";
-
-	/** Set User Element 2.
-	  * User defined accounting Element
-	  */
-	public void setUserElement2_ID (int UserElement2_ID);
-
-	/** Get User Element 2.
-	  * User defined accounting Element
-	  */
-	public int getUserElement2_ID();
-
     /** Column name User1_ID */
     public static final String COLUMNNAME_User1_ID = "User1_ID";
 
@@ -620,4 +593,30 @@ public interface I_GL_JournalLine
 	public int getUser2_ID();
 
 	public I_C_ElementValue getUser2() throws RuntimeException;
+
+    /** Column name UserElement1_ID */
+    public static final String COLUMNNAME_UserElement1_ID = "UserElement1_ID";
+
+	/** Set User Element 1.
+	  * User defined accounting Element
+	  */
+	public void setUserElement1_ID (int UserElement1_ID);
+
+	/** Get User Element 1.
+	  * User defined accounting Element
+	  */
+	public int getUserElement1_ID();
+
+    /** Column name UserElement2_ID */
+    public static final String COLUMNNAME_UserElement2_ID = "UserElement2_ID";
+
+	/** Set User Element 2.
+	  * User defined accounting Element
+	  */
+	public void setUserElement2_ID (int UserElement2_ID);
+
+	/** Get User Element 2.
+	  * User defined accounting Element
+	  */
+	public int getUserElement2_ID();
 }

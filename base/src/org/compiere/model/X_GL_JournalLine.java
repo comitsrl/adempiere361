@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Properties;
-
 import org.compiere.util.Env;
 import org.compiere.util.KeyNamePair;
 
@@ -34,7 +33,7 @@ public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persiste
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120723L;
+	private static final long serialVersionUID = 20120725L;
 
     /** Standard Constructor */
     public X_GL_JournalLine (Properties ctx, int GL_JournalLine_ID, String trxName)
@@ -51,7 +50,6 @@ public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persiste
 // @C_Currency_ID@
 			setCurrencyRate (Env.ZERO);
 // @CurrencyRate@;1
-			setC_ValidCombination_ID (0);
 			setDateAcct (new Timestamp( System.currentTimeMillis() ));
 // @DateAcct@
 			setGL_Journal_ID (0);
@@ -219,26 +217,29 @@ public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persiste
 		return ii.intValue();
 	}
 
-	public I_C_ValidCombination getAl() throws RuntimeException
+	public I_C_ValidCombination getAlias_ValidCombination() throws RuntimeException
     {
 		return (I_C_ValidCombination)MTable.get(getCtx(), I_C_ValidCombination.Table_Name)
-			.getPO(getAlias(), get_TrxName());	}
+			.getPO(getAlias_ValidCombination_ID(), get_TrxName());	}
 
-	/** Set Alias.
-		@param Alias 
-		Defines an alternate method of indicating an account combination.
+	/** Set Alias List.
+		@param Alias_ValidCombination_ID 
+		Valid Account Alias List
 	  */
-	public void setAlias (int Alias)
+	public void setAlias_ValidCombination_ID (int Alias_ValidCombination_ID)
 	{
-		set_Value (COLUMNNAME_Alias, Integer.valueOf(Alias));
+		if (Alias_ValidCombination_ID < 1) 
+			set_Value (COLUMNNAME_Alias_ValidCombination_ID, null);
+		else 
+			set_Value (COLUMNNAME_Alias_ValidCombination_ID, Integer.valueOf(Alias_ValidCombination_ID));
 	}
 
-	/** Get Alias.
-		@return Defines an alternate method of indicating an account combination.
+	/** Get Alias List.
+		@return Valid Account Alias List
 	  */
-	public int getAlias () 
+	public int getAlias_ValidCombination_ID () 
 	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_Alias);
+		Integer ii = (Integer)get_Value(COLUMNNAME_Alias_ValidCombination_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
@@ -910,52 +911,6 @@ public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persiste
 		return bd;
 	}
 
-	/** Set User Element 1.
-		@param UserElement1_ID 
-		User defined accounting Element
-	  */
-	public void setUserElement1_ID (int UserElement1_ID)
-	{
-		if (UserElement1_ID < 1) 
-			set_Value (COLUMNNAME_UserElement1_ID, null);
-		else 
-			set_Value (COLUMNNAME_UserElement1_ID, Integer.valueOf(UserElement1_ID));
-	}
-
-	/** Get User Element 1.
-		@return User defined accounting Element
-	  */
-	public int getUserElement1_ID () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_UserElement1_ID);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
-
-	/** Set User Element 2.
-		@param UserElement2_ID 
-		User defined accounting Element
-	  */
-	public void setUserElement2_ID (int UserElement2_ID)
-	{
-		if (UserElement2_ID < 1) 
-			set_Value (COLUMNNAME_UserElement2_ID, null);
-		else 
-			set_Value (COLUMNNAME_UserElement2_ID, Integer.valueOf(UserElement2_ID));
-	}
-
-	/** Get User Element 2.
-		@return User defined accounting Element
-	  */
-	public int getUserElement2_ID () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_UserElement2_ID);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
-
 	public I_C_ElementValue getUser1() throws RuntimeException
     {
 		return (I_C_ElementValue)MTable.get(getCtx(), I_C_ElementValue.Table_Name)
@@ -1007,6 +962,52 @@ public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persiste
 	public int getUser2_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_User2_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set User Element 1.
+		@param UserElement1_ID 
+		User defined accounting Element
+	  */
+	public void setUserElement1_ID (int UserElement1_ID)
+	{
+		if (UserElement1_ID < 1) 
+			set_Value (COLUMNNAME_UserElement1_ID, null);
+		else 
+			set_Value (COLUMNNAME_UserElement1_ID, Integer.valueOf(UserElement1_ID));
+	}
+
+	/** Get User Element 1.
+		@return User defined accounting Element
+	  */
+	public int getUserElement1_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_UserElement1_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	/** Set User Element 2.
+		@param UserElement2_ID 
+		User defined accounting Element
+	  */
+	public void setUserElement2_ID (int UserElement2_ID)
+	{
+		if (UserElement2_ID < 1) 
+			set_Value (COLUMNNAME_UserElement2_ID, null);
+		else 
+			set_Value (COLUMNNAME_UserElement2_ID, Integer.valueOf(UserElement2_ID));
+	}
+
+	/** Get User Element 2.
+		@return User defined accounting Element
+	  */
+	public int getUserElement2_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_UserElement2_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
