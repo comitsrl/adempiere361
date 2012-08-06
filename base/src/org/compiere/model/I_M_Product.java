@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_Product
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.013
  */
 public interface I_M_Product 
 {
@@ -74,6 +74,19 @@ public interface I_M_Product
 	  * Classification for grouping
 	  */
 	public String getClassification();
+
+    /** Column name CostStandard */
+    public static final String COLUMNNAME_CostStandard = "CostStandard";
+
+	/** Set Standard Cost.
+	  * Standard Costs
+	  */
+	public void setCostStandard (BigDecimal CostStandard);
+
+	/** Get Standard Cost.
+	  * Standard Costs
+	  */
+	public BigDecimal getCostStandard();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -351,6 +364,45 @@ public interface I_M_Product
 	  */
 	public boolean isInvoicePrintDetails();
 
+    /** Column name IsKanban */
+    public static final String COLUMNNAME_IsKanban = "IsKanban";
+
+	/** Set Kanban controlled.
+	  * This part is Kanban controlled
+	  */
+	public void setIsKanban (boolean IsKanban);
+
+	/** Get Kanban controlled.
+	  * This part is Kanban controlled
+	  */
+	public boolean isKanban();
+
+    /** Column name IsManufactured */
+    public static final String COLUMNNAME_IsManufactured = "IsManufactured";
+
+	/** Set Manufactured.
+	  * This product is manufactured
+	  */
+	public void setIsManufactured (boolean IsManufactured);
+
+	/** Get Manufactured.
+	  * This product is manufactured
+	  */
+	public boolean isManufactured();
+
+    /** Column name IsPhantom */
+    public static final String COLUMNNAME_IsPhantom = "IsPhantom";
+
+	/** Set Phantom.
+	  * Phantom Component
+	  */
+	public void setIsPhantom (boolean IsPhantom);
+
+	/** Get Phantom.
+	  * Phantom Component
+	  */
+	public boolean isPhantom();
+
     /** Column name IsPickListPrintDetails */
     public static final String COLUMNNAME_IsPickListPrintDetails = "IsPickListPrintDetails";
 
@@ -527,6 +579,17 @@ public interface I_M_Product
 	public int getM_Locator_ID();
 
 	public I_M_Locator getM_Locator() throws RuntimeException;
+
+    /** Column name M_PartType_ID */
+    public static final String COLUMNNAME_M_PartType_ID = "M_PartType_ID";
+
+	/** Set Part Type	  */
+	public void setM_PartType_ID (int M_PartType_ID);
+
+	/** Get Part Type	  */
+	public int getM_PartType_ID();
+
+	public I_M_PartType getM_PartType() throws RuntimeException;
 
     /** Column name M_Product_Category_ID */
     public static final String COLUMNNAME_M_Product_Category_ID = "M_Product_Category_ID";

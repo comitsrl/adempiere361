@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_Replenish
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.013
  */
 public interface I_M_Replenish 
 {
@@ -176,6 +176,15 @@ public interface I_M_Replenish
 	public int getM_WarehouseSource_ID();
 
 	public I_M_Warehouse getM_WarehouseSource() throws RuntimeException;
+
+    /** Column name QtyBatchSize */
+    public static final String COLUMNNAME_QtyBatchSize = "QtyBatchSize";
+
+	/** Set Qty Batch Size	  */
+	public void setQtyBatchSize (BigDecimal QtyBatchSize);
+
+	/** Get Qty Batch Size	  */
+	public BigDecimal getQtyBatchSize();
 
     /** Column name ReplenishType */
     public static final String COLUMNNAME_ReplenishType = "ReplenishType";
