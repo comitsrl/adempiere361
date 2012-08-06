@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_Production
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.6.0LTS - $Id$ */
 public class X_M_Production extends PO implements I_M_Production, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20110405L;
 
     /** Standard Constructor */
     public X_M_Production (Properties ctx, int M_Production_ID, String trxName)
@@ -41,13 +41,18 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
       super (ctx, M_Production_ID, trxName);
       /** if (M_Production_ID == 0)
         {
-			setIsCreated (false);
+			setDocumentNo (null);
+			setIsCreated (null);
+// N
+			setM_Locator_ID (0);
 			setMovementDate (new Timestamp( System.currentTimeMillis() ));
 // @#Date@
+			setM_Product_ID (0);
 			setM_Production_ID (0);
-			setName (null);
 			setPosted (false);
 			setProcessed (false);
+			setProductionQty (Env.ZERO);
+// 0
         } */
     }
 
@@ -79,9 +84,9 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
       return sb.toString();
     }
 
-	/** Set Trx Organization.
+	/** Set Trx Organisation.
 		@param AD_OrgTrx_ID 
-		Performing or initiating organization
+		Performing or initiating organisation
 	  */
 	public void setAD_OrgTrx_ID (int AD_OrgTrx_ID)
 	{
@@ -91,8 +96,8 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 			set_Value (COLUMNNAME_AD_OrgTrx_ID, Integer.valueOf(AD_OrgTrx_ID));
 	}
 
-	/** Get Trx Organization.
-		@return Performing or initiating organization
+	/** Get Trx Organisation.
+		@return Performing or initiating organisation
 	  */
 	public int getAD_OrgTrx_ID () 
 	{
@@ -158,6 +163,34 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 		return ii.intValue();
 	}
 
+	public I_C_OrderLine getC_OrderLine() throws RuntimeException
+    {
+		return (I_C_OrderLine)MTable.get(getCtx(), I_C_OrderLine.Table_Name)
+			.getPO(getC_OrderLine_ID(), get_TrxName());	}
+
+	/** Set Sales Order Line.
+		@param C_OrderLine_ID 
+		Sales Order Line
+	  */
+	public void setC_OrderLine_ID (int C_OrderLine_ID)
+	{
+		if (C_OrderLine_ID < 1) 
+			set_Value (COLUMNNAME_C_OrderLine_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_OrderLine_ID, Integer.valueOf(C_OrderLine_ID));
+	}
+
+	/** Get Sales Order Line.
+		@return Sales Order Line
+	  */
+	public int getC_OrderLine_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_OrderLine_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
 	public I_C_Project getC_Project() throws RuntimeException
     {
 		return (I_C_Project)MTable.get(getCtx(), I_C_Project.Table_Name)
@@ -186,6 +219,23 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 		return ii.intValue();
 	}
 
+	/** Set Date Promised.
+		@param DatePromised 
+		Date Order was promised
+	  */
+	public void setDatePromised (Timestamp DatePromised)
+	{
+		set_Value (COLUMNNAME_DatePromised, DatePromised);
+	}
+
+	/** Get Date Promised.
+		@return Date Order was promised
+	  */
+	public Timestamp getDatePromised () 
+	{
+		return (Timestamp)get_Value(COLUMNNAME_DatePromised);
+	}
+
 	/** Set Description.
 		@param Description 
 		Optional short description of the record
@@ -203,25 +253,88 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 		return (String)get_Value(COLUMNNAME_Description);
 	}
 
+	/** Set Document No.
+		@param DocumentNo 
+		Document sequence number of the document
+	  */
+	public void setDocumentNo (String DocumentNo)
+	{
+		set_ValueNoCheck (COLUMNNAME_DocumentNo, DocumentNo);
+	}
+
+	/** Get Document No.
+		@return Document sequence number of the document
+	  */
+	public String getDocumentNo () 
+	{
+		return (String)get_Value(COLUMNNAME_DocumentNo);
+	}
+
+    /** Get Record ID/ColumnName
+        @return ID/ColumnName pair
+      */
+    public KeyNamePair getKeyNamePair() 
+    {
+        return new KeyNamePair(get_ID(), getDocumentNo());
+    }
+
+	/** Set Complete.
+		@param IsComplete 
+		It is complete
+	  */
+	public void setIsComplete (String IsComplete)
+	{
+		set_Value (COLUMNNAME_IsComplete, IsComplete);
+	}
+
+	/** Get Complete.
+		@return It is complete
+	  */
+	public String getIsComplete () 
+	{
+		return (String)get_Value(COLUMNNAME_IsComplete);
+	}
+
 	/** Set Records created.
 		@param IsCreated Records created	  */
-	public void setIsCreated (boolean IsCreated)
+	public void setIsCreated (String IsCreated)
 	{
-		set_ValueNoCheck (COLUMNNAME_IsCreated, Boolean.valueOf(IsCreated));
+		set_Value (COLUMNNAME_IsCreated, IsCreated);
 	}
 
 	/** Get Records created.
 		@return Records created	  */
-	public boolean isCreated () 
+	public String getIsCreated () 
 	{
-		Object oo = get_Value(COLUMNNAME_IsCreated);
-		if (oo != null) 
-		{
-			 if (oo instanceof Boolean) 
-				 return ((Boolean)oo).booleanValue(); 
-			return "Y".equals(oo);
-		}
-		return false;
+		return (String)get_Value(COLUMNNAME_IsCreated);
+	}
+
+	public I_M_Locator getM_Locator() throws RuntimeException
+    {
+		return (I_M_Locator)MTable.get(getCtx(), I_M_Locator.Table_Name)
+			.getPO(getM_Locator_ID(), get_TrxName());	}
+
+	/** Set Locator.
+		@param M_Locator_ID 
+		Warehouse Locator
+	  */
+	public void setM_Locator_ID (int M_Locator_ID)
+	{
+		if (M_Locator_ID < 1) 
+			set_Value (COLUMNNAME_M_Locator_ID, null);
+		else 
+			set_Value (COLUMNNAME_M_Locator_ID, Integer.valueOf(M_Locator_ID));
+	}
+
+	/** Get Locator.
+		@return Warehouse Locator
+	  */
+	public int getM_Locator_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_M_Locator_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
 	}
 
 	/** Set Movement Date.
@@ -239,6 +352,34 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 	public Timestamp getMovementDate () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_MovementDate);
+	}
+
+	public I_M_Product getM_Product() throws RuntimeException
+    {
+		return (I_M_Product)MTable.get(getCtx(), I_M_Product.Table_Name)
+			.getPO(getM_Product_ID(), get_TrxName());	}
+
+	/** Set Product.
+		@param M_Product_ID 
+		Product, Service, Item
+	  */
+	public void setM_Product_ID (int M_Product_ID)
+	{
+		if (M_Product_ID < 1) 
+			set_Value (COLUMNNAME_M_Product_ID, null);
+		else 
+			set_Value (COLUMNNAME_M_Product_ID, Integer.valueOf(M_Product_ID));
+	}
+
+	/** Get Product.
+		@return Product, Service, Item
+	  */
+	public int getM_Product_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_M_Product_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
 	}
 
 	/** Set Production.
@@ -280,14 +421,6 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 	{
 		return (String)get_Value(COLUMNNAME_Name);
 	}
-
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), getName());
-    }
 
 	/** Set Posted.
 		@param Posted 
@@ -376,6 +509,26 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 			return "Y".equals(oo);
 		}
 		return false;
+	}
+
+	/** Set Production Quantity.
+		@param ProductionQty 
+		Quantity of products to produce
+	  */
+	public void setProductionQty (BigDecimal ProductionQty)
+	{
+		set_Value (COLUMNNAME_ProductionQty, ProductionQty);
+	}
+
+	/** Get Production Quantity.
+		@return Quantity of products to produce
+	  */
+	public BigDecimal getProductionQty () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_ProductionQty);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	public I_C_ElementValue getUser1() throws RuntimeException

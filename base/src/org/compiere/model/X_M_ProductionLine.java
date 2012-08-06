@@ -32,7 +32,7 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20110427L;
 
     /** Standard Constructor */
     public X_M_ProductionLine (Properties ctx, int M_ProductionLine_ID, String trxName)
@@ -41,14 +41,14 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
       /** if (M_ProductionLine_ID == 0)
         {
 			setLine (0);
-// @SQL=SELECT NVL(MAX(Line),0)+10 AS DefaultValue FROM M_ProductionLine WHERE M_ProductionPlan_ID=@M_ProductionPlan_ID@
+// @SQL=SELECT NVL(MAX(Line),0)+10 AS DefaultValue FROM M_ProductionLine WHERE M_Production_ID=@M_Production_ID@
 			setM_AttributeSetInstance_ID (0);
 			setM_Locator_ID (0);
 // @M_Locator_ID@
 			setMovementQty (Env.ZERO);
 			setM_Product_ID (0);
+			setM_Production_ID (0);
 			setM_ProductionLine_ID (0);
-			setM_ProductionPlan_ID (0);
 			setProcessed (false);
         } */
     }
@@ -81,6 +81,34 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
       return sb.toString();
     }
 
+	public I_C_OrderLine getC_OrderLine() throws RuntimeException
+    {
+		return (I_C_OrderLine)MTable.get(getCtx(), I_C_OrderLine.Table_Name)
+			.getPO(getC_OrderLine_ID(), get_TrxName());	}
+
+	/** Set Sales Order Line.
+		@param C_OrderLine_ID 
+		Sales Order Line
+	  */
+	public void setC_OrderLine_ID (int C_OrderLine_ID)
+	{
+		if (C_OrderLine_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_C_OrderLine_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_C_OrderLine_ID, Integer.valueOf(C_OrderLine_ID));
+	}
+
+	/** Get Sales Order Line.
+		@return Sales Order Line
+	  */
+	public int getC_OrderLine_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_OrderLine_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
 	/** Set Description.
 		@param Description 
 		Optional short description of the record
@@ -96,6 +124,30 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 	public String getDescription () 
 	{
 		return (String)get_Value(COLUMNNAME_Description);
+	}
+
+	/** Set End Product.
+		@param IsEndProduct 
+		End Product of production
+	  */
+	public void setIsEndProduct (boolean IsEndProduct)
+	{
+		set_Value (COLUMNNAME_IsEndProduct, Boolean.valueOf(IsEndProduct));
+	}
+
+	/** Get End Product.
+		@return End Product of production
+	  */
+	public boolean isEndProduct () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsEndProduct);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set Line No.
@@ -230,6 +282,34 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 		return ii.intValue();
 	}
 
+	public I_M_Production getM_Production() throws RuntimeException
+    {
+		return (I_M_Production)MTable.get(getCtx(), I_M_Production.Table_Name)
+			.getPO(getM_Production_ID(), get_TrxName());	}
+
+	/** Set Production.
+		@param M_Production_ID 
+		Plan for producing a product
+	  */
+	public void setM_Production_ID (int M_Production_ID)
+	{
+		if (M_Production_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_M_Production_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_M_Production_ID, Integer.valueOf(M_Production_ID));
+	}
+
+	/** Get Production.
+		@return Plan for producing a product
+	  */
+	public int getM_Production_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_M_Production_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
 	/** Set Production Line.
 		@param M_ProductionLine_ID 
 		Document Line representing a production
@@ -281,6 +361,26 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 		return ii.intValue();
 	}
 
+	/** Set Planned Quantity.
+		@param PlannedQty 
+		Planned quantity for this project
+	  */
+	public void setPlannedQty (BigDecimal PlannedQty)
+	{
+		set_Value (COLUMNNAME_PlannedQty, PlannedQty);
+	}
+
+	/** Get Planned Quantity.
+		@return Planned quantity for this project
+	  */
+	public BigDecimal getPlannedQty () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_PlannedQty);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
 	/** Set Processed.
 		@param Processed 
 		The document has been processed
@@ -303,5 +403,22 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 			return "Y".equals(oo);
 		}
 		return false;
+	}
+
+	/** Set Quantity Used.
+		@param QtyUsed Quantity Used	  */
+	public void setQtyUsed (BigDecimal QtyUsed)
+	{
+		set_Value (COLUMNNAME_QtyUsed, QtyUsed);
+	}
+
+	/** Get Quantity Used.
+		@return Quantity Used	  */
+	public BigDecimal getQtyUsed () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_QtyUsed);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 }

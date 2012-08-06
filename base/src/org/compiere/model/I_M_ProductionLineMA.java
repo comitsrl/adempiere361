@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_ProductionLineMA
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.6.0LTS
  */
 public interface I_M_ProductionLineMA 
 {
@@ -52,13 +52,13 @@ public interface I_M_ProductionLineMA
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
-	/** Set Organization.
-	  * Organizational entity within client
+	/** Set Organisation.
+	  * Organisational entity within client
 	  */
 	public void setAD_Org_ID (int AD_Org_ID);
 
-	/** Get Organization.
-	  * Organizational entity within client
+	/** Get Organisation.
+	  * Organisational entity within client
 	  */
 	public int getAD_Org_ID();
 

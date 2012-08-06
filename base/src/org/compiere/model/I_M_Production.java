@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_Production
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.6.0LTS
  */
 public interface I_M_Production 
 {
@@ -52,26 +52,26 @@ public interface I_M_Production
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
-	/** Set Organization.
-	  * Organizational entity within client
+	/** Set Organisation.
+	  * Organisational entity within client
 	  */
 	public void setAD_Org_ID (int AD_Org_ID);
 
-	/** Get Organization.
-	  * Organizational entity within client
+	/** Get Organisation.
+	  * Organisational entity within client
 	  */
 	public int getAD_Org_ID();
 
     /** Column name AD_OrgTrx_ID */
     public static final String COLUMNNAME_AD_OrgTrx_ID = "AD_OrgTrx_ID";
 
-	/** Set Trx Organization.
-	  * Performing or initiating organization
+	/** Set Trx Organisation.
+	  * Performing or initiating organisation
 	  */
 	public void setAD_OrgTrx_ID (int AD_OrgTrx_ID);
 
-	/** Get Trx Organization.
-	  * Performing or initiating organization
+	/** Get Trx Organisation.
+	  * Performing or initiating organisation
 	  */
 	public int getAD_OrgTrx_ID();
 
@@ -105,6 +105,21 @@ public interface I_M_Production
 
 	public I_C_Campaign getC_Campaign() throws RuntimeException;
 
+    /** Column name C_OrderLine_ID */
+    public static final String COLUMNNAME_C_OrderLine_ID = "C_OrderLine_ID";
+
+	/** Set Sales Order Line.
+	  * Sales Order Line
+	  */
+	public void setC_OrderLine_ID (int C_OrderLine_ID);
+
+	/** Get Sales Order Line.
+	  * Sales Order Line
+	  */
+	public int getC_OrderLine_ID();
+
+	public I_C_OrderLine getC_OrderLine() throws RuntimeException;
+
     /** Column name C_Project_ID */
     public static final String COLUMNNAME_C_Project_ID = "C_Project_ID";
 
@@ -136,6 +151,19 @@ public interface I_M_Production
 	  */
 	public int getCreatedBy();
 
+    /** Column name DatePromised */
+    public static final String COLUMNNAME_DatePromised = "DatePromised";
+
+	/** Set Date Promised.
+	  * Date Order was promised
+	  */
+	public void setDatePromised (Timestamp DatePromised);
+
+	/** Get Date Promised.
+	  * Date Order was promised
+	  */
+	public Timestamp getDatePromised();
+
     /** Column name Description */
     public static final String COLUMNNAME_Description = "Description";
 
@@ -148,6 +176,19 @@ public interface I_M_Production
 	  * Optional short description of the record
 	  */
 	public String getDescription();
+
+    /** Column name DocumentNo */
+    public static final String COLUMNNAME_DocumentNo = "DocumentNo";
+
+	/** Set Document No.
+	  * Document sequence number of the document
+	  */
+	public void setDocumentNo (String DocumentNo);
+
+	/** Get Document No.
+	  * Document sequence number of the document
+	  */
+	public String getDocumentNo();
 
     /** Column name IsActive */
     public static final String COLUMNNAME_IsActive = "IsActive";
@@ -162,14 +203,42 @@ public interface I_M_Production
 	  */
 	public boolean isActive();
 
+    /** Column name IsComplete */
+    public static final String COLUMNNAME_IsComplete = "IsComplete";
+
+	/** Set Complete.
+	  * It is complete
+	  */
+	public void setIsComplete (String IsComplete);
+
+	/** Get Complete.
+	  * It is complete
+	  */
+	public String getIsComplete();
+
     /** Column name IsCreated */
     public static final String COLUMNNAME_IsCreated = "IsCreated";
 
 	/** Set Records created	  */
-	public void setIsCreated (boolean IsCreated);
+	public void setIsCreated (String IsCreated);
 
 	/** Get Records created	  */
-	public boolean isCreated();
+	public String getIsCreated();
+
+    /** Column name M_Locator_ID */
+    public static final String COLUMNNAME_M_Locator_ID = "M_Locator_ID";
+
+	/** Set Locator.
+	  * Warehouse Locator
+	  */
+	public void setM_Locator_ID (int M_Locator_ID);
+
+	/** Get Locator.
+	  * Warehouse Locator
+	  */
+	public int getM_Locator_ID();
+
+	public I_M_Locator getM_Locator() throws RuntimeException;
 
     /** Column name MovementDate */
     public static final String COLUMNNAME_MovementDate = "MovementDate";
@@ -183,6 +252,21 @@ public interface I_M_Production
 	  * Date a product was moved in or out of inventory
 	  */
 	public Timestamp getMovementDate();
+
+    /** Column name M_Product_ID */
+    public static final String COLUMNNAME_M_Product_ID = "M_Product_ID";
+
+	/** Set Product.
+	  * Product, Service, Item
+	  */
+	public void setM_Product_ID (int M_Product_ID);
+
+	/** Get Product.
+	  * Product, Service, Item
+	  */
+	public int getM_Product_ID();
+
+	public I_M_Product getM_Product() throws RuntimeException;
 
     /** Column name M_Production_ID */
     public static final String COLUMNNAME_M_Production_ID = "M_Production_ID";
@@ -257,6 +341,19 @@ public interface I_M_Production
 
 	/** Get Process Now	  */
 	public boolean isProcessing();
+
+    /** Column name ProductionQty */
+    public static final String COLUMNNAME_ProductionQty = "ProductionQty";
+
+	/** Set Production Quantity.
+	  * Quantity of products to produce
+	  */
+	public void setProductionQty (BigDecimal ProductionQty);
+
+	/** Get Production Quantity.
+	  * Quantity of products to produce
+	  */
+	public BigDecimal getProductionQty();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";
