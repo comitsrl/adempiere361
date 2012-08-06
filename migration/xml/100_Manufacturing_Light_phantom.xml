@@ -181,5 +181,11 @@
         <Data AD_Column_ID="183" Column="IsSameLine" oldValue="true">false</Data>
       </PO>
     </Step>
+       <Step SeqNo="60" StepType="AD">
+      <PO AD_Table_ID="107" Action="U" Record_ID="62021" Table="AD_Field">
+        <Data AD_Column_ID="177" Column="DisplayLogic" isOldNull="true">@IsBOM@='Y'</Data>
+        <Data AD_Column_ID="181" Column="SeqNo" oldValue="205">265</Data>
+      </PO>
+    </Step>
   </Migration>
 </Migrations>
