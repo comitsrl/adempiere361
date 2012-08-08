@@ -52,15 +52,30 @@ public interface I_M_ProductionLine
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
-	/** Set Organization.
-	  * Organizational entity within client
+	/** Set Organisation.
+	  * Organisational entity within client
 	  */
 	public void setAD_Org_ID (int AD_Org_ID);
 
-	/** Get Organization.
-	  * Organizational entity within client
+	/** Get Organisation.
+	  * Organisational entity within client
 	  */
 	public int getAD_Org_ID();
+
+    /** Column name C_OrderLine_ID */
+    public static final String COLUMNNAME_C_OrderLine_ID = "C_OrderLine_ID";
+
+	/** Set Sales Order Line.
+	  * Sales Order Line
+	  */
+	public void setC_OrderLine_ID (int C_OrderLine_ID);
+
+	/** Get Sales Order Line.
+	  * Sales Order Line
+	  */
+	public int getC_OrderLine_ID();
+
+	public I_C_OrderLine getC_OrderLine() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -103,6 +118,19 @@ public interface I_M_ProductionLine
 	  * The record is active in the system
 	  */
 	public boolean isActive();
+
+    /** Column name IsEndProduct */
+    public static final String COLUMNNAME_IsEndProduct = "IsEndProduct";
+
+	/** Set End Product.
+	  * End Product of production
+	  */
+	public void setIsEndProduct (boolean IsEndProduct);
+
+	/** Get End Product.
+	  * End Product of production
+	  */
+	public boolean isEndProduct();
 
     /** Column name Line */
     public static final String COLUMNNAME_Line = "Line";
@@ -175,6 +203,21 @@ public interface I_M_ProductionLine
 
 	public I_M_Product getM_Product() throws RuntimeException;
 
+    /** Column name M_Production_ID */
+    public static final String COLUMNNAME_M_Production_ID = "M_Production_ID";
+
+	/** Set Production.
+	  * Plan for producing a product
+	  */
+	public void setM_Production_ID (int M_Production_ID);
+
+	/** Get Production.
+	  * Plan for producing a product
+	  */
+	public int getM_Production_ID();
+
+	public I_M_Production getM_Production() throws RuntimeException;
+
     /** Column name M_ProductionLine_ID */
     public static final String COLUMNNAME_M_ProductionLine_ID = "M_ProductionLine_ID";
 
@@ -203,6 +246,19 @@ public interface I_M_ProductionLine
 
 	public I_M_ProductionPlan getM_ProductionPlan() throws RuntimeException;
 
+    /** Column name PlannedQty */
+    public static final String COLUMNNAME_PlannedQty = "PlannedQty";
+
+	/** Set Planned Quantity.
+	  * Planned quantity for this project
+	  */
+	public void setPlannedQty (BigDecimal PlannedQty);
+
+	/** Get Planned Quantity.
+	  * Planned quantity for this project
+	  */
+	public BigDecimal getPlannedQty();
+
     /** Column name Processed */
     public static final String COLUMNNAME_Processed = "Processed";
 
@@ -215,6 +271,15 @@ public interface I_M_ProductionLine
 	  * The document has been processed
 	  */
 	public boolean isProcessed();
+
+    /** Column name QtyUsed */
+    public static final String COLUMNNAME_QtyUsed = "QtyUsed";
+
+	/** Set Quantity Used	  */
+	public void setQtyUsed (BigDecimal QtyUsed);
+
+	/** Get Quantity Used	  */
+	public BigDecimal getQtyUsed();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";

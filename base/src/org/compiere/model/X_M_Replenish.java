@@ -24,14 +24,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for M_Replenish
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.013 - $Id$ */
 public class X_M_Replenish extends PO implements I_M_Replenish, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20110803L;
 
     /** Standard Constructor */
     public X_M_Replenish (Properties ctx, int M_Replenish_ID, String trxName)
@@ -225,6 +225,23 @@ public class X_M_Replenish extends PO implements I_M_Replenish, I_Persistent
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set Qty Batch Size.
+		@param QtyBatchSize Qty Batch Size	  */
+	public void setQtyBatchSize (BigDecimal QtyBatchSize)
+	{
+		set_Value (COLUMNNAME_QtyBatchSize, QtyBatchSize);
+	}
+
+	/** Get Qty Batch Size.
+		@return Qty Batch Size	  */
+	public BigDecimal getQtyBatchSize () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_QtyBatchSize);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	/** ReplenishType AD_Reference_ID=164 */

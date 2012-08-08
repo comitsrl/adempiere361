@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_Product
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.013 - $Id$ */
 public class X_M_Product extends PO implements I_M_Product, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20110803L;
 
     /** Standard Constructor */
     public X_M_Product (Properties ctx, int M_Product_ID, String trxName)
@@ -49,6 +49,12 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 			setIsExcludeAutoDelivery (false);
 // N
 			setIsInvoicePrintDetails (false);
+			setIsKanban (false);
+// N
+			setIsManufactured (false);
+// N
+			setIsPhantom (false);
+// N
 			setIsPickListPrintDetails (false);
 			setIsPurchased (true);
 // Y
@@ -117,6 +123,25 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 	public String getClassification () 
 	{
 		return (String)get_Value(COLUMNNAME_Classification);
+	}
+
+	/** Set Standard Cost.
+		@param CostStandard 
+		Standard Costs
+	  */
+	public void setCostStandard (BigDecimal CostStandard)
+	{
+		throw new IllegalArgumentException ("CostStandard is virtual column");	}
+
+	/** Get Standard Cost.
+		@return Standard Costs
+	  */
+	public BigDecimal getCostStandard () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_CostStandard);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	public I_C_RevenueRecognition getC_RevenueRecognition() throws RuntimeException
@@ -521,6 +546,78 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 		return false;
 	}
 
+	/** Set Kanban controlled.
+		@param IsKanban 
+		This part is Kanban controlled
+	  */
+	public void setIsKanban (boolean IsKanban)
+	{
+		set_Value (COLUMNNAME_IsKanban, Boolean.valueOf(IsKanban));
+	}
+
+	/** Get Kanban controlled.
+		@return This part is Kanban controlled
+	  */
+	public boolean isKanban () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsKanban);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Manufactured.
+		@param IsManufactured 
+		This product is manufactured
+	  */
+	public void setIsManufactured (boolean IsManufactured)
+	{
+		set_Value (COLUMNNAME_IsManufactured, Boolean.valueOf(IsManufactured));
+	}
+
+	/** Get Manufactured.
+		@return This product is manufactured
+	  */
+	public boolean isManufactured () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsManufactured);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Phantom.
+		@param IsPhantom 
+		Phantom Component
+	  */
+	public void setIsPhantom (boolean IsPhantom)
+	{
+		set_Value (COLUMNNAME_IsPhantom, Boolean.valueOf(IsPhantom));
+	}
+
+	/** Get Phantom.
+		@return Phantom Component
+	  */
+	public boolean isPhantom () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsPhantom);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
 	/** Set Print detail records on pick list.
 		@param IsPickListPrintDetails 
 		Print detail BOM elements on the pick list
@@ -840,6 +937,31 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 	public int getM_Locator_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_M_Locator_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_M_PartType getM_PartType() throws RuntimeException
+    {
+		return (I_M_PartType)MTable.get(getCtx(), I_M_PartType.Table_Name)
+			.getPO(getM_PartType_ID(), get_TrxName());	}
+
+	/** Set Part Type.
+		@param M_PartType_ID Part Type	  */
+	public void setM_PartType_ID (int M_PartType_ID)
+	{
+		if (M_PartType_ID < 1) 
+			set_Value (COLUMNNAME_M_PartType_ID, null);
+		else 
+			set_Value (COLUMNNAME_M_PartType_ID, Integer.valueOf(M_PartType_ID));
+	}
+
+	/** Get Part Type.
+		@return Part Type	  */
+	public int getM_PartType_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_M_PartType_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
