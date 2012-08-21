@@ -321,7 +321,7 @@
 	</target>
 
 	<!-- ============================================= -->
-	<!-- Buld Client Jar                               -->
+	<!-- Build Client Jar                               -->
 	<!-- ============================================= -->
 	<target name="toolsClient" depends="toolsCompile" unless="jars.uptodate" description="Create CCTools.jar">
 
@@ -464,13 +464,16 @@
 			<zipfileset src="lib/commons-codec.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
+			<zipfileset src="lib/commons-lang-2.1.jar">
+				<patternset refid="manifest.exclude" />
+			</zipfileset>
 		</jar>
 
 	</target>
 
 
 	<!-- ============================================= -->
-	<!-- Buld Jars                                     -->
+	<!-- Build Jars                                     -->
 	<!-- ============================================= -->
 	<target name="toolsDistribution" depends="toolsServer, toolsClient, toolsAppsServer, toolsDatabase" unless="jars.uptodate" description="Create jars">
 
