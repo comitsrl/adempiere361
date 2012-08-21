@@ -20,17 +20,17 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import org.compiere.util.KeyNamePair;
 
-/** Generated Interface for M_ProductionPlan
+/** Generated Interface for M_PartType
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.013
  */
-public interface I_M_ProductionPlan 
+public interface I_M_PartType 
 {
 
-    /** TableName=M_ProductionPlan */
-    public static final String Table_Name = "M_ProductionPlan";
+    /** TableName=M_PartType */
+    public static final String Table_Name = "M_PartType";
 
-    /** AD_Table_ID=385 */
+    /** AD_Table_ID=53334 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -52,13 +52,13 @@ public interface I_M_ProductionPlan
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
-	/** Set Organisation.
-	  * Organisational entity within client
+	/** Set Organization.
+	  * Organizational entity within client
 	  */
 	public void setAD_Org_ID (int AD_Org_ID);
 
-	/** Get Organisation.
-	  * Organisational entity within client
+	/** Get Organization.
+	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
 
@@ -104,102 +104,27 @@ public interface I_M_ProductionPlan
 	  */
 	public boolean isActive();
 
-    /** Column name Line */
-    public static final String COLUMNNAME_Line = "Line";
+    /** Column name M_PartType_ID */
+    public static final String COLUMNNAME_M_PartType_ID = "M_PartType_ID";
 
-	/** Set Line No.
-	  * Unique line for this document
+	/** Set Part Type	  */
+	public void setM_PartType_ID (int M_PartType_ID);
+
+	/** Get Part Type	  */
+	public int getM_PartType_ID();
+
+    /** Column name Name */
+    public static final String COLUMNNAME_Name = "Name";
+
+	/** Set Name.
+	  * Alphanumeric identifier of the entity
 	  */
-	public void setLine (int Line);
+	public void setName (String Name);
 
-	/** Get Line No.
-	  * Unique line for this document
+	/** Get Name.
+	  * Alphanumeric identifier of the entity
 	  */
-	public int getLine();
-
-    /** Column name M_Locator_ID */
-    public static final String COLUMNNAME_M_Locator_ID = "M_Locator_ID";
-
-	/** Set Locator.
-	  * Warehouse Locator
-	  */
-	public void setM_Locator_ID (int M_Locator_ID);
-
-	/** Get Locator.
-	  * Warehouse Locator
-	  */
-	public int getM_Locator_ID();
-
-	public I_M_Locator getM_Locator() throws RuntimeException;
-
-    /** Column name M_Product_ID */
-    public static final String COLUMNNAME_M_Product_ID = "M_Product_ID";
-
-	/** Set Product.
-	  * Product, Service, Item
-	  */
-	public void setM_Product_ID (int M_Product_ID);
-
-	/** Get Product.
-	  * Product, Service, Item
-	  */
-	public int getM_Product_ID();
-
-	public I_M_Product getM_Product() throws RuntimeException;
-
-    /** Column name M_Production_ID */
-    public static final String COLUMNNAME_M_Production_ID = "M_Production_ID";
-
-	/** Set Production.
-	  * Plan for producing a product
-	  */
-	public void setM_Production_ID (int M_Production_ID);
-
-	/** Get Production.
-	  * Plan for producing a product
-	  */
-	public int getM_Production_ID();
-
-	public I_M_Production getM_Production() throws RuntimeException;
-
-    /** Column name M_ProductionPlan_ID */
-    public static final String COLUMNNAME_M_ProductionPlan_ID = "M_ProductionPlan_ID";
-
-	/** Set Production Plan.
-	  * Plan for how a product is produced
-	  */
-	public void setM_ProductionPlan_ID (int M_ProductionPlan_ID);
-
-	/** Get Production Plan.
-	  * Plan for how a product is produced
-	  */
-	public int getM_ProductionPlan_ID();
-
-    /** Column name Processed */
-    public static final String COLUMNNAME_Processed = "Processed";
-
-	/** Set Processed.
-	  * The document has been processed
-	  */
-	public void setProcessed (boolean Processed);
-
-	/** Get Processed.
-	  * The document has been processed
-	  */
-	public boolean isProcessed();
-
-    /** Column name ProductionQty */
-    public static final String COLUMNNAME_ProductionQty = "ProductionQty";
-
-	/** Set Production Quantity.
-	  * Quantity of products to produce
-	  */
-	public void setProductionQty (BigDecimal ProductionQty);
-
-	/** Get Production Quantity.
-	  * Quantity of products to produce
-	  */
-	public BigDecimal getProductionQty();
+	public String getName();
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";
