@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for AD_Sequence_No
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_AD_Sequence_No extends PO implements I_AD_Sequence_No, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20120907L;
 
     /** Standard Constructor */
     public X_AD_Sequence_No (Properties ctx, int AD_Sequence_No_ID, String trxName)
@@ -38,7 +38,7 @@ public class X_AD_Sequence_No extends PO implements I_AD_Sequence_No, I_Persiste
       /** if (AD_Sequence_No_ID == 0)
         {
 			setAD_Sequence_ID (0);
-			setCalendarYear (null);
+			setCalendarYearMonth (null);
 			setCurrentNext (0);
         } */
     }
@@ -99,21 +99,21 @@ public class X_AD_Sequence_No extends PO implements I_AD_Sequence_No, I_Persiste
 		return ii.intValue();
 	}
 
-	/** Set Year.
-		@param CalendarYear 
-		Calendar Year
+	/** Set YearMonth.
+		@param CalendarYearMonth 
+		YYYYMM
 	  */
-	public void setCalendarYear (String CalendarYear)
+	public void setCalendarYearMonth (String CalendarYearMonth)
 	{
-		set_ValueNoCheck (COLUMNNAME_CalendarYear, CalendarYear);
+		set_ValueNoCheck (COLUMNNAME_CalendarYearMonth, CalendarYearMonth);
 	}
 
-	/** Get Year.
-		@return Calendar Year
+	/** Get YearMonth.
+		@return YYYYMM
 	  */
-	public String getCalendarYear () 
+	public String getCalendarYearMonth () 
 	{
-		return (String)get_Value(COLUMNNAME_CalendarYear);
+		return (String)get_Value(COLUMNNAME_CalendarYearMonth);
 	}
 
 	/** Set Current Next.

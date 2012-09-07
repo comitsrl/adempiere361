@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Sequence
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_AD_Sequence extends PO implements I_AD_Sequence, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20120907L;
 
     /** Standard Constructor */
     public X_AD_Sequence (Properties ctx, int AD_Sequence_ID, String trxName)
@@ -46,7 +46,11 @@ public class X_AD_Sequence extends PO implements I_AD_Sequence, I_Persistent
 			setIncrementNo (0);
 // 1
 			setIsAutoSequence (false);
+			setIsOrgLevelSequence (false);
+// N
 			setName (null);
+			setStartNewMonth (false);
+// N
 			setStartNo (0);
 // 1000000
         } */
@@ -262,6 +266,30 @@ public class X_AD_Sequence extends PO implements I_AD_Sequence, I_Persistent
 		return false;
 	}
 
+	/** Set Organization level.
+		@param IsOrgLevelSequence 
+		This sequence can be defined for each organization
+	  */
+	public void setIsOrgLevelSequence (boolean IsOrgLevelSequence)
+	{
+		set_Value (COLUMNNAME_IsOrgLevelSequence, Boolean.valueOf(IsOrgLevelSequence));
+	}
+
+	/** Get Organization level.
+		@return This sequence can be defined for each organization
+	  */
+	public boolean isOrgLevelSequence () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsOrgLevelSequence);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
 	/** Set Used for Record ID.
 		@param IsTableID 
 		The document number  will be used as the record key
@@ -311,6 +339,23 @@ public class X_AD_Sequence extends PO implements I_AD_Sequence, I_Persistent
         return new KeyNamePair(get_ID(), getName());
     }
 
+	/** Set Org Column.
+		@param OrgColumn 
+		Fully qualified Organization column (AD_Org_ID)
+	  */
+	public void setOrgColumn (String OrgColumn)
+	{
+		set_Value (COLUMNNAME_OrgColumn, OrgColumn);
+	}
+
+	/** Get Org Column.
+		@return Fully qualified Organization column (AD_Org_ID)
+	  */
+	public String getOrgColumn () 
+	{
+		return (String)get_Value(COLUMNNAME_OrgColumn);
+	}
+
 	/** Set Prefix.
 		@param Prefix 
 		Prefix before the sequence number
@@ -326,6 +371,27 @@ public class X_AD_Sequence extends PO implements I_AD_Sequence, I_Persistent
 	public String getPrefix () 
 	{
 		return (String)get_Value(COLUMNNAME_Prefix);
+	}
+
+	/** Set Restart sequence every month.
+		@param StartNewMonth Restart sequence every month	  */
+	public void setStartNewMonth (boolean StartNewMonth)
+	{
+		set_Value (COLUMNNAME_StartNewMonth, Boolean.valueOf(StartNewMonth));
+	}
+
+	/** Get Restart sequence every month.
+		@return Restart sequence every month	  */
+	public boolean isStartNewMonth () 
+	{
+		Object oo = get_Value(COLUMNNAME_StartNewMonth);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set Restart sequence every Year.

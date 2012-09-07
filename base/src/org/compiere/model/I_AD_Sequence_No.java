@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Sequence_No
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 360LTS.015
  */
 public interface I_AD_Sequence_No 
 {
@@ -77,18 +77,18 @@ public interface I_AD_Sequence_No
 
 	public I_AD_Sequence getAD_Sequence() throws RuntimeException;
 
-    /** Column name CalendarYear */
-    public static final String COLUMNNAME_CalendarYear = "CalendarYear";
+    /** Column name CalendarYearMonth */
+    public static final String COLUMNNAME_CalendarYearMonth = "CalendarYearMonth";
 
-	/** Set Year.
-	  * Calendar Year
+	/** Set YearMonth.
+	  * YYYYMM
 	  */
-	public void setCalendarYear (String CalendarYear);
+	public void setCalendarYearMonth (String CalendarYearMonth);
 
-	/** Get Year.
-	  * Calendar Year
+	/** Get YearMonth.
+	  * YYYYMM
 	  */
-	public String getCalendarYear();
+	public String getCalendarYearMonth();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
