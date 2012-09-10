@@ -24,14 +24,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Entry
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Entry (Properties ctx, int A_Depreciation_Entry_ID, String trxName)
@@ -40,7 +40,6 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
       /** if (A_Depreciation_Entry_ID == 0)
         {
 			setA_Depreciation_Entry_ID (0);
-			setA_Entry_Type (null);
 			setC_AcctSchema_ID (0);
 			setC_Currency_ID (0);
 // @$C_CURRENCY_ID@
@@ -50,13 +49,19 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 // @Date@
 			setDateDoc (new Timestamp( System.currentTimeMillis() ));
 // @Date@
-			setDescription (null);
+			setDocAction (null);
+// 'CO'
+			setDocStatus (null);
+// 'DR'
 			setDocumentNo (null);
 			setGL_Category_ID (0);
+			setIsApproved (false);
+// @#IsCanApproveOwnDoc@
+			setPosted (false);
+// 'N'
 			setPostingType (null);
-// A
+// 'A'
 			setProcessed (false);
-// N
 			setProcessing (false);
         } */
     }
@@ -93,10 +98,9 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		@param A_Depreciation_Entry_ID Depreciation Entry	  */
 	public void setA_Depreciation_Entry_ID (int A_Depreciation_Entry_ID)
 	{
-		if (A_Depreciation_Entry_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Entry_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Entry_ID, Integer.valueOf(A_Depreciation_Entry_ID));
+		if (A_Depreciation_Entry_ID < 1)
+			 throw new IllegalArgumentException ("A_Depreciation_Entry_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Depreciation_Entry_ID, Integer.valueOf(A_Depreciation_Entry_ID));
 	}
 
 	/** Get Depreciation Entry.
@@ -117,20 +121,20 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
         return new KeyNamePair(get_ID(), String.valueOf(getA_Depreciation_Entry_ID()));
     }
 
-	/** A_Entry_Type AD_Reference_ID=53257 */
-	public static final int A_ENTRY_TYPE_AD_Reference_ID=53257;
-	/** Depreciation = DEP */
-	public static final String A_ENTRY_TYPE_Depreciation = "DEP";
-	/** Disposals = DIS */
-	public static final String A_ENTRY_TYPE_Disposals = "DIS";
+	/** A_Entry_Type AD_Reference_ID=1000014 */
+	public static final int A_ENTRY_TYPE_AD_Reference_ID=1000014;
 	/** Forecasts = FOR */
 	public static final String A_ENTRY_TYPE_Forecasts = "FOR";
-	/** New = NEW */
-	public static final String A_ENTRY_TYPE_New = "NEW";
-	/** Splits = SPL */
-	public static final String A_ENTRY_TYPE_Splits = "SPL";
+	/** Depreciation = DEP */
+	public static final String A_ENTRY_TYPE_Depreciation = "DEP";
 	/** Transfers = TRN */
 	public static final String A_ENTRY_TYPE_Transfers = "TRN";
+	/** Disposals = DIS */
+	public static final String A_ENTRY_TYPE_Disposals = "DIS";
+	/** Splits = SPL */
+	public static final String A_ENTRY_TYPE_Splits = "SPL";
+	/** New = NEW */
+	public static final String A_ENTRY_TYPE_New = "NEW";
 	/** Set Entry Type.
 		@param A_Entry_Type Entry Type	  */
 	public void setA_Entry_Type (String A_Entry_Type)
@@ -146,7 +150,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return (String)get_Value(COLUMNNAME_A_Entry_Type);
 	}
 
-	public I_C_AcctSchema getC_AcctSchema() throws RuntimeException
+	public I_C_AcctSchema getC_AcctSchema()
     {
 		return (I_C_AcctSchema)MTable.get(getCtx(), I_C_AcctSchema.Table_Name)
 			.getPO(getC_AcctSchema_ID(), get_TrxName());	}
@@ -157,10 +161,9 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setC_AcctSchema_ID (int C_AcctSchema_ID)
 	{
-		if (C_AcctSchema_ID < 1) 
-			set_Value (COLUMNNAME_C_AcctSchema_ID, null);
-		else 
-			set_Value (COLUMNNAME_C_AcctSchema_ID, Integer.valueOf(C_AcctSchema_ID));
+		if (C_AcctSchema_ID < 1)
+			 throw new IllegalArgumentException ("C_AcctSchema_ID is mandatory.");
+		set_Value (COLUMNNAME_C_AcctSchema_ID, Integer.valueOf(C_AcctSchema_ID));
 	}
 
 	/** Get Accounting Schema.
@@ -174,7 +177,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return ii.intValue();
 	}
 
-	public I_C_Currency getC_Currency() throws RuntimeException
+	public I_C_Currency getC_Currency()
     {
 		return (I_C_Currency)MTable.get(getCtx(), I_C_Currency.Table_Name)
 			.getPO(getC_Currency_ID(), get_TrxName());	}
@@ -185,10 +188,9 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setC_Currency_ID (int C_Currency_ID)
 	{
-		if (C_Currency_ID < 1) 
-			set_Value (COLUMNNAME_C_Currency_ID, null);
-		else 
-			set_Value (COLUMNNAME_C_Currency_ID, Integer.valueOf(C_Currency_ID));
+		if (C_Currency_ID < 1)
+			 throw new IllegalArgumentException ("C_Currency_ID is mandatory.");
+		set_Value (COLUMNNAME_C_Currency_ID, Integer.valueOf(C_Currency_ID));
 	}
 
 	/** Get Currency.
@@ -202,7 +204,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return ii.intValue();
 	}
 
-	public I_C_DocType getC_DocType() throws RuntimeException
+	public I_C_DocType getC_DocType()
     {
 		return (I_C_DocType)MTable.get(getCtx(), I_C_DocType.Table_Name)
 			.getPO(getC_DocType_ID(), get_TrxName());	}
@@ -213,10 +215,9 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setC_DocType_ID (int C_DocType_ID)
 	{
-		if (C_DocType_ID < 0) 
-			set_Value (COLUMNNAME_C_DocType_ID, null);
-		else 
-			set_Value (COLUMNNAME_C_DocType_ID, Integer.valueOf(C_DocType_ID));
+		if (C_DocType_ID < 0)
+			 throw new IllegalArgumentException ("C_DocType_ID is mandatory.");
+		set_Value (COLUMNNAME_C_DocType_ID, Integer.valueOf(C_DocType_ID));
 	}
 
 	/** Get Document Type.
@@ -230,21 +231,15 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return ii.intValue();
 	}
 
-	public I_C_Period getC_Period() throws RuntimeException
-    {
-		return (I_C_Period)MTable.get(getCtx(), I_C_Period.Table_Name)
-			.getPO(getC_Period_ID(), get_TrxName());	}
-
 	/** Set Period.
 		@param C_Period_ID 
 		Period of the Calendar
 	  */
 	public void setC_Period_ID (int C_Period_ID)
 	{
-		if (C_Period_ID < 1) 
-			set_Value (COLUMNNAME_C_Period_ID, null);
-		else 
-			set_Value (COLUMNNAME_C_Period_ID, Integer.valueOf(C_Period_ID));
+		if (C_Period_ID < 1)
+			 throw new IllegalArgumentException ("C_Period_ID is mandatory.");
+		set_Value (COLUMNNAME_C_Period_ID, Integer.valueOf(C_Period_ID));
 	}
 
 	/** Get Period.
@@ -264,6 +259,8 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setDateAcct (Timestamp DateAcct)
 	{
+		if (DateAcct == null)
+			throw new IllegalArgumentException ("DateAcct is mandatory.");
 		set_Value (COLUMNNAME_DateAcct, DateAcct);
 	}
 
@@ -281,6 +278,8 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setDateDoc (Timestamp DateDoc)
 	{
+		if (DateDoc == null)
+			throw new IllegalArgumentException ("DateDoc is mandatory.");
 		set_Value (COLUMNNAME_DateDoc, DateDoc);
 	}
 
@@ -309,13 +308,107 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return (String)get_Value(COLUMNNAME_Description);
 	}
 
+	/** DocAction AD_Reference_ID=135 */
+	public static final int DOCACTION_AD_Reference_ID=135;
+	/** Complete = CO */
+	public static final String DOCACTION_Complete = "CO";
+	/** Approve = AP */
+	public static final String DOCACTION_Approve = "AP";
+	/** Reject = RJ */
+	public static final String DOCACTION_Reject = "RJ";
+	/** Post = PO */
+	public static final String DOCACTION_Post = "PO";
+	/** Void = VO */
+	public static final String DOCACTION_Void = "VO";
+	/** Close = CL */
+	public static final String DOCACTION_Close = "CL";
+	/** Reverse - Correct = RC */
+	public static final String DOCACTION_Reverse_Correct = "RC";
+	/** Reverse - Accrual = RA */
+	public static final String DOCACTION_Reverse_Accrual = "RA";
+	/** Invalidate = IN */
+	public static final String DOCACTION_Invalidate = "IN";
+	/** Re-activate = RE */
+	public static final String DOCACTION_Re_Activate = "RE";
+	/** <None> = -- */
+	public static final String DOCACTION_None = "--";
+	/** Prepare = PR */
+	public static final String DOCACTION_Prepare = "PR";
+	/** Unlock = XL */
+	public static final String DOCACTION_Unlock = "XL";
+	/** Wait Complete = WC */
+	public static final String DOCACTION_WaitComplete = "WC";
+	/** Set Document Action.
+		@param DocAction 
+		The targeted status of the document
+	  */
+	public void setDocAction (String DocAction)
+	{
+
+		set_Value (COLUMNNAME_DocAction, DocAction);
+	}
+
+	/** Get Document Action.
+		@return The targeted status of the document
+	  */
+	public String getDocAction () 
+	{
+		return (String)get_Value(COLUMNNAME_DocAction);
+	}
+
+	/** DocStatus AD_Reference_ID=131 */
+	public static final int DOCSTATUS_AD_Reference_ID=131;
+	/** Drafted = DR */
+	public static final String DOCSTATUS_Drafted = "DR";
+	/** Completed = CO */
+	public static final String DOCSTATUS_Completed = "CO";
+	/** Approved = AP */
+	public static final String DOCSTATUS_Approved = "AP";
+	/** Not Approved = NA */
+	public static final String DOCSTATUS_NotApproved = "NA";
+	/** Voided = VO */
+	public static final String DOCSTATUS_Voided = "VO";
+	/** Invalid = IN */
+	public static final String DOCSTATUS_Invalid = "IN";
+	/** Reversed = RE */
+	public static final String DOCSTATUS_Reversed = "RE";
+	/** Closed = CL */
+	public static final String DOCSTATUS_Closed = "CL";
+	/** Unknown = ?? */
+	public static final String DOCSTATUS_Unknown = "??";
+	/** In Progress = IP */
+	public static final String DOCSTATUS_InProgress = "IP";
+	/** Waiting Payment = WP */
+	public static final String DOCSTATUS_WaitingPayment = "WP";
+	/** Waiting Confirmation = WC */
+	public static final String DOCSTATUS_WaitingConfirmation = "WC";
+	/** Set Document Status.
+		@param DocStatus 
+		The current status of the document
+	  */
+	public void setDocStatus (String DocStatus)
+	{
+
+		set_Value (COLUMNNAME_DocStatus, DocStatus);
+	}
+
+	/** Get Document Status.
+		@return The current status of the document
+	  */
+	public String getDocStatus () 
+	{
+		return (String)get_Value(COLUMNNAME_DocStatus);
+	}
+
 	/** Set Document No.
 		@param DocumentNo 
 		Document sequence number of the document
 	  */
 	public void setDocumentNo (String DocumentNo)
 	{
-		set_ValueNoCheck (COLUMNNAME_DocumentNo, DocumentNo);
+		if (DocumentNo == null)
+			throw new IllegalArgumentException ("DocumentNo is mandatory.");
+		set_Value (COLUMNNAME_DocumentNo, DocumentNo);
 	}
 
 	/** Get Document No.
@@ -326,7 +419,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return (String)get_Value(COLUMNNAME_DocumentNo);
 	}
 
-	public I_GL_Category getGL_Category() throws RuntimeException
+	public I_GL_Category getGL_Category()
     {
 		return (I_GL_Category)MTable.get(getCtx(), I_GL_Category.Table_Name)
 			.getPO(getGL_Category_ID(), get_TrxName());	}
@@ -337,10 +430,9 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setGL_Category_ID (int GL_Category_ID)
 	{
-		if (GL_Category_ID < 1) 
-			set_Value (COLUMNNAME_GL_Category_ID, null);
-		else 
-			set_Value (COLUMNNAME_GL_Category_ID, Integer.valueOf(GL_Category_ID));
+		if (GL_Category_ID < 1)
+			 throw new IllegalArgumentException ("GL_Category_ID is mandatory.");
+		set_Value (COLUMNNAME_GL_Category_ID, Integer.valueOf(GL_Category_ID));
 	}
 
 	/** Get GL Category.
@@ -352,6 +444,54 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set Approved.
+		@param IsApproved 
+		Indicates if this document requires approval
+	  */
+	public void setIsApproved (boolean IsApproved)
+	{
+		set_Value (COLUMNNAME_IsApproved, Boolean.valueOf(IsApproved));
+	}
+
+	/** Get Approved.
+		@return Indicates if this document requires approval
+	  */
+	public boolean isApproved () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsApproved);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Posted.
+		@param Posted 
+		Posting status
+	  */
+	public void setPosted (boolean Posted)
+	{
+		set_Value (COLUMNNAME_Posted, Boolean.valueOf(Posted));
+	}
+
+	/** Get Posted.
+		@return Posting status
+	  */
+	public boolean isPosted () 
+	{
+		Object oo = get_Value(COLUMNNAME_Posted);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** PostingType AD_Reference_ID=125 */

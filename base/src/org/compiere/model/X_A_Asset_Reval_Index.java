@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Reval_Index
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Asset_Reval_Index extends PO implements I_A_Asset_Reval_Index, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Asset_Reval_Index (Properties ctx, int A_Asset_Reval_Index_ID, String trxName)
@@ -77,18 +77,17 @@ public class X_A_Asset_Reval_Index extends PO implements I_A_Asset_Reval_Index, 
       return sb.toString();
     }
 
-	/** Set Asset Reval Index.
-		@param A_Asset_Reval_Index_ID Asset Reval Index	  */
+	/** Set A_Asset_Reval_Index_ID.
+		@param A_Asset_Reval_Index_ID A_Asset_Reval_Index_ID	  */
 	public void setA_Asset_Reval_Index_ID (int A_Asset_Reval_Index_ID)
 	{
-		if (A_Asset_Reval_Index_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Reval_Index_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Reval_Index_ID, Integer.valueOf(A_Asset_Reval_Index_ID));
+		if (A_Asset_Reval_Index_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_Reval_Index_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Asset_Reval_Index_ID, Integer.valueOf(A_Asset_Reval_Index_ID));
 	}
 
-	/** Get Asset Reval Index.
-		@return Asset Reval Index	  */
+	/** Get A_Asset_Reval_Index_ID.
+		@return A_Asset_Reval_Index_ID	  */
 	public int getA_Asset_Reval_Index_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Reval_Index_ID);
@@ -105,73 +104,77 @@ public class X_A_Asset_Reval_Index extends PO implements I_A_Asset_Reval_Index, 
         return new KeyNamePair(get_ID(), String.valueOf(getA_Asset_Reval_Index_ID()));
     }
 
-	/** Set Effective Date.
-		@param A_Effective_Date Effective Date	  */
+	/** Set A_Effective_Date.
+		@param A_Effective_Date A_Effective_Date	  */
 	public void setA_Effective_Date (Timestamp A_Effective_Date)
 	{
+		if (A_Effective_Date == null)
+			throw new IllegalArgumentException ("A_Effective_Date is mandatory.");
 		set_Value (COLUMNNAME_A_Effective_Date, A_Effective_Date);
 	}
 
-	/** Get Effective Date.
-		@return Effective Date	  */
+	/** Get A_Effective_Date.
+		@return A_Effective_Date	  */
 	public Timestamp getA_Effective_Date () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_A_Effective_Date);
 	}
 
-	/** A_Reval_Code AD_Reference_ID=53262 */
-	public static final int A_REVAL_CODE_AD_Reference_ID=53262;
+	/** A_Reval_Code AD_Reference_ID=1000019 */
+	public static final int A_REVAL_CODE_AD_Reference_ID=1000019;
 	/** Revaluation Code #1 = R01 */
 	public static final String A_REVAL_CODE_RevaluationCode1 = "R01";
 	/** Revaluation Code #2 = R02 */
 	public static final String A_REVAL_CODE_RevaluationCode2 = "R02";
 	/** Revaluation Code #3 = R03 */
 	public static final String A_REVAL_CODE_RevaluationCode3 = "R03";
-	/** Set Reval. Code.
-		@param A_Reval_Code Reval. Code	  */
+	/** Set A_Reval_Code.
+		@param A_Reval_Code A_Reval_Code	  */
 	public void setA_Reval_Code (String A_Reval_Code)
 	{
 
 		set_Value (COLUMNNAME_A_Reval_Code, A_Reval_Code);
 	}
 
-	/** Get Reval. Code.
-		@return Reval. Code	  */
+	/** Get A_Reval_Code.
+		@return A_Reval_Code	  */
 	public String getA_Reval_Code () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Reval_Code);
 	}
 
-	/** A_Reval_Multiplier AD_Reference_ID=53260 */
-	public static final int A_REVAL_MULTIPLIER_AD_Reference_ID=53260;
+	/** A_Reval_Multiplier AD_Reference_ID=1000017 */
+	public static final int A_REVAL_MULTIPLIER_AD_Reference_ID=1000017;
 	/** Factor = FAC */
 	public static final String A_REVAL_MULTIPLIER_Factor = "FAC";
 	/** Index = IND */
 	public static final String A_REVAL_MULTIPLIER_Index = "IND";
-	/** Set Reval. Multiplier.
-		@param A_Reval_Multiplier Reval. Multiplier	  */
+	/** Set A_Reval_Multiplier.
+		@param A_Reval_Multiplier A_Reval_Multiplier	  */
 	public void setA_Reval_Multiplier (String A_Reval_Multiplier)
 	{
 
 		set_Value (COLUMNNAME_A_Reval_Multiplier, A_Reval_Multiplier);
 	}
 
-	/** Get Reval. Multiplier.
-		@return Reval. Multiplier	  */
+	/** Get A_Reval_Multiplier.
+		@return A_Reval_Multiplier	  */
 	public String getA_Reval_Multiplier () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Reval_Multiplier);
 	}
 
-	/** Set Reval. Rate.
-		@param A_Reval_Rate Reval. Rate	  */
+	/** Set A_Reval_Rate.
+		@param A_Reval_Rate A_Reval_Rate	  */
 	public void setA_Reval_Rate (BigDecimal A_Reval_Rate)
 	{
+		if (A_Reval_Rate == null)
+			throw new IllegalArgumentException ("A_Reval_Rate is mandatory.");
 		set_Value (COLUMNNAME_A_Reval_Rate, A_Reval_Rate);
 	}
 
-	/** Get Reval. Rate.
-		@return Reval. Rate	  */
+	/** Get A_Reval_Rate.
+		@return A_Reval_Rate	  */
 	public BigDecimal getA_Reval_Rate () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Reval_Rate);

@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Group
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Asset_Group (Properties ctx, int A_Asset_Group_ID, String trxName)
@@ -41,9 +41,13 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 			setA_Asset_Group_ID (0);
 			setIsCreateAsActive (true);
 // Y
+			setIsDefault (false);
+// 'N'
 			setIsDepreciated (false);
 			setIsOneAssetPerUOM (false);
 			setIsOwned (false);
+			setIsTrackIssues (false);
+// N
 			setName (null);
         } */
     }
@@ -76,16 +80,35 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
       return sb.toString();
     }
 
+	/** Set Asset class.
+		@param A_Asset_Class_ID Asset class	  */
+	public void setA_Asset_Class_ID (int A_Asset_Class_ID)
+	{
+		if (A_Asset_Class_ID < 1) 
+			set_Value (COLUMNNAME_A_Asset_Class_ID, null);
+		else 
+			set_Value (COLUMNNAME_A_Asset_Class_ID, Integer.valueOf(A_Asset_Class_ID));
+	}
+
+	/** Get Asset class.
+		@return Asset class	  */
+	public int getA_Asset_Class_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Class_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
 	/** Set Asset Group.
 		@param A_Asset_Group_ID 
 		Group of Assets
 	  */
 	public void setA_Asset_Group_ID (int A_Asset_Group_ID)
 	{
-		if (A_Asset_Group_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Group_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Group_ID, Integer.valueOf(A_Asset_Group_ID));
+		if (A_Asset_Group_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_Group_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Asset_Group_ID, Integer.valueOf(A_Asset_Group_ID));
 	}
 
 	/** Get Asset Group.
@@ -107,6 +130,26 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
         return new KeyNamePair(get_ID(), String.valueOf(getA_Asset_Group_ID()));
     }
 
+	/** Set Asset Type.
+		@param A_Asset_Type_ID Asset Type	  */
+	public void setA_Asset_Type_ID (int A_Asset_Type_ID)
+	{
+		if (A_Asset_Type_ID < 1) 
+			set_Value (COLUMNNAME_A_Asset_Type_ID, null);
+		else 
+			set_Value (COLUMNNAME_A_Asset_Type_ID, Integer.valueOf(A_Asset_Type_ID));
+	}
+
+	/** Get Asset Type.
+		@return Asset Type	  */
+	public int getA_Asset_Type_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Type_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
 	/** Set Description.
 		@param Description 
 		Optional short description of the record
@@ -122,6 +165,36 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 	public String getDescription () 
 	{
 		return (String)get_Value(COLUMNNAME_Description);
+	}
+
+	/** GZ_TipComponenta AD_Reference_ID=1000068 */
+	public static final int GZ_TIPCOMPONENTA_AD_Reference_ID=1000068;
+	/** Contor = CT */
+	public static final String GZ_TIPCOMPONENTA_Contor = "CT";
+	/** Bransament = BR */
+	public static final String GZ_TIPCOMPONENTA_Bransament = "BR";
+	/** Regulator = RG */
+	public static final String GZ_TIPCOMPONENTA_Regulator = "RG";
+	/** Retea distributie = RD */
+	public static final String GZ_TIPCOMPONENTA_ReteaDistributie = "RD";
+	/** Instalatie utilizare = IU */
+	public static final String GZ_TIPCOMPONENTA_InstalatieUtilizare = "IU";
+	/** Set Tip componentă.
+		@param GZ_TipComponenta 
+		Componentă a reţelei de furnizare şi/sau distribuţie
+	  */
+	public void setGZ_TipComponenta (String GZ_TipComponenta)
+	{
+
+		set_Value (COLUMNNAME_GZ_TipComponenta, GZ_TipComponenta);
+	}
+
+	/** Get Tip componentă.
+		@return Componentă a reţelei de furnizare şi/sau distribuţie
+	  */
+	public String getGZ_TipComponenta () 
+	{
+		return (String)get_Value(COLUMNNAME_GZ_TipComponenta);
 	}
 
 	/** Set Comment/Help.
@@ -156,6 +229,30 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 	public boolean isCreateAsActive () 
 	{
 		Object oo = get_Value(COLUMNNAME_IsCreateAsActive);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Default.
+		@param IsDefault 
+		Default value
+	  */
+	public void setIsDefault (boolean IsDefault)
+	{
+		set_Value (COLUMNNAME_IsDefault, Boolean.valueOf(IsDefault));
+	}
+
+	/** Get Default.
+		@return Default value
+	  */
+	public boolean isDefault () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsDefault);
 		if (oo != null) 
 		{
 			 if (oo instanceof Boolean) 
@@ -267,6 +364,8 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 	  */
 	public void setName (String Name)
 	{
+		if (Name == null)
+			throw new IllegalArgumentException ("Name is mandatory.");
 		set_Value (COLUMNNAME_Name, Name);
 	}
 

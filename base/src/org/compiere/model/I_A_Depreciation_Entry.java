@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation_Entry
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.5.3a
  */
 public interface I_A_Depreciation_Entry 
 {
@@ -30,7 +30,7 @@ public interface I_A_Depreciation_Entry
     /** TableName=A_Depreciation_Entry */
     public static final String Table_Name = "A_Depreciation_Entry";
 
-    /** AD_Table_ID=53121 */
+    /** AD_Table_ID=1000019 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -49,15 +49,6 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getAD_Client_ID();
 
-    /** Column name A_Depreciation_Entry_ID */
-    public static final String COLUMNNAME_A_Depreciation_Entry_ID = "A_Depreciation_Entry_ID";
-
-	/** Set Depreciation Entry	  */
-	public void setA_Depreciation_Entry_ID (int A_Depreciation_Entry_ID);
-
-	/** Get Depreciation Entry	  */
-	public int getA_Depreciation_Entry_ID();
-
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
@@ -70,6 +61,15 @@ public interface I_A_Depreciation_Entry
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
+
+    /** Column name A_Depreciation_Entry_ID */
+    public static final String COLUMNNAME_A_Depreciation_Entry_ID = "A_Depreciation_Entry_ID";
+
+	/** Set Depreciation Entry	  */
+	public void setA_Depreciation_Entry_ID (int A_Depreciation_Entry_ID);
+
+	/** Get Depreciation Entry	  */
+	public int getA_Depreciation_Entry_ID();
 
     /** Column name A_Entry_Type */
     public static final String COLUMNNAME_A_Entry_Type = "A_Entry_Type";
@@ -93,7 +93,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getC_AcctSchema_ID();
 
-	public I_C_AcctSchema getC_AcctSchema() throws RuntimeException;
+	public I_C_AcctSchema getC_AcctSchema();
 
     /** Column name C_Currency_ID */
     public static final String COLUMNNAME_C_Currency_ID = "C_Currency_ID";
@@ -108,7 +108,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getC_Currency_ID();
 
-	public I_C_Currency getC_Currency() throws RuntimeException;
+	public I_C_Currency getC_Currency();
 
     /** Column name C_DocType_ID */
     public static final String COLUMNNAME_C_DocType_ID = "C_DocType_ID";
@@ -123,7 +123,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getC_DocType_ID();
 
-	public I_C_DocType getC_DocType() throws RuntimeException;
+	public I_C_DocType getC_DocType();
 
     /** Column name C_Period_ID */
     public static final String COLUMNNAME_C_Period_ID = "C_Period_ID";
@@ -137,8 +137,6 @@ public interface I_A_Depreciation_Entry
 	  * Period of the Calendar
 	  */
 	public int getC_Period_ID();
-
-	public I_C_Period getC_Period() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -195,6 +193,32 @@ public interface I_A_Depreciation_Entry
 	  */
 	public String getDescription();
 
+    /** Column name DocAction */
+    public static final String COLUMNNAME_DocAction = "DocAction";
+
+	/** Set Document Action.
+	  * The targeted status of the document
+	  */
+	public void setDocAction (String DocAction);
+
+	/** Get Document Action.
+	  * The targeted status of the document
+	  */
+	public String getDocAction();
+
+    /** Column name DocStatus */
+    public static final String COLUMNNAME_DocStatus = "DocStatus";
+
+	/** Set Document Status.
+	  * The current status of the document
+	  */
+	public void setDocStatus (String DocStatus);
+
+	/** Get Document Status.
+	  * The current status of the document
+	  */
+	public String getDocStatus();
+
     /** Column name DocumentNo */
     public static final String COLUMNNAME_DocumentNo = "DocumentNo";
 
@@ -221,7 +245,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getGL_Category_ID();
 
-	public I_GL_Category getGL_Category() throws RuntimeException;
+	public I_GL_Category getGL_Category();
 
     /** Column name IsActive */
     public static final String COLUMNNAME_IsActive = "IsActive";
@@ -235,6 +259,32 @@ public interface I_A_Depreciation_Entry
 	  * The record is active in the system
 	  */
 	public boolean isActive();
+
+    /** Column name IsApproved */
+    public static final String COLUMNNAME_IsApproved = "IsApproved";
+
+	/** Set Approved.
+	  * Indicates if this document requires approval
+	  */
+	public void setIsApproved (boolean IsApproved);
+
+	/** Get Approved.
+	  * Indicates if this document requires approval
+	  */
+	public boolean isApproved();
+
+    /** Column name Posted */
+    public static final String COLUMNNAME_Posted = "Posted";
+
+	/** Set Posted.
+	  * Posting status
+	  */
+	public void setPosted (boolean Posted);
+
+	/** Get Posted.
+	  * Posting status
+	  */
+	public boolean isPosted();
 
     /** Column name PostingType */
     public static final String COLUMNNAME_PostingType = "PostingType";

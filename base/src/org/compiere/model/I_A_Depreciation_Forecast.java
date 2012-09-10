@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation_Forecast
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.5.3a
  */
 public interface I_A_Depreciation_Forecast 
 {
@@ -30,7 +30,7 @@ public interface I_A_Depreciation_Forecast
     /** TableName=A_Depreciation_Forecast */
     public static final String Table_Name = "A_Depreciation_Forecast";
 
-    /** AD_Table_ID=53118 */
+    /** AD_Table_ID=1000016 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -49,15 +49,6 @@ public interface I_A_Depreciation_Forecast
 	  */
 	public int getAD_Client_ID();
 
-    /** Column name A_Depreciation_Forecast_ID */
-    public static final String COLUMNNAME_A_Depreciation_Forecast_ID = "A_Depreciation_Forecast_ID";
-
-	/** Set Depreciation Forecast	  */
-	public void setA_Depreciation_Forecast_ID (int A_Depreciation_Forecast_ID);
-
-	/** Get Depreciation Forecast	  */
-	public int getA_Depreciation_Forecast_ID();
-
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
@@ -71,27 +62,32 @@ public interface I_A_Depreciation_Forecast
 	  */
 	public int getAD_Org_ID();
 
+    /** Column name A_Depreciation_Forecast_ID */
+    public static final String COLUMNNAME_A_Depreciation_Forecast_ID = "A_Depreciation_Forecast_ID";
+
+	/** Set A_Depreciation_Forecast_ID	  */
+	public void setA_Depreciation_Forecast_ID (int A_Depreciation_Forecast_ID);
+
+	/** Get A_Depreciation_Forecast_ID	  */
+	public int getA_Depreciation_Forecast_ID();
+
     /** Column name A_End_Asset_ID */
     public static final String COLUMNNAME_A_End_Asset_ID = "A_End_Asset_ID";
 
-	/** Set End Aset ID	  */
+	/** Set To Asset	  */
 	public void setA_End_Asset_ID (int A_End_Asset_ID);
 
-	/** Get End Aset ID	  */
+	/** Get To Asset	  */
 	public int getA_End_Asset_ID();
-
-	public I_A_Asset getA_End_Asset() throws RuntimeException;
 
     /** Column name A_Start_Asset_ID */
     public static final String COLUMNNAME_A_Start_Asset_ID = "A_Start_Asset_ID";
 
-	/** Set Start Asset	  */
+	/** Set From Asset	  */
 	public void setA_Start_Asset_ID (int A_Start_Asset_ID);
 
-	/** Get Start Asset	  */
+	/** Get From Asset	  */
 	public int getA_Start_Asset_ID();
-
-	public I_A_Asset getA_Start_Asset() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";

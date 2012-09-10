@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Split
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Asset_Split (Properties ctx, int A_Asset_Split_ID, String trxName)
@@ -42,12 +42,9 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
       /** if (A_Asset_Split_ID == 0)
         {
 			setA_Asset_Acct_ID (0);
-// @SQL=SELECT A_Asset_Acct_ID FROM A_Asset_Acct WHERE A_Asset_Acct.A_Asset_Acct_ID=@A_Asset_Acct_ID@
 			setA_Asset_ID (0);
-// @SQL=SELECT A_Asset_ID FROM A_Asset WHERE A_Asset.A_Asset_ID=@A_Asset_ID@
 			setA_Asset_Split_ID (0);
 			setA_Depreciation_Workfile_ID (0);
-// @SQL=SELECT A_Depreciation_Workfile_ID FROM A_Depreciation_Workfile WHERE A_Depreciation_Workfile.A_Depreciation_Workfile_ID=@A_Depreciation_Workfile_ID@
 			setA_QTY_Current (Env.ZERO);
 // @SQL=SELECT A_QTY_Current FROM A_Depreciation_Workfile WHERE A_Depreciation_Workfile.A_Asset_ID=@A_Asset_ID@ and A_Depreciation_Workfile.PostingType='@PostingType@'
 			setA_Split_Type (null);
@@ -57,7 +54,7 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 			setDateAcct (new Timestamp( System.currentTimeMillis() ));
 // @Date@
 			setPostingType (null);
-// @SQL=SELECT PostingType FROM A_Depreciation_Workfile WHERE A_Depreciation_Workfile.A_Depreciation_Workfile_ID=@A_Depreciation_Workfile_ID@
+// A
 			setProcessed (false);
 			setProcessing (false);
         } */
@@ -91,15 +88,15 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
       return sb.toString();
     }
 
-	/** Set Amount Split.
-		@param A_Amount_Split Amount Split	  */
+	/** Set A_Amount_Split.
+		@param A_Amount_Split A_Amount_Split	  */
 	public void setA_Amount_Split (BigDecimal A_Amount_Split)
 	{
 		set_Value (COLUMNNAME_A_Amount_Split, A_Amount_Split);
 	}
 
-	/** Get Amount Split.
-		@return Amount Split	  */
+	/** Get A_Amount_Split.
+		@return A_Amount_Split	  */
 	public BigDecimal getA_Amount_Split () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Amount_Split);
@@ -108,18 +105,17 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return bd;
 	}
 
-	/** Set Asset Acct..
-		@param A_Asset_Acct_ID Asset Acct.	  */
+	/** Set A_Asset_Acct_ID.
+		@param A_Asset_Acct_ID A_Asset_Acct_ID	  */
 	public void setA_Asset_Acct_ID (int A_Asset_Acct_ID)
 	{
-		if (A_Asset_Acct_ID < 1) 
-			set_Value (COLUMNNAME_A_Asset_Acct_ID, null);
-		else 
-			set_Value (COLUMNNAME_A_Asset_Acct_ID, Integer.valueOf(A_Asset_Acct_ID));
+		if (A_Asset_Acct_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_Acct_ID is mandatory.");
+		set_ValueNoCheck (COLUMNNAME_A_Asset_Acct_ID, Integer.valueOf(A_Asset_Acct_ID));
 	}
 
-	/** Get Asset Acct..
-		@return Asset Acct.	  */
+	/** Get A_Asset_Acct_ID.
+		@return A_Asset_Acct_ID	  */
 	public int getA_Asset_Acct_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Acct_ID);
@@ -128,15 +124,15 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set Asset Cost.
-		@param A_Asset_Cost Asset Cost	  */
+	/** Set A_Asset_Cost.
+		@param A_Asset_Cost A_Asset_Cost	  */
 	public void setA_Asset_Cost (BigDecimal A_Asset_Cost)
 	{
 		set_Value (COLUMNNAME_A_Asset_Cost, A_Asset_Cost);
 	}
 
-	/** Get Asset Cost.
-		@return Asset Cost	  */
+	/** Get A_Asset_Cost.
+		@return A_Asset_Cost	  */
 	public BigDecimal getA_Asset_Cost () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Asset_Cost);
@@ -151,10 +147,9 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1) 
-			set_Value (COLUMNNAME_A_Asset_ID, null);
-		else 
-			set_Value (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
+		set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -168,20 +163,15 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return ii.intValue();
 	}
 
-	public I_A_Asset getA_Asset_To() throws RuntimeException
-    {
-		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
-			.getPO(getA_Asset_ID_To(), get_TrxName());	}
-
-	/** Set To Asset ID.
-		@param A_Asset_ID_To To Asset ID	  */
+	/** Set A_Asset_ID_To.
+		@param A_Asset_ID_To A_Asset_ID_To	  */
 	public void setA_Asset_ID_To (int A_Asset_ID_To)
 	{
 		set_Value (COLUMNNAME_A_Asset_ID_To, Integer.valueOf(A_Asset_ID_To));
 	}
 
-	/** Get To Asset ID.
-		@return To Asset ID	  */
+	/** Get A_Asset_ID_To.
+		@return A_Asset_ID_To	  */
 	public int getA_Asset_ID_To () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_ID_To);
@@ -190,18 +180,17 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set Asset Split.
-		@param A_Asset_Split_ID Asset Split	  */
+	/** Set A_Asset_Split_ID.
+		@param A_Asset_Split_ID A_Asset_Split_ID	  */
 	public void setA_Asset_Split_ID (int A_Asset_Split_ID)
 	{
-		if (A_Asset_Split_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Split_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Split_ID, Integer.valueOf(A_Asset_Split_ID));
+		if (A_Asset_Split_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_Split_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Asset_Split_ID, Integer.valueOf(A_Asset_Split_ID));
 	}
 
-	/** Get Asset Split.
-		@return Asset Split	  */
+	/** Get A_Asset_Split_ID.
+		@return A_Asset_Split_ID	  */
 	public int getA_Asset_Split_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Split_ID);
@@ -218,18 +207,17 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
         return new KeyNamePair(get_ID(), String.valueOf(getA_Asset_Split_ID()));
     }
 
-	/** Set Depreciation Workfile.
-		@param A_Depreciation_Workfile_ID Depreciation Workfile	  */
+	/** Set A_Depreciation_Workfile_ID.
+		@param A_Depreciation_Workfile_ID A_Depreciation_Workfile_ID	  */
 	public void setA_Depreciation_Workfile_ID (int A_Depreciation_Workfile_ID)
 	{
-		if (A_Depreciation_Workfile_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Workfile_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Workfile_ID, Integer.valueOf(A_Depreciation_Workfile_ID));
+		if (A_Depreciation_Workfile_ID < 1)
+			 throw new IllegalArgumentException ("A_Depreciation_Workfile_ID is mandatory.");
+		set_ValueNoCheck (COLUMNNAME_A_Depreciation_Workfile_ID, Integer.valueOf(A_Depreciation_Workfile_ID));
 	}
 
-	/** Get Depreciation Workfile.
-		@return Depreciation Workfile	  */
+	/** Get A_Depreciation_Workfile_ID.
+		@return A_Depreciation_Workfile_ID	  */
 	public int getA_Depreciation_Workfile_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Depreciation_Workfile_ID);
@@ -238,15 +226,15 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set Original Percent.
-		@param A_Percent_Original Original Percent	  */
+	/** Set A_Percent_Original.
+		@param A_Percent_Original A_Percent_Original	  */
 	public void setA_Percent_Original (BigDecimal A_Percent_Original)
 	{
 		set_Value (COLUMNNAME_A_Percent_Original, A_Percent_Original);
 	}
 
-	/** Get Original Percent.
-		@return Original Percent	  */
+	/** Get A_Percent_Original.
+		@return A_Percent_Original	  */
 	public BigDecimal getA_Percent_Original () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Percent_Original);
@@ -272,15 +260,17 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return bd;
 	}
 
-	/** Set Quantity.
-		@param A_QTY_Current Quantity	  */
+	/** Set Current Qty.
+		@param A_QTY_Current Current Qty	  */
 	public void setA_QTY_Current (BigDecimal A_QTY_Current)
 	{
-		set_Value (COLUMNNAME_A_QTY_Current, A_QTY_Current);
+		if (A_QTY_Current == null)
+			throw new IllegalArgumentException ("A_QTY_Current is mandatory.");
+		set_ValueNoCheck (COLUMNNAME_A_QTY_Current, A_QTY_Current);
 	}
 
-	/** Get Quantity.
-		@return Quantity	  */
+	/** Get Current Qty.
+		@return Current Qty	  */
 	public BigDecimal getA_QTY_Current () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_QTY_Current);
@@ -289,15 +279,15 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return bd;
 	}
 
-	/** Set Qty. Split.
-		@param A_QTY_Split Qty. Split	  */
+	/** Set A_QTY_Split.
+		@param A_QTY_Split A_QTY_Split	  */
 	public void setA_QTY_Split (BigDecimal A_QTY_Split)
 	{
 		set_Value (COLUMNNAME_A_QTY_Split, A_QTY_Split);
 	}
 
-	/** Get Qty. Split.
-		@return Qty. Split	  */
+	/** Get A_QTY_Split.
+		@return A_QTY_Split	  */
 	public BigDecimal getA_QTY_Split () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_QTY_Split);
@@ -306,38 +296,38 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return bd;
 	}
 
-	/** A_Split_Type AD_Reference_ID=53263 */
-	public static final int A_SPLIT_TYPE_AD_Reference_ID=53263;
-	/** Amount = AMT */
-	public static final String A_SPLIT_TYPE_Amount = "AMT";
+	/** A_Split_Type AD_Reference_ID=1000020 */
+	public static final int A_SPLIT_TYPE_AD_Reference_ID=1000020;
 	/** Percentage = PER */
 	public static final String A_SPLIT_TYPE_Percentage = "PER";
+	/** Amount = AMT */
+	public static final String A_SPLIT_TYPE_Amount = "AMT";
 	/** Quantity = QTY */
 	public static final String A_SPLIT_TYPE_Quantity = "QTY";
-	/** Set Split Type.
-		@param A_Split_Type Split Type	  */
+	/** Set A_Split_Type.
+		@param A_Split_Type A_Split_Type	  */
 	public void setA_Split_Type (String A_Split_Type)
 	{
 
 		set_Value (COLUMNNAME_A_Split_Type, A_Split_Type);
 	}
 
-	/** Get Split Type.
-		@return Split Type	  */
+	/** Get A_Split_Type.
+		@return A_Split_Type	  */
 	public String getA_Split_Type () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Split_Type);
 	}
 
-	/** Set Transfer Balance IS.
-		@param A_Transfer_Balance_IS Transfer Balance IS	  */
+	/** Set A_Transfer_Balance_IS.
+		@param A_Transfer_Balance_IS A_Transfer_Balance_IS	  */
 	public void setA_Transfer_Balance_IS (boolean A_Transfer_Balance_IS)
 	{
 		set_Value (COLUMNNAME_A_Transfer_Balance_IS, Boolean.valueOf(A_Transfer_Balance_IS));
 	}
 
-	/** Get Transfer Balance IS.
-		@return Transfer Balance IS	  */
+	/** Get A_Transfer_Balance_IS.
+		@return A_Transfer_Balance_IS	  */
 	public boolean isA_Transfer_Balance_IS () 
 	{
 		Object oo = get_Value(COLUMNNAME_A_Transfer_Balance_IS);
@@ -350,21 +340,15 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return false;
 	}
 
-	public I_C_Period getC_Period() throws RuntimeException
-    {
-		return (I_C_Period)MTable.get(getCtx(), I_C_Period.Table_Name)
-			.getPO(getC_Period_ID(), get_TrxName());	}
-
 	/** Set Period.
 		@param C_Period_ID 
 		Period of the Calendar
 	  */
 	public void setC_Period_ID (int C_Period_ID)
 	{
-		if (C_Period_ID < 1) 
-			set_Value (COLUMNNAME_C_Period_ID, null);
-		else 
-			set_Value (COLUMNNAME_C_Period_ID, Integer.valueOf(C_Period_ID));
+		if (C_Period_ID < 1)
+			 throw new IllegalArgumentException ("C_Period_ID is mandatory.");
+		set_Value (COLUMNNAME_C_Period_ID, Integer.valueOf(C_Period_ID));
 	}
 
 	/** Get Period.
@@ -384,6 +368,8 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 	  */
 	public void setDateAcct (Timestamp DateAcct)
 	{
+		if (DateAcct == null)
+			throw new IllegalArgumentException ("DateAcct is mandatory.");
 		set_Value (COLUMNNAME_DateAcct, DateAcct);
 	}
 
@@ -395,25 +381,14 @@ public class X_A_Asset_Split extends PO implements I_A_Asset_Split, I_Persistent
 		return (Timestamp)get_Value(COLUMNNAME_DateAcct);
 	}
 
-	/** PostingType AD_Reference_ID=125 */
-	public static final int POSTINGTYPE_AD_Reference_ID=125;
-	/** Actual = A */
-	public static final String POSTINGTYPE_Actual = "A";
-	/** Budget = B */
-	public static final String POSTINGTYPE_Budget = "B";
-	/** Commitment = E */
-	public static final String POSTINGTYPE_Commitment = "E";
-	/** Statistical = S */
-	public static final String POSTINGTYPE_Statistical = "S";
-	/** Reservation = R */
-	public static final String POSTINGTYPE_Reservation = "R";
 	/** Set PostingType.
 		@param PostingType 
 		The type of posted amount for the transaction
 	  */
 	public void setPostingType (String PostingType)
 	{
-
+		if (PostingType == null)
+			throw new IllegalArgumentException ("PostingType is mandatory.");
 		set_ValueNoCheck (COLUMNNAME_PostingType, PostingType);
 	}
 

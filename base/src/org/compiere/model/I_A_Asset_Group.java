@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Group
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.5.3a
  */
 public interface I_A_Asset_Group 
 {
@@ -40,19 +40,6 @@ public interface I_A_Asset_Group
     BigDecimal accessLevel = BigDecimal.valueOf(3);
 
     /** Load Meta Data */
-
-    /** Column name A_Asset_Group_ID */
-    public static final String COLUMNNAME_A_Asset_Group_ID = "A_Asset_Group_ID";
-
-	/** Set Asset Group.
-	  * Group of Assets
-	  */
-	public void setA_Asset_Group_ID (int A_Asset_Group_ID);
-
-	/** Get Asset Group.
-	  * Group of Assets
-	  */
-	public int getA_Asset_Group_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -74,6 +61,37 @@ public interface I_A_Asset_Group
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
+
+    /** Column name A_Asset_Class_ID */
+    public static final String COLUMNNAME_A_Asset_Class_ID = "A_Asset_Class_ID";
+
+	/** Set Asset class	  */
+	public void setA_Asset_Class_ID (int A_Asset_Class_ID);
+
+	/** Get Asset class	  */
+	public int getA_Asset_Class_ID();
+
+    /** Column name A_Asset_Group_ID */
+    public static final String COLUMNNAME_A_Asset_Group_ID = "A_Asset_Group_ID";
+
+	/** Set Asset Group.
+	  * Group of Assets
+	  */
+	public void setA_Asset_Group_ID (int A_Asset_Group_ID);
+
+	/** Get Asset Group.
+	  * Group of Assets
+	  */
+	public int getA_Asset_Group_ID();
+
+    /** Column name A_Asset_Type_ID */
+    public static final String COLUMNNAME_A_Asset_Type_ID = "A_Asset_Type_ID";
+
+	/** Set Asset Type	  */
+	public void setA_Asset_Type_ID (int A_Asset_Type_ID);
+
+	/** Get Asset Type	  */
+	public int getA_Asset_Type_ID();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -103,6 +121,19 @@ public interface I_A_Asset_Group
 	  * Optional short description of the record
 	  */
 	public String getDescription();
+
+    /** Column name GZ_TipComponenta */
+    public static final String COLUMNNAME_GZ_TipComponenta = "GZ_TipComponenta";
+
+	/** Set Tip componentă.
+	  * Componentă a reţelei de furnizare şi/sau distribuţie
+	  */
+	public void setGZ_TipComponenta (String GZ_TipComponenta);
+
+	/** Get Tip componentă.
+	  * Componentă a reţelei de furnizare şi/sau distribuţie
+	  */
+	public String getGZ_TipComponenta();
 
     /** Column name Help */
     public static final String COLUMNNAME_Help = "Help";
@@ -142,6 +173,19 @@ public interface I_A_Asset_Group
 	  * Create Asset and activate it
 	  */
 	public boolean isCreateAsActive();
+
+    /** Column name IsDefault */
+    public static final String COLUMNNAME_IsDefault = "IsDefault";
+
+	/** Set Default.
+	  * Default value
+	  */
+	public void setIsDefault (boolean IsDefault);
+
+	/** Get Default.
+	  * Default value
+	  */
+	public boolean isDefault();
 
     /** Column name IsDepreciated */
     public static final String COLUMNNAME_IsDepreciated = "IsDepreciated";

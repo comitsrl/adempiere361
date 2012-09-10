@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Info_Lic
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.5.3a
  */
 public interface I_A_Asset_Info_Lic 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Info_Lic
     /** TableName=A_Asset_Info_Lic */
     public static final String Table_Name = "A_Asset_Info_Lic";
 
-    /** AD_Table_ID=53134 */
+    /** AD_Table_ID=1000032 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,28 +40,6 @@ public interface I_A_Asset_Info_Lic
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
-
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-    /** Column name A_Asset_Info_Lic_ID */
-    public static final String COLUMNNAME_A_Asset_Info_Lic_ID = "A_Asset_Info_Lic_ID";
-
-	/** Set Asset Info Lic.	  */
-	public void setA_Asset_Info_Lic_ID (int A_Asset_Info_Lic_ID);
-
-	/** Get Asset Info Lic.	  */
-	public int getA_Asset_Info_Lic_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -84,6 +62,30 @@ public interface I_A_Asset_Info_Lic
 	  */
 	public int getAD_Org_ID();
 
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+	public I_A_Asset getA_Asset();
+
+    /** Column name A_Asset_Info_Lic_ID */
+    public static final String COLUMNNAME_A_Asset_Info_Lic_ID = "A_Asset_Info_Lic_ID";
+
+	/** Set A_Asset_Info_Lic_ID	  */
+	public void setA_Asset_Info_Lic_ID (int A_Asset_Info_Lic_ID);
+
+	/** Get A_Asset_Info_Lic_ID	  */
+	public int getA_Asset_Info_Lic_ID();
+
     /** Column name A_Issuing_Agency */
     public static final String COLUMNNAME_A_Issuing_Agency = "A_Issuing_Agency";
 
@@ -96,28 +98,28 @@ public interface I_A_Asset_Info_Lic
     /** Column name A_License_Fee */
     public static final String COLUMNNAME_A_License_Fee = "A_License_Fee";
 
-	/** Set License Fee	  */
+	/** Set A_License_Fee	  */
 	public void setA_License_Fee (BigDecimal A_License_Fee);
 
-	/** Get License Fee	  */
+	/** Get A_License_Fee	  */
 	public BigDecimal getA_License_Fee();
 
     /** Column name A_License_No */
     public static final String COLUMNNAME_A_License_No = "A_License_No";
 
-	/** Set License No	  */
+	/** Set A_License_No	  */
 	public void setA_License_No (String A_License_No);
 
-	/** Get License No	  */
+	/** Get A_License_No	  */
 	public String getA_License_No();
 
     /** Column name A_Renewal_Date */
     public static final String COLUMNNAME_A_Renewal_Date = "A_Renewal_Date";
 
-	/** Set Policy Renewal Date	  */
+	/** Set A_Renewal_Date	  */
 	public void setA_Renewal_Date (Timestamp A_Renewal_Date);
 
-	/** Get Policy Renewal Date	  */
+	/** Get A_Renewal_Date	  */
 	public Timestamp getA_Renewal_Date();
 
     /** Column name A_State */
@@ -162,13 +164,26 @@ public interface I_A_Asset_Info_Lic
 	  */
 	public boolean isActive();
 
+    /** Column name Processed */
+    public static final String COLUMNNAME_Processed = "Processed";
+
+	/** Set Processed.
+	  * The document has been processed
+	  */
+	public void setProcessed (boolean Processed);
+
+	/** Get Processed.
+	  * The document has been processed
+	  */
+	public boolean isProcessed();
+
     /** Column name Text */
     public static final String COLUMNNAME_Text = "Text";
 
-	/** Set Text	  */
+	/** Set Description	  */
 	public void setText (String Text);
 
-	/** Get Text	  */
+	/** Get Description	  */
 	public String getText();
 
     /** Column name Updated */

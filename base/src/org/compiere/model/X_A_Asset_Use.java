@@ -24,14 +24,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Use
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Asset_Use (Properties ctx, int A_Asset_Use_ID, String trxName)
@@ -40,6 +40,7 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
       /** if (A_Asset_Use_ID == 0)
         {
 			setA_Asset_ID (0);
+// @A_Asset_ID@
 			setA_Asset_Use_ID (0);
 			setUseDate (new Timestamp( System.currentTimeMillis() ));
 			setUseUnits (0);
@@ -80,10 +81,9 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
+		set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -97,18 +97,17 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set Asset Use.
-		@param A_Asset_Use_ID Asset Use	  */
+	/** Set A_Asset_Use_ID.
+		@param A_Asset_Use_ID A_Asset_Use_ID	  */
 	public void setA_Asset_Use_ID (int A_Asset_Use_ID)
 	{
-		if (A_Asset_Use_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Use_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Use_ID, Integer.valueOf(A_Asset_Use_ID));
+		if (A_Asset_Use_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_Use_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Asset_Use_ID, Integer.valueOf(A_Asset_Use_ID));
 	}
 
-	/** Get Asset Use.
-		@return Asset Use	  */
+	/** Get A_Asset_Use_ID.
+		@return A_Asset_Use_ID	  */
 	public int getA_Asset_Use_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Use_ID);
@@ -146,6 +145,8 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
 		@param UseDate UseDate	  */
 	public void setUseDate (Timestamp UseDate)
 	{
+		if (UseDate == null)
+			throw new IllegalArgumentException ("UseDate is mandatory.");
 		set_Value (COLUMNNAME_UseDate, UseDate);
 	}
 

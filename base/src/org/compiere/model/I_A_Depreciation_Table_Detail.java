@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation_Table_Detail
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.5.3a
  */
 public interface I_A_Depreciation_Table_Detail 
 {
@@ -30,7 +30,7 @@ public interface I_A_Depreciation_Table_Detail
     /** TableName=A_Depreciation_Table_Detail */
     public static final String Table_Name = "A_Depreciation_Table_Detail";
 
-    /** AD_Table_ID=53113 */
+    /** AD_Table_ID=1000011 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -49,33 +49,6 @@ public interface I_A_Depreciation_Table_Detail
 	  */
 	public int getAD_Client_ID();
 
-    /** Column name A_Depreciation_Rate */
-    public static final String COLUMNNAME_A_Depreciation_Rate = "A_Depreciation_Rate";
-
-	/** Set Rate	  */
-	public void setA_Depreciation_Rate (BigDecimal A_Depreciation_Rate);
-
-	/** Get Rate	  */
-	public BigDecimal getA_Depreciation_Rate();
-
-    /** Column name A_Depreciation_Table_Code */
-    public static final String COLUMNNAME_A_Depreciation_Table_Code = "A_Depreciation_Table_Code";
-
-	/** Set Depreciation Code	  */
-	public void setA_Depreciation_Table_Code (String A_Depreciation_Table_Code);
-
-	/** Get Depreciation Code	  */
-	public String getA_Depreciation_Table_Code();
-
-    /** Column name A_Depreciation_Table_Detail_ID */
-    public static final String COLUMNNAME_A_Depreciation_Table_Detail_ID = "A_Depreciation_Table_Detail_ID";
-
-	/** Set Depreciation Table Detail	  */
-	public void setA_Depreciation_Table_Detail_ID (int A_Depreciation_Table_Detail_ID);
-
-	/** Get Depreciation Table Detail	  */
-	public int getA_Depreciation_Table_Detail_ID();
-
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
@@ -89,22 +62,49 @@ public interface I_A_Depreciation_Table_Detail
 	  */
 	public int getAD_Org_ID();
 
+    /** Column name A_Depreciation_Rate */
+    public static final String COLUMNNAME_A_Depreciation_Rate = "A_Depreciation_Rate";
+
+	/** Set A_Depreciation_Rate	  */
+	public void setA_Depreciation_Rate (BigDecimal A_Depreciation_Rate);
+
+	/** Get A_Depreciation_Rate	  */
+	public BigDecimal getA_Depreciation_Rate();
+
+    /** Column name A_Depreciation_Table_Code */
+    public static final String COLUMNNAME_A_Depreciation_Table_Code = "A_Depreciation_Table_Code";
+
+	/** Set A_Depreciation_Table_Code	  */
+	public void setA_Depreciation_Table_Code (String A_Depreciation_Table_Code);
+
+	/** Get A_Depreciation_Table_Code	  */
+	public String getA_Depreciation_Table_Code();
+
+    /** Column name A_Depreciation_Table_Detail_ID */
+    public static final String COLUMNNAME_A_Depreciation_Table_Detail_ID = "A_Depreciation_Table_Detail_ID";
+
+	/** Set A_Depreciation_Table_Detail_ID	  */
+	public void setA_Depreciation_Table_Detail_ID (int A_Depreciation_Table_Detail_ID);
+
+	/** Get A_Depreciation_Table_Detail_ID	  */
+	public int getA_Depreciation_Table_Detail_ID();
+
     /** Column name A_Period */
     public static final String COLUMNNAME_A_Period = "A_Period";
 
-	/** Set Period/Yearly	  */
+	/** Set A_Period	  */
 	public void setA_Period (int A_Period);
 
-	/** Get Period/Yearly	  */
+	/** Get A_Period	  */
 	public int getA_Period();
 
     /** Column name A_Table_Rate_Type */
     public static final String COLUMNNAME_A_Table_Rate_Type = "A_Table_Rate_Type";
 
-	/** Set Type	  */
+	/** Set A_Table_Rate_Type	  */
 	public void setA_Table_Rate_Type (String A_Table_Rate_Type);
 
-	/** Get Type	  */
+	/** Get A_Table_Rate_Type	  */
 	public String getA_Table_Rate_Type();
 
     /** Column name Created */

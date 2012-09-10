@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Info_Fin
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Asset_Info_Fin (Properties ctx, int A_Asset_Info_Fin_ID, String trxName)
@@ -74,16 +74,20 @@ public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Pers
       return sb.toString();
     }
 
+	public I_A_Asset getA_Asset()
+    {
+		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
+			.getPO(getA_Asset_ID(), get_TrxName());	}
+
 	/** Set Asset.
 		@param A_Asset_ID 
 		Asset used internally or by customers
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -97,18 +101,17 @@ public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Pers
 		return ii.intValue();
 	}
 
-	/** Set Asset Info Fin..
-		@param A_Asset_Info_Fin_ID Asset Info Fin.	  */
+	/** Set A_Asset_Info_Fin_ID.
+		@param A_Asset_Info_Fin_ID A_Asset_Info_Fin_ID	  */
 	public void setA_Asset_Info_Fin_ID (int A_Asset_Info_Fin_ID)
 	{
-		if (A_Asset_Info_Fin_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Info_Fin_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Asset_Info_Fin_ID, Integer.valueOf(A_Asset_Info_Fin_ID));
+		if (A_Asset_Info_Fin_ID < 1)
+			 throw new IllegalArgumentException ("A_Asset_Info_Fin_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Asset_Info_Fin_ID, Integer.valueOf(A_Asset_Info_Fin_ID));
 	}
 
-	/** Get Asset Info Fin..
-		@return Asset Info Fin.	  */
+	/** Get A_Asset_Info_Fin_ID.
+		@return A_Asset_Info_Fin_ID	  */
 	public int getA_Asset_Info_Fin_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Info_Fin_ID);
@@ -125,93 +128,93 @@ public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Pers
         return new KeyNamePair(get_ID(), String.valueOf(getA_Asset_Info_Fin_ID()));
     }
 
-	/** Set Contract Date.
-		@param A_Contract_Date Contract Date	  */
+	/** Set A_Contract_Date.
+		@param A_Contract_Date A_Contract_Date	  */
 	public void setA_Contract_Date (Timestamp A_Contract_Date)
 	{
 		set_Value (COLUMNNAME_A_Contract_Date, A_Contract_Date);
 	}
 
-	/** Get Contract Date.
-		@return Contract Date	  */
+	/** Get A_Contract_Date.
+		@return A_Contract_Date	  */
 	public Timestamp getA_Contract_Date () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_A_Contract_Date);
 	}
 
-	/** A_Due_On AD_Reference_ID=53272 */
-	public static final int A_DUE_ON_AD_Reference_ID=53272;
-	/** 15th of every month = 15T */
-	public static final String A_DUE_ON_15thOfEveryMonth = "15T";
-	/** 1st of every month = 1st */
-	public static final String A_DUE_ON_1stOfEveryMonth = "1st";
-	/** Beginning of every month = BEG */
-	public static final String A_DUE_ON_BeginningOfEveryMonth = "BEG";
+	/** A_Due_On AD_Reference_ID=1000029 */
+	public static final int A_DUE_ON_AD_Reference_ID=1000029;
 	/** Yearly on or before contract date = YER */
 	public static final String A_DUE_ON_YearlyOnOrBeforeContractDate = "YER";
-	/** Set Payment Due Date.
-		@param A_Due_On Payment Due Date	  */
+	/** 1st of every month = 1st */
+	public static final String A_DUE_ON_1stOfEveryMonth = "1st";
+	/** 15th of every month = 15T */
+	public static final String A_DUE_ON_15thOfEveryMonth = "15T";
+	/** Beginning of every month = BEG */
+	public static final String A_DUE_ON_BeginningOfEveryMonth = "BEG";
+	/** Set A_Due_On.
+		@param A_Due_On A_Due_On	  */
 	public void setA_Due_On (String A_Due_On)
 	{
 
 		set_Value (COLUMNNAME_A_Due_On, A_Due_On);
 	}
 
-	/** Get Payment Due Date.
-		@return Payment Due Date	  */
+	/** Get A_Due_On.
+		@return A_Due_On	  */
 	public String getA_Due_On () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Due_On);
 	}
 
-	/** Set Contract Expiration Date.
-		@param A_Expired_Date Contract Expiration Date	  */
+	/** Set A_Expired_Date.
+		@param A_Expired_Date A_Expired_Date	  */
 	public void setA_Expired_Date (Timestamp A_Expired_Date)
 	{
 		set_Value (COLUMNNAME_A_Expired_Date, A_Expired_Date);
 	}
 
-	/** Get Contract Expiration Date.
-		@return Contract Expiration Date	  */
+	/** Get A_Expired_Date.
+		@return A_Expired_Date	  */
 	public Timestamp getA_Expired_Date () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_A_Expired_Date);
 	}
 
-	/** A_Finance_Meth AD_Reference_ID=53271 */
-	public static final int A_FINANCE_METH_AD_Reference_ID=53271;
+	/** A_Finance_Meth AD_Reference_ID=1000028 */
+	public static final int A_FINANCE_METH_AD_Reference_ID=1000028;
+	/** Owned = OW */
+	public static final String A_FINANCE_METH_Owned = "OW";
 	/** Capitalized Lease = CL */
 	public static final String A_FINANCE_METH_CapitalizedLease = "CL";
 	/** Non-Capitalized Lease = NL */
 	public static final String A_FINANCE_METH_Non_CapitalizedLease = "NL";
-	/** Owned = OW */
-	public static final String A_FINANCE_METH_Owned = "OW";
 	/** Rented = RE */
 	public static final String A_FINANCE_METH_Rented = "RE";
-	/** Set Finance Method.
-		@param A_Finance_Meth Finance Method	  */
+	/** Set A_Finance_Meth.
+		@param A_Finance_Meth A_Finance_Meth	  */
 	public void setA_Finance_Meth (String A_Finance_Meth)
 	{
 
 		set_Value (COLUMNNAME_A_Finance_Meth, A_Finance_Meth);
 	}
 
-	/** Get Finance Method.
-		@return Finance Method	  */
+	/** Get A_Finance_Meth.
+		@return A_Finance_Meth	  */
 	public String getA_Finance_Meth () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Finance_Meth);
 	}
 
-	/** Set Monthly Payment.
-		@param A_Monthly_Payment Monthly Payment	  */
+	/** Set A_Monthly_Payment.
+		@param A_Monthly_Payment A_Monthly_Payment	  */
 	public void setA_Monthly_Payment (BigDecimal A_Monthly_Payment)
 	{
 		set_Value (COLUMNNAME_A_Monthly_Payment, A_Monthly_Payment);
 	}
 
-	/** Get Monthly Payment.
-		@return Monthly Payment	  */
+	/** Get A_Monthly_Payment.
+		@return A_Monthly_Payment	  */
 	public BigDecimal getA_Monthly_Payment () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Monthly_Payment);
@@ -275,15 +278,15 @@ public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Pers
 		return bd;
 	}
 
-	/** Set Option Purchase Price.
-		@param A_Purchase_Price Option Purchase Price	  */
+	/** Set Purchase Price.
+		@param A_Purchase_Price Purchase Price	  */
 	public void setA_Purchase_Price (BigDecimal A_Purchase_Price)
 	{
 		set_Value (COLUMNNAME_A_Purchase_Price, A_Purchase_Price);
 	}
 
-	/** Get Option Purchase Price.
-		@return Option Purchase Price	  */
+	/** Get Purchase Price.
+		@return Purchase Price	  */
 	public BigDecimal getA_Purchase_Price () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Purchase_Price);
@@ -291,6 +294,11 @@ public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Pers
 			 return Env.ZERO;
 		return bd;
 	}
+
+	public I_C_BPartner getC_BPartner()
+    {
+		return (I_C_BPartner)MTable.get(getCtx(), I_C_BPartner.Table_Name)
+			.getPO(getC_BPartner_ID(), get_TrxName());	}
 
 	/** Set Business Partner .
 		@param C_BPartner_ID 
@@ -313,6 +321,29 @@ public class X_A_Asset_Info_Fin extends PO implements I_A_Asset_Info_Fin, I_Pers
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set Processed.
+		@param Processed 
+		The document has been processed
+	  */
+	public void setProcessed (boolean Processed)
+	{
+		throw new IllegalArgumentException ("Processed is virtual column");	}
+
+	/** Get Processed.
+		@return The document has been processed
+	  */
+	public boolean isProcessed () 
+	{
+		Object oo = get_Value(COLUMNNAME_Processed);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
 	}
 
 	/** Set Text Message.

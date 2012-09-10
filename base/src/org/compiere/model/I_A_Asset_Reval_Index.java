@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Reval_Index
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version Release 3.5.3a
  */
 public interface I_A_Asset_Reval_Index 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Reval_Index
     /** TableName=A_Asset_Reval_Index */
     public static final String Table_Name = "A_Asset_Reval_Index";
 
-    /** AD_Table_ID=53120 */
+    /** AD_Table_ID=1000018 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,15 +40,6 @@ public interface I_A_Asset_Reval_Index
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
-
-    /** Column name A_Asset_Reval_Index_ID */
-    public static final String COLUMNNAME_A_Asset_Reval_Index_ID = "A_Asset_Reval_Index_ID";
-
-	/** Set Asset Reval Index	  */
-	public void setA_Asset_Reval_Index_ID (int A_Asset_Reval_Index_ID);
-
-	/** Get Asset Reval Index	  */
-	public int getA_Asset_Reval_Index_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -71,40 +62,49 @@ public interface I_A_Asset_Reval_Index
 	  */
 	public int getAD_Org_ID();
 
+    /** Column name A_Asset_Reval_Index_ID */
+    public static final String COLUMNNAME_A_Asset_Reval_Index_ID = "A_Asset_Reval_Index_ID";
+
+	/** Set A_Asset_Reval_Index_ID	  */
+	public void setA_Asset_Reval_Index_ID (int A_Asset_Reval_Index_ID);
+
+	/** Get A_Asset_Reval_Index_ID	  */
+	public int getA_Asset_Reval_Index_ID();
+
     /** Column name A_Effective_Date */
     public static final String COLUMNNAME_A_Effective_Date = "A_Effective_Date";
 
-	/** Set Effective Date	  */
+	/** Set A_Effective_Date	  */
 	public void setA_Effective_Date (Timestamp A_Effective_Date);
 
-	/** Get Effective Date	  */
+	/** Get A_Effective_Date	  */
 	public Timestamp getA_Effective_Date();
 
     /** Column name A_Reval_Code */
     public static final String COLUMNNAME_A_Reval_Code = "A_Reval_Code";
 
-	/** Set Reval. Code	  */
+	/** Set A_Reval_Code	  */
 	public void setA_Reval_Code (String A_Reval_Code);
 
-	/** Get Reval. Code	  */
+	/** Get A_Reval_Code	  */
 	public String getA_Reval_Code();
 
     /** Column name A_Reval_Multiplier */
     public static final String COLUMNNAME_A_Reval_Multiplier = "A_Reval_Multiplier";
 
-	/** Set Reval. Multiplier	  */
+	/** Set A_Reval_Multiplier	  */
 	public void setA_Reval_Multiplier (String A_Reval_Multiplier);
 
-	/** Get Reval. Multiplier	  */
+	/** Get A_Reval_Multiplier	  */
 	public String getA_Reval_Multiplier();
 
     /** Column name A_Reval_Rate */
     public static final String COLUMNNAME_A_Reval_Rate = "A_Reval_Rate";
 
-	/** Set Reval. Rate	  */
+	/** Set A_Reval_Rate	  */
 	public void setA_Reval_Rate (BigDecimal A_Reval_Rate);
 
-	/** Get Reval. Rate	  */
+	/** Get A_Reval_Rate	  */
 	public BigDecimal getA_Reval_Rate();
 
     /** Column name Created */

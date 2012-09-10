@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Table_Detail
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version Release 3.5.3a - $Id$ */
 public class X_A_Depreciation_Table_Detail extends PO implements I_A_Depreciation_Table_Detail, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20081221L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Table_Detail (Properties ctx, int A_Depreciation_Table_Detail_ID, String trxName)
@@ -76,15 +76,17 @@ public class X_A_Depreciation_Table_Detail extends PO implements I_A_Depreciatio
       return sb.toString();
     }
 
-	/** Set Rate.
-		@param A_Depreciation_Rate Rate	  */
+	/** Set A_Depreciation_Rate.
+		@param A_Depreciation_Rate A_Depreciation_Rate	  */
 	public void setA_Depreciation_Rate (BigDecimal A_Depreciation_Rate)
 	{
+		if (A_Depreciation_Rate == null)
+			throw new IllegalArgumentException ("A_Depreciation_Rate is mandatory.");
 		set_Value (COLUMNNAME_A_Depreciation_Rate, A_Depreciation_Rate);
 	}
 
-	/** Get Rate.
-		@return Rate	  */
+	/** Get A_Depreciation_Rate.
+		@return A_Depreciation_Rate	  */
 	public BigDecimal getA_Depreciation_Rate () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Depreciation_Rate);
@@ -93,32 +95,33 @@ public class X_A_Depreciation_Table_Detail extends PO implements I_A_Depreciatio
 		return bd;
 	}
 
-	/** Set Depreciation Code.
-		@param A_Depreciation_Table_Code Depreciation Code	  */
+	/** Set A_Depreciation_Table_Code.
+		@param A_Depreciation_Table_Code A_Depreciation_Table_Code	  */
 	public void setA_Depreciation_Table_Code (String A_Depreciation_Table_Code)
 	{
-		set_ValueNoCheck (COLUMNNAME_A_Depreciation_Table_Code, A_Depreciation_Table_Code);
+		if (A_Depreciation_Table_Code == null)
+			throw new IllegalArgumentException ("A_Depreciation_Table_Code is mandatory.");
+		set_Value (COLUMNNAME_A_Depreciation_Table_Code, A_Depreciation_Table_Code);
 	}
 
-	/** Get Depreciation Code.
-		@return Depreciation Code	  */
+	/** Get A_Depreciation_Table_Code.
+		@return A_Depreciation_Table_Code	  */
 	public String getA_Depreciation_Table_Code () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Depreciation_Table_Code);
 	}
 
-	/** Set Depreciation Table Detail.
-		@param A_Depreciation_Table_Detail_ID Depreciation Table Detail	  */
+	/** Set A_Depreciation_Table_Detail_ID.
+		@param A_Depreciation_Table_Detail_ID A_Depreciation_Table_Detail_ID	  */
 	public void setA_Depreciation_Table_Detail_ID (int A_Depreciation_Table_Detail_ID)
 	{
-		if (A_Depreciation_Table_Detail_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Table_Detail_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Table_Detail_ID, Integer.valueOf(A_Depreciation_Table_Detail_ID));
+		if (A_Depreciation_Table_Detail_ID < 1)
+			 throw new IllegalArgumentException ("A_Depreciation_Table_Detail_ID is mandatory.");
+		set_Value (COLUMNNAME_A_Depreciation_Table_Detail_ID, Integer.valueOf(A_Depreciation_Table_Detail_ID));
 	}
 
-	/** Get Depreciation Table Detail.
-		@return Depreciation Table Detail	  */
+	/** Get A_Depreciation_Table_Detail_ID.
+		@return A_Depreciation_Table_Detail_ID	  */
 	public int getA_Depreciation_Table_Detail_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Depreciation_Table_Detail_ID);
@@ -135,15 +138,15 @@ public class X_A_Depreciation_Table_Detail extends PO implements I_A_Depreciatio
         return new KeyNamePair(get_ID(), String.valueOf(getA_Depreciation_Table_Detail_ID()));
     }
 
-	/** Set Period/Yearly.
-		@param A_Period Period/Yearly	  */
+	/** Set A_Period.
+		@param A_Period A_Period	  */
 	public void setA_Period (int A_Period)
 	{
 		set_Value (COLUMNNAME_A_Period, Integer.valueOf(A_Period));
 	}
 
-	/** Get Period/Yearly.
-		@return Period/Yearly	  */
+	/** Get A_Period.
+		@return A_Period	  */
 	public int getA_Period () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Period);
@@ -152,22 +155,22 @@ public class X_A_Depreciation_Table_Detail extends PO implements I_A_Depreciatio
 		return ii.intValue();
 	}
 
-	/** A_Table_Rate_Type AD_Reference_ID=53255 */
-	public static final int A_TABLE_RATE_TYPE_AD_Reference_ID=53255;
+	/** A_Table_Rate_Type AD_Reference_ID=1000012 */
+	public static final int A_TABLE_RATE_TYPE_AD_Reference_ID=1000012;
 	/** Amount = AM */
 	public static final String A_TABLE_RATE_TYPE_Amount = "AM";
 	/** Rate = RT */
 	public static final String A_TABLE_RATE_TYPE_Rate = "RT";
-	/** Set Type.
-		@param A_Table_Rate_Type Type	  */
+	/** Set A_Table_Rate_Type.
+		@param A_Table_Rate_Type A_Table_Rate_Type	  */
 	public void setA_Table_Rate_Type (String A_Table_Rate_Type)
 	{
 
-		set_ValueNoCheck (COLUMNNAME_A_Table_Rate_Type, A_Table_Rate_Type);
+		set_Value (COLUMNNAME_A_Table_Rate_Type, A_Table_Rate_Type);
 	}
 
-	/** Get Type.
-		@return Type	  */
+	/** Get A_Table_Rate_Type.
+		@return A_Table_Rate_Type	  */
 	public String getA_Table_Rate_Type () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Table_Rate_Type);

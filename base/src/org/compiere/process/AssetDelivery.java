@@ -294,7 +294,7 @@ public class AssetDelivery extends SvrProcess
 		//
 		log.fine((System.currentTimeMillis()-start) + " ms");
 		//	success
-		return user.getEMail() + " - " + asset.getProductVersionNo();
+		return user.getEMail() + " - " + asset.getVersionNo();
 	}	//	deliverIt
 
 }	//	AssetDelivery
