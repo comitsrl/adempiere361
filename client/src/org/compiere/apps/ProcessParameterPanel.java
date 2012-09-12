@@ -47,6 +47,7 @@ import org.compiere.swing.CPanel;
 import org.compiere.util.CLogger;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
+import org.compiere.util.Msg;
 
 /**
  *	Process Parameter Panel, based on existing ProcessParameter dialog.
@@ -458,7 +459,8 @@ public class ProcessParameterPanel extends CPanel implements VetoableChangeListe
 							if (!comp.isVisible()) {
 								changedSize = true;
 								comp.setVisible(true); // visibility
-								m_labels.get(index).setVisible(true);
+								if (m_labels.get(index) != null)	// IDEMPIERE 322
+									m_labels.get(index).setVisible(true);
 								if (m_mFields.get(index).getVO().isRange)
 									m_separators.get(index).setText(" - ");
 							}
@@ -470,7 +472,8 @@ public class ProcessParameterPanel extends CPanel implements VetoableChangeListe
 							if (comp.isVisible()) {
 								changedSize = true;
 								comp.setVisible(false);
-								m_labels.get(index).setVisible(false);
+								if (m_labels.get(index) != null)	// IDEMPIERE 322
+									m_labels.get(index).setVisible(false);
 								if (m_mFields.get(index).getVO().isRange)
 									m_separators.get(index).setText("");
 							}
@@ -527,6 +530,8 @@ public class ProcessParameterPanel extends CPanel implements VetoableChangeListe
 						if (sb.length() > 0)
 							sb.append(", ");
 						sb.append(field.getHeader());
+						if (m_vEditors2.get(i) != null) // is a range
+							sb.append(" (").append(Msg.getMsg(Env.getCtx(), "From")).append(")");
 					}
 					else
 						field.setError(false);
@@ -534,15 +539,16 @@ public class ProcessParameterPanel extends CPanel implements VetoableChangeListe
 					VEditor vEditor2 = (VEditor)m_vEditors2.get(i);
 					if (vEditor2 != null)
 					{
-						Object data2 = vEditor.getValue();
+						Object data2 = vEditor2.getValue();
 						GridField field2 = (GridField)m_mFields2.get(i);
 						if (data2 == null || data2.toString().length() == 0)
 						{
-							field.setInserting (true);  //  set editable (i.e. updateable) otherwise deadlock
+							field2.setInserting (true);  //  set editable (i.e. updateable) otherwise deadlock
 							field2.setError(true);
 							if (sb.length() > 0)
 								sb.append(", ");
-							sb.append(field.getHeader());
+							sb.append(field2.getHeader());
+							sb.append(" (").append(Msg.getMsg(Env.getCtx(), "To")).append(")");
 						}
 						else
 							field2.setError(false);
