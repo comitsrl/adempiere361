@@ -928,4 +928,27 @@ public interface I_A_Asset
 	  * Version Number
 	  */
 	public String getVersionNo();
+	
+	/** Column name ProductR_MailText_ID */
+    public static final String COLUMNNAME_ProductR_MailText_ID = "ProductR_MailText_ID";
+
+	/** Set ProductR_MailText_ID.
+	  */
+	public void setProductR_MailText_ID (int ProductR_MailText_ID);
+
+	/** Get ProductR_MailText_ID.
+	  * Product, Service, Item
+	  */
+	public int getProductR_MailText_ID();
+
+	public I_R_MailText getProductR_MailText();
+	
+	 /** Column name isDownloadable */
+    public static final String COLUMNNAME_isDownloadable = "isDownloadable";
+
+	/** Set isDownloadable	  */
+	public void setisDownloadable (boolean isDownloadable);
+
+	/** Get isDownloadable	  */
+	public boolean isDownloadable();
 }

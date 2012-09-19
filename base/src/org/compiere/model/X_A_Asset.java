@@ -1489,4 +1489,43 @@ public class X_A_Asset extends PO implements I_A_Asset, I_Persistent
 	{
 		return (String)get_Value(COLUMNNAME_VersionNo);
 	}
+
+	@Override
+	public void setProductR_MailText_ID(int ProductR_MailText_ID) {
+		if (ProductR_MailText_ID < 1) 
+			set_Value (COLUMNNAME_ProductR_MailText_ID, null);
+		else 
+			set_Value (COLUMNNAME_ProductR_MailText_ID, Integer.valueOf(ProductR_MailText_ID));
+	}
+
+	@Override
+	public int getProductR_MailText_ID() {
+		Integer ii = (Integer)get_Value(COLUMNNAME_ProductR_MailText_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	@Override
+	public I_R_MailText getProductR_MailText() {
+		return (I_R_MailText)MTable.get(getCtx(), I_R_MailText.Table_Name)
+				.getPO(getProductR_MailText_ID(), get_TrxName());
+	}
+
+	@Override
+	public void setisDownloadable(boolean isDownloadable) {
+		set_Value (COLUMNNAME_isDownloadable, Boolean.valueOf(isDownloadable));
+	}
+
+	@Override
+	public boolean isDownloadable() {
+		Object oo = get_Value(COLUMNNAME_isDownloadable);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
 }
