@@ -673,6 +673,14 @@ DataStatusListener, IADTabpanel, VetoableChangeListener
     }
 
     /**
+     * @return The record ID of this Tabpanel
+     */
+    public int getRecord_ID()
+    {
+        return gridTab.getRecord_ID();
+    }
+
+    /**
      * Is panel need refresh
      * @return boolean
      */
