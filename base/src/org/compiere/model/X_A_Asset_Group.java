@@ -19,18 +19,19 @@ package org.compiere.model;
 
 import java.sql.ResultSet;
 import java.util.Properties;
+import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Group
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121005L;
 
     /** Standard Constructor */
     public X_A_Asset_Group (Properties ctx, int A_Asset_Group_ID, String trxName)
@@ -80,6 +81,11 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
       return sb.toString();
     }
 
+	public I_A_Asset_Class getA_Asset_Class() throws RuntimeException
+    {
+		return (I_A_Asset_Class)MTable.get(getCtx(), I_A_Asset_Class.Table_Name)
+			.getPO(getA_Asset_Class_ID(), get_TrxName());	}
+
 	/** Set Asset class.
 		@param A_Asset_Class_ID Asset class	  */
 	public void setA_Asset_Class_ID (int A_Asset_Class_ID)
@@ -106,9 +112,10 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 	  */
 	public void setA_Asset_Group_ID (int A_Asset_Group_ID)
 	{
-		if (A_Asset_Group_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Group_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Asset_Group_ID, Integer.valueOf(A_Asset_Group_ID));
+		if (A_Asset_Group_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Group_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Group_ID, Integer.valueOf(A_Asset_Group_ID));
 	}
 
 	/** Get Asset Group.
@@ -129,6 +136,11 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
     {
         return new KeyNamePair(get_ID(), String.valueOf(getA_Asset_Group_ID()));
     }
+
+	public I_A_Asset_Type getA_Asset_Type() throws RuntimeException
+    {
+		return (I_A_Asset_Type)MTable.get(getCtx(), I_A_Asset_Type.Table_Name)
+			.getPO(getA_Asset_Type_ID(), get_TrxName());	}
 
 	/** Set Asset Type.
 		@param A_Asset_Type_ID Asset Type	  */
@@ -165,36 +177,6 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 	public String getDescription () 
 	{
 		return (String)get_Value(COLUMNNAME_Description);
-	}
-
-	/** GZ_TipComponenta AD_Reference_ID=1000068 */
-	public static final int GZ_TIPCOMPONENTA_AD_Reference_ID=1000068;
-	/** Contor = CT */
-	public static final String GZ_TIPCOMPONENTA_Contor = "CT";
-	/** Bransament = BR */
-	public static final String GZ_TIPCOMPONENTA_Bransament = "BR";
-	/** Regulator = RG */
-	public static final String GZ_TIPCOMPONENTA_Regulator = "RG";
-	/** Retea distributie = RD */
-	public static final String GZ_TIPCOMPONENTA_ReteaDistributie = "RD";
-	/** Instalatie utilizare = IU */
-	public static final String GZ_TIPCOMPONENTA_InstalatieUtilizare = "IU";
-	/** Set Tip componentă.
-		@param GZ_TipComponenta 
-		Componentă a reţelei de furnizare şi/sau distribuţie
-	  */
-	public void setGZ_TipComponenta (String GZ_TipComponenta)
-	{
-
-		set_Value (COLUMNNAME_GZ_TipComponenta, GZ_TipComponenta);
-	}
-
-	/** Get Tip componentă.
-		@return Componentă a reţelei de furnizare şi/sau distribuţie
-	  */
-	public String getGZ_TipComponenta () 
-	{
-		return (String)get_Value(COLUMNNAME_GZ_TipComponenta);
 	}
 
 	/** Set Comment/Help.
@@ -286,6 +268,27 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 		return false;
 	}
 
+	/** Set IsFixedAsset.
+		@param IsFixedAsset IsFixedAsset	  */
+	public void setIsFixedAsset (boolean IsFixedAsset)
+	{
+		set_Value (COLUMNNAME_IsFixedAsset, Boolean.valueOf(IsFixedAsset));
+	}
+
+	/** Get IsFixedAsset.
+		@return IsFixedAsset	  */
+	public boolean isFixedAsset () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsFixedAsset);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
 	/** Set One Asset Per UOM.
 		@param IsOneAssetPerUOM 
 		Create one asset per UOM
@@ -364,8 +367,6 @@ public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent
 	  */
 	public void setName (String Name)
 	{
-		if (Name == null)
-			throw new IllegalArgumentException ("Name is mandatory.");
 		set_Value (COLUMNNAME_Name, Name);
 	}
 

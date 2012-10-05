@@ -18,11 +18,12 @@ package org.compiere.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Group
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 360LTS.015
  */
 public interface I_A_Asset_Group 
 {
@@ -41,27 +42,6 @@ public interface I_A_Asset_Group
 
     /** Load Meta Data */
 
-    /** Column name AD_Client_ID */
-    public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
-
-	/** Get Client.
-	  * Client/Tenant for this installation.
-	  */
-	public int getAD_Client_ID();
-
-    /** Column name AD_Org_ID */
-    public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
-
-	/** Set Organization.
-	  * Organizational entity within client
-	  */
-	public void setAD_Org_ID (int AD_Org_ID);
-
-	/** Get Organization.
-	  * Organizational entity within client
-	  */
-	public int getAD_Org_ID();
-
     /** Column name A_Asset_Class_ID */
     public static final String COLUMNNAME_A_Asset_Class_ID = "A_Asset_Class_ID";
 
@@ -70,6 +50,8 @@ public interface I_A_Asset_Group
 
 	/** Get Asset class	  */
 	public int getA_Asset_Class_ID();
+
+	public I_A_Asset_Class getA_Asset_Class() throws RuntimeException;
 
     /** Column name A_Asset_Group_ID */
     public static final String COLUMNNAME_A_Asset_Group_ID = "A_Asset_Group_ID";
@@ -92,6 +74,29 @@ public interface I_A_Asset_Group
 
 	/** Get Asset Type	  */
 	public int getA_Asset_Type_ID();
+
+	public I_A_Asset_Type getA_Asset_Type() throws RuntimeException;
+
+    /** Column name AD_Client_ID */
+    public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
+
+	/** Get Client.
+	  * Client/Tenant for this installation.
+	  */
+	public int getAD_Client_ID();
+
+    /** Column name AD_Org_ID */
+    public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
+
+	/** Set Organization.
+	  * Organizational entity within client
+	  */
+	public void setAD_Org_ID (int AD_Org_ID);
+
+	/** Get Organization.
+	  * Organizational entity within client
+	  */
+	public int getAD_Org_ID();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -121,19 +126,6 @@ public interface I_A_Asset_Group
 	  * Optional short description of the record
 	  */
 	public String getDescription();
-
-    /** Column name GZ_TipComponenta */
-    public static final String COLUMNNAME_GZ_TipComponenta = "GZ_TipComponenta";
-
-	/** Set Tip componentă.
-	  * Componentă a reţelei de furnizare şi/sau distribuţie
-	  */
-	public void setGZ_TipComponenta (String GZ_TipComponenta);
-
-	/** Get Tip componentă.
-	  * Componentă a reţelei de furnizare şi/sau distribuţie
-	  */
-	public String getGZ_TipComponenta();
 
     /** Column name Help */
     public static final String COLUMNNAME_Help = "Help";
@@ -199,6 +191,15 @@ public interface I_A_Asset_Group
 	  * The asset will be depreciated
 	  */
 	public boolean isDepreciated();
+
+    /** Column name IsFixedAsset */
+    public static final String COLUMNNAME_IsFixedAsset = "IsFixedAsset";
+
+	/** Set IsFixedAsset	  */
+	public void setIsFixedAsset (boolean IsFixedAsset);
+
+	/** Get IsFixedAsset	  */
+	public boolean isFixedAsset();
 
     /** Column name IsOneAssetPerUOM */
     public static final String COLUMNNAME_IsOneAssetPerUOM = "IsOneAssetPerUOM";

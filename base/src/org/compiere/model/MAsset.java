@@ -178,7 +178,14 @@ public class MAsset extends X_A_Asset
 	}
 	
 	public MAsset(MInOut mInOut, MInOutLine sLine, int deliveryCount) {
-		// TODO Auto-generated constructor stub
+		this(mInOut.getCtx(), 0, mInOut.get_TrxName());
+		setIsOwned(false);
+		setIsInPosession(false);
+		setA_Asset_CreateDate(new Timestamp(System.currentTimeMillis()));
+		setHelp(Msg.getMsg(MClient.get(getCtx()).getAD_Language(), "CreatedFromShipment: ", new Object[] { mInOut.getDocumentNo()}));
+		setDateAcct(new Timestamp(System.currentTimeMillis()));
+		setDescription(sLine.getDescription());
+		
 	}
 
 	/**
@@ -188,7 +195,7 @@ public class MAsset extends X_A_Asset
 	 * @param deliveryCount 0 or number of delivery
 	 * @return A_Asset_ID
 	 */
-	/* commented out by @win
+	
 	public MAsset (MInventory inventory, MInventoryLine invLine, BigDecimal qty, BigDecimal costs)
 	{
 		super(invLine.getCtx(), 0, invLine.get_TrxName());
@@ -196,7 +203,7 @@ public class MAsset extends X_A_Asset
 		
 		MProduct product = MProduct.get(getCtx(), invLine.getM_Product_ID());
 		// Defaults from group:
-		MAssetGroup assetGroup = MAssetGroup.get(invLine.getCtx(), invLine.getA_Asset_Group_ID());
+		MAssetGroup assetGroup = MAssetGroup.get(invLine.getCtx(), invLine.getM_Product().getM_Product_Category().getA_Asset_Group_ID());
 		if (assetGroup == null)
 			assetGroup = MAssetGroup.get(invLine.getCtx(), product.getA_Asset_Group_ID());
 		setAssetGroup(assetGroup);
@@ -209,7 +216,6 @@ public class MAsset extends X_A_Asset
 		setAssetServiceDate(inventory.getMovementDate());
 		setIsOwned(true);
 		setIsInPosession(true);
-		setC_BPartner_ID(invLine.getC_BPartner_ID());
 		
 		//	Product
 		setM_Product_ID(product.getM_Product_ID());
@@ -222,16 +228,18 @@ public class MAsset extends X_A_Asset
 			MAttributeSetInstance asi = new MAttributeSetInstance (getCtx(), invLine.getM_AttributeSetInstance_ID(), get_TrxName());
 			setASI(asi);
 		}
-		setSerNo(invLine.getSerNo());
+		//setSerNo(invLine.getSerNo());
 		setQty(qty);
 		
 		// Costs:
 		//setA_Asset_Cost(costs);  //commented by @win, set at asset addition
 		
 		// Activity
+		/*
 		if (invLine.getC_Activity_ID() > 0)
 			setC_Activity_ID(invLine.getC_Activity_ID());
-		else if (inventory.getC_Activity_ID() > 0)
+		*/
+		if (inventory.getC_Activity_ID() > 0)
 			setC_Activity_ID(inventory.getC_Activity_ID());
 		
 		//
@@ -250,7 +258,7 @@ public class MAsset extends X_A_Asset
 		
 		
 	}
-	*/ //end commented by @win
+	
 	/**
 	 * Set Asset Group; also it sets other default fields
 	 * @param assetGroup
