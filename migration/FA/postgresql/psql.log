@@ -1,0 +1,922 @@
+
+
+#Run Scripts:
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:2276: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_product_key" for table "a_asset_product"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:19512: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_class_key" for table "a_asset_class"
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:20050: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_fundingmode_key" for table "a_fundingmode"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:22054: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_reval_key" for table "a_asset_reval"
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:22709: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_type_key" for table "a_asset_type"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/003_FA_Stabilization_postgresql.sql:57: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "i_fixedasset_key" for table "i_fixedasset"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/005_FA_Stabilization_postgresql.sql:150: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_acct_pkey" for table "a_asset_acct"
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/005_FA_Stabilization_postgresql.sql:227: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_group_acct_key" for table "a_asset_group_acct"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
