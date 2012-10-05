@@ -2,6 +2,35 @@ syntax: glob
 build
 bin
 
+mobile/WEB-INF/classes/org/compiere/mobile/WebField.class
+mobile/WEB-INF/classes/org/compiere/mobile/WZoom.class
+mobile/WEB-INF/classes/org/compiere/mobile/WWorkflow.class
+mobile/WEB-INF/classes/org/compiere/mobile/WWindowStatus.class
+mobile/WEB-INF/classes/org/compiere/mobile/WWindow.class
+mobile/WEB-INF/classes/org/compiere/mobile/WTask.class
+mobile/WEB-INF/classes/org/compiere/mobile/WStatusArrayList.class
+mobile/WEB-INF/classes/org/compiere/mobile/WStatus.class
+mobile/WEB-INF/classes/org/compiere/mobile/WStart.class
+mobile/WEB-INF/classes/org/compiere/mobile/WReport.class
+mobile/WEB-INF/classes/org/compiere/mobile/WProcessCtl.class
+mobile/WEB-INF/classes/org/compiere/mobile/WProcess.class
+mobile/WEB-INF/classes/org/compiere/mobile/WMenu.class
+mobile/WEB-INF/classes/org/compiere/mobile/WLookup.class
+mobile/WEB-INF/classes/org/compiere/mobile/WLogin.class
+mobile/WEB-INF/classes/org/compiere/mobile/WLocation.class
+mobile/WEB-INF/classes/org/compiere/mobile/WHelp.class
+mobile/WEB-INF/classes/org/compiere/mobile/WForm.class
+mobile/WEB-INF/classes/org/compiere/mobile/WFindAdv.class
+mobile/WEB-INF/classes/org/compiere/mobile/WFilter.class
+mobile/WEB-INF/classes/org/compiere/mobile/WFieldUpdate.class
+mobile/WEB-INF/classes/org/compiere/mobile/WError.class
+mobile/WEB-INF/classes/org/compiere/mobile/MobileUtil.class
+mobile/WEB-INF/classes/org/compiere/mobile/MobileSessionCtx.class
+mobile/WEB-INF/classes/org/compiere/mobile/MobileEnv.class
+mobile/WEB-INF/classes/org/compiere/mobile/MobileDoc.class
+mobile/WEB-INF/classes/org/compiere/mobile/LoginDynUpdate.class
+mobile/dist/mobile.war
+migration/postgresql.properties
 syntax: regexp
 ^adempiere$
 ^base/Base\.jar$

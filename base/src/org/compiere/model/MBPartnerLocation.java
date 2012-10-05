@@ -154,41 +154,10 @@ public class MBPartnerLocation extends X_C_BPartner_Location
 			return false;
 
 		//	Set New Name
-		if (!newRecord)
-			return true;
-		MLocation address = getLocation(true);
-		m_uniqueName = getName();
-		m_unique = MSysConfig.getIntValue("START_VALUE_BPLOCATION_NAME", 0, getAD_Client_ID(), getAD_Org_ID());
-		if (m_unique < 0 || m_unique > 4)
-			m_unique = 0;
-		if (m_uniqueName != null && m_uniqueName.equals(".")) {
-			//	default
-			m_uniqueName = null;
-			makeUnique(address);
+		if (".".equals(getName())) {
+			MLocation address = getLocation(true);
+			setName(getBPLocName(address));
 		}
-		
-		//	Check uniqueness
-		MBPartnerLocation[] locations = getForBPartner(getCtx(), getC_BPartner_ID());
-		boolean unique = locations.length == 0;
-		while (!unique)
-		{
-			unique = true;
-			for (int i = 0; i < locations.length; i++)
-			{
-				MBPartnerLocation location = locations[i];
-				if (location.getC_BPartner_Location_ID() == get_ID())
-					continue;
-				if (m_uniqueName.equals(location.getName()))
-				{
-					//m_uniqueName = null;
-					m_unique++;
-					makeUnique(address);
-					unique = false;
-					break;
-				}
-			}
-		}
-		setName (m_uniqueName);
 		return true;
 	}	//	beforeSave
 	
@@ -198,7 +167,6 @@ public class MBPartnerLocation extends X_C_BPartner_Location
 	 */
 	private void makeUnique (MLocation address)
 	{
-		
 		m_uniqueName = "";
 
 		//	0 - City
@@ -250,5 +218,41 @@ public class MBPartnerLocation extends X_C_BPartner_Location
 			m_uniqueName += "#" + id;		
 		}
 	}	//	makeUnique
-	
+
+	public String getBPLocName(MLocation address)
+	{
+		m_uniqueName = getName();
+		m_unique = MSysConfig.getIntValue("START_VALUE_BPLOCATION_NAME", 0, getAD_Client_ID(), getAD_Org_ID());
+		if (m_unique < 0 || m_unique > 4)
+			m_unique = 0;
+		if (m_uniqueName != null){	// && m_uniqueName.equals(".")) {
+			//	default
+			m_uniqueName = null;
+			makeUnique(address);
+		}
+		
+		//	Check uniqueness
+		MBPartnerLocation[] locations = getForBPartner(getCtx(), getC_BPartner_ID());
+		boolean unique = locations.length == 0;
+		while (!unique)
+		{
+			unique = true;
+			for (int i = 0; i < locations.length; i++)
+			{
+				MBPartnerLocation location = locations[i];
+				if (location.getC_BPartner_Location_ID() == get_ID())
+					continue;
+				if (m_uniqueName.equals(location.getName()))
+				{
+					//m_uniqueName = null;
+					m_unique++;
+					makeUnique(address);
+					unique = false;
+					break;
+				}
+			}
+		}
+		return m_uniqueName;		
+	}
+
 }	//	MBPartnerLocation

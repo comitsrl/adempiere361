@@ -869,6 +869,15 @@ public class ADSortTab extends Panel implements IADTabpanel
 		return gridTab.getTabLevel();
 	}
 
+    public String getTableName()
+    {
+        return gridTab.getTableName();
+    }
+
+	public int getRecord_ID() {
+		return gridTab.getRecord_ID();
+	}
+
 	public String getTitle() {
 		return gridTab.getName();
 	}
