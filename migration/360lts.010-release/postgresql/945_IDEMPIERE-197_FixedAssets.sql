@@ -1,3 +1,5 @@
+-- *** migration/FA/postgresql/001_FA_Stabilization_postgresql.sql ***
+
 -- Jun 17, 2010 3:12:01 PM CDT
 -- Generated Central ID for Fixed Asset
 INSERT INTO AD_EntityType (AD_Client_ID,AD_EntityType_ID,AD_Org_ID,Created,CreatedBy,Description,EntityType,IsActive,Name,Processing,Updated,UpdatedBy,Version) VALUES (0,50009,0,TO_TIMESTAMP('2010-06-17 15:11:56','YYYY-MM-DD HH24:MI:SS'),0,'Fixed Assets','FA','Y','Fixed Assets','N',TO_TIMESTAMP('2010-06-17 15:11:56','YYYY-MM-DD HH24:MI:SS'),0,NULL)
@@ -26775,4 +26777,15128 @@ UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59120
 -- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
 UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 14:01:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59120
 ;
+
+
+-- *** migration/FA/postgresql/002_FA_Stabilization_postgresql.sql ***
+
+-- Jun 20, 2010 4:17:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59391
+;
+
+-- Jun 20, 2010 4:17:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59393
+;
+
+-- Jun 20, 2010 4:17:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=59394
+;
+
+-- Jun 20, 2010 4:17:58 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 16:17:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59392
+;
+
+-- Jun 20, 2010 4:18:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 16:18:06','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59393
+;
+
+-- Jun 20, 2010 4:18:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 16:18:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53324
+;
+
+-- Jun 20, 2010 4:18:58 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 16:18:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59394
+;
+
+-- Jun 20, 2010 4:19:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 16:19:04','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59390
+;
+
+-- Jun 20, 2010 4:20:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59392
+;
+
+-- Jun 20, 2010 4:20:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59394
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Create Date', PrintName='Create Date',Updated=TO_TIMESTAMP('2010-06-20 16:25:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53526
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53526
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_CreateDate', Name='Create Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53526
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_CreateDate', Name='Create Date', Description=NULL, Help=NULL, AD_Element_ID=53526 WHERE UPPER(ColumnName)='A_ASSET_CREATEDATE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_CreateDate', Name='Create Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53526 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Create Date', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53526) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:25:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Create Date', Name='Create Date' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53526)
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Parent Asset', PrintName='Parent Asset',Updated=TO_TIMESTAMP('2010-06-20 16:26:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53528
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53528
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Parent_Asset_ID', Name='Parent Asset', Description=NULL, Help=NULL WHERE AD_Element_ID=53528
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Parent_Asset_ID', Name='Parent Asset', Description=NULL, Help=NULL, AD_Element_ID=53528 WHERE UPPER(ColumnName)='A_PARENT_ASSET_ID' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Parent_Asset_ID', Name='Parent Asset', Description=NULL, Help=NULL WHERE AD_Element_ID=53528 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Parent Asset', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53528) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:26:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Parent Asset', Name='Parent Asset' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53528)
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Revaluation Date', PrintName='Revaluation Date',Updated=TO_TIMESTAMP('2010-06-20 16:26:40','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53527
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53527
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_RevalDate', Name='Revaluation Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53527
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_RevalDate', Name='Revaluation Date', Description=NULL, Help=NULL, AD_Element_ID=53527 WHERE UPPER(ColumnName)='A_ASSET_REVALDATE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_RevalDate', Name='Revaluation Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53527 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Revaluation Date', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53527) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:26:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Revaluation Date', Name='Revaluation Date' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53527)
+;
+
+-- Jun 20, 2010 4:27:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 16:27:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=450
+;
+
+-- Jun 20, 2010 4:31:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO t_alter_column values('a_asset_group','A_Asset_Type_ID','NUMERIC(10)',null,'NULL')
+;
+
+-- Jun 20, 2010 4:35:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsDisplayed='N',Updated=TO_TIMESTAMP('2010-06-20 16:35:30','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=58996
+;
+
+-- Jun 20, 2010 4:36:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 16:36:27','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=6150
+;
+
+-- Jun 20, 2010 4:36:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 16:36:33','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=58997
+;
+
+-- Jun 20, 2010 4:36:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 16:36:40','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=6137
+;
+
+-- Jun 20, 2010 4:36:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 16:36:47','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=6141
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=58996
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=6154
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=6149
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=8345
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=6146
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=58993
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=6135
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=6143
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=6166
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=55830
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=55831
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=12106
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=58994
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=6139
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=6165
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=6147
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=6136
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=6138
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=12107
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=6151
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=6159
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=6156
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=12876
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=12875
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=6160
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=6213
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=6148
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=6142
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=6161
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=410,IsDisplayed='Y' WHERE AD_Field_ID=6144
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=420,IsDisplayed='Y' WHERE AD_Field_ID=12872
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=430,IsDisplayed='Y' WHERE AD_Field_ID=12874
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=440,IsDisplayed='Y' WHERE AD_Field_ID=12873
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=450,IsDisplayed='Y' WHERE AD_Field_ID=12877
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=460,IsDisplayed='Y' WHERE AD_Field_ID=12878
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=470,IsDisplayed='Y' WHERE AD_Field_ID=58995
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=480,IsDisplayed='Y' WHERE AD_Field_ID=6141
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=490,IsDisplayed='Y' WHERE AD_Field_ID=6137
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=500,IsDisplayed='Y' WHERE AD_Field_ID=6150
+;
+
+-- Jun 20, 2010 4:37:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=510,IsDisplayed='Y' WHERE AD_Field_ID=58997
+;
+
+-- Jun 20, 2010 4:37:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=480,IsDisplayed='Y' WHERE AD_Field_ID=58997
+;
+
+-- Jun 20, 2010 4:37:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=490,IsDisplayed='Y' WHERE AD_Field_ID=6141
+;
+
+-- Jun 20, 2010 4:37:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=500,IsDisplayed='Y' WHERE AD_Field_ID=6137
+;
+
+-- Jun 20, 2010 4:37:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=510,IsDisplayed='Y' WHERE AD_Field_ID=6150
+;
+
+-- Jun 20, 2010 4:38:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 16:38:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=58997
+;
+
+-- Jun 20, 2010 4:40:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET PrintName='Costo del Activo',Updated=TO_TIMESTAMP('2010-06-20 16:40:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53489 AND AD_Language='es_MX'
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposal Gain', PrintName='Disposal Gain',Updated=TO_TIMESTAMP('2010-06-20 16:43:47','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53532
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53532
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposal_Gain', Name='Disposal Gain', Description=NULL, Help=NULL WHERE AD_Element_ID=53532
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Gain', Name='Disposal Gain', Description=NULL, Help=NULL, AD_Element_ID=53532 WHERE UPPER(ColumnName)='A_DISPOSAL_GAIN' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Gain', Name='Disposal Gain', Description=NULL, Help=NULL WHERE AD_Element_ID=53532 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposal Gain', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53532) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:43:47 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposal Gain', Name='Disposal Gain' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53532)
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposal Revenue', PrintName='Disposal Revenue',Updated=TO_TIMESTAMP('2010-06-20 16:44:09','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54195
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54195
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposal_Revenue_Acct', Name='Disposal Revenue', Description=NULL, Help=NULL WHERE AD_Element_ID=54195
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Acct', Name='Disposal Revenue', Description=NULL, Help=NULL, AD_Element_ID=54195 WHERE UPPER(ColumnName)='A_DISPOSAL_REVENUE_ACCT' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Acct', Name='Disposal Revenue', Description=NULL, Help=NULL WHERE AD_Element_ID=54195 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposal Revenue', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54195) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposal Revenue', Name='Disposal Revenue' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54195)
+;
+
+-- Jun 20, 2010 4:44:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposal Revenue Str',Updated=TO_TIMESTAMP('2010-06-20 16:44:18','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53561
+;
+
+-- Jun 20, 2010 4:44:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53561
+;
+
+-- Jun 20, 2010 4:44:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str', Description=NULL, Help=NULL WHERE AD_Element_ID=53561
+;
+
+-- Jun 20, 2010 4:44:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str', Description=NULL, Help=NULL, AD_Element_ID=53561 WHERE UPPER(ColumnName)='A_DISPOSAL_REVENUE_STR' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:44:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str', Description=NULL, Help=NULL WHERE AD_Element_ID=53561 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposal Revenue Str', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53561) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53561)
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Description=NULL, PrintName='Disposal Revenue Str',Updated=TO_TIMESTAMP('2010-06-20 16:44:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53561
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53561
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str', Description=NULL, Help=NULL WHERE AD_Element_ID=53561
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str', Description=NULL, Help=NULL, AD_Element_ID=53561 WHERE UPPER(ColumnName)='A_DISPOSAL_REVENUE_STR' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Str', Name='Disposal Revenue Str', Description=NULL, Help=NULL WHERE AD_Element_ID=53561 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposal Revenue Str', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53561) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposal Revenue Str', Name='Disposal Revenue Str' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53561)
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposed Date', PrintName='Disposed Date',Updated=TO_TIMESTAMP('2010-06-20 16:44:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53551
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53551
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposed_Date', Name='Disposed Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53551
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposed_Date', Name='Disposed Date', Description=NULL, Help=NULL, AD_Element_ID=53551 WHERE UPPER(ColumnName)='A_DISPOSED_DATE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposed_Date', Name='Disposed Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53551 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposed Date', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53551) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposed Date', Name='Disposed Date' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53551)
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposed Method', PrintName='Disposed Method',Updated=TO_TIMESTAMP('2010-06-20 16:44:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53554
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53554
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposed_Method', Name='Disposed Method', Description=NULL, Help=NULL WHERE AD_Element_ID=53554
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposed_Method', Name='Disposed Method', Description=NULL, Help=NULL, AD_Element_ID=53554 WHERE UPPER(ColumnName)='A_DISPOSED_METHOD' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposed_Method', Name='Disposed Method', Description=NULL, Help=NULL WHERE AD_Element_ID=53554 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposed Method', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53554) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:44:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposed Method', Name='Disposed Method' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53554)
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposed Reason',Updated=TO_TIMESTAMP('2010-06-20 16:45:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53552
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53552
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposed_Reason', Name='Disposed Reason', Description=NULL, Help=NULL WHERE AD_Element_ID=53552
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposed_Reason', Name='Disposed Reason', Description=NULL, Help=NULL, AD_Element_ID=53552 WHERE UPPER(ColumnName)='A_DISPOSED_REASON' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposed_Reason', Name='Disposed Reason', Description=NULL, Help=NULL WHERE AD_Element_ID=53552 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposed Reason', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53552) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:45:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='A_Disposed_Reason', Name='Disposed Reason' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53552)
+;
+
+-- Jun 20, 2010 4:45:11 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET PrintName='Disposed Reason',Updated=TO_TIMESTAMP('2010-06-20 16:45:11','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53552
+;
+
+-- Jun 20, 2010 4:45:11 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53552
+;
+
+-- Jun 20, 2010 4:45:11 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposed Reason', Name='Disposed Reason' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53552)
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Disposal Loss Str', PrintName='Disposal Loss Str',Updated=TO_TIMESTAMP('2010-06-20 16:45:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53563
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53563
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Disposal_Loss_Str', Name='Disposal Loss Str', Description=NULL, Help=NULL WHERE AD_Element_ID=53563
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Loss_Str', Name='Disposal Loss Str', Description=NULL, Help=NULL, AD_Element_ID=53563 WHERE UPPER(ColumnName)='A_DISPOSAL_LOSS_STR' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Loss_Str', Name='Disposal Loss Str', Description=NULL, Help=NULL WHERE AD_Element_ID=53563 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Disposal Loss Str', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53563) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 4:45:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Disposal Loss Str', Name='Disposal Loss Str' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53563)
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Contract Date', PrintName='Contract Date',Updated=TO_TIMESTAMP('2010-06-20 17:25:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53602
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53602
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Contract_Date', Name='Contract Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53602
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Contract_Date', Name='Contract Date', Description=NULL, Help=NULL, AD_Element_ID=53602 WHERE UPPER(ColumnName)='A_CONTRACT_DATE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Contract_Date', Name='Contract Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53602 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Contract Date', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53602) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:25:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Contract Date', Name='Contract Date' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53602)
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Due On', PrintName='Asset Due On',Updated=TO_TIMESTAMP('2010-06-20 17:25:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53595
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53595
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Due_On', Name='Asset Due On', Description=NULL, Help=NULL WHERE AD_Element_ID=53595
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Due_On', Name='Asset Due On', Description=NULL, Help=NULL, AD_Element_ID=53595 WHERE UPPER(ColumnName)='A_DUE_ON' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Due_On', Name='Asset Due On', Description=NULL, Help=NULL WHERE AD_Element_ID=53595 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Due On', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53595) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Due On', Name='Asset Due On' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53595)
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Expired Date', PrintName='Asset Expired Date',Updated=TO_TIMESTAMP('2010-06-20 17:26:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53601
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53601
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Expired_Date', Name='Asset Expired Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53601
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Expired_Date', Name='Asset Expired Date', Description=NULL, Help=NULL, AD_Element_ID=53601 WHERE UPPER(ColumnName)='A_EXPIRED_DATE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Expired_Date', Name='Asset Expired Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53601 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Expired Date', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53601) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:26:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Expired Date', Name='Asset Expired Date' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53601)
+;
+
+-- Jun 20, 2010 5:27:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Finance Method', PrintName='Asset Finance Method',Updated=TO_TIMESTAMP('2010-06-20 17:27:09','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53593
+;
+
+-- Jun 20, 2010 5:27:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53593
+;
+
+-- Jun 20, 2010 5:27:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Finance_Meth', Name='Asset Finance Method', Description=NULL, Help=NULL WHERE AD_Element_ID=53593
+;
+
+-- Jun 20, 2010 5:27:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Finance_Meth', Name='Asset Finance Method', Description=NULL, Help=NULL, AD_Element_ID=53593 WHERE UPPER(ColumnName)='A_FINANCE_METH' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:27:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Finance_Meth', Name='Asset Finance Method', Description=NULL, Help=NULL WHERE AD_Element_ID=53593 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:27:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Finance Method', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53593) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:27:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Finance Method', Name='Asset Finance Method' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53593)
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Monthly Payment', PrintName='Asset Monthly Payment',Updated=TO_TIMESTAMP('2010-06-20 17:27:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53600
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53600
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Monthly_Payment', Name='Asset Monthly Payment', Description=NULL, Help=NULL WHERE AD_Element_ID=53600
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Monthly_Payment', Name='Asset Monthly Payment', Description=NULL, Help=NULL, AD_Element_ID=53600 WHERE UPPER(ColumnName)='A_MONTHLY_PAYMENT' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Monthly_Payment', Name='Asset Monthly Payment', Description=NULL, Help=NULL WHERE AD_Element_ID=53600 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Monthly Payment', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53600) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:27:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Monthly Payment', Name='Asset Monthly Payment' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53600)
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Info Financial ID', PrintName='Asset Info Financial ID',Updated=TO_TIMESTAMP('2010-06-20 17:28:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53594
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53594
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Info_Fin_ID', Name='Asset Info Financial ID', Description=NULL, Help=NULL WHERE AD_Element_ID=53594
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Info_Fin_ID', Name='Asset Info Financial ID', Description=NULL, Help=NULL, AD_Element_ID=53594 WHERE UPPER(ColumnName)='A_ASSET_INFO_FIN_ID' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Info_Fin_ID', Name='Asset Info Financial ID', Description=NULL, Help=NULL WHERE AD_Element_ID=53594 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Info Financial ID', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53594) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:28:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Info Financial ID', Name='Asset Info Financial ID' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53594)
+;
+
+-- Jun 20, 2010 5:29:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Description='Asset Cost',Updated=TO_TIMESTAMP('2010-06-20 17:29:28','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53489
+;
+
+-- Jun 20, 2010 5:29:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53489
+;
+
+-- Jun 20, 2010 5:29:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Cost', Name='Asset Cost', Description='Asset Cost', Help=NULL WHERE AD_Element_ID=53489
+;
+
+-- Jun 20, 2010 5:29:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Cost', Name='Asset Cost', Description='Asset Cost', Help=NULL, AD_Element_ID=53489 WHERE UPPER(ColumnName)='A_ASSET_COST' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:29:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Cost', Name='Asset Cost', Description='Asset Cost', Help=NULL WHERE AD_Element_ID=53489 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:29:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Cost', Description='Asset Cost', Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53489) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Proceeds', PrintName='Asset Proceeds',Updated=TO_TIMESTAMP('2010-06-20 17:32:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53553
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53553
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Proceeds', Name='Asset Proceeds', Description=NULL, Help=NULL WHERE AD_Element_ID=53553
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Proceeds', Name='Asset Proceeds', Description=NULL, Help=NULL, AD_Element_ID=53553 WHERE UPPER(ColumnName)='A_PROCEEDS' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Proceeds', Name='Asset Proceeds', Description=NULL, Help=NULL WHERE AD_Element_ID=53553 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Proceeds', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53553) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:32:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Proceeds', Name='Asset Proceeds' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53553)
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Trade', PrintName='Asset Trade',Updated=TO_TIMESTAMP('2010-06-20 17:33:23','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53555
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53555
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Trade_ID', Name='Asset Trade', Description=NULL, Help=NULL WHERE AD_Element_ID=53555
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Trade_ID', Name='Asset Trade', Description=NULL, Help=NULL, AD_Element_ID=53555 WHERE UPPER(ColumnName)='A_ASSET_TRADE_ID' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Trade_ID', Name='Asset Trade', Description=NULL, Help=NULL WHERE AD_Element_ID=53555 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Trade', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53555) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:33:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Trade', Name='Asset Trade' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53555)
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset License No', PrintName='Asset License No',Updated=TO_TIMESTAMP('2010-06-20 17:34:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53616
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53616
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_License_No', Name='Asset License No', Description=NULL, Help=NULL WHERE AD_Element_ID=53616
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_License_No', Name='Asset License No', Description=NULL, Help=NULL, AD_Element_ID=53616 WHERE UPPER(ColumnName)='A_LICENSE_NO' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_License_No', Name='Asset License No', Description=NULL, Help=NULL WHERE AD_Element_ID=53616 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset License No', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53616) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:34:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset License No', Name='Asset License No' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53616)
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset License Fee', PrintName='Asset License Fee',Updated=TO_TIMESTAMP('2010-06-20 17:35:05','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53614
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53614
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_License_Fee', Name='Asset License Fee', Description=NULL, Help=NULL WHERE AD_Element_ID=53614
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_License_Fee', Name='Asset License Fee', Description=NULL, Help=NULL, AD_Element_ID=53614 WHERE UPPER(ColumnName)='A_LICENSE_FEE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_License_Fee', Name='Asset License Fee', Description=NULL, Help=NULL WHERE AD_Element_ID=53614 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset License Fee', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53614) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:35:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset License Fee', Name='Asset License Fee' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53614)
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Renewal Date', PrintName='Asset Renewal Date',Updated=TO_TIMESTAMP('2010-06-20 17:35:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53615
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53615
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Renewal_Date', Name='Asset Renewal Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53615
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Renewal_Date', Name='Asset Renewal Date', Description=NULL, Help=NULL, AD_Element_ID=53615 WHERE UPPER(ColumnName)='A_RENEWAL_DATE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Renewal_Date', Name='Asset Renewal Date', Description=NULL, Help=NULL WHERE AD_Element_ID=53615 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Renewal Date', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53615) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:35:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Renewal Date', Name='Asset Renewal Date' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53615)
+;
+
+-- Jun 20, 2010 5:36:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 17:36:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=55968
+;
+
+-- Jun 20, 2010 5:36:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 17:36:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=55966
+;
+
+-- Jun 20, 2010 5:37:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 17:37:40','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53322
+;
+
+-- Jun 20, 2010 5:38:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Description='Accumulated Depreciation',Updated=TO_TIMESTAMP('2010-06-20 17:38:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53488
+;
+
+-- Jun 20, 2010 5:38:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53488
+;
+
+-- Jun 20, 2010 5:38:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Accumulated_Depr', Name='Accumulated Depreciation', Description='Accumulated Depreciation', Help=NULL WHERE AD_Element_ID=53488
+;
+
+-- Jun 20, 2010 5:38:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Accumulated_Depr', Name='Accumulated Depreciation', Description='Accumulated Depreciation', Help=NULL, AD_Element_ID=53488 WHERE UPPER(ColumnName)='A_ACCUMULATED_DEPR' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:38:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Accumulated_Depr', Name='Accumulated Depreciation', Description='Accumulated Depreciation', Help=NULL WHERE AD_Element_ID=53488 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:38:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Accumulated Depreciation', Description='Accumulated Depreciation', Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53488) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Period', PrintName='Asset Period',Updated=TO_TIMESTAMP('2010-06-20 17:38:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53477
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53477
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Period', Name='Asset Period', Description=NULL, Help=NULL WHERE AD_Element_ID=53477
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Period', Name='Asset Period', Description=NULL, Help=NULL, AD_Element_ID=53477 WHERE UPPER(ColumnName)='A_PERIOD' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Period', Name='Asset Period', Description=NULL, Help=NULL WHERE AD_Element_ID=53477 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Period', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53477) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:38:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Period', Name='Asset Period' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53477)
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Disposed', PrintName='Asset Disposed',Updated=TO_TIMESTAMP('2010-06-20 17:39:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53550
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53550
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Disposed_ID', Name='Asset Disposed', Description=NULL, Help=NULL WHERE AD_Element_ID=53550
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Disposed_ID', Name='Asset Disposed', Description=NULL, Help=NULL, AD_Element_ID=53550 WHERE UPPER(ColumnName)='A_ASSET_DISPOSED_ID' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Disposed_ID', Name='Asset Disposed', Description=NULL, Help=NULL WHERE AD_Element_ID=53550 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Disposed', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53550) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:39:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Disposed', Name='Asset Disposed' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53550)
+;
+
+-- Jun 20, 2010 5:40:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53164
+;
+
+-- Jun 20, 2010 5:40:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:33','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=451
+;
+
+-- Jun 20, 2010 5:40:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:34','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53158
+;
+
+-- Jun 20, 2010 5:40:36 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=793
+;
+
+-- Jun 20, 2010 5:40:37 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:37','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53160
+;
+
+-- Jun 20, 2010 5:40:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53155
+;
+
+-- Jun 20, 2010 5:40:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsActive='Y',Updated=TO_TIMESTAMP('2010-06-20 17:40:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53161
+;
+
+-- Jun 20, 2010 5:41:37 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 17:41:37','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=451
+;
+
+-- Jun 20, 2010 5:41:39 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 17:41:39','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53158
+;
+
+-- Jun 20, 2010 5:41:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 17:41:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=793
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Insurance Company',Updated=TO_TIMESTAMP('2010-06-20 17:43:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53622
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53622
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Insurance_Co', Name='Insurance Company', Description=NULL, Help=NULL WHERE AD_Element_ID=53622
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Insurance_Co', Name='Insurance Company', Description=NULL, Help=NULL, AD_Element_ID=53622 WHERE UPPER(ColumnName)='A_INSURANCE_CO' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Insurance_Co', Name='Insurance Company', Description=NULL, Help=NULL WHERE AD_Element_ID=53622 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Insurance Company', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53622) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:43:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='A_Insurance_Co', Name='Insurance Company' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53622)
+;
+
+-- Jun 20, 2010 5:43:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET PrintName='Insurance Company',Updated=TO_TIMESTAMP('2010-06-20 17:43:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53622
+;
+
+-- Jun 20, 2010 5:43:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53622
+;
+
+-- Jun 20, 2010 5:43:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Insurance Company', Name='Insurance Company' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53622)
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Policy No', PrintName='Asset Policy No',Updated=TO_TIMESTAMP('2010-06-20 17:44:20','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53620
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53620
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Policy_No', Name='Asset Policy No', Description=NULL, Help=NULL WHERE AD_Element_ID=53620
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Policy_No', Name='Asset Policy No', Description=NULL, Help=NULL, AD_Element_ID=53620 WHERE UPPER(ColumnName)='A_POLICY_NO' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Policy_No', Name='Asset Policy No', Description=NULL, Help=NULL WHERE AD_Element_ID=53620 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Policy No', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53620) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:44:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Policy No', Name='Asset Policy No' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53620)
+;
+
+-- Jun 20, 2010 5:45:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Insurance Premium', PrintName='Asset Insurance Premium',Updated=TO_TIMESTAMP('2010-06-20 17:45:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53623
+;
+
+-- Jun 20, 2010 5:45:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53623
+;
+
+-- Jun 20, 2010 5:45:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Ins_Premium', Name='Asset Insurance Premium', Description=NULL, Help=NULL WHERE AD_Element_ID=53623
+;
+
+-- Jun 20, 2010 5:45:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Ins_Premium', Name='Asset Insurance Premium', Description=NULL, Help=NULL, AD_Element_ID=53623 WHERE UPPER(ColumnName)='A_INS_PREMIUM' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:45:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Ins_Premium', Name='Asset Insurance Premium', Description=NULL, Help=NULL WHERE AD_Element_ID=53623 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:45:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Insurance Premium', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53623) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:45:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Insurance Premium', Name='Asset Insurance Premium' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53623)
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Replace Cost', PrintName='Asset Replace Cost',Updated=TO_TIMESTAMP('2010-06-20 17:45:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53621
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53621
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Replace_Cost', Name='Asset Replace Cost', Description=NULL, Help=NULL WHERE AD_Element_ID=53621
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Replace_Cost', Name='Asset Replace Cost', Description=NULL, Help=NULL, AD_Element_ID=53621 WHERE UPPER(ColumnName)='A_REPLACE_COST' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Replace_Cost', Name='Asset Replace Cost', Description=NULL, Help=NULL WHERE AD_Element_ID=53621 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Replace Cost', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53621) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:45:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Replace Cost', Name='Asset Replace Cost' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53621)
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Insurance Value', PrintName='Asset Insurance Value',Updated=TO_TIMESTAMP('2010-06-20 17:46:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53619
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53619
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Ins_Value', Name='Asset Insurance Value', Description=NULL, Help=NULL WHERE AD_Element_ID=53619
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Ins_Value', Name='Asset Insurance Value', Description=NULL, Help=NULL, AD_Element_ID=53619 WHERE UPPER(ColumnName)='A_INS_VALUE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Ins_Value', Name='Asset Insurance Value', Description=NULL, Help=NULL WHERE AD_Element_ID=53619 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Insurance Value', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53619) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:46:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Insurance Value', Name='Asset Insurance Value' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53619)
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Tax Entity', PrintName='Asset Tax Entity',Updated=TO_TIMESTAMP('2010-06-20 17:48:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53591
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53591
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Tax_Entity', Name='Asset Tax Entity', Description=NULL, Help=NULL WHERE AD_Element_ID=53591
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Tax_Entity', Name='Asset Tax Entity', Description=NULL, Help=NULL, AD_Element_ID=53591 WHERE UPPER(ColumnName)='A_TAX_ENTITY' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Tax_Entity', Name='Asset Tax Entity', Description=NULL, Help=NULL WHERE AD_Element_ID=53591 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Tax Entity', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53591) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:48:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Tax Entity', Name='Asset Tax Entity' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53591)
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset New Used', PrintName='Asset New Used',Updated=TO_TIMESTAMP('2010-06-20 17:48:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53592
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53592
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_New_Used', Name='Asset New Used', Description=NULL, Help=NULL WHERE AD_Element_ID=53592
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_New_Used', Name='Asset New Used', Description=NULL, Help=NULL, AD_Element_ID=53592 WHERE UPPER(ColumnName)='A_NEW_USED' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_New_Used', Name='Asset New Used', Description=NULL, Help=NULL WHERE AD_Element_ID=53592 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset New Used', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53592) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:48:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset New Used', Name='Asset New Used' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53592)
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Investment CR', PrintName='Asset Investment CR',Updated=TO_TIMESTAMP('2010-06-20 17:49:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53590
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53590
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Investment_CR', Name='Asset Investment CR', Description=NULL, Help=NULL WHERE AD_Element_ID=53590
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Investment_CR', Name='Asset Investment CR', Description=NULL, Help=NULL, AD_Element_ID=53590 WHERE UPPER(ColumnName)='A_INVESTMENT_CR' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Investment_CR', Name='Asset Investment CR', Description=NULL, Help=NULL WHERE AD_Element_ID=53590 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Investment CR', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53590) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:49:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Investment CR', Name='Asset Investment CR' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53590)
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Info Tax', PrintName='Asset Info Tax',Updated=TO_TIMESTAMP('2010-06-20 17:49:45','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53589
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53589
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Info_Tax_ID', Name='Asset Info Tax', Description=NULL, Help=NULL WHERE AD_Element_ID=53589
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Info_Tax_ID', Name='Asset Info Tax', Description=NULL, Help=NULL, AD_Element_ID=53589 WHERE UPPER(ColumnName)='A_ASSET_INFO_TAX_ID' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Info_Tax_ID', Name='Asset Info Tax', Description=NULL, Help=NULL WHERE AD_Element_ID=53589 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Info Tax', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53589) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:49:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Info Tax', Name='Asset Info Tax' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53589)
+;
+
+-- Jun 20, 2010 5:50:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET TabLevel=1,Updated=TO_TIMESTAMP('2010-06-20 17:50:27','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53164
+;
+
+-- Jun 20, 2010 5:50:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET TabLevel=1,Updated=TO_TIMESTAMP('2010-06-20 17:50:30','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53160
+;
+
+-- Jun 20, 2010 5:50:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET TabLevel=1,Updated=TO_TIMESTAMP('2010-06-20 17:50:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53155
+;
+
+-- Jun 20, 2010 5:50:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET TabLevel=1,Updated=TO_TIMESTAMP('2010-06-20 17:50:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53161
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Cost Change', PrintName='Asset Cost Change',Updated=TO_TIMESTAMP('2010-06-20 17:53:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54229
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54229
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Cost_Change', Name='Asset Cost Change', Description=NULL, Help=NULL WHERE AD_Element_ID=54229
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Cost_Change', Name='Asset Cost Change', Description=NULL, Help=NULL, AD_Element_ID=54229 WHERE UPPER(ColumnName)='A_ASSET_COST_CHANGE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Cost_Change', Name='Asset Cost Change', Description=NULL, Help=NULL WHERE AD_Element_ID=54229 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Cost Change', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54229) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:53:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Cost Change', Name='Asset Cost Change' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54229)
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Revaluation', PrintName='Asset Revaluation',Updated=TO_TIMESTAMP('2010-06-20 17:54:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54228
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54228
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Asset_Reval_ID', Name='Asset Revaluation', Description=NULL, Help=NULL WHERE AD_Element_ID=54228
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Reval_ID', Name='Asset Revaluation', Description=NULL, Help=NULL, AD_Element_ID=54228 WHERE UPPER(ColumnName)='A_ASSET_REVAL_ID' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Asset_Reval_ID', Name='Asset Revaluation', Description=NULL, Help=NULL WHERE AD_Element_ID=54228 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Revaluation', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54228) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:54:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Revaluation', Name='Asset Revaluation' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54228)
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Change Acumulated Depreciation', PrintName='Change Acumulated Depreciation',Updated=TO_TIMESTAMP('2010-06-20 17:55:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54230
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54230
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Change_Acumulated_Depr', Name='Change Acumulated Depreciation', Description=NULL, Help=NULL WHERE AD_Element_ID=54230
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Change_Acumulated_Depr', Name='Change Acumulated Depreciation', Description=NULL, Help=NULL, AD_Element_ID=54230 WHERE UPPER(ColumnName)='A_CHANGE_ACUMULATED_DEPR' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Change_Acumulated_Depr', Name='Change Acumulated Depreciation', Description=NULL, Help=NULL WHERE AD_Element_ID=54230 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Change Acumulated Depreciation', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54230) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 20, 2010 5:55:07 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Change Acumulated Depreciation', Name='Change Acumulated Depreciation' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54230)
+;
+
+-- Jun 20, 2010 5:55:36 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 17:55:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59284
+;
+
+-- Jun 20, 2010 5:55:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsDisplayed='N', IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 17:55:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59285
+;
+
+-- Jun 20, 2010 5:55:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsDisplayed='N',Updated=TO_TIMESTAMP('2010-06-20 17:55:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59284
+;
+
+-- Jun 20, 2010 5:56:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 17:56:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59283
+;
+
+-- Jun 20, 2010 5:56:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 17:56:18','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59286
+;
+
+-- Jun 20, 2010 5:56:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 17:56:45','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59287
+;
+
+-- Jun 20, 2010 5:57:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 17:57:01','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59287
+;
+
+-- Jun 20, 2010 5:57:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 17:57:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59286
+;
+
+-- Jun 20, 2010 5:59:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 17:59:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59138
+;
+
+-- Jun 20, 2010 6:00:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 18:00:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59137
+;
+
+-- Jun 20, 2010 6:00:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:00:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59138
+;
+
+-- Jun 20, 2010 6:00:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59138
+;
+
+-- Jun 20, 2010 6:00:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59137
+;
+
+-- Jun 20, 2010 6:00:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59139
+;
+
+-- Jun 20, 2010 6:00:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59397
+;
+
+-- Jun 20, 2010 6:00:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59137
+;
+
+-- Jun 20, 2010 6:01:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:01:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59137
+;
+
+-- Jun 20, 2010 6:01:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 18:01:20','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59137
+;
+
+-- Jun 20, 2010 6:01:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:01:23','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59140
+;
+
+-- Jun 20, 2010 6:01:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 18:01:27','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59141
+;
+
+-- Jun 20, 2010 6:01:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:01:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59397
+;
+
+-- Jun 20, 2010 6:03:11 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET DisplayLength=20,Updated=TO_TIMESTAMP('2010-06-20 18:03:11','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59395
+;
+
+-- Jun 20, 2010 6:03:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59402
+;
+
+-- Jun 20, 2010 6:03:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59141
+;
+
+-- Jun 20, 2010 6:03:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59398
+;
+
+-- Jun 20, 2010 6:03:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59399
+;
+
+-- Jun 20, 2010 6:03:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59400
+;
+
+-- Jun 20, 2010 6:03:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59401
+;
+
+-- Jun 20, 2010 6:04:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:04:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59141
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59142
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59401
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59399
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59400
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59404
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59405
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59406
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59407
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59408
+;
+
+-- Jun 20, 2010 6:04:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59409
+;
+
+-- Jun 20, 2010 6:04:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:04:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59401
+;
+
+-- Jun 20, 2010 6:05:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 18:05:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59404
+;
+
+-- Jun 20, 2010 6:05:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 18:05:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59405
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59405
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59398
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59401
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59399
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59400
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59403
+;
+
+-- Jun 20, 2010 6:05:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59404
+;
+
+-- Jun 20, 2010 6:06:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:06:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59408
+;
+
+-- Jun 20, 2010 6:06:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 18:06:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59406
+;
+
+-- Jun 20, 2010 6:06:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59408
+;
+
+-- Jun 20, 2010 6:06:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59407
+;
+
+-- Jun 20, 2010 6:07:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 18:07:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59407
+;
+
+-- Jun 20, 2010 6:07:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 18:07:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59409
+;
+
+-- Jun 20, 2010 6:09:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59224
+;
+
+-- Jun 20, 2010 6:09:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59225
+;
+
+-- Jun 20, 2010 6:09:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59226
+;
+
+-- Jun 20, 2010 6:09:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59227
+;
+
+-- Jun 20, 2010 6:09:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:09:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59226
+;
+
+-- Jun 20, 2010 6:09:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 18:09:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59225
+;
+
+-- Jun 20, 2010 6:09:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101, IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-20 18:09:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59227
+;
+
+-- Jun 20, 2010 6:09:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 18:09:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59226
+;
+
+-- Jun 20, 2010 6:10:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET AD_FieldGroup_ID=101,Updated=TO_TIMESTAMP('2010-06-20 18:10:02','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59225
+;
+
+-- Jun 20, 2010 6:10:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-20 18:10:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=55794
+;
+
+-- Jun 20, 2010 6:11:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-20 18:11:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59244
+;
+
+-- Jun 20, 2010 6:11:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=30,IsDisplayed='Y' WHERE AD_Field_ID=59248
+;
+
+-- Jun 20, 2010 6:11:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=40,IsDisplayed='Y' WHERE AD_Field_ID=59245
+;
+
+-- Jun 20, 2010 6:11:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=59246
+;
+
+-- Jun 20, 2010 6:11:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59247
+;
+
+-- Jun 20, 2010 6:12:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 18:12:20','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53329
+;
+
+-- Jun 20, 2010 6:12:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-20 18:12:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53330
+;
+
+-- Jun 20, 2010 6:14:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET AccessLevel='3', Name='Asset Parent Report',Updated=TO_TIMESTAMP('2010-06-20 18:14:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53115
+;
+
+-- Jun 20, 2010 6:14:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Trl SET IsTranslated='N' WHERE AD_Process_ID=53115
+;
+
+-- Jun 20, 2010 6:14:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description=NULL, IsActive='Y', Name='Asset Parent Report',Updated=TO_TIMESTAMP('2010-06-20 18:14:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53156
+;
+
+-- Jun 20, 2010 6:14:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53156
+;
+
+-- Jun 20, 2010 6:15:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET Name='Asset Group Defaults',Updated=TO_TIMESTAMP('2010-06-20 18:15:06','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53131
+;
+
+-- Jun 20, 2010 6:15:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Trl SET IsTranslated='N' WHERE AD_Process_ID=53131
+;
+
+-- Jun 20, 2010 6:15:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description='Lists Asset Group Settings & Defaults', IsActive='Y', Name='Asset Group Defaults',Updated=TO_TIMESTAMP('2010-06-20 18:15:06','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53162
+;
+
+-- Jun 20, 2010 6:15:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53162
+;
+
+-- Jun 20, 2010 6:15:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET AccessLevel='3',Updated=TO_TIMESTAMP('2010-06-20 18:15:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53131
+;
+
+-- Jun 20, 2010 6:15:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET Name='Depreciation Table',Updated=TO_TIMESTAMP('2010-06-20 18:15:28','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53117
+;
+
+-- Jun 20, 2010 6:15:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Trl SET IsTranslated='N' WHERE AD_Process_ID=53117
+;
+
+-- Jun 20, 2010 6:15:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description=NULL, IsActive='Y', Name='Depreciation Table',Updated=TO_TIMESTAMP('2010-06-20 18:15:28','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53157
+;
+
+-- Jun 20, 2010 6:15:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53157
+;
+
+-- Jun 20, 2010 6:15:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET AccessLevel='3',Updated=TO_TIMESTAMP('2010-06-20 18:15:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53117
+;
+
+-- Jun 20, 2010 6:16:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET Name='Asset Convention Report',Updated=TO_TIMESTAMP('2010-06-20 18:16:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53125
+;
+
+-- Jun 20, 2010 6:16:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Trl SET IsTranslated='N' WHERE AD_Process_ID=53125
+;
+
+-- Jun 20, 2010 6:16:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description='Asset Convention Report', IsActive='Y', Name='Asset Convention Report',Updated=TO_TIMESTAMP('2010-06-20 18:16:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53160
+;
+
+-- Jun 20, 2010 6:16:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53160
+;
+
+-- Jun 20, 2010 6:16:12 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET AccessLevel='3',Updated=TO_TIMESTAMP('2010-06-20 18:16:12','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53125
+;
+
+-- Jun 20, 2010 6:16:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET AccessLevel='3', Name='Asset Depreciation Method',Updated=TO_TIMESTAMP('2010-06-20 18:16:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53121
+;
+
+-- Jun 20, 2010 6:16:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Trl SET IsTranslated='N' WHERE AD_Process_ID=53121
+;
+
+-- Jun 20, 2010 6:16:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description='List Depreciation Methods', IsActive='Y', Name='Asset Depreciation Method',Updated=TO_TIMESTAMP('2010-06-20 18:16:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53159
+;
+
+-- Jun 20, 2010 6:16:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53159
+;
+
+-- Jun 20, 2010 6:16:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET Name='Depreciation Calculation Methods',Updated=TO_TIMESTAMP('2010-06-20 18:16:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53129
+;
+
+-- Jun 20, 2010 6:16:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Trl SET IsTranslated='N' WHERE AD_Process_ID=53129
+;
+
+-- Jun 20, 2010 6:16:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description='List Depreciation Calculation Methods Available', IsActive='Y', Name='Depreciation Calculation Methods',Updated=TO_TIMESTAMP('2010-06-20 18:16:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53161
+;
+
+-- Jun 20, 2010 6:16:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53161
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:17:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=14, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:18:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=14, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:18:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=14, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:19:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:19:23 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=14, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:19:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:19:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53137
+;
+
+-- Jun 20, 2010 6:19:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 20, 2010 6:19:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:19:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53154
+;
+
+-- Jun 20, 2010 6:19:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53153
+;
+
+-- Jun 20, 2010 6:19:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53150
+;
+
+-- Jun 20, 2010 6:19:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53152
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 20, 2010 6:20:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 20, 2010 6:20:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 20, 2010 6:20:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:20:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53154
+;
+
+-- Jun 20, 2010 6:20:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53153
+;
+
+-- Jun 20, 2010 6:20:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:20:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53150
+;
+
+-- Jun 20, 2010 6:20:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53152
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53154
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53153
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53150
+;
+
+-- Jun 20, 2010 6:20:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53152
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:20:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:20:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:20:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:20:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53137
+;
+
+-- Jun 20, 2010 6:20:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:20:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 20, 2010 6:21:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 20, 2010 6:21:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53137
+;
+
+-- Jun 20, 2010 6:21:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 20, 2010 6:21:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 20, 2010 6:21:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 20, 2010 6:21:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:21:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:21:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:21:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:21:55 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:21:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:21:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:21:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:21:57 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:22:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:22:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:22:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:22:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:22:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:22:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:22:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:22:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:22:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:22:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:22:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=218
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=153
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=263
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=166
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=203
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53242
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=236
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=183
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=160
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=278
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=345
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53014
+;
+
+-- Jun 20, 2010 6:22:44 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=0, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53108
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53163
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53135
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53134, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:22:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=431
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=430
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=474
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=400
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=399
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=348
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:22:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=431
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=430
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=474
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=400
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=399
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=348
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:24:05 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=431
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=430
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=474
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=400
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=399
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=348
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:25:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=431
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=430
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=474
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=400
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=399
+;
+
+-- Jun 20, 2010 6:25:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=348
+;
+
+-- Jun 20, 2010 6:25:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 20, 2010 6:25:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 20, 2010 6:25:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 20, 2010 6:25:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 20, 2010 6:25:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 20, 2010 6:25:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 20, 2010 6:25:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu SET Description='Asset Type',Updated=TO_TIMESTAMP('2010-06-20 18:25:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53279
+;
+
+-- Jun 20, 2010 6:25:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53279
+;
+
+
+-- *** migration/FA/postgresql/003_FA_Stabilization_postgresql.sql ***
+
+-- Jun 20, 2010 3:50:46 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Window (AD_Client_ID,AD_Org_ID,AD_Window_ID,Created,CreatedBy,EntityType,IsActive,IsBetaFunctionality,IsDefault,IsSOTrx,Name,Processing,Updated,UpdatedBy,WindowType) VALUES (0,0,53120,TO_TIMESTAMP('2010-06-20 15:50:46','YYYY-MM-DD HH24:MI:SS'),100,'FA','Y','N','N','Y','Imported Fixed Asset','N',TO_TIMESTAMP('2010-06-20 15:50:46','YYYY-MM-DD HH24:MI:SS'),100,'M')
+;
+
+-- Jun 20, 2010 3:50:46 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Window_Trl (AD_Language,AD_Window_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Window_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Window t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Window_ID=53120 AND NOT EXISTS (SELECT * FROM AD_Window_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Window_ID=t.AD_Window_ID)
+;
+
+-- Jun 20, 2010 3:50:46 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Table (AD_Client_ID,AD_Org_ID,AD_Table_ID,AD_Window_ID,AccessLevel,Created,CreatedBy,EntityType,ImportTable,IsActive,IsChangeLog,IsDeleteable,IsHighVolume,IsSecurityEnabled,IsView,Name,ReplicationType,TableName,Updated,UpdatedBy) VALUES (0,0,53277,53120,'3',TO_TIMESTAMP('2010-06-20 15:50:46','YYYY-MM-DD HH24:MI:SS'),100,'FA','N','Y','N','Y','Y','N','N','Imported Fixed Asset','L','I_FixedAsset',TO_TIMESTAMP('2010-06-20 15:50:46','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:46 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Table_Trl (AD_Language,AD_Table_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Table_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Table t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Table_ID=53277 AND NOT EXISTS (SELECT * FROM AD_Table_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Table_ID=t.AD_Table_ID)
+;
+
+INSERT INTO AD_Sequence (AD_Client_ID,AD_Org_ID,AD_Sequence_ID,Created,CreatedBy,CurrentNext,CurrentNextSys,Description,IncrementNo,IsActive,IsAudited,IsAutoSequence,IsTableID,Name,StartNewYear,StartNo,Updated,UpdatedBy) VALUES (0,0,53391,TO_TIMESTAMP('2010-06-23 18:59:34','YYYY-MM-DD HH24:MI:SS'),100,1000000,50000,'Table I_FixedAsset',1,'Y','N','Y','Y','I_FixedAsset','N',1000000,TO_TIMESTAMP('2010-06-23 18:59:34','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:47 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='I_FixedAsset_ID', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Imported Fixed Asset', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Imported Fixed Asset',Updated=TO_TIMESTAMP('2010-06-20 15:50:47','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54205
+;
+
+-- Jun 20, 2010 3:50:47 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54205
+;
+
+-- Jun 20, 2010 3:50:47 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='10 Digit Identifier', EntityType='D', Help=NULL, IsActive='Y', Name='ID', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:47','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=13
+;
+
+-- Jun 20, 2010 3:50:47 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=13
+;
+
+-- Jun 20, 2010 3:50:47 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59496,54205,0,13,53277,'I_FixedAsset_ID',TO_TIMESTAMP('2010-06-20 15:50:47','YYYY-MM-DD HH24:MI:SS'),100,'FA',10,'Y','N','N','N','Y','N','N','N','Y','N','N','Imported Fixed Asset',TO_TIMESTAMP('2010-06-20 15:50:47','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:47 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59496 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+CREATE TABLE I_FixedAsset (I_FixedAsset_ID NUMERIC(10) DEFAULT NULL , CONSTRAINT I_FixedAsset_Key PRIMARY KEY (I_FixedAsset_ID))
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='AD_Client_ID', Description='Client/Tenant for this installation.', EntityType='D', Help='A Client is a company or a legal entity. You cannot share data between Clients. Tenant is a synonym for Client.', IsActive='Y', Name='Client', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Client',Updated=TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=102
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=102
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Direct Table Access', EntityType='D', Help=NULL, IsActive='Y', Name='Table Direct', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=19
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=19
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59497,102,0,19,53277,'AD_Client_ID',TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),100,'Client/Tenant for this installation.','FA',10,'A Client is a company or a legal entity. You cannot share data between Clients. Tenant is a synonym for Client.','Y','N','N','N','N','Y','N','N','Y','N','N','Client',TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59497 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN AD_Client_ID NUMERIC(10) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='AD_Org_ID', Description='Organizational entity within client', EntityType='D', Help='An organization is a unit of your client or legal entity - examples are store, department. You can share data between organizations.', IsActive='Y', Name='Organization', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Organization',Updated=TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=113
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=113
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59498,113,0,19,53277,'AD_Org_ID',TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),100,'Organizational entity within client','FA',10,'An organization is a unit of your client or legal entity - examples are store, department. You can share data between organizations.','Y','N','N','N','N','Y','N','N','Y','N','N','Organization',TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59498 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN AD_Org_ID NUMERIC(10) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='IsActive', Description='The record is active in the system', EntityType='D', Help='There are two methods of making records unavailable in the system: One is to delete the record, the other is to de-activate the record. A de-activated record is not available for selection, but available for reports.
+There are two reasons for de-activating and not deleting records:
+(1) The system requires the record for audit purposes.
+(2) The record is referenced by other records. E.g., you cannot delete a Business Partner, if there are invoices for this partner record existing. You de-activate the Business Partner and prevent that this record is used for future entries.', IsActive='Y', Name='Active', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Active',Updated=TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=348
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=348
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='CheckBox', EntityType='D', Help=NULL, IsActive='Y', Name='Yes-No', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=20
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=20
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59499,348,0,20,53277,'IsActive',TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),100,'''Y''','The record is active in the system','FA',1,'There are two methods of making records unavailable in the system: One is to delete the record, the other is to de-activate the record. A de-activated record is not available for selection, but available for reports.
+There are two reasons for de-activating and not deleting records:
+(1) The system requires the record for audit purposes.
+(2) The record is referenced by other records. E.g., you cannot delete a Business Partner, if there are invoices for this partner record existing. You de-activate the Business Partner and prevent that this record is used for future entries.','Y','N','N','N','N','Y','N','N','Y','N','Y','Active',TO_TIMESTAMP('2010-06-20 15:50:48','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:48 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59499 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN IsActive CHAR(1) DEFAULT 'Y' CHECK (IsActive IN ('Y','N')) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Created', Description='Date this record was created', EntityType='D', Help='The Created field indicates the date that this record was created.', IsActive='Y', Name='Created', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Created',Updated=TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=245
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=245
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Date with time', EntityType='D', Help=NULL, IsActive='Y', Name='Date+Time', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=16
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=16
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59500,245,0,16,53277,'Created',TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),100,'Date this record was created','FA',7,'The Created field indicates the date that this record was created.','Y','N','N','N','N','Y','N','N','Y','N','N','Created',TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59500 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Created TIMESTAMP NOT NULL
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='CreatedBy', Description='User who created this records', EntityType='D', Help='The Created By field indicates the user who created this record.', IsActive='Y', Name='Created By', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Created By',Updated=TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=246
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=246
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Table List', EntityType='D', Help=NULL, IsActive='Y', Name='Table', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=18
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=18
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='User selection', EntityType='D', Help=NULL, IsActive='Y', Name='AD_User', ValidationType='T',Updated=TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=110
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=110
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Ref_Table SET AD_Table_ID = 114, AD_Display = 213, AD_Key = 212, isValueDisplayed = 'N', OrderByClause = 'AD_User.Name', EntityType ='D', WhereClause = '' WHERE AD_Reference_ID = 110
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Reference_Value_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59501,246,0,18,110,53277,'CreatedBy',TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),100,'User who created this records','FA',10,'The Created By field indicates the user who created this record.','Y','N','N','N','N','Y','N','N','Y','N','N','Created By',TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59501 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN CreatedBy NUMERIC(10) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Updated', Description='Date this record was updated', EntityType='D', Help='The Updated field indicates the date that this record was updated.', IsActive='Y', Name='Updated', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Updated',Updated=TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=607
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=607
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59502,607,0,16,53277,'Updated',TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),100,'Date this record was updated','FA',7,'The Updated field indicates the date that this record was updated.','Y','N','N','N','N','Y','N','N','Y','N','N','Updated',TO_TIMESTAMP('2010-06-20 15:50:49','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59502 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:49 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Updated TIMESTAMP NOT NULL
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='UpdatedBy', Description='User who updated this records', EntityType='D', Help='The Updated By field indicates the user who updated this record.', IsActive='Y', Name='Updated By', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Updated By',Updated=TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=608
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=608
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Reference_Value_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59503,608,0,18,110,53277,'UpdatedBy',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,'User who updated this records','FA',10,'The Updated By field indicates the user who updated this record.','Y','N','N','N','N','Y','N','N','Y','N','N','Updated By',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59503 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN UpdatedBy NUMERIC(10) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='InventoryNo', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Inventory No', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Inventory No',Updated=TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54169
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54169
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Character String', EntityType='D', Help=NULL, IsActive='Y', Name='String', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=10
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=10
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59504,54169,0,10,53277,'InventoryNo',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,'FA',30,'Y','N','N','Y','N','N','N','Y','Y','N','Y','Inventory No',10,TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59504 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN InventoryNo VARCHAR(30) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Name', Description='Alphanumeric identifier of the entity', EntityType='D', Help='The name of an entity (record) is used as an default search option in addition to the search key. The name is up to 60 characters in length.', IsActive='Y', Name='Name', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Name',Updated=TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=469
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=469
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59505,469,0,10,53277,'Name',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,'Alphanumeric identifier of the entity','FA',120,'The name of an entity (record) is used as an default search option in addition to the search key. The name is up to 60 characters in length.','Y','N','N','Y','N','N','N','Y','Y','N','Y','Name',20,TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59505 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Name VARCHAR(120) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Asset_Group_ID', Description='Group of Assets', EntityType='D', Help='The group of assets determines default accounts.  If an asset group is selected in the product category, assets are created when delivering the asset.', IsActive='Y', Name='Asset Group', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Asset Group',Updated=TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1929
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1929
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59506,1929,0,19,53277,'A_Asset_Group_ID',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,'Group of Assets','FA',10,'The group of assets determines default accounts.  If an asset group is selected in the product category, assets are created when delivering the asset.','Y','N','N','N','N','N','N','N','Y','N','Y','Asset Group',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59506 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Group_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,54233,0,'A_Asset_Group_Value',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,'FA','Y','Asset Group Key','Asset Group Key',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:50 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=54233 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59507,54233,0,10,53277,'A_Asset_Group_Value',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,'FA',40,'Y','N','N','N','N','N','N','N','Y','N','Y','Asset Group Key',TO_TIMESTAMP('2010-06-20 15:50:50','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59507 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Group_Value VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Asset_Class_ID', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Asset class', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Asset class',Updated=TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54165
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54165
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Search Field', EntityType='D', Help=NULL, IsActive='Y', Name='Search', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=30
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=30
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59508,54165,0,30,53277,'A_Asset_Class_ID',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,'FA',10,'Y','N','N','N','N','N','N','N','Y','N','Y','Asset class',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59508 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Class_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,54234,0,'A_Asset_Class_Value',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,'FA','Y','Asset Class Key','Asset Class Key',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=54234 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59509,54234,0,10,53277,'A_Asset_Class_Value',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,'FA',40,'Y','N','N','N','N','N','N','N','Y','N','Y','Asset Class Key',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59509 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Class_Value VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='M_Product_ID', Description='Product, Service, Item', EntityType='D', Help='Identifies an item which is either purchased or sold in this organization.', IsActive='Y', Name='Product', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Product',Updated=TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=454
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=454
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59510,454,0,30,53277,'M_Product_ID',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,'Product, Service, Item','FA',10,'Identifies an item which is either purchased or sold in this organization.','Y','N','N','N','N','N','N','N','Y','N','Y','Product',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59510 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN M_Product_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='ProductValue', Description='Key of the Product', EntityType='D', Help=NULL, IsActive='Y', Name='Product Key', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Product Key',Updated=TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1675
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1675
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59511,1675,0,10,53277,'ProductValue',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,'Key of the Product','FA',40,'Y','N','N','N','N','N','N','N','Y','N','Y','Product Key',TO_TIMESTAMP('2010-06-20 15:50:51','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59511 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:51 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN ProductValue VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='AssetServiceDate', Description='Date when Asset was put into service', EntityType='D', Help='The date when the asset was put into service - usually used as start date for depreciation.', IsActive='Y', Name='In Service Date', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='In Service date',Updated=TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1934
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1934
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Date mm/dd/yyyy', EntityType='D', Help=NULL, IsActive='Y', Name='Date', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=15
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=15
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59512,1934,0,15,53277,'AssetServiceDate',TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),100,'Date when Asset was put into service','FA',7,'The date when the asset was put into service - usually used as start date for depreciation.','Y','N','N','N','N','N','N','N','Y','N','Y','In Service Date',TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59512 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN AssetServiceDate TIMESTAMP DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Asset_Cost', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Asset Cost', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Asset Cost',Updated=TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53489
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53489
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Number with 4 decimals', EntityType='D', Help=NULL, IsActive='Y', Name='Amount', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=12
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=12
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59513,53489,0,12,53277,'A_Asset_Cost',TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),100,'0','FA',10,'Y','N','N','N','N','Y','N','N','Y','N','Y','Asset Cost',TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59513 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Cost NUMERIC DEFAULT '0' NOT NULL
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Accumulated_Depr', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Accumulated Depreciation', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Accumulated Depreciation',Updated=TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53488
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53488
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59514,53488,0,12,53277,'A_Accumulated_Depr',TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),100,'FA',22,'Y','N','N','N','N','N','N','N','Y','N','Y','Accumulated Depreciation',TO_TIMESTAMP('2010-06-20 15:50:52','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59514 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:52 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Accumulated_Depr NUMERIC DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Accumulated_Depr_F', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Accumulated Depreciation (fiscal)', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Accumulated Depreciation (fiscal)',Updated=TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54175
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54175
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59515,54175,0,12,53277,'A_Accumulated_Depr_F',TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),100,'FA',22,'Y','N','N','N','N','N','N','N','Y','N','Y','Accumulated Depreciation (fiscal)',TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59515 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Accumulated_Depr_F NUMERIC DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='UseLifeMonths', Description='Months of the usable life of the asset', EntityType='D', Help=NULL, IsActive='Y', Name='Usable Life - Months', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Usable life months',Updated=TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1946
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1946
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='10 Digit numeric', EntityType='D', Help=NULL, IsActive='Y', Name='Integer', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=11
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=11
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59516,1946,0,11,53277,'UseLifeMonths',TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),100,'Months of the usable life of the asset','FA',10,'Y','N','N','N','N','Y','N','N','Y','N','Y','Usable Life - Months',TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59516 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN UseLifeMonths NUMERIC(10) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='UseLifeMonths_F', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Use Life - Months (fiscal)', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Use Life - Months (fiscal)',Updated=TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54179
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54179
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59517,54179,0,11,53277,'UseLifeMonths_F',TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),100,'FA',10,'Y','N','N','N','N','Y','N','N','Y','N','Y','Use Life - Months (fiscal)',TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59517 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN UseLifeMonths_F NUMERIC(10) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Current_Period', Description=NULL, EntityType='FA', Help=NULL, IsActive='Y', Name='Current Period', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Current Period',Updated=TO_TIMESTAMP('2010-06-20 15:50:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53501
+;
+
+-- Jun 20, 2010 3:50:53 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53501
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59518,53501,0,11,53277,'A_Current_Period',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,'FA',22,'Y','N','N','N','N','N','N','N','Y','N','Y','Current Period',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59518 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Current_Period NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='DateAcct', Description='Accounting Date', EntityType='D', Help='The Accounting Date indicates the date to be used on the General Ledger account entries generated from this document. It is also used for any currency conversion.', IsActive='Y', Name='Account Date', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Acct Date',Updated=TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=263
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=263
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59519,263,0,15,53277,'DateAcct',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,'Accounting Date','FA',7,'The Accounting Date indicates the date to be used on the General Ledger account entries generated from this document. It is also used for any currency conversion.','Y','N','N','N','N','N','N','N','Y','N','Y','Account Date',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59519 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN DateAcct TIMESTAMP DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='A_Asset_ID', Description='Asset used internally or by customers', EntityType='D', Help='An asset is either created by purchasing or by delivering a product.  An asset can be used internally or be a customer asset.', IsActive='Y', Name='Asset', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Asset',Updated=TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1884
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1884
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59520,1884,0,30,53277,'A_Asset_ID',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,'Asset used internally or by customers','FA',10,'An asset is either created by purchasing or by delivering a product.  An asset can be used internally or be a customer asset.','Y','N','N','N','N','N','N','N','Y','N','Y','Asset',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59520 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='I_IsImported', Description='Has this import been processed', EntityType='D', Help='The Imported check box indicates if this import has been processed.', IsActive='Y', Name='Imported', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Imported',Updated=TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=913
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=913
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59521,913,0,20,53277,'I_IsImported',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,'''N''','Has this import been processed','FA',1,'The Imported check box indicates if this import has been processed.','Y','N','N','N','N','Y','N','N','Y','N','Y','Imported',TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59521 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN I_IsImported CHAR(1) DEFAULT 'N' CHECK (I_IsImported IN ('Y','N')) NOT NULL
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='I_ErrorMsg', Description='Messages generated from import process', EntityType='D', Help='The Import Error Message displays any error messages generated during the import process.', IsActive='Y', Name='Import Error Message', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Import Error Message',Updated=TO_TIMESTAMP('2010-06-20 15:50:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=912
+;
+
+-- Jun 20, 2010 3:50:54 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=912
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Character String up to 2000 characters', EntityType='D', Help=NULL, IsActive='Y', Name='Text', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=14
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=14
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59522,912,0,14,53277,'I_ErrorMsg',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'Messages generated from import process','FA',2000,'The Import Error Message displays any error messages generated during the import process.','Y','N','N','N','N','N','N','N','Y','N','Y','Import Error Message',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59522 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN I_ErrorMsg VARCHAR(2000) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Processing', Description=NULL, EntityType='D', Help=NULL, IsActive='Y', Name='Process Now', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Process Now',Updated=TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=524
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=524
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Command Button - starts a process', EntityType='D', Help=NULL, IsActive='Y', Name='Button', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=28
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=28
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process (AD_Client_ID,AD_Org_ID,AD_Process_ID,AccessLevel,Classname,Created,CreatedBy,EntityType,Help,IsActive,IsBetaFunctionality,IsDirectPrint,IsReport,Name,ShowHelp,Statistic_Count,Statistic_Seconds,Updated,UpdatedBy,Value,WorkflowValue) VALUES (0,0,53215,'2','org.compiere.FA.ImportFixedAsset',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'FA','Import All Fixed Assets','Y','N','N','N','Import Fixed Assets','Y',0,0,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'Import_FixedAsset',NULL)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Trl (AD_Language,AD_Process_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_ID=53215 AND NOT EXISTS (SELECT * FROM AD_Process_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_ID=t.AD_Process_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para (AD_Client_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Process_Para_ID,AD_Reference_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsCentrallyMaintained,IsMandatory,IsRange,Name,SeqNo,Updated,UpdatedBy) VALUES (0,453,0,53215,53413,19,'M_Product_Category_ID',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'Category of a Product','FA',0,'Identifies the category which this product belongs to.  Product categories are used for pricing and selection.','Y','Y','Y','N','Product Category',10,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=53413 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para (AD_Client_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Process_Para_ID,AD_Reference_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsCentrallyMaintained,IsMandatory,IsRange,Name,SeqNo,Updated,UpdatedBy) VALUES (0,1929,0,53215,53414,19,'A_Asset_Group_ID',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'Group of Assets','FA',0,'The group of assets determines default accounts.  If an asset group is selected in the product category, assets are created when delivering the asset.','Y','Y','N','N','Asset Group',20,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=53414 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para (AD_Client_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Process_Para_ID,AD_Reference_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,Help,IsActive,IsCentrallyMaintained,IsMandatory,IsRange,Name,SeqNo,Updated,UpdatedBy) VALUES (0,263,0,53215,53415,15,'DateAcct',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'@#Date@','Accounting Date','FA',7,'The Accounting Date indicates the date to be used on the General Ledger account entries generated from this document. It is also used for any currency conversion.','Y','Y','Y','N','Account Date',30,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=53415 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para (AD_Client_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Process_Para_ID,AD_Reference_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,IsActive,IsCentrallyMaintained,IsMandatory,IsRange,Name,SeqNo,Updated,UpdatedBy) VALUES (0,1922,0,53215,53416,20,'DeleteOldImported',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'Before processing delete old imported records in the import table','FA',0,'Y','Y','Y','N','Delete old imported records',40,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=53416 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para (AD_Client_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Process_Para_ID,AD_Reference_ID,ColumnName,Created,CreatedBy,DefaultValue,EntityType,FieldLength,IsActive,IsCentrallyMaintained,IsMandatory,IsRange,Name,SeqNo,Updated,UpdatedBy) VALUES (0,54205,0,53215,53417,19,'I_FixedAsset_ID',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'@I_FixedAsset_ID@','FA',0,'Y','Y','N','N','Imported Fixed Asset',110,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=53417 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para (AD_Client_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Process_Para_ID,AD_Reference_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,IsActive,IsCentrallyMaintained,IsMandatory,IsRange,Name,SeqNo,Updated,UpdatedBy) VALUES (0,2168,0,53215,53418,20,'IsValidateOnly',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'Y','Validate the date and do not process','FA',0,'Y','Y','Y','N','Only Validate Data',120,TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=53418 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Process_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59523,524,0,53215,28,53277,'Processing',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,'FA',1,'Y','N','N','N','N','N','N','N','Y','N','Y','Process Now',TO_TIMESTAMP('2010-06-20 15:50:55','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59523 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:55 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Processing CHAR(1) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Processed', Description='The document has been processed', EntityType='D', Help='The Processed checkbox indicates that a document has been processed.', IsActive='Y', Name='Processed', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Processed',Updated=TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1047
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1047
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59524,1047,0,20,53277,'Processed',TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),100,'The document has been processed','FA',1,'The Processed checkbox indicates that a document has been processed.','Y','Y','N','N','N','N','N','N','Y','N','Y','Processed',TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59524 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Processed CHAR(1) DEFAULT NULL CHECK (Processed IN ('Y','N'))
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,54235,0,'A_Remaining_Period',TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),100,'FA','Y','Remaining Period','Remaining Period',TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=54235 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59525,54235,0,11,53277,'A_Remaining_Period',TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),100,'0','FA',10,'Y','N','N','N','N','Y','N','N','Y','N','Y','Remaining Period',TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59525 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN A_Remaining_Period NUMERIC(10) DEFAULT '0' NOT NULL
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='DocAction', Description='The targeted status of the document', EntityType='D', Help='You find the current status in the Document Status field. The options are listed in a popup', IsActive='Y', Name='Document Action', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Doc Action',Updated=TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=287
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=287
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Reference List', EntityType='D', Help=NULL, IsActive='Y', Name='List', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=17
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=17
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Document action list', EntityType='D', Help=NULL, IsActive='Y', Name='_Document Action', ValidationType='L',Updated=TO_TIMESTAMP('2010-06-20 15:50:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=135
+;
+
+-- Jun 20, 2010 3:50:56 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=135
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Reference_Value_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59526,287,0,17,135,53277,'DocAction',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,'''CO''','The targeted status of the document','FA',2,'You find the current status in the Document Status field. The options are listed in a popup','Y','N','N','N','N','Y','N','N','Y','N','Y','Document Action',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59526 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN DocAction VARCHAR(2) DEFAULT 'CO' NOT NULL
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,Description,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,54236,0,'AssetPeriodDepreciationAmt',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,'Applies to Straight Line depreciation','FA','Y','Depreciation Amount / Period','Depreciation Amount / Period',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=54236 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59527,54236,0,12,53277,'AssetPeriodDepreciationAmt',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,'0','Applies to Straight Line depreciation','FA',22,'Y','N','N','N','N','Y','N','N','Y','N','Y','Depreciation Amount / Period',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59527 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN AssetPeriodDepreciationAmt NUMERIC DEFAULT '0' NOT NULL
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='AssetDepreciationDate', Description='Date of last depreciation', EntityType='D', Help='Date of the last deprecation, if the asset is used internally and depreciated.', IsActive='Y', Name='Asset Depreciation Date', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Asset depreciation date',Updated=TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1931
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1931
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59528,1931,0,15,53277,'AssetDepreciationDate',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,'Date of last depreciation','FA',7,'Date of the last deprecation, if the asset is used internally and depreciated.','Y','N','N','N','N','N','N','N','Y','N','Y','Asset Depreciation Date',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59528 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN AssetDepreciationDate TIMESTAMP DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='M_Locator_ID', Description='Warehouse Locator', EntityType='D', Help='The Locator indicates where in a Warehouse a product is located.', IsActive='Y', Name='Locator', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Locator',Updated=TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=448
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=448
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59529,448,0,19,53277,'M_Locator_ID',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,'Warehouse Locator','FA',10,'The Locator indicates where in a Warehouse a product is located.','Y','N','N','N','N','N','N','N','Y','N','Y','Locator',TO_TIMESTAMP('2010-06-20 15:50:58','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59529 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:58 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN M_Locator_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='LocatorValue', Description='Key of the Warehouse Locator', EntityType='D', Help=NULL, IsActive='Y', Name='Locator Key', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Locator Key',Updated=TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=2109
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=2109
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59530,2109,0,10,53277,'LocatorValue',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'Key of the Warehouse Locator','FA',40,'Y','N','N','N','N','N','N','N','Y','N','Y','Locator Key',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59530 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN LocatorValue VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Qty', Description='Quantity', EntityType='D', Help='The Quantity indicates the number of a specific product or item for this document.', IsActive='Y', Name='Quantity', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Qty',Updated=TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=526
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=526
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Quantity data type', EntityType='D', Help=NULL, IsActive='Y', Name='Quantity', ValidationType='D',Updated=TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=29
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=29
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59531,526,0,29,53277,'Qty',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'1','Quantity','FA',10,'The Quantity indicates the number of a specific product or item for this document.','Y','N','N','N','N','N','N','N','Y','N','Y','Quantity',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59531 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Qty NUMERIC DEFAULT '1' 
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='UOMSymbol', Description='Symbol for a Unit of Measure', EntityType='D', Help='The Symbol identifies the Symbol to be displayed and printed for a Unit of Measure', IsActive='Y', Name='Symbol', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='UoM',Updated=TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=602
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=602
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59532,602,0,10,53277,'UOMSymbol',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'Symbol for a Unit of Measure','FA',10,'The Symbol identifies the Symbol to be displayed and printed for a Unit of Measure','Y','N','N','N','N','N','N','N','Y','N','Y','Symbol',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59532 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN UOMSymbol VARCHAR(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='C_UOM_ID', Description='Unit of Measure', EntityType='D', Help='The UOM defines a unique non monetary Unit of Measure', IsActive='Y', Name='UOM', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='UOM',Updated=TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=215
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=215
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59533,215,0,30,53277,'C_UOM_ID',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'Unit of Measure','FA',10,'The UOM defines a unique non monetary Unit of Measure','Y','N','N','N','N','N','N','N','Y','N','Y','UOM',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59533 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN C_UOM_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='Description', Description='Optional short description of the record', EntityType='D', Help='A description is limited to 255 characters.', IsActive='Y', Name='Description', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Description',Updated=TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=275
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=275
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59534,275,0,10,53277,'Description',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'Optional short description of the record','FA',255,'A description is limited to 255 characters.','Y','N','N','N','N','N','N','N','Y','N','Y','Description',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59534 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN Description VARCHAR(255) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,54237,0,'C_City_Value',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'FA','Y','City Value','City Value',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=54237 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59535,54237,0,10,53277,'C_City_Value',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,'FA',40,'Y','N','N','N','N','N','N','N','Y','N','Y','City Value',TO_TIMESTAMP('2010-06-20 15:50:59','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:50:59 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59535 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN C_City_Value VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='SeqNo', Description='Method of ordering records; lowest number comes first', EntityType='D', Help='The Sequence indicates the order of records', IsActive='Y', Name='Sequence', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Sequence',Updated=TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=566
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=566
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,DefaultValue,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59536,566,0,11,53277,'SeqNo',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,'1','Method of ordering records; lowest number comes first','FA',10,'The Sequence indicates the order of records','Y','N','N','N','N','N','N','N','Y','N','Y','Sequence',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59536 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN SeqNo NUMERIC(10) DEFAULT '1' 
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='BPartner_Value', Description='The Key of the Business Partner', EntityType='D', Help=NULL, IsActive='Y', Name='Business Partner Key', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='Partner Key',Updated=TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1906
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1906
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59537,1906,0,10,53277,'BPartner_Value',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,'The Key of the Business Partner','FA',40,'Y','N','N','N','N','N','N','N','Y','N','Y','Business Partner Key',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59537 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN BPartner_Value VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='C_BPartnerSR_ID', Description='Business Partner (Agent or Sales Rep)', EntityType='D', Help=NULL, IsActive='Y', Name='BPartner (Agent)', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='BPartner (Agent)',Updated=TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=2810
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=2810
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference SET Description='Business Partner selection (no Summary)', EntityType='D', Help=NULL, IsActive='Y', Name='C_BPartner (Trx)', ValidationType='T',Updated=TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=138
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=138
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Ref_Table SET AD_Table_ID = 291, AD_Display = 2902, AD_Key = 2893, isValueDisplayed = 'Y', OrderByClause = '', EntityType ='D', WhereClause = 'C_BPartner.IsSummary=''N'' AND C_BPartner.IsActive=''Y''' WHERE AD_Reference_ID = 138
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Reference_Value_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59538,2810,0,30,138,53277,'C_BPartnerSR_ID',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,'Business Partner (Agent or Sales Rep)','FA',10,'Y','N','N','N','N','N','N','N','Y','N','Y','BPartner (Agent)',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59538 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN C_BPartnerSR_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element SET ColumnName='C_City_ID', Description='City', EntityType='D', Help='City in a country', IsActive='Y', Name='City', PO_Description=NULL, PO_Help=NULL, PO_Name=NULL, PO_PrintName=NULL, PrintName='City',Updated=TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=1830
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=1830
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAlwaysUpdateable,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59539,1830,0,30,53277,'C_City_ID',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,'City','FA',10,'City in a country','Y','N','N','N','N','N','N','N','Y','N','Y','City',TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59539 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+ALTER TABLE I_FixedAsset ADD COLUMN C_City_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Tab (AD_Client_ID,AD_Org_ID,AD_Tab_ID,AD_Table_ID,AD_Window_ID,CommitWarning,Created,CreatedBy,EntityType,HasTree,IsActive,IsAdvancedTab,IsInfoTab,IsInsertRecord,IsReadOnly,IsSingleRow,IsSortTab,IsTranslationTab,Name,Processing,SeqNo,TabLevel,Updated,UpdatedBy) VALUES (0,0,53334,53277,53120,NULL,TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100,'FA','N','Y','N','N','Y','N','N','N','N','Fixed Asset','N',10,0,TO_TIMESTAMP('2010-06-20 15:51:00','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 20, 2010 3:51:00 PM CDT
+-- Fixed Asset
+INSERT INTO AD_Tab_Trl (AD_Language,AD_Tab_ID, CommitWarning,Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Tab_ID, t.CommitWarning,t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Tab t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Tab_ID=53334 AND NOT EXISTS (SELECT * FROM AD_Tab_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Tab_ID=t.AD_Tab_ID)
+;
+
+
+-- *** migration/FA/postgresql/004_FA_Stabilization_postgresql.sql ***
+
+-- Jun 23, 2010 5:01:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_FieldGroup SET IsCollapsedByDefault='N',Updated=TO_TIMESTAMP('2010-06-23 17:01:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_FieldGroup_ID=101
+;
+
+-- Jun 23, 2010 5:01:13 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_FieldGroup SET IsCollapsedByDefault='N',Updated=TO_TIMESTAMP('2010-06-23 17:01:13','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_FieldGroup_ID=104
+;
+
+-- Jun 23, 2010 5:01:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_FieldGroup SET IsCollapsedByDefault='N',Updated=TO_TIMESTAMP('2010-06-23 17:01:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_FieldGroup_ID=50005
+;
+
+-- Jun 23, 2010 5:02:12 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59519,59470,0,53334,TO_TIMESTAMP('2010-06-23 17:02:09','YYYY-MM-DD HH24:MI:SS'),0,'Accounting Date',7,'FA','The Accounting Date indicates the date to be used on the General Ledger account entries generated from this document. It is also used for any currency conversion.','Y','Y','Y','N','N','N','N','N','Account Date',TO_TIMESTAMP('2010-06-23 17:02:09','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:12 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59470 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:13 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59514,59471,0,53334,TO_TIMESTAMP('2010-06-23 17:02:12','YYYY-MM-DD HH24:MI:SS'),0,22,'FA','Y','Y','Y','N','N','N','N','N','Accumulated Depreciation',TO_TIMESTAMP('2010-06-23 17:02:12','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:13 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59471 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:13 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59515,59472,0,53334,TO_TIMESTAMP('2010-06-23 17:02:13','YYYY-MM-DD HH24:MI:SS'),0,22,'FA','Y','Y','Y','N','N','N','N','N','Accumulated Depreciation (fiscal)',TO_TIMESTAMP('2010-06-23 17:02:13','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:13 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59472 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59499,59473,0,53334,TO_TIMESTAMP('2010-06-23 17:02:13','YYYY-MM-DD HH24:MI:SS'),0,'The record is active in the system',1,'FA','There are two methods of making records unavailable in the system: One is to delete the record, the other is to de-activate the record. A de-activated record is not available for selection, but available for reports.
+There are two reasons for de-activating and not deleting records:
+(1) The system requires the record for audit purposes.
+(2) The record is referenced by other records. E.g., you cannot delete a Business Partner, if there are invoices for this partner record existing. You de-activate the Business Partner and prevent that this record is used for future entries.','Y','Y','Y','N','N','N','N','N','Active',TO_TIMESTAMP('2010-06-23 17:02:13','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:14 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59473 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59520,59474,0,53334,TO_TIMESTAMP('2010-06-23 17:02:14','YYYY-MM-DD HH24:MI:SS'),0,'Asset used internally or by customers',10,'FA','An asset is either created by purchasing or by delivering a product.  An asset can be used internally or be a customer asset.','Y','Y','Y','N','N','N','N','N','Asset',TO_TIMESTAMP('2010-06-23 17:02:14','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59474 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59509,59475,0,53334,TO_TIMESTAMP('2010-06-23 17:02:15','YYYY-MM-DD HH24:MI:SS'),0,40,'FA','Y','Y','Y','N','N','N','N','N','Asset Class Key',TO_TIMESTAMP('2010-06-23 17:02:15','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59475 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59513,59476,0,53334,TO_TIMESTAMP('2010-06-23 17:02:16','YYYY-MM-DD HH24:MI:SS'),0,10,'FA','Y','Y','Y','N','N','N','N','N','Asset Cost',TO_TIMESTAMP('2010-06-23 17:02:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59476 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:17 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59528,59477,0,53334,TO_TIMESTAMP('2010-06-23 17:02:16','YYYY-MM-DD HH24:MI:SS'),0,'Date of last depreciation',7,'FA','Date of the last deprecation, if the asset is used internally and depreciated.','Y','Y','Y','N','N','N','N','N','Asset Depreciation Date',TO_TIMESTAMP('2010-06-23 17:02:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:17 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59477 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59506,59478,0,53334,TO_TIMESTAMP('2010-06-23 17:02:17','YYYY-MM-DD HH24:MI:SS'),0,'Group of Assets',10,'FA','The group of assets determines default accounts.  If an asset group is selected in the product category, assets are created when delivering the asset.','Y','Y','Y','N','N','N','N','N','Asset Group',TO_TIMESTAMP('2010-06-23 17:02:17','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59478 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59507,59479,0,53334,TO_TIMESTAMP('2010-06-23 17:02:18','YYYY-MM-DD HH24:MI:SS'),0,40,'FA','Y','Y','Y','N','N','N','N','N','Asset Group Key',TO_TIMESTAMP('2010-06-23 17:02:18','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59479 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59508,59480,0,53334,TO_TIMESTAMP('2010-06-23 17:02:19','YYYY-MM-DD HH24:MI:SS'),0,10,'FA','Y','Y','Y','N','N','N','N','N','Asset class',TO_TIMESTAMP('2010-06-23 17:02:19','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59480 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59538,59481,0,53334,TO_TIMESTAMP('2010-06-23 17:02:20','YYYY-MM-DD HH24:MI:SS'),0,'Business Partner (Agent or Sales Rep)',10,'FA','Y','Y','Y','N','N','N','N','N','BPartner (Agent)',TO_TIMESTAMP('2010-06-23 17:02:20','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59481 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59537,59482,0,53334,TO_TIMESTAMP('2010-06-23 17:02:20','YYYY-MM-DD HH24:MI:SS'),0,'The Key of the Business Partner',40,'FA','Y','Y','Y','N','N','N','N','N','Business Partner Key',TO_TIMESTAMP('2010-06-23 17:02:20','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59482 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59539,59483,0,53334,TO_TIMESTAMP('2010-06-23 17:02:21','YYYY-MM-DD HH24:MI:SS'),0,'City',10,'FA','City in a country','Y','Y','Y','N','N','N','N','N','City',TO_TIMESTAMP('2010-06-23 17:02:21','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59483 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59535,59484,0,53334,TO_TIMESTAMP('2010-06-23 17:02:22','YYYY-MM-DD HH24:MI:SS'),0,40,'FA','Y','Y','Y','N','N','N','N','N','City Value',TO_TIMESTAMP('2010-06-23 17:02:22','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59484 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59497,59485,0,53334,TO_TIMESTAMP('2010-06-23 17:02:22','YYYY-MM-DD HH24:MI:SS'),0,'Client/Tenant for this installation.',10,'FA','A Client is a company or a legal entity. You cannot share data between Clients. Tenant is a synonym for Client.','Y','Y','Y','N','N','N','N','N','Client',TO_TIMESTAMP('2010-06-23 17:02:22','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59485 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59518,59486,0,53334,TO_TIMESTAMP('2010-06-23 17:02:24','YYYY-MM-DD HH24:MI:SS'),0,22,'FA','Y','Y','Y','N','N','N','N','N','Current Period',TO_TIMESTAMP('2010-06-23 17:02:24','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59486 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59527,59487,0,53334,TO_TIMESTAMP('2010-06-23 17:02:25','YYYY-MM-DD HH24:MI:SS'),0,'Applies to Straight Line depreciation',22,'FA','Y','Y','Y','N','N','N','N','N','Depreciation Amount / Period',TO_TIMESTAMP('2010-06-23 17:02:25','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:26 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59487 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59534,59488,0,53334,TO_TIMESTAMP('2010-06-23 17:02:26','YYYY-MM-DD HH24:MI:SS'),0,'Optional short description of the record',255,'FA','A description is limited to 255 characters.','Y','Y','Y','N','N','N','N','N','Description',TO_TIMESTAMP('2010-06-23 17:02:26','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:27 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59488 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59526,59489,0,53334,TO_TIMESTAMP('2010-06-23 17:02:27','YYYY-MM-DD HH24:MI:SS'),0,'The targeted status of the document',2,'FA','You find the current status in the Document Status field. The options are listed in a popup','Y','Y','Y','N','N','N','N','N','Document Action',TO_TIMESTAMP('2010-06-23 17:02:27','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59489 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59522,59490,0,53334,TO_TIMESTAMP('2010-06-23 17:02:28','YYYY-MM-DD HH24:MI:SS'),0,'Messages generated from import process',2000,'FA','The Import Error Message displays any error messages generated during the import process.','Y','Y','Y','N','N','N','N','N','Import Error Message',TO_TIMESTAMP('2010-06-23 17:02:28','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:28 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59490 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59521,59491,0,53334,TO_TIMESTAMP('2010-06-23 17:02:28','YYYY-MM-DD HH24:MI:SS'),0,'Has this import been processed',1,'FA','The Imported check box indicates if this import has been processed.','Y','Y','Y','N','N','N','N','N','Imported',TO_TIMESTAMP('2010-06-23 17:02:28','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59491 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59496,59492,0,53334,TO_TIMESTAMP('2010-06-23 17:02:29','YYYY-MM-DD HH24:MI:SS'),0,10,'FA','Y','Y','N','N','N','N','N','N','Imported Fixed Asset',TO_TIMESTAMP('2010-06-23 17:02:29','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59492 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59512,59493,0,53334,TO_TIMESTAMP('2010-06-23 17:02:30','YYYY-MM-DD HH24:MI:SS'),0,'Date when Asset was put into service',7,'FA','The date when the asset was put into service - usually used as start date for depreciation.','Y','Y','Y','N','N','N','N','N','In Service Date',TO_TIMESTAMP('2010-06-23 17:02:30','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59493 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59504,59494,0,53334,TO_TIMESTAMP('2010-06-23 17:02:30','YYYY-MM-DD HH24:MI:SS'),0,30,'FA','Y','Y','Y','N','N','N','N','N','Inventory No',TO_TIMESTAMP('2010-06-23 17:02:30','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59494 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59529,59495,0,53334,TO_TIMESTAMP('2010-06-23 17:02:31','YYYY-MM-DD HH24:MI:SS'),0,'Warehouse Locator',10,'FA','The Locator indicates where in a Warehouse a product is located.','Y','Y','Y','N','N','N','N','N','Locator',TO_TIMESTAMP('2010-06-23 17:02:31','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59495 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59530,59496,0,53334,TO_TIMESTAMP('2010-06-23 17:02:32','YYYY-MM-DD HH24:MI:SS'),0,'Key of the Warehouse Locator',40,'FA','Y','Y','Y','N','N','N','N','N','Locator Key',TO_TIMESTAMP('2010-06-23 17:02:32','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59496 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59505,59497,0,53334,TO_TIMESTAMP('2010-06-23 17:02:32','YYYY-MM-DD HH24:MI:SS'),0,'Alphanumeric identifier of the entity',120,'FA','The name of an entity (record) is used as an default search option in addition to the search key. The name is up to 60 characters in length.','Y','Y','Y','N','N','N','N','N','Name',TO_TIMESTAMP('2010-06-23 17:02:32','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:33 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59497 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59498,59498,0,53334,TO_TIMESTAMP('2010-06-23 17:02:33','YYYY-MM-DD HH24:MI:SS'),0,'Organizational entity within client',10,'FA','An organization is a unit of your client or legal entity - examples are store, department. You can share data between organizations.','Y','Y','Y','N','N','N','N','N','Organization',TO_TIMESTAMP('2010-06-23 17:02:33','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59498 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59523,59499,0,53334,TO_TIMESTAMP('2010-06-23 17:02:34','YYYY-MM-DD HH24:MI:SS'),0,1,'FA','Y','Y','Y','N','N','N','N','N','Process Now',TO_TIMESTAMP('2010-06-23 17:02:34','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59499 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:36 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59524,59500,0,53334,TO_TIMESTAMP('2010-06-23 17:02:35','YYYY-MM-DD HH24:MI:SS'),0,'The document has been processed',1,'FA','The Processed checkbox indicates that a document has been processed.','Y','Y','Y','N','N','N','N','N','Processed',TO_TIMESTAMP('2010-06-23 17:02:35','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:36 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59500 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:36 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59510,59501,0,53334,TO_TIMESTAMP('2010-06-23 17:02:36','YYYY-MM-DD HH24:MI:SS'),0,'Product, Service, Item',10,'FA','Identifies an item which is either purchased or sold in this organization.','Y','Y','Y','N','N','N','N','N','Product',TO_TIMESTAMP('2010-06-23 17:02:36','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:36 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59501 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:37 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59511,59502,0,53334,TO_TIMESTAMP('2010-06-23 17:02:36','YYYY-MM-DD HH24:MI:SS'),0,'Key of the Product',40,'FA','Y','Y','Y','N','N','N','N','N','Product Key',TO_TIMESTAMP('2010-06-23 17:02:36','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:37 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59502 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59531,59503,0,53334,TO_TIMESTAMP('2010-06-23 17:02:37','YYYY-MM-DD HH24:MI:SS'),0,'Quantity',10,'FA','The Quantity indicates the number of a specific product or item for this document.','Y','Y','Y','N','N','N','N','N','Quantity',TO_TIMESTAMP('2010-06-23 17:02:37','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:38 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59503 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:39 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59525,59504,0,53334,TO_TIMESTAMP('2010-06-23 17:02:38','YYYY-MM-DD HH24:MI:SS'),0,10,'FA','Y','Y','Y','N','N','N','N','N','Remaining Period',TO_TIMESTAMP('2010-06-23 17:02:38','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:39 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59504 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:39 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59536,59505,0,53334,TO_TIMESTAMP('2010-06-23 17:02:39','YYYY-MM-DD HH24:MI:SS'),0,'Method of ordering records; lowest number comes first',10,'FA','The Sequence indicates the order of records','Y','Y','Y','N','N','N','N','N','Sequence',TO_TIMESTAMP('2010-06-23 17:02:39','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:39 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59505 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59532,59506,0,53334,TO_TIMESTAMP('2010-06-23 17:02:39','YYYY-MM-DD HH24:MI:SS'),0,'Symbol for a Unit of Measure',10,'FA','The Symbol identifies the Symbol to be displayed and printed for a Unit of Measure','Y','Y','Y','N','N','N','N','N','Symbol',TO_TIMESTAMP('2010-06-23 17:02:39','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59506 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,Help,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59533,59507,0,53334,TO_TIMESTAMP('2010-06-23 17:02:41','YYYY-MM-DD HH24:MI:SS'),0,'Unit of Measure',10,'FA','The UOM defines a unique non monetary Unit of Measure','Y','Y','Y','N','N','N','N','N','UOM',TO_TIMESTAMP('2010-06-23 17:02:41','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:41 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59507 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,Description,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59516,59508,0,53334,TO_TIMESTAMP('2010-06-23 17:02:41','YYYY-MM-DD HH24:MI:SS'),0,'Months of the usable life of the asset',10,'FA','Y','Y','Y','N','N','N','N','N','Usable Life - Months',TO_TIMESTAMP('2010-06-23 17:02:41','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:42 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59508 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:02:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59517,59509,0,53334,TO_TIMESTAMP('2010-06-23 17:02:42','YYYY-MM-DD HH24:MI:SS'),0,10,'FA','Y','Y','Y','N','N','N','N','N','Use Life - Months (fiscal)',TO_TIMESTAMP('2010-06-23 17:02:42','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:02:43 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59509 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 5:03:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-23 17:03:04','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59485
+;
+
+-- Jun 23, 2010 5:03:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:03:09','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59498
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=10,IsDisplayed='Y' WHERE AD_Field_ID=59490
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=20,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=30,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=40,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=59473
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59474
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59475
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59478
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59479
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59480
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59485
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59498
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59505
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 23, 2010 5:03:40 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Document_Action_Access WHERE AD_Role_ID=0
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,178,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,179,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,180,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,181,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,182,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,183,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,184,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,185,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,187,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,188,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,189,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,345,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,347,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:14:16 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Document_Action_Access (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Role_ID,C_DocType_ID,Created,CreatedBy,IsActive,Updated,UpdatedBy) VALUES (0,0,691,0,0,TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0,'Y',TO_TIMESTAMP('2010-06-23 17:14:16','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:15:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Menu (AD_Client_ID,AD_Menu_ID,AD_Org_ID,AD_Window_ID,"action",Created,CreatedBy,EntityType,IsActive,IsCentrallyMaintained,IsReadOnly,IsSOTrx,IsSummary,Name,Updated,UpdatedBy) VALUES (0,53284,0,53120,'W',TO_TIMESTAMP('2010-06-23 17:15:24','YYYY-MM-DD HH24:MI:SS'),0,'FA','Y','Y','N','N','N','Imported Fixed Asset',TO_TIMESTAMP('2010-06-23 17:15:24','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 5:15:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Menu_Trl (AD_Language,AD_Menu_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Menu_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Menu t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Menu_ID=53284 AND NOT EXISTS (SELECT * FROM AD_Menu_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Menu_ID=t.AD_Menu_ID)
+;
+
+-- Jun 23, 2010 5:15:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_TreeNodeMM (AD_Client_ID,AD_Org_ID, IsActive,Created,CreatedBy,Updated,UpdatedBy, AD_Tree_ID, Node_ID, Parent_ID, SeqNo) SELECT t.AD_Client_ID, 0, 'Y', CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, 0,t.AD_Tree_ID, 53284, 0, 999 FROM AD_Tree t WHERE t.AD_Client_ID=0 AND t.IsActive='Y' AND t.IsAllNodes='Y' AND t.TreeType='MM' AND NOT EXISTS (SELECT * FROM AD_TreeNodeMM e WHERE e.AD_Tree_ID=t.AD_Tree_ID AND Node_ID=53284)
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53165
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53168
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53167
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53166
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53169
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53284
+;
+
+-- Jun 23, 2010 5:15:34 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53164, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53170
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=10,IsDisplayed='Y' WHERE AD_Field_ID=59485
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=20,IsDisplayed='Y' WHERE AD_Field_ID=59498
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=30,IsDisplayed='Y' WHERE AD_Field_ID=59490
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=40,IsDisplayed='Y' WHERE AD_Field_ID=59474
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=59478
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59479
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59480
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59475
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59473
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59505
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 5:18:31 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:19:02 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:02','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59479
+;
+
+-- Jun 23, 2010 5:19:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:06','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59475
+;
+
+-- Jun 23, 2010 5:19:09 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:09','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:19:13 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:13','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:19:18 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:18','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:19:21 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 5:19:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsSingleRow='Y',Updated=TO_TIMESTAMP('2010-06-23 17:19:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Tab_ID=53334
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59473
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59505
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:22:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:22:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:22:30','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 5:22:32 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:22:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:22:37 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:22:37','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:22:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:22:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:23:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:23:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:23:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:24:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-23 17:24:01','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:24:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsCentrallyMaintained='N', Name='Import Fixed Asset',Updated=TO_TIMESTAMP('2010-06-23 17:24:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:24:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field_Trl SET IsTranslated='N' WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:25:24 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET AD_Reference_ID=10,Updated=TO_TIMESTAMP('2010-06-23 17:25:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Column_ID=59522
+;
+
+-- Jun 23, 2010 5:25:53 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2010-06-23 17:25:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59490
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:26:54 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:27:04 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:27:04','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=59505
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59478
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59479
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59480
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59475
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:27:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:29:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:29:46 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:29:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59505
+;
+
+-- Jun 23, 2010 5:30:15 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 17:30:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 5:31:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Processed',Updated=TO_TIMESTAMP('2010-06-23 17:31:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:31:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field_Trl SET IsTranslated='N' WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:32:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59500
+;
+
+-- Jun 23, 2010 5:32:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=10,IsDisplayed='Y' WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=20,IsDisplayed='Y' WHERE AD_Field_ID=59490
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=30,IsDisplayed='Y' WHERE AD_Field_ID=59485
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=40,IsDisplayed='Y' WHERE AD_Field_ID=59498
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=59474
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59505
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59478
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59479
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59480
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59475
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 5:33:56 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 5:34:00 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2010-06-23 17:34:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59491
+;
+
+-- Jun 23, 2010 5:34:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='N',Updated=TO_TIMESTAMP('2010-06-23 17:34:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59485
+;
+
+-- Jun 23, 2010 5:34:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET IsUpdateable='Y',Updated=TO_TIMESTAMP('2010-06-23 17:34:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Column_ID=59498
+;
+
+-- Jun 23, 2010 5:39:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59587,54128,0,22,53137,'ProcessedOn',TO_TIMESTAMP('2010-06-23 17:39:33','YYYY-MM-DD HH24:MI:SS'),0,'The date+time (expressed in decimal format) when the document has been processed','FA',20,'The ProcessedOn Date+Time save the exact moment (nanoseconds precision if allowed by the DB) when a document has been processed.','Y','Y','N','N','N','N','N','N','N','N','N','N','Y','Processed On',0,TO_TIMESTAMP('2010-06-23 17:39:33','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 5:39:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59587 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 5:39:37 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE A_Asset_Addition ADD COLUMN ProcessedOn NUMERIC DEFAULT NULL 
+;
+
+-- Jun 23, 2010 5:39:45 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO t_alter_column values('a_asset_addition','ProcessedOn','NUMERIC',null,'NULL')
+;
+
+-- Jun 23, 2010 5:40:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59588,54128,0,22,53127,'ProcessedOn',TO_TIMESTAMP('2010-06-23 17:40:57','YYYY-MM-DD HH24:MI:SS'),0,'The date+time (expressed in decimal format) when the document has been processed','FA',20,'The ProcessedOn Date+Time save the exact moment (nanoseconds precision if allowed by the DB) when a document has been processed.','Y','Y','N','N','N','N','N','N','N','N','N','N','Y','Processed On',0,TO_TIMESTAMP('2010-06-23 17:40:57','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 5:40:59 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59588 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 5:41:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE A_Asset_Disposed ADD COLUMN ProcessedOn NUMERIC DEFAULT NULL 
+;
+
+-- Jun 23, 2010 5:42:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59589,54128,0,22,53275,'ProcessedOn',TO_TIMESTAMP('2010-06-23 17:42:00','YYYY-MM-DD HH24:MI:SS'),0,'The date+time (expressed in decimal format) when the document has been processed','FA',14,'The ProcessedOn Date+Time save the exact moment (nanoseconds precision if allowed by the DB) when a document has been processed.','Y','Y','N','N','N','N','N','N','N','N','N','N','Y','Processed On',0,TO_TIMESTAMP('2010-06-23 17:42:00','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 5:42:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59589 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 5:42:03 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE A_Asset_Reval ADD COLUMN ProcessedOn NUMERIC DEFAULT NULL 
+;
+
+-- Jun 23, 2010 5:43:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59590,54128,0,22,53128,'ProcessedOn',TO_TIMESTAMP('2010-06-23 17:43:24','YYYY-MM-DD HH24:MI:SS'),0,'The date+time (expressed in decimal format) when the document has been processed','FA',22,'The ProcessedOn Date+Time save the exact moment (nanoseconds precision if allowed by the DB) when a document has been processed.','Y','Y','N','N','N','N','N','N','N','N','N','N','Y','Processed On',0,TO_TIMESTAMP('2010-06-23 17:43:24','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 5:43:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59590 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 5:43:29 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE A_Asset_Transfer ADD COLUMN ProcessedOn NUMERIC DEFAULT NULL 
+;
+
+-- Jun 23, 2010 5:44:17 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,Description,EntityType,FieldLength,Help,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,59591,54128,0,22,53121,'ProcessedOn',TO_TIMESTAMP('2010-06-23 17:44:17','YYYY-MM-DD HH24:MI:SS'),0,'The date+time (expressed in decimal format) when the document has been processed','FA',22,'The ProcessedOn Date+Time save the exact moment (nanoseconds precision if allowed by the DB) when a document has been processed.','Y','Y','N','N','N','N','N','N','N','N','N','N','Y','Processed On',0,TO_TIMESTAMP('2010-06-23 17:44:17','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 5:44:17 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59591 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 5:44:22 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET FieldLength=20,Updated=TO_TIMESTAMP('2010-06-23 17:44:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Column_ID=59591
+;
+
+-- Jun 23, 2010 5:44:25 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE A_Depreciation_Entry ADD COLUMN ProcessedOn NUMERIC DEFAULT NULL 
+;
+
+-- Jun 23, 2010 6:23:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsCentrallyMaintained='N', Name='Import Fixed Asset',Updated=TO_TIMESTAMP('2010-06-23 18:23:01','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 6:23:01 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field_Trl SET IsTranslated='N' WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 6:29:08 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process SET AccessLevel='3',Updated=TO_TIMESTAMP('2010-06-23 18:29:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Process_ID=53215
+;
+
+-- Jun 23, 2010 6:31:10 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET AD_Reference_ID=19,Updated=TO_TIMESTAMP('2010-06-23 18:31:10','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Column_ID=59508
+;
+
+-- Jun 23, 2010 6:34:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59592,54170,0,19,53277,'A_Asset_Type_ID',TO_TIMESTAMP('2010-06-23 18:34:27','YYYY-MM-DD HH24:MI:SS'),0,'FA',10,'Y','Y','N','N','N','N','N','N','N','N','Y','N','Y','Asset Type',TO_TIMESTAMP('2010-06-23 18:34:27','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 6:34:30 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59592 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 6:34:39 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Type_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Jun 23, 2010 6:35:06 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO t_alter_column values('i_fixedasset','A_Asset_Type_ID','NUMERIC(10)',null,'NULL')
+;
+
+-- Jun 23, 2010 6:36:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,54244,0,'A_Asset_Type_Value',TO_TIMESTAMP('2010-06-23 18:36:33','YYYY-MM-DD HH24:MI:SS'),0,'FA','Y','Asset Type Value','Asset Type Value',TO_TIMESTAMP('2010-06-23 18:36:33','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 6:36:35 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=54244 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Jun 23, 2010 6:36:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,Updated,UpdatedBy,Version) VALUES (0,59593,54244,0,10,53277,'A_Asset_Type_Value',TO_TIMESTAMP('2010-06-23 18:36:49','YYYY-MM-DD HH24:MI:SS'),0,'FA',40,'Y','Y','N','N','N','N','N','N','N','N','Y','N','Y','Asset Type Value',TO_TIMESTAMP('2010-06-23 18:36:49','YYYY-MM-DD HH24:MI:SS'),0,0)
+;
+
+-- Jun 23, 2010 6:36:49 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=59593 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 23, 2010 6:36:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE I_FixedAsset ADD COLUMN A_Asset_Type_Value VARCHAR(40) DEFAULT NULL 
+;
+
+-- Jun 23, 2010 6:38:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59592,59510,0,53334,TO_TIMESTAMP('2010-06-23 18:38:18','YYYY-MM-DD HH24:MI:SS'),0,10,'FA','Y','Y','Y','N','N','N','N','N','Asset Type',TO_TIMESTAMP('2010-06-23 18:38:18','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 6:38:19 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59510 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 6:38:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,59593,59511,0,53334,TO_TIMESTAMP('2010-06-23 18:38:19','YYYY-MM-DD HH24:MI:SS'),0,40,'FA','Y','Y','Y','N','N','N','N','N','Asset Type Value',TO_TIMESTAMP('2010-06-23 18:38:19','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 23, 2010 6:38:20 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=59511 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59510
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59511
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59477
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59504
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59483
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59484
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 23, 2010 6:38:50 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Jun 23, 2010 6:38:58 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2010-06-23 18:38:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=0 WHERE AD_Field_ID=59511
+;
+
+-- Jun 23, 2010 6:43:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Jun 23, 2010 6:43:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Jun 23, 2010 6:43:51 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Jun 23, 2010 6:43:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Jun 23, 2010 6:43:52 PM CDT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Apr 24, 2011 2:04:04 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO AD_Element (AD_Client_ID,AD_Element_ID,AD_Org_ID,ColumnName,Created,CreatedBy,EntityType,IsActive,Name,PrintName,Updated,UpdatedBy) VALUES (0,55168,0,'IsFixedAssetInvoice',TO_TIMESTAMP('2011-04-24 14:04:02','YYYY-MM-DD HH24:MI:SS'),100,'FA','Y','IsFixedAssetInvoice','IsFixedAssetInvoice',TO_TIMESTAMP('2011-04-24 14:04:02','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Apr 24, 2011 2:04:04 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Description,Help,Name,PO_Description,PO_Help,PO_Name,PO_PrintName,PrintName, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Description,t.Help,t.Name,t.PO_Description,t.PO_Help,t.PO_Name,t.PO_PrintName,t.PrintName, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=55168 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Apr 24, 2011 2:04:42 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,61470,55168,0,20,333,'IsFixedAssetInvoice',TO_TIMESTAMP('2011-04-24 14:04:41','YYYY-MM-DD HH24:MI:SS'),100,'U',1,'Y','Y','N','N','N','N','N','N','N','N','N','N','Y','IsFixedAssetInvoice',0,TO_TIMESTAMP('2011-04-24 14:04:41','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Apr 24, 2011 2:04:42 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=61470 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Apr 24, 2011 2:05:09 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO AD_Column (AD_Client_ID,AD_Column_ID,AD_Element_ID,AD_Org_ID,AD_Reference_ID,AD_Table_ID,ColumnName,Created,CreatedBy,EntityType,FieldLength,IsActive,IsAllowLogging,IsAlwaysUpdateable,IsAutocomplete,IsEncrypted,IsIdentifier,IsKey,IsMandatory,IsParent,IsSelectionColumn,IsSyncDatabase,IsTranslated,IsUpdateable,Name,SeqNo,Updated,UpdatedBy,Version) VALUES (0,61471,55168,0,20,318,'IsFixedAssetInvoice',TO_TIMESTAMP('2011-04-24 14:05:06','YYYY-MM-DD HH24:MI:SS'),100,'U',1,'Y','Y','N','N','N','N','N','N','N','N','N','N','Y','IsFixedAssetInvoice',0,TO_TIMESTAMP('2011-04-24 14:05:06','YYYY-MM-DD HH24:MI:SS'),100,0)
+;
+
+-- Apr 24, 2011 2:05:09 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=61471 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Apr 24, 2011 3:20:11 PM MYT
+-- Fixed Assets Upgrading
+ALTER TABLE C_InvoiceLine ADD COLUMN IsFixedAssetInvoice CHAR(1) DEFAULT NULL CHECK (IsFixedAssetInvoice IN ('Y','N'))
+;
+
+-- Apr 24, 2011 3:20:47 PM MYT
+-- Fixed Assets Upgrading
+ALTER TABLE C_Invoice ADD COLUMN IsFixedAssetInvoice CHAR(1) DEFAULT NULL CHECK (IsFixedAssetInvoice IN ('Y','N'))
+;
+
+-- Apr 24, 2011 3:16:35 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO t_alter_column values('c_invoice','IsFixedAssetInvoice','CHAR(1)',null,'NULL')
+;
+
+-- Apr 24, 2011 3:16:56 PM MYT
+-- Fixed Assets Upgrading
+INSERT INTO t_alter_column values('c_invoiceline','IsFixedAssetInvoice','CHAR(1)',null,'NULL')
+;
+-- *** migration/FA/postgresql/005_FA_Stabilization_postgresql.sql ***
+
+-- Apr 28, 2011 7:37:46 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset..
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:37:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55786
+;
+
+-- Apr 28, 2011 7:37:49 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:37:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59403
+;
+
+-- Apr 28, 2011 7:37:54 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:37:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59404
+;
+
+-- Apr 28, 2011 7:37:56 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:37:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59407
+;
+
+-- Apr 28, 2011 7:37:58 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:37:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55759
+;
+
+-- Apr 28, 2011 7:38:00 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59405
+;
+
+-- Apr 28, 2011 7:38:03 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59402
+;
+
+-- Apr 28, 2011 7:38:15 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59307
+;
+
+-- Apr 28, 2011 7:38:19 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55632
+;
+
+-- Apr 28, 2011 7:38:22 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59306
+;
+
+-- Apr 28, 2011 7:38:24 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55601
+;
+
+-- Apr 28, 2011 7:38:26 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59305
+;
+
+-- Apr 28, 2011 7:38:29 AM MYT
+-- Removing unused Defaults in Table/Column of AssetGroupAcct / Asset
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-04-28 07:38:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55628
+;
+
+-- May 17, 2011 8:31:57 PM MYT
+-- Fixed Assets Integration
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2011-05-17 20:31:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55782
+;
+
+--recreate both tables
+DROP TABLE adempiere.a_asset_acct;
+
+CREATE TABLE adempiere.a_asset_acct
+(
+  a_asset_id numeric(10) NOT NULL,
+  c_acctschema_id numeric(10) NOT NULL,
+  ad_client_id numeric(10) NOT NULL,
+  ad_org_id numeric(10) NOT NULL,
+  isactive character(1) NOT NULL,
+  created timestamp without time zone NOT NULL,
+  createdby numeric(10) NOT NULL,
+  updated timestamp without time zone NOT NULL,
+  updatedby numeric(10) NOT NULL,
+  a_depreciation_id numeric(10) NOT NULL,
+  a_depreciation_acct numeric(10) NOT NULL,
+  a_accumdepreciation_acct numeric(10) NOT NULL,
+  a_disposal_loss character varying(40),
+  a_disposal_gain character varying(10),
+  a_asset_acct numeric(10) NOT NULL,
+  a_asset_acct_id numeric(10) NOT NULL,
+  a_depreciation_manual_period character varying(2),
+  a_depreciation_table_header_id numeric(10),
+  a_reval_cost_offset_prior character varying(22),
+  a_reval_cost_offset character varying(22),
+  a_reval_cal_method character varying(3),
+  a_reval_accumdep_offset_prior character varying(22),
+  a_reval_accumdep_offset_cur character varying(22),
+  a_period_start numeric(10) NOT NULL,
+  a_period_end numeric(10) NOT NULL,
+  a_disposal_revenue character varying(40),
+  processing character(1) DEFAULT 'Y'::bpchar,
+  postingtype character(1) NOT NULL DEFAULT 'A'::bpchar,
+  a_split_percent numeric NOT NULL DEFAULT 1::numeric,
+  a_salvage_value numeric DEFAULT 0::numeric,
+  a_reval_depexp_offset character varying(22),
+  a_depreciation_variable_perc numeric,
+  a_depreciation_method_id numeric(10) NOT NULL,
+  a_depreciation_manual_amount numeric,
+  a_depreciation_conv_id numeric(10) NOT NULL,
+  a_asset_spread_id numeric(10),
+  a_disposal_gain_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_cost_offset_prior_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_cost_offset_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_adep_offset_prior_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_adep_offset_cur_acct numeric(10) DEFAULT NULL::numeric,
+  a_disposal_revenue_acct numeric(10) NOT NULL,
+  a_disposal_loss_acct numeric(10) NOT NULL,
+  a_reval_depexp_offset_acct numeric(10) DEFAULT NULL::numeric,
+  a_depreciation_method_f_id numeric(10) NOT NULL,
+  a_depreciation_f_id numeric(10) NOT NULL,
+  a_depreciation_conv_f_id numeric(10) NOT NULL,
+  a_depreciation_variable_perc_f numeric,
+  validfrom timestamp without time zone,
+  CONSTRAINT a_asset_acct_pkey PRIMARY KEY (a_asset_acct_id),
+  CONSTRAINT aasset_aassetacct FOREIGN KEY (a_asset_id)
+      REFERENCES adempiere.a_asset (a_asset_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT aassetspread_aassetacct FOREIGN KEY (a_asset_spread_id)
+      REFERENCES adempiere.a_asset_spread (a_asset_spread_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT adepreciation_aassetacct FOREIGN KEY (a_depreciation_id)
+      REFERENCES adempiere.a_depreciation (a_depreciation_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT adepreciationconv_aassetacct FOREIGN KEY (a_depreciation_conv_id)
+      REFERENCES adempiere.a_depreciation_convention (a_depreciation_convention_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT adepreciationmethod_aassetacct FOREIGN KEY (a_depreciation_method_id)
+      REFERENCES adempiere.a_depreciation_method (a_depreciation_method_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT adepreciationtableheader_aasse FOREIGN KEY (a_depreciation_table_header_id)
+      REFERENCES adempiere.a_depreciation_table_header (a_depreciation_table_header_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT cacctschema_aassetacct FOREIGN KEY (c_acctschema_id)
+      REFERENCES adempiere.c_acctschema (c_acctschema_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT a_asset_acct_isactive_check CHECK (isactive = ANY (ARRAY['Y'::bpchar, 'N'::bpchar])),
+  CONSTRAINT a_asset_acct_processing_check CHECK (processing = ANY (ARRAY['Y'::bpchar, 'N'::bpchar]))
+)
+WITH (OIDS=FALSE);
+ALTER TABLE adempiere.a_asset_acct OWNER TO adempiere;
+
+--recreate second table
+
+DROP TABLE adempiere.a_asset_group_acct;
+
+CREATE TABLE adempiere.a_asset_group_acct
+(
+  a_asset_group_id numeric(10) NOT NULL,
+  c_acctschema_id numeric(10) NOT NULL,
+  ad_client_id numeric(10) NOT NULL,
+  ad_org_id numeric(10) NOT NULL,
+  isactive character(1),
+  created timestamp without time zone NOT NULL,
+  createdby numeric(10),
+  updated timestamp without time zone NOT NULL,
+  updatedby numeric(10),
+  a_asset_acct numeric(10) NOT NULL,
+  a_depreciation_acct numeric(10) NOT NULL,
+  a_accumdepreciation_acct numeric(10) NOT NULL,
+  a_disposal_loss character varying(22),
+  a_disposal_gain character varying(10),
+  a_depreciation_id numeric(10) NOT NULL DEFAULT 1000003::numeric,
+  a_asset_group_acct_id numeric(10) NOT NULL,
+  a_depreciation_manual_period character varying(2),
+  a_depreciation_variable_perc numeric,
+  a_split_percent numeric NOT NULL DEFAULT 1::numeric,
+  a_reval_depexp_offset character varying(22),
+  a_reval_cost_offset_prior character varying(22),
+  a_reval_cost_offset character varying(22),
+  a_reval_cal_method character varying(22),
+  a_reval_accumdep_offset_prior character varying(22),
+  a_reval_accumdep_offset_cur character varying(22),
+  a_disposal_revenue character varying(22),
+  uselifeyears numeric(10),
+  uselifemonths numeric(10) DEFAULT 0::numeric,
+  processing character(1),
+  postingtype character(1) NOT NULL DEFAULT 'A'::bpchar,
+  depreciationtype character varying(10),
+  conventiontype character varying(10) DEFAULT '1000000'::character varying,
+  a_depreciation_table_header_id numeric(10),
+  a_depreciation_manual_amount numeric,
+  a_depreciation_calc_type character varying(10) DEFAULT '1000000'::character varying,
+  a_asset_spread_type character varying(10),
+  a_reval_depexp_offset_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_cost_offset_prior_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_cost_offset_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_adep_offset_prior_acct numeric(10) DEFAULT NULL::numeric,
+  a_reval_adep_offset_cur_acct numeric(10) DEFAULT NULL::numeric,
+  a_disposal_gain_acct numeric(10) DEFAULT NULL::numeric,
+  a_depreciation_method_id numeric(10) NOT NULL DEFAULT (1000000)::numeric,
+  a_depreciation_conv_f_id numeric(10) NOT NULL DEFAULT (1000000)::numeric,
+  a_depreciation_conv_id numeric(10) NOT NULL DEFAULT (1000000)::numeric,
+  a_depreciation_method_f_id numeric(10) NOT NULL DEFAULT (1000000)::numeric,
+  a_depreciation_variable_perc_f numeric,
+  a_depreciation_f_id numeric(10) NOT NULL DEFAULT (1000003)::numeric,
+  uselifeyears_f numeric(10) NOT NULL DEFAULT (0)::numeric,
+  uselifemonths_f numeric(10) NOT NULL DEFAULT (0)::numeric,
+  a_disposal_revenue_acct numeric(10) DEFAULT NULL::numeric,
+  a_disposal_loss_acct numeric(10) DEFAULT NULL::numeric,
+  CONSTRAINT a_asset_group_acct_key PRIMARY KEY (a_asset_group_acct_id),
+  CONSTRAINT aassetgroup_aassetgroupacct FOREIGN KEY (a_asset_group_id)
+      REFERENCES adempiere.a_asset_group (a_asset_group_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT adepreciation_aassetgroupacct FOREIGN KEY (a_depreciation_id)
+      REFERENCES adempiere.a_depreciation (a_depreciation_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT adepreciationtableheader_aass3 FOREIGN KEY (a_depreciation_table_header_id)
+      REFERENCES adempiere.a_depreciation_table_header (a_depreciation_table_header_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT cacctschema_aassetgroupacct FOREIGN KEY (c_acctschema_id)
+      REFERENCES adempiere.c_acctschema (c_acctschema_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION DEFERRABLE INITIALLY DEFERRED,
+  CONSTRAINT a_asset_group_acct_isactive_check CHECK (isactive = ANY (ARRAY['Y'::bpchar, 'N'::bpchar])),
+  CONSTRAINT a_asset_group_acct_processing_check CHECK (processing = ANY (ARRAY['Y'::bpchar, 'N'::bpchar]))
+)
+WITH (OIDS=FALSE);
+ALTER TABLE adempiere.a_asset_group_acct OWNER TO adempiere;
+
+
+-- May 5, 2011 10:17:12 AM MYT
+-- Fixed Asset 3297722 Build Depreciation Workfile wrong button
+UPDATE AD_Column SET AD_Reference_ID=20,Updated=TO_TIMESTAMP('2011-05-05 10:17:12','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55700
+;
+
+-- May 5, 2011 10:18:01 AM MYT
+-- Fixed Asset 3297722 Build Depreciation Workfile wrong button
+UPDATE AD_Column SET AD_Process_ID=53111, AD_Reference_ID=28,Updated=TO_TIMESTAMP('2011-05-05 10:18:01','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55703
+;
+
+
+-- *** migration/FA/postgresql/006_FA_Stabilization_postgresql.sql ***
+
+-- May 16, 2011 7:48:02 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=55792
+;
+
+-- May 16, 2011 7:53:26 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56064
+;
+
+-- May 16, 2011 7:53:27 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59260
+;
+
+-- May 16, 2011 7:53:28 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=56057
+;
+
+-- May 16, 2011 7:53:29 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59261
+;
+
+-- May 16, 2011 7:53:30 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=56065
+;
+
+-- May 16, 2011 7:53:31 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=56066
+;
+
+-- May 16, 2011 7:53:32 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59262
+;
+
+-- May 16, 2011 7:53:33 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=56067
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=56073
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59263
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=56074
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=56068
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=56069
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=56070
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=56076
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=56071
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=56077
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=56072
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=56078
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59264
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=56079
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59265
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=56080
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=56075
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59266
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=59267
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=410,IsDisplayed='Y' WHERE AD_Field_ID=59268
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=420,IsDisplayed='Y' WHERE AD_Field_ID=59269
+;
+
+-- May 16, 2011 7:53:37 AM MYT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=430,IsDisplayed='Y' WHERE AD_Field_ID=59270
+;
+
+-- May 19, 2011 2:53:57 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Tab SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-19 02:53:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53320
+;
+
+-- May 19, 2011 2:53:59 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Tab SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-19 02:53:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53323
+;
+
+-- May 19, 2011 2:54:02 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Tab SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-19 02:54:02','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53321
+;
+
+-- May 19, 2011 2:54:03 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Tab SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-19 02:54:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53156
+;
+
+-- May 19, 2011 2:54:08 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Tab SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-19 02:54:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53159
+;
+
+-- May 19, 2011 2:54:14 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Tab SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-19 02:54:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53322
+;
+
+-- May 19, 2011 2:34:31 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process SET Classname='ro.arhipac.adempiere.fa.process.A_Depreciation_Exp_Process',Updated=TO_TIMESTAMP('2011-05-19 14:34:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53211
+;
+
+-- May 26, 2011 6:14:57 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Column SET Name='Own contribution',Updated=TO_TIMESTAMP('2011-05-26 06:14:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59292
+;
+
+-- May 26, 2011 6:14:57 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Column_Trl SET IsTranslated='N' WHERE AD_Column_ID=59292
+;
+
+-- May 26, 2011 6:14:57 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET Name='Own contribution', Description=NULL, Help=NULL WHERE AD_Column_ID=59292 AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:14:22 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Element SET Name='Third contribution', PrintName='Third contribution',Updated=TO_TIMESTAMP('2011-05-26 07:14:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54188
+;
+
+-- May 26, 2011 7:14:22 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54188
+;
+
+-- May 26, 2011 7:14:22 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Column SET ColumnName='A_Valoare_Tert', Name='Third contribution', Description=NULL, Help=NULL WHERE AD_Element_ID=54188
+;
+
+-- May 26, 2011 7:14:22 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process_Para SET ColumnName='A_Valoare_Tert', Name='Third contribution', Description=NULL, Help=NULL, AD_Element_ID=54188 WHERE UPPER(ColumnName)='A_VALOARE_TERT' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- May 26, 2011 7:14:22 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process_Para SET ColumnName='A_Valoare_Tert', Name='Third contribution', Description=NULL, Help=NULL WHERE AD_Element_ID=54188 AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:14:22 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET Name='Third contribution', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54188) AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:14:23 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_PrintFormatItem SET PrintName='Third contribution', Name='Third contribution' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54188)
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Element SET Name='Own contribution', PrintName='Own contribution',Updated=TO_TIMESTAMP('2011-05-26 07:14:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54187
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54187
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Column SET ColumnName='A_Valoare_Cofinantare', Name='Own contribution', Description=NULL, Help=NULL WHERE AD_Element_ID=54187
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process_Para SET ColumnName='A_Valoare_Cofinantare', Name='Own contribution', Description=NULL, Help=NULL, AD_Element_ID=54187 WHERE UPPER(ColumnName)='A_VALOARE_COFINANTARE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process_Para SET ColumnName='A_Valoare_Cofinantare', Name='Own contribution', Description=NULL, Help=NULL WHERE AD_Element_ID=54187 AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET Name='Own contribution', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54187) AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:14:49 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_PrintFormatItem SET PrintName='Own contribution', Name='Own contribution' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54187)
+;
+
+-- May 26, 2011 7:15:19 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Element SET Description='Financing Type', Name='Financing Type', PrintName='Financing Type',Updated=TO_TIMESTAMP('2011-05-26 07:15:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54186
+;
+
+-- May 26, 2011 7:15:19 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54186
+;
+
+-- May 26, 2011 7:15:19 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Column SET ColumnName='A_Tip_Finantare', Name='Financing Type', Description='Financing Type', Help=NULL WHERE AD_Element_ID=54186
+;
+
+-- May 26, 2011 7:15:19 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process_Para SET ColumnName='A_Tip_Finantare', Name='Financing Type', Description='Financing Type', Help=NULL, AD_Element_ID=54186 WHERE UPPER(ColumnName)='A_TIP_FINANTARE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- May 26, 2011 7:15:19 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Process_Para SET ColumnName='A_Tip_Finantare', Name='Financing Type', Description='Financing Type', Help=NULL WHERE AD_Element_ID=54186 AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:15:19 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET Name='Financing Type', Description='Financing Type', Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54186) AND IsCentrallyMaintained='Y'
+;
+
+-- May 26, 2011 7:15:20 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_PrintFormatItem SET PrintName='Financing Type', Name='Financing Type' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54186)
+;
+
+
+-- *** migration/FA/postgresql/007_FA_Stabilization_postgresql.sql ***
+
+-- May 26, 2011 8:41:08 AM MYT
+-- Fixed Assets Usability
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2011-05-26 08:41:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53152
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+INSERT INTO AD_Element (ColumnName,AD_Element_ID,EntityType,Name,PrintName,AD_Client_ID,Created,Updated,IsActive,AD_Org_ID,CreatedBy,UpdatedBy) VALUES ('A_Account_Number_Acct',200015,'D','A_Account_Number_Acct','A_Account_Number_Acct',0,TO_TIMESTAMP('2012-03-09 13:16:10','YYYY-MM-DD HH24:MI:SS'),TO_TIMESTAMP('2012-03-09 13:16:10','YYYY-MM-DD HH24:MI:SS'),'Y',0,100,100)
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Help,PO_Description,PO_Help,Name,Description,PrintName,PO_PrintName,PO_Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Help,t.PO_Description,t.PO_Help,t.Name,t.Description,t.PrintName,t.PO_PrintName,t.PO_Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=200015 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column SET AD_Element_ID=200015, ColumnName='A_Account_Number_Acct', Description=NULL, Help=NULL, Name='A_Account_Number_Acct',Updated=TO_TIMESTAMP('2011-05-26 10:07:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55393
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column_Trl SET IsTranslated='N' WHERE AD_Column_ID=55393
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET Name='A_Account_Number_Acct', Description=NULL, Help=NULL WHERE AD_Column_ID=55393 AND IsCentrallyMaintained='Y'
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+ALTER TABLE A_Depreciation_Exp ADD COLUMN A_Account_Number_Acct NUMERIC(10) DEFAULT NULL 
+;
+
+ALTER TABLE adempiere.a_depreciation_exp DROP COLUMN a_account_number;
+
+-- May 26, 2011 8:52:32 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET DisplayLogic='@DepreciationType@=50006',Updated=TO_TIMESTAMP('2011-05-26 20:52:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56058
+;
+
+-- May 26, 2011 8:53:03 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-26 20:53:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56059
+;
+
+-- May 26, 2011 8:53:17 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET DisplayLogic=NULL,Updated=TO_TIMESTAMP('2011-05-26 20:53:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56060
+;
+
+-- May 26, 2011 8:54:08 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET DisplayLogic='@A_Depreciation_ID@=1000005|@A_Depreciation_ID@=50010|@A_Depreciation_ID@=50006',Updated=TO_TIMESTAMP('2011-05-26 20:54:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56061
+;
+
+-- May 26, 2011 8:56:17 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET DisplayLogic='@A_Depreciation_F_ID@=50010|@A_Depreciation_F_ID@=50005',Updated=TO_TIMESTAMP('2011-05-26 20:56:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59257
+;
+
+-- May 26, 2011 8:56:23 PM MYT
+-- Fixed Assets Usability
+UPDATE AD_Field SET DisplayLogic='@A_Depreciation_ID@=50010|@A_Depreciation_ID@=50005',Updated=TO_TIMESTAMP('2011-05-26 20:56:23','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56061
+;
+
+-- May 26, 2011 9:15:29 PM MYT
+-- Fixed Assets Usability
+UPDATE A_Depreciation SET DepreciationType='ARH_VAR',Updated=TO_TIMESTAMP('2011-05-26 21:15:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE A_Depreciation_ID=50005
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_window
+SET isbetafunctionality='N'
+WHERE name LIKE '%sset%'
+AND isbetafunctionality='Y'
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_process
+SET isbetafunctionality='N'
+WHERE name LIKE '%sset%'
+AND isbetafunctionality='Y'
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_window
+SET isbetafunctionality='N'
+WHERE name LIKE '%epreciat%'
+AND isbetafunctionality='Y'
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_process
+SET isbetafunctionality='N'
+WHERE name LIKE '%epreciat%'
+AND isbetafunctionality='Y'
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_process
+SET isbetafunctionality='N'
+WHERE name LIKE '%nbound%'
+AND isbetafunctionality='Y'
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_column
+SET callout='org.compiere.model.CalloutAsset.location'
+WHERE ad_column_id=8041
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_column
+SET callout='org.compiere.model.CalloutAsset.locator'
+WHERE ad_column_id=8049
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_column
+SET callout='org.compiere.model.CalloutAsset.locator'
+WHERE ad_column_id=8073
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_column
+SET callout='org.compiere.model.MAssetType$Callout.assetType'
+WHERE ad_column_id=59259
+;
+
+-- Mar 9, 2012 1:16:12 PM WIT
+-- Complete Fixed Assets
+UPDATE ad_column SET callout = null
+WHERE ad_column_id=59455
+;
+
+-- Nov 24, 2011 9:06:25 AM ICT
+-- Complete Fixed Assets
+UPDATE A_Asset SET A_Asset_Action='MD' WHERE A_Asset_Action IS NULL
+;
+
+-- Nov 24, 2011 9:09:37 AM ICT
+-- Complete Fixed Assets
+UPDATE AD_Column SET IsMandatory='N',Updated=TO_TIMESTAMP('2011-11-24 09:09:37','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59260
+;
+
+-- Nov 24, 2011 9:12:35 AM ICT
+-- Complete Fixed Assets
+UPDATE AD_Column SET DefaultValue=NULL, IsMandatory='N',Updated=TO_TIMESTAMP('2011-11-24 09:12:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59259
+;
+
+
+-- Nov 24, 2011 10:58:05 AM ICT
+-- A_Asset_Addition
+UPDATE AD_Column SET IsUpdateable='Y',Updated=TO_TIMESTAMP('2011-11-24 10:58:05','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55954
+;
+
+-- Nov 24, 2011 10:58:15 AM ICT
+-- A_Asset_Addition
+UPDATE AD_Column SET IsUpdateable='Y',Updated=TO_TIMESTAMP('2011-11-24 10:58:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55968
+;
+
+-- Nov 24, 2011 10:58:19 AM ICT
+-- A_Asset_Addition
+UPDATE AD_Column SET IsUpdateable='Y',Updated=TO_TIMESTAMP('2011-11-24 10:58:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59456
+;
+
+-- Nov 24, 2011 10:59:03 AM ICT
+-- A_Asset_Addition
+UPDATE AD_Column SET AD_Reference_ID=19,Updated=TO_TIMESTAMP('2011-11-24 10:59:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59473
+;
+
+-- Nov 24, 2011 10:59:15 AM ICT
+-- A_Asset_Addition
+UPDATE AD_Column SET IsUpdateable='Y',Updated=TO_TIMESTAMP('2011-11-24 10:59:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55964
+;
+
+-- Dec 6, 2011 10:53:14 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Table SET AccessLevel='7',Updated=TO_DATE('2011-12-06 10:53:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=53112
+;
+
+-- Dec 6, 2011 10:53:55 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Table SET AccessLevel='3',Updated=TO_DATE('2011-12-06 10:53:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=53121
+;
+
+-- Dec 6, 2011 10:54:04 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Table SET AccessLevel='3',Updated=TO_DATE('2011-12-06 10:54:04','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=53115
+;
+
+-- Dec 6, 2011 10:54:25 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Table SET AccessLevel='7',Updated=TO_DATE('2011-12-06 10:54:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=53124
+;
+
+
+-- *** migration/FA/postgresql/008_FA_Stabilization_postgresql.sql ***
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=56061
+;
+
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59257
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59261
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=56065
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=56066
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59262
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=56067
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=56073
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59263
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=56074
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=56068
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=56069
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=56070
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=56076
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=56071
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=56077
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=56072
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=56078
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59264
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=56079
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59265
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=56080
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=56075
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59266
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59267
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=59268
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=410,IsDisplayed='Y' WHERE AD_Field_ID=59269
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=420,IsDisplayed='Y' WHERE AD_Field_ID=59270
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=430,IsDisplayed='Y' WHERE AD_Field_ID=59255
+;
+
+-- Dec 6, 2011 11:22:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=440,IsDisplayed='Y' WHERE AD_Field_ID=59254
+;
+
+-- Dec 6, 2011 11:23:03 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=56058
+;
+
+-- Dec 6, 2011 11:23:03 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=56058
+;
+
+-- Dec 6, 2011 11:23:07 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=56059
+;
+
+-- Dec 6, 2011 11:23:07 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=56059
+;
+
+-- Dec 6, 2011 11:23:11 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=56060
+;
+
+-- Dec 6, 2011 11:23:11 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=56060
+;
+
+-- Dec 6, 2011 11:23:20 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=56061
+;
+
+-- Dec 6, 2011 11:23:20 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=56061
+;
+
+-- Dec 6, 2011 11:23:26 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=59257
+;
+
+-- Dec 6, 2011 11:23:26 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=59257
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59268
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59269
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56075
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56069
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56068
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59266
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59267
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59270
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56078
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56079
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56076
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56077
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56080
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59259
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59260
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59261
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=56065
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=56066
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59262
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=56067
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59263
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=56070
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=56071
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=56072
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59264
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59265
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=56074
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59255
+;
+
+-- Dec 6, 2011 11:24:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59254
+;
+
+-- Dec 6, 2011 11:25:40 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_DATE('2011-12-06 11:25:40','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56055
+;
+
+-- Dec 6, 2011 11:25:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56073
+;
+
+-- Dec 6, 2011 11:25:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56074
+;
+
+-- Dec 6, 2011 11:25:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59255
+;
+
+-- Dec 6, 2011 11:25:56 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59254
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59038
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59039
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55885
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59036
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59037
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59040
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55888
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55889
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55886
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55887
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55890
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55874
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59031
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=55875
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=55876
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59032
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59033
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=55880
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=55881
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=55882
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=55883
+;
+
+-- Dec 6, 2011 11:27:15 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59034
+;
+
+-- Dec 6, 2011 11:27:27 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=55871
+;
+
+-- Dec 6, 2011 11:27:27 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=55871
+;
+
+-- Dec 6, 2011 11:27:30 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=55872
+;
+
+-- Dec 6, 2011 11:27:30 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=55872
+;
+
+-- Dec 6, 2011 11:27:34 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=55873
+;
+
+-- Dec 6, 2011 11:27:34 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=55873
+;
+
+-- Dec 6, 2011 11:27:37 AM WIT
+-- Fixed Asset Stabilization
+DELETE  FROM  AD_Field_Trl WHERE AD_Field_ID=55875
+;
+
+-- Dec 6, 2011 11:27:37 AM WIT
+-- Fixed Asset Stabilization
+DELETE FROM AD_Field WHERE AD_Field_ID=55875
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59033
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=55876
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59032
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=55880
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=55881
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=55882
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=55883
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59034
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=55884
+;
+
+-- Dec 6, 2011 11:28:00 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59035
+;
+
+-- Dec 6, 2011 11:28:44 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59252
+;
+
+-- Dec 6, 2011 11:28:44 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59253
+;
+
+-- Dec 6, 2011 11:28:44 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=6185
+;
+
+-- Dec 6, 2011 11:28:44 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=6190
+;
+
+-- Dec 6, 2011 11:28:44 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=11524
+;
+
+-- Dec 6, 2011 11:28:44 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=11620
+;
+
+-- Dec 6, 2011 11:28:52 AM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=11620
+;
+
+
+-- *** migration/FA/postgresql/009_FA_Stabilization_postgresql.sql ***
+
+-- Dec 6, 2011 12:00:04 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET Callout=NULL,Updated=TO_DATE('2011-12-06 12:00:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=8051
+;
+
+-- Dec 6, 2011 12:00:11 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET Callout=NULL,Updated=TO_DATE('2011-12-06 12:00:11','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59259
+;
+
+-- Dec 6, 2011 12:01:19 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET Callout=NULL,Updated=TO_DATE('2011-12-06 12:01:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55773
+;
+
+-- Dec 6, 2011 12:01:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET Callout=NULL,Updated=TO_DATE('2011-12-06 12:01:23','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59409
+;
+
+-- Dec 6, 2011 12:01:26 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET Callout=NULL,Updated=TO_DATE('2011-12-06 12:01:26','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55772
+;
+
+-- Dec 6, 2011 12:01:29 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET Callout=NULL,Updated=TO_DATE('2011-12-06 12:01:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59408
+;
+
+-- Dec 6, 2011 12:50:18 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Tab SET Name='Group Account',Updated=TO_DATE('2011-12-06 12:50:18','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53165
+;
+
+-- Dec 6, 2011 12:50:18 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Tab_Trl SET IsTranslated='N' WHERE AD_Tab_ID=53165
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59259
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59260
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59261
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=56065
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=56066
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59262
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=56067
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59263
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=56070
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=56071
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=56072
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59264
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59265
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59255
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59254
+;
+
+-- Dec 6, 2011 12:50:30 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=56075
+;
+
+-- Dec 6, 2011 12:58:12 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Ref_Table SET AD_Display=13086, AD_Key=6497, AD_Table_ID=472,Updated=TO_DATE('2011-12-06 12:58:12','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Reference_ID=53363
+;
+
+-- Mar 9, 2012 2:43:25 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column SET IsIdentifier='N',Updated=TO_TIMESTAMP('2012-03-09 14:43:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59259
+;
+
+-- Mar 9, 2012 2:43:31 PM WIT
+-- Complete Fixed Assets
+INSERT INTO t_alter_column values('a_asset','A_Asset_Type_ID','NUMERIC(10)',null,'NULL')
+;
+
+-- Mar 9, 2012 2:43:31 PM WIT
+-- Complete Fixed Assets
+INSERT INTO t_alter_column values('a_asset','A_Asset_Type_ID',null,'NULL',null)
+;
+
+-- Mar 9, 2012 2:57:06 PM WIT
+-- Complete Fixed Assets
+INSERT INTO AD_Column (AD_Column_ID,AD_Table_ID,EntityType,Version,IsMandatory,IsTranslated,IsIdentifier,SeqNo,Help,IsParent,FieldLength,IsSelectionColumn,AD_Reference_ID,IsSyncDatabase,IsKey,AD_Element_ID,IsAutocomplete,IsAllowLogging,IsEncrypted,IsUpdateable,IsAlwaysUpdateable,Description,Name,ColumnName,IsAllowCopy,CreatedBy,Updated,AD_Client_ID,AD_Org_ID,IsActive,Created,UpdatedBy) VALUES (200075,53127,'U',0,'N','N','N',0,'The Invoice Document.','N',10,'N',30,'N','N',1008,'N','Y','N','Y','N','Invoice Identifier','Invoice','C_Invoice_ID','Y',100,TO_TIMESTAMP('2012-03-09 14:56:58','YYYY-MM-DD HH24:MI:SS'),0,0,'Y',TO_TIMESTAMP('2012-03-09 14:56:58','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Mar 9, 2012 2:57:06 PM WIT
+-- Complete Fixed Assets
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=200075 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Mar 9, 2012 2:57:34 PM WIT
+-- Complete Fixed Assets
+ALTER TABLE A_Asset_Disposed ADD COLUMN C_Invoice_ID NUMERIC(10) DEFAULT NULL 
+;
+
+-- Mar 9, 2012 2:58:06 PM WIT
+-- Complete Fixed Assets
+INSERT INTO AD_Column (AD_Column_ID,AD_Table_ID,EntityType,Version,IsMandatory,IsTranslated,IsIdentifier,SeqNo,Help,IsParent,FieldLength,IsSelectionColumn,AD_Reference_ID,IsSyncDatabase,IsKey,AD_Element_ID,IsAutocomplete,IsAllowLogging,IsEncrypted,IsUpdateable,IsAlwaysUpdateable,Description,Name,ColumnName,IsAllowCopy,CreatedBy,Updated,AD_Client_ID,AD_Org_ID,IsActive,Created,UpdatedBy) VALUES (200076,53127,'U',0,'N','N','N',0,'The Invoice Line uniquely identifies a single line of an Invoice.','N',10,'N',30,'N','N',1076,'N','Y','N','Y','N','Invoice Detail Line','Invoice Line','C_InvoiceLine_ID','Y',100,TO_TIMESTAMP('2012-03-09 14:58:04','YYYY-MM-DD HH24:MI:SS'),0,0,'Y',TO_TIMESTAMP('2012-03-09 14:58:04','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Mar 9, 2012 2:58:06 PM WIT
+-- Complete Fixed Assets
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=200076 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Mar 9, 2012 2:58:12 PM WIT
+-- Complete Fixed Assets
+ALTER TABLE A_Asset_Disposed ADD COLUMN C_InvoiceLine_ID NUMERIC(10) DEFAULT NULL 
+;
+
+
+-- *** migration/FA/postgresql/010_FA_Stabilization_postgresql.sql ***
+
+-- Mar 9, 2012 2:43:25 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column SET IsIdentifier='N',Updated=TO_TIMESTAMP('2012-03-09 14:43:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59259
+;
+-- Dec 6, 2011 1:11:27 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Tab SET IsActive='N',Updated=TO_DATE('2011-12-06 13:11:27','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53328
+;
+
+-- Dec 6, 2011 1:11:36 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Window SET IsActive='N',Updated=TO_DATE('2011-12-06 13:11:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53116
+;
+
+-- Dec 6, 2011 1:11:36 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Menu SET Description=NULL, IsActive='N', Name='Asset Class',Updated=TO_DATE('2011-12-06 13:11:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53276
+;
+
+-- Dec 6, 2011 1:11:36 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53276
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=58991
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=58992
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=6152
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=6154
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=6149
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=8345
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=6146
+;
+-- Complete Fixed Assets
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=58993
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=6135
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=6143
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=6166
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=55830
+;
+
+-- Dec 6, 2011 1:13:22 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=55831
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=12106
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=58994
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=6139
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=6165
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=6147
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=6136
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=6138
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=12107
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=6151
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=6159
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=6156
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=12876
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=12875
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=6160
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=6213
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=6148
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=6142
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=6161
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=6144
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=12872
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=410,IsDisplayed='Y' WHERE AD_Field_ID=12874
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=420,IsDisplayed='Y' WHERE AD_Field_ID=12873
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=430,IsDisplayed='Y' WHERE AD_Field_ID=12877
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=440,IsDisplayed='Y' WHERE AD_Field_ID=12878
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=450,IsDisplayed='Y' WHERE AD_Field_ID=58995
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=460,IsDisplayed='Y' WHERE AD_Field_ID=58997
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=470,IsDisplayed='Y' WHERE AD_Field_ID=6141
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=480,IsDisplayed='Y' WHERE AD_Field_ID=6137
+;
+
+-- Dec 6, 2011 1:13:23 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=490,IsDisplayed='Y' WHERE AD_Field_ID=6150
+;
+
+-- Dec 6, 2011 1:18:04 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Tab SET Name='Group Account',Updated=TO_DATE('2011-12-06 13:18:04','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53165
+;
+
+-- Dec 6, 2011 1:18:04 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Tab_Trl SET IsTranslated='N' WHERE AD_Tab_ID=53165
+;
+
+-- Dec 6, 2011 1:31:45 PM WIT
+-- Fixed Asset Stabilization
+INSERT INTO AD_Field (AD_Client_ID,AD_Column_ID,AD_Field_ID,AD_Org_ID,AD_Tab_ID,Created,CreatedBy,DisplayLength,EntityType,IsActive,IsCentrallyMaintained,IsDisplayed,IsEncrypted,IsFieldOnly,IsHeading,IsReadOnly,IsSameLine,Name,Updated,UpdatedBy) VALUES (0,61470,200035,0,270,TO_DATE('2011-12-06 13:31:45','YYYY-MM-DD HH24:MI:SS'),100,1,'D','Y','Y','Y','N','N','N','N','N','IsFixedAssetInvoice',TO_DATE('2011-12-06 13:31:45','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+
+-- Dec 6, 2011 1:31:45 PM WIT
+-- Fixed Asset Stabilization
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Description,Help,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Description,t.Help,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200035 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Dec 6, 2011 1:31:58 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=200035
+;
+
+
+-- Dec 6, 2011 1:31:58 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=5819
+;
+
+-- Dec 6, 2011 1:32:11 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_DATE('2011-12-06 13:32:11','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=5819
+;
+
+
+-- *** migration/FA/postgresql/011_FA_Stabilization_postgresql.sql ***
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59397
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59137
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59140
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59402
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59141
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59405
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59398
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59401
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59399
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59400
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59403
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59404
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59406
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59408
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59407
+;
+
+-- Dec 6, 2011 1:41:45 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59409
+;
+
+-- Dec 6, 2011 1:42:19 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Ref_List SET IsActive='N',Updated=TO_DATE('2011-12-06 13:42:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_ID=53387
+;
+
+-- Dec 6, 2011 1:42:20 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Ref_List SET IsActive='N',Updated=TO_DATE('2011-12-06 13:42:20','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_ID=53607
+;
+
+-- Dec 6, 2011 1:42:24 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Ref_List SET IsActive='N',Updated=TO_DATE('2011-12-06 13:42:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_ID=53606
+;
+
+-- Dec 6, 2011 1:42:25 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Ref_List SET IsActive='N',Updated=TO_DATE('2011-12-06 13:42:25','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_ID=53386
+;
+
+
+-- Dec 6, 2011 7:07:59 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET AD_Reference_ID=30,Updated=TO_DATE('2011-12-06 19:07:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59456
+;
+
+-- Dec 6, 2011 7:08:14 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET ReadOnlyLogic='1=1',Updated=TO_DATE('2011-12-06 19:08:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59456
+;
+
+-- Dec 6, 2011 7:08:24 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET AD_Reference_ID=30,Updated=TO_DATE('2011-12-06 19:08:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59473
+;
+
+-- Dec 6, 2011 7:08:58 PM WIT
+-- Fixed Asset Stabilization
+UPDATE AD_Column SET AD_Reference_ID=30, ReadOnlyLogic='1=1',Updated=TO_DATE('2011-12-06 19:08:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55964
+;
+
+
+-- *** migration/FA/postgresql/012_FA_Stabilization_postgresql.sql ***
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59475
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59477
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59510
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59511
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59480
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59483
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59484
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59504
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59505
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=59494
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=59497
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59478
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59479
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59487
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Mar 9, 2012 3:08:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Mar 9, 2012 3:10:22 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:10:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59509
+;
+
+-- Mar 9, 2012 3:10:23 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:23','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59508
+;
+
+-- Mar 9, 2012 3:10:24 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59481
+;
+
+-- Mar 9, 2012 3:10:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:10:30','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59482
+;
+
+-- Mar 9, 2012 3:10:31 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59501
+;
+
+-- Mar 9, 2012 3:10:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:10:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59502
+;
+
+-- Mar 9, 2012 3:10:36 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59488
+;
+
+-- Mar 9, 2012 3:10:36 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:10:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59506
+;
+
+-- Mar 9, 2012 3:10:43 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59495
+;
+
+-- Mar 9, 2012 3:10:44 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:10:44','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59496
+;
+
+-- Mar 9, 2012 3:10:45 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:45','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59503
+;
+
+-- Mar 9, 2012 3:10:46 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:10:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59476
+;
+
+-- Mar 9, 2012 3:10:48 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 15:10:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59487
+;
+
+-- Mar 9, 2012 3:11:57 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Tab SET HasTree='Y',Updated=TO_TIMESTAMP('2012-03-09 15:11:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53334
+;
+
+-- Mar 9, 2012 3:15:05 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:15:05','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53279
+;
+
+-- Mar 9, 2012 3:15:13 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:15:13','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53119
+;
+
+-- Mar 9, 2012 3:15:13 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET Name='Asset Type', Description=NULL, IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:15:13','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53279
+;
+
+-- Mar 9, 2012 3:15:13 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu_Trl SET IsTranslated='N' WHERE AD_Menu_ID=53279
+;
+
+-- Mar 9, 2012 3:15:56 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:15:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=301
+;
+
+-- Mar 9, 2012 3:16:07 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:16:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=300
+;
+
+-- Mar 9, 2012 3:16:18 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:16:18','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=274
+;
+
+-- Mar 9, 2012 3:16:27 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:16:27','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=223
+;
+
+-- Mar 9, 2012 3:16:36 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:16:36','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=222
+;
+
+-- Mar 9, 2012 3:16:46 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:16:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=201
+;
+
+-- Mar 9, 2012 3:18:31 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:18:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53165
+;
+
+-- Mar 9, 2012 3:18:35 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:18:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53168
+;
+
+-- Mar 9, 2012 3:18:45 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:18:45','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53167
+;
+
+-- Mar 9, 2012 3:18:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:18:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53166
+;
+
+-- Mar 9, 2012 3:18:59 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:18:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53170
+;
+
+-- Mar 9, 2012 3:19:05 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:19:05','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53056
+;
+
+-- Mar 9, 2012 3:19:37 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:19:37','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53057
+;
+
+-- Mar 9, 2012 3:19:41 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:19:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53172
+;
+
+-- Mar 9, 2012 3:19:48 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:19:48','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53059
+;
+
+-- Mar 9, 2012 3:19:52 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:19:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53174
+;
+
+-- Mar 9, 2012 3:20:17 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:20:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53054
+;
+
+-- Mar 9, 2012 3:20:22 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:20:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53154
+;
+
+-- Mar 9, 2012 3:20:29 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:20:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53113
+;
+
+-- Mar 9, 2012 3:20:33 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:20:33','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53153
+;
+
+-- Mar 9, 2012 3:20:43 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:20:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53052
+;
+
+-- Mar 9, 2012 3:20:46 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:20:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53151
+;
+
+-- Mar 9, 2012 3:20:55 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:20:54','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53053
+;
+
+-- Mar 9, 2012 3:21:10 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:21:10','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53277
+;
+
+-- Mar 9, 2012 3:21:17 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:21:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53117
+;
+
+-- Mar 9, 2012 3:21:24 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:21:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53048
+;
+
+-- Mar 9, 2012 3:21:28 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:21:28','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53144
+;
+
+-- Mar 9, 2012 3:21:34 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:21:34','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53107
+;
+
+-- Mar 9, 2012 3:21:38 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:21:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53148
+;
+
+-- Mar 9, 2012 3:21:58 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:21:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53051
+;
+
+-- Mar 9, 2012 3:22:03 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:22:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53147
+;
+
+-- Mar 9, 2012 3:22:08 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:22:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53146
+;
+
+-- Mar 9, 2012 3:22:12 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:22:12','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53050
+;
+
+-- Mar 9, 2012 3:22:17 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:22:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53143
+;
+
+-- Mar 9, 2012 3:22:23 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:22:23','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53099
+;
+
+-- Mar 9, 2012 3:22:33 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:22:33','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53046
+;
+
+-- Mar 9, 2012 3:22:38 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:22:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53140
+;
+
+-- Mar 9, 2012 3:23:09 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:23:09','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53049
+;
+
+-- Mar 9, 2012 3:23:19 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:23:19','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_ID=53097
+;
+
+-- Mar 9, 2012 3:23:22 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:23:22','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53142
+;
+
+-- Mar 9, 2012 3:23:34 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:23:34','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53047
+;
+
+-- Mar 9, 2012 3:23:40 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:23:40','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53141
+;
+
+-- Mar 9, 2012 3:23:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:23:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53136
+;
+
+-- Mar 9, 2012 3:23:57 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:23:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53133
+;
+
+-- Mar 9, 2012 3:24:03 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:24:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53278
+;
+
+-- Mar 9, 2012 3:24:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:24:06','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53137
+;
+
+-- Mar 9, 2012 3:24:08 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:24:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53275
+;
+
+-- Mar 9, 2012 3:24:11 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:24:11','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53138
+;
+
+-- Mar 9, 2012 3:24:16 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:24:16','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53045
+;
+
+-- Mar 9, 2012 3:24:24 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:24:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53115
+;
+
+-- Mar 9, 2012 3:24:34 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y', IsActive='Y',Updated=TO_TIMESTAMP('2012-03-09 15:24:34','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53045
+;
+
+-- Mar 9, 2012 3:24:34 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET Name='Asset Revaluation Index', Description='Set the Revaluate Assets Index or Factors', IsActive='Y',Updated=TO_TIMESTAMP('2012-03-09 15:24:34','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53138
+;
+
+-- Mar 9, 2012 3:24:42 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:24:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53044
+;
+
+-- Mar 9, 2012 3:24:52 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Window SET IsBetaFunctionality='Y',Updated=TO_TIMESTAMP('2012-03-09 15:24:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53118
+;
+
+-- Mar 9, 2012 3:25:10 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:10','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53158
+;
+
+-- Mar 9, 2012 3:25:13 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:13','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53161
+;
+
+-- Mar 9, 2012 3:25:17 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53159
+;
+
+-- Mar 9, 2012 3:25:20 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:20','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53160
+;
+
+-- Mar 9, 2012 3:25:24 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53157
+;
+
+-- Mar 9, 2012 3:25:28 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:28','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53162
+;
+
+-- Mar 9, 2012 3:25:31 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:31','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53156
+;
+
+-- Mar 9, 2012 3:25:35 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:25:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53155
+;
+
+-- Mar 9, 2012 3:35:20 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Menu SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 15:35:20','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Menu_ID=53145
+;
+
+-- Mar 9, 2012 3:35:56 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 15:35:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=6152
+;
+
+
+-- *** migration/FA/postgresql/013_FA_Stabilization_postgresql.sql ***
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59487
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59478
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59479
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59481
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59482
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59501
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59502
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59488
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59507
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59506
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59495
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59496
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59503
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59476
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Mar 9, 2012 5:52:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Mar 9, 2012 5:53:21 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:53:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59494
+;
+
+-- Mar 9, 2012 5:53:27 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59493
+;
+
+-- Mar 9, 2012 5:53:27 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59470
+;
+
+-- Mar 9, 2012 5:53:43 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:53:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59470
+;
+
+-- Mar 9, 2012 5:53:45 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:53:45','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59481
+;
+
+-- Mar 9, 2012 5:53:46 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:53:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59482
+;
+
+-- Mar 9, 2012 5:53:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:53:47','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59501
+;
+
+-- Mar 9, 2012 5:53:49 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:53:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59502
+;
+
+-- Mar 9, 2012 5:53:52 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:53:52','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59488
+;
+
+-- Mar 9, 2012 5:53:53 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:53:53','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59506
+;
+
+-- Mar 9, 2012 5:53:55 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:53:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59495
+;
+
+-- Mar 9, 2012 5:53:56 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:53:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59496
+;
+
+-- Mar 9, 2012 5:54:00 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:54:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59503
+;
+
+-- Mar 9, 2012 5:54:01 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:54:01','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59508
+;
+
+-- Mar 9, 2012 5:54:04 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:54:04','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59476
+;
+
+-- Mar 9, 2012 5:54:12 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:54:12','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59509
+;
+
+-- Mar 9, 2012 5:54:14 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:54:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59499
+;
+
+-- Mar 9, 2012 5:54:57 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET DefaultValue=NULL, IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 17:54:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_Para_ID=53417
+;
+
+-- Mar 9, 2012 5:55:07 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET DefaultValue='N',Updated=TO_TIMESTAMP('2012-03-09 17:55:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_Para_ID=53418
+;
+
+-- Mar 9, 2012 5:55:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 17:55:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_Para_ID=53413
+;
+
+-- Mar 9, 2012 5:55:35 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET IsActive='N',Updated=TO_TIMESTAMP('2012-03-09 17:55:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_Para_ID=53414
+;
+
+-- Mar 9, 2012 5:55:44 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET IsActive='Y',Updated=TO_TIMESTAMP('2012-03-09 17:55:44','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Process_Para_ID=53414
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56075
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56057
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59255
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59254
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56062
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59258
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59259
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59260
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59261
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=56065
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=56066
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59262
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=56067
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59263
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=56070
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=56071
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=56072
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=59264
+;
+
+-- Mar 9, 2012 5:56:47 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59265
+;
+
+-- Mar 9, 2012 5:56:57 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET Name='Disposal Revenue Acct',Updated=TO_TIMESTAMP('2012-03-09 17:56:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59264
+;
+
+-- Mar 9, 2012 5:56:57 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field_Trl SET IsTranslated='N' WHERE AD_Field_ID=59264
+;
+
+-- Mar 9, 2012 5:57:08 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column SET Name='Disposal Revenue Acct',Updated=TO_TIMESTAMP('2012-03-09 17:57:08','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59400
+;
+
+-- Mar 9, 2012 5:57:08 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column_Trl SET IsTranslated='N' WHERE AD_Column_ID=59400
+;
+
+-- Mar 9, 2012 5:57:08 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET Name='Disposal Revenue Acct', Description=NULL, Help=NULL WHERE AD_Column_ID=59400 AND IsCentrallyMaintained='Y'
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Element SET Name='Disposal Revenue Acct', PrintName='Disposal Revenue Acct',Updated=TO_TIMESTAMP('2012-03-09 17:57:30','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54195
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=54195
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column SET ColumnName='A_Disposal_Revenue_Acct', Name='Disposal Revenue Acct', Description=NULL, Help=NULL WHERE AD_Element_ID=54195
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Acct', Name='Disposal Revenue Acct', Description=NULL, Help=NULL, AD_Element_ID=54195 WHERE UPPER(ColumnName)='A_DISPOSAL_REVENUE_ACCT' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Process_Para SET ColumnName='A_Disposal_Revenue_Acct', Name='Disposal Revenue Acct', Description=NULL, Help=NULL WHERE AD_Element_ID=54195 AND IsCentrallyMaintained='Y'
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET Name='Disposal Revenue Acct', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=54195) AND IsCentrallyMaintained='Y'
+;
+
+-- Mar 9, 2012 5:57:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_PrintFormatItem SET PrintName='Disposal Revenue Acct', Name='Disposal Revenue Acct' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=54195)
+;
+
+-- Mar 9, 2012 5:58:35 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET DisplayLength=25,Updated=TO_TIMESTAMP('2012-03-09 17:58:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56070
+;
+
+-- Mar 9, 2012 5:58:41 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET DisplayLength=25,Updated=TO_TIMESTAMP('2012-03-09 17:58:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56071
+;
+
+-- Mar 9, 2012 5:58:44 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:58:44','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56071
+;
+
+-- Mar 9, 2012 5:58:55 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET DisplayLength=25,Updated=TO_TIMESTAMP('2012-03-09 17:58:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56072
+;
+
+-- Mar 9, 2012 5:59:03 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET DisplayLength=25,Updated=TO_TIMESTAMP('2012-03-09 17:59:03','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59264
+;
+
+-- Mar 9, 2012 5:59:09 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET DisplayLength=25, IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:59:09','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59265
+;
+
+-- Mar 9, 2012 5:59:21 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 17:59:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56071
+;
+
+-- Mar 9, 2012 5:59:24 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 17:59:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56072
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59014
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59013
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59015
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=59016
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=56018
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=56020
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=59017
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59018
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59019
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59020
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59021
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59022
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59023
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59024
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59025
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59026
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59027
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=56024
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=56011
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=59028
+;
+
+-- Mar 9, 2012 6:00:06 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=56008
+;
+
+-- Mar 9, 2012 6:00:30 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 18:00:30','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56011
+;
+
+-- Mar 9, 2012 6:00:38 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 18:00:38','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56008
+;
+
+-- Mar 9, 2012 6:00:39 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 18:00:39','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56011
+;
+
+-- Mar 9, 2012 6:00:39 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='N',Updated=TO_TIMESTAMP('2012-03-09 18:00:39','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=56008
+;
+
+-- Mar 9, 2012 6:00:42 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 18:00:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59028
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55883
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=55884
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=60,IsDisplayed='Y' WHERE AD_Field_ID=55878
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=55879
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=55867
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=55870
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59030
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=55877
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59033
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=55876
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59032
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=55880
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=55881
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=55882
+;
+
+-- Mar 9, 2012 6:01:32 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59034
+;
+
+-- Mar 9, 2012 6:01:42 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 18:01:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59035
+;
+
+-- Mar 9, 2012 6:01:49 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y',Updated=TO_TIMESTAMP('2012-03-09 18:01:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=55882
+;
+
+-- Mar 9, 2012 6:02:00 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET IsSameLine='Y', AD_FieldGroup_ID=NULL,Updated=TO_TIMESTAMP('2012-03-09 18:02:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=55879
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=6142
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=6148
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=6161
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=6144
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=12872
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=12874
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=12873
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=410,IsDisplayed='Y' WHERE AD_Field_ID=12877
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=420,IsDisplayed='Y' WHERE AD_Field_ID=12878
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=430,IsDisplayed='Y' WHERE AD_Field_ID=58995
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=440,IsDisplayed='Y' WHERE AD_Field_ID=58997
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=450,IsDisplayed='Y' WHERE AD_Field_ID=6141
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=460,IsDisplayed='Y' WHERE AD_Field_ID=6137
+;
+
+-- Mar 9, 2012 6:02:51 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=470,IsDisplayed='Y' WHERE AD_Field_ID=6150
+;
+
+
+-- *** migration/FA/postgresql/014_FA_Stabilization_postgresql.sql ***
+
+-- Mar 9, 2012 6:13:29 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Column SET DefaultValue=NULL,Updated=TO_TIMESTAMP('2012-03-09 18:13:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55768
+;
+
+-- Mar 9, 2012 6:13:32 PM WIT
+-- Complete Fixed Assets
+INSERT INTO t_alter_column values('a_asset_group_acct','A_Reval_Cal_Method','VARCHAR(22)',null,'NULL')
+;
+
+-- Mar 9, 2012 6:21:53 PM WIT
+-- Complete Fixed Assets
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=56075
+;
+
+-- Apr 12, 2012 4:02:35 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Window SET WindowType='M',Updated=TO_TIMESTAMP('2012-04-12 16:02:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Window_ID=53058
+;
+
+-- Apr 12, 2012 4:19:41 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET DefaultValue='N',Updated=TO_TIMESTAMP('2012-04-12 16:19:41','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55347
+;
+
+-- Apr 12, 2012 4:20:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET DefaultValue='N',Updated=TO_TIMESTAMP('2012-04-12 16:20:12','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55747
+;
+
+
+-- Mar 15, 2012 5:54:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process (Help,AD_Process_ID,IsDirectPrint,IsReport,AccessLevel,IsBetaFunctionality,IsServerProcess,ShowHelp,EntityType,Statistic_Seconds,Statistic_Count,Classname,CopyFromProcess,Description,Value,Name,AD_Org_ID,AD_Client_ID,CreatedBy,Updated,UpdatedBy,Created,IsActive) VALUES ('There are four parameters:
+a. Project, is the Project that will be converted to asset. This project will be closed after this process completes
+b. Product, is the asset product that will be act as the base for the newly created asset
+c. UseLifeYears, is an optional parameter. Use this if you want a different use life years for the newly created asset, instead of the default uselifeyears from asset group accounting.
+d. Transaction Date, will become in-service-date for the newly created asset.',200000,'N','N','1','N','N','Y','U',0,0,'org.adempiere.process.ProjectCreateAsset','N','This process creates asset from project and automatically close the project','FA_ProjectCreateAsset','FA_ProjectCreateAsset',0,0,100,TO_TIMESTAMP('2012-03-15 17:54:36','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2012-03-15 17:54:36','YYYY-MM-DD HH24:MI:SS'),'Y')
+;
+
+-- Mar 15, 2012 5:54:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Trl (AD_Language,AD_Process_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_ID=200000 AND NOT EXISTS (SELECT * FROM AD_Process_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_ID=t.AD_Process_ID)
+;
+
+-- Mar 15, 2012 5:56:37 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Para (IsRange,AD_Process_Para_ID,FieldLength,AD_Process_ID,IsCentrallyMaintained,AD_Reference_ID,AD_Val_Rule_ID,SeqNo,IsMandatory,DefaultValue,EntityType,DisplayLogic,Name,ColumnName,IsActive,AD_Client_ID,UpdatedBy,Updated,CreatedBy,Created,AD_Org_ID) VALUES ('N',200000,0,200000,'Y',30,232,10,'N','@C_Project_ID@','U','1=2','Project','C_Project_ID','Y',0,100,TO_TIMESTAMP('2012-03-15 17:56:37','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2012-03-15 17:56:37','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Mar 15, 2012 5:56:37 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Help,Name,Description, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Help,t.Name,t.Description, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=200000 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Mar 15, 2012 5:58:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Para (IsRange,AD_Process_Para_ID,FieldLength,AD_Process_ID,IsCentrallyMaintained,AD_Reference_ID,SeqNo,IsMandatory,DefaultValue,EntityType,Name,ColumnName,IsActive,AD_Client_ID,UpdatedBy,Updated,CreatedBy,Created,AD_Org_ID) VALUES ('N',200001,0,200000,'Y',15,30,'N','@#Date@','U','Transaction Date','DateTrx','Y',0,100,TO_TIMESTAMP('2012-03-15 17:58:03','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2012-03-15 17:58:03','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Mar 15, 2012 5:58:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Help,Name,Description, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Help,t.Name,t.Description, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=200001 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID)
+;
+
+-- Mar 15, 2012 5:58:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Para (IsRange,AD_Process_Para_ID,FieldLength,AD_Process_ID,IsCentrallyMaintained,AD_Reference_ID,SeqNo,IsMandatory,EntityType,Name,ColumnName,IsActive,AD_Client_ID,UpdatedBy,Updated,CreatedBy,Created,AD_Org_ID) VALUES ('N',200002,0,200000,'Y',11,40,'N','U','Use Life Years','UseLifeYears','Y',0,100,TO_TIMESTAMP('2012-03-15 17:58:36','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2012-03-15 17:58:36','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Mar 15, 2012 5:58:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Process_Para_Trl (AD_Language,AD_Process_Para_ID, Help,Name,Description, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Process_Para_ID, t.Help,t.Name,t.Description, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Process_Para t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Process_Para_ID=200002 AND NOT EXISTS (SELECT * FROM AD_Process_Para_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Process_Para_ID=t.AD_Process_Para_ID);
+
+
+-- Mar 22, 2012 2:31:36 PM WIT
+-- Stabilize Fixed Assets
+INSERT INTO AD_Field (IsEncrypted,DisplayLength,AD_Column_ID,IsDisplayed,IsSameLine,IsHeading,IsFieldOnly,IsCentrallyMaintained,AD_Tab_ID,IsReadOnly,EntityType,Name,AD_Field_ID,UpdatedBy,AD_Org_ID,IsActive,Created,AD_Client_ID,CreatedBy,Updated) VALUES ('N',1,61471,'Y','N','N','N','Y',290,'N','U','IsFixedAssetInvoice',200048,100,0,'Y',TO_TIMESTAMP('2012-03-22 14:31:31','YYYY-MM-DD HH24:MI:SS'),0,100,TO_TIMESTAMP('2012-03-22 14:31:31','YYYY-MM-DD HH24:MI:SS'))
+;
+
+-- Mar 22, 2012 2:31:36 PM WIT
+-- Stabilize Fixed Assets
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200048 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Mar 22, 2012 2:31:50 PM WIT
+-- Stabilize Fixed Assets
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=200048
+;
+
+-- Mar 22, 2012 2:31:59 PM WIT
+-- Stabilize Fixed Assets
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2012-03-22 14:31:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=200048
+;
+
+-- Mar 22, 2012 2:32:19 PM WIT
+-- Stabilize Fixed Assets
+INSERT INTO AD_Field (IsEncrypted,DisplayLength,AD_Column_ID,IsDisplayed,IsSameLine,IsHeading,IsFieldOnly,IsCentrallyMaintained,AD_Tab_ID,IsReadOnly,EntityType,Name,AD_Field_ID,UpdatedBy,AD_Org_ID,IsActive,Created,AD_Client_ID,CreatedBy,Updated) VALUES ('N',1,61471,'Y','N','N','N','Y',263,'N','U','IsFixedAssetInvoice',200050,100,0,'Y',TO_TIMESTAMP('2012-03-22 14:32:18','YYYY-MM-DD HH24:MI:SS'),0,100,TO_TIMESTAMP('2012-03-22 14:32:18','YYYY-MM-DD HH24:MI:SS'))
+;
+
+-- Mar 22, 2012 2:32:19 PM WIT
+-- Stabilize Fixed Assets
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200050 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Mar 22, 2012 2:32:44 PM WIT
+-- Stabilize Fixed Assets
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2012-03-22 14:32:44','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=200050
+;
+
+update ad_modelvalidator
+set modelvalidationclass = 'org.idempiere.fa.model.ModelValidator'
+where ad_modelvalidator_id=50004;
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutAsset.location'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.model.CalloutAsset.location');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutAsset.locator'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.model.CalloutAsset.locator');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Addition.amt'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Addition.amt');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Transfer.dateDoc'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Transfer.dateDoc');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Transfer.asset'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Transfer.asset');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Reval.dateDoc'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Reval.dateDoc');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Reval.asset'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Reval.asset');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Disposed.date'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Disposed.date');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Disposed.asset'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Disposed.asset');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Disposed.amt'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout = 'org.compiere.FA.CalloutA_Asset_Disposed.amt');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Addition.project'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout='org.compiere.FA.CalloutA_Asset_Addition.project');
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Addition.periodOffset'
+where ad_column_id IN (select ad_column_id from ad_column 
+			where callout='org.compiere.FA.CalloutA_Asset_Addition.periodOffset');
+			
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Addition.amt;org.idempiere.fa.model.CalloutA_Asset_Addition.periodOffset'
+where ad_column_id=59467;
+
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Addition.dateDoc;org.idempiere.fa.model.CalloutA_Asset_Addition.periodOffset'
+where ad_column_id=59465;
+
+update ad_column
+set callout='org.idempiere.fa.model.CalloutA_Asset_Addition.uselife;org.idempiere.fa.model.CalloutA_Asset_Addition.periodOffset'
+where ad_column_id=59463;
+
+update ad_column
+set callout = 'org.idempiere.fa.model.' || trim (leading 'org.compiere.FA.' from callout)
+where ad_column_id IN (
+59293,55601,55784,55603);
+
+update ad_column
+set callout = 'org.idempiere.fa.' || trim (leading 'org.compiere.FA.' from callout)
+where ad_column_id IN (59283,59284,59281,59282);
+
+
+update ad_process
+set classname='org.idempiere.fa.process.A_Depreciation_Workfile_Build'
+where ad_process_id=53207;
+
+update ad_process
+set classname='org.idempiere.fa.process.A_Depreciation_Exp_Process'
+where ad_process_id=53211;
+
+
+update ad_process
+set classname='org.idempiere.fa.process.ProjectCreateAsset'
+where ad_process_id=200000;
+
+update ad_process
+set classname='org.idempiere.fa.process.ImportFixedAsset'
+where ad_process_id=53215;
+
+
+
+--select * from ad_process where classname like '%sset%'
+
+--select callout from ad_column where callout = 'sset' order by callout desc
+
+
+
+-- *** migration/FA/postgresql/015_FA_Stabilization_postgresql.sql ***
+
+-- Jun 11, 2012 12:49:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=56172
+;
+
+-- Jun 11, 2012 12:49:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=56169
+;
+
+-- Jun 11, 2012 12:49:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=56170
+;
+
+-- Jun 11, 2012 12:49:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=56171
+;
+
+-- Jun 11, 2012 12:49:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=56173
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56174
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56174
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56175
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56175
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56176
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56176
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56177
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56177
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56178
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56178
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56179
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56179
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56180
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56180
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56181
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56181
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56182
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56182
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56183
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56183
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56172
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56172
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56169
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56169
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56170
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56170
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56171
+;
+
+-- Jun 11, 2012 12:49:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56171
+;
+
+-- Jun 11, 2012 12:49:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56173
+;
+
+-- Jun 11, 2012 12:49:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56173
+;
+
+-- Jun 11, 2012 12:49:50 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab_Trl WHERE AD_Tab_ID=53169
+;
+
+-- Jun 11, 2012 12:49:50 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab WHERE AD_Tab_ID=53169
+;
+
+-- Jun 11, 2012 12:49:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=56139
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56140
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56140
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56141
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56141
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56142
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56142
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56143
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56143
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56144
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56144
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56145
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56145
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56146
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56146
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56147
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56147
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56148
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56148
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56149
+;
+
+-- Jun 11, 2012 12:50:01 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56149
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56150
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56150
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56151
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56151
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56152
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56152
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56153
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56153
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56154
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56154
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56155
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56155
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56156
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56156
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56157
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56157
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56158
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56158
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56159
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56159
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56160
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56160
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56161
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56161
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56162
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56162
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56163
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56163
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56164
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56164
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56165
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56165
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56166
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56166
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56167
+;
+
+-- Jun 11, 2012 12:50:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56167
+;
+
+-- Jun 11, 2012 12:50:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56168
+;
+
+-- Jun 11, 2012 12:50:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56168
+;
+
+-- Jun 11, 2012 12:50:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56139
+;
+
+-- Jun 11, 2012 12:50:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56139
+;
+
+-- Jun 11, 2012 12:50:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab_Trl WHERE AD_Tab_ID=53168
+;
+
+-- Jun 11, 2012 12:50:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab WHERE AD_Tab_ID=53168
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56098
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56098
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56099
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56099
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56100
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56100
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56101
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56101
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56102
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56102
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56103
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56103
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56104
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56104
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56105
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56105
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56106
+;
+
+-- Jun 11, 2012 12:50:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56106
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56107
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56107
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56108
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56108
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56109
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56109
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56110
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56110
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56111
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56111
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56112
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56112
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56113
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56113
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56114
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56114
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56115
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56115
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56116
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56116
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56117
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56117
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56118
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56118
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56119
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56119
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56120
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56120
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56121
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56121
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56122
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56122
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56123
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56123
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56124
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56124
+;
+
+-- Jun 11, 2012 12:50:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56125
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56125
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56126
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56126
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56127
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56127
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56128
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56128
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56129
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56129
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56130
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56130
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56131
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56131
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56132
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56132
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56133
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56133
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56134
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56134
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56135
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56135
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56136
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56136
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56137
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56137
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56138
+;
+
+-- Jun 11, 2012 12:50:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56138
+;
+
+-- Jun 11, 2012 12:50:21 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab_Trl WHERE AD_Tab_ID=53167
+;
+
+-- Jun 11, 2012 12:50:21 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab WHERE AD_Tab_ID=53167
+;
+
+-- Jun 11, 2012 12:50:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53170
+;
+
+-- Jun 11, 2012 12:50:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53170
+;
+
+-- Jun 11, 2012 12:50:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53170 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 12:50:42 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Window_Trl WHERE AD_Window_ID=53056
+;
+
+-- Jun 11, 2012 12:50:42 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Window WHERE AD_Window_ID=53056
+;
+
+-- Jun 11, 2012 12:50:58 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53165
+;
+
+-- Jun 11, 2012 12:50:58 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53165
+;
+
+-- Jun 11, 2012 12:50:58 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53165 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 12:51:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Para_Trl WHERE AD_Process_Para_ID=53166
+;
+
+-- Jun 11, 2012 12:51:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Para WHERE AD_Process_Para_ID=53166
+;
+
+-- Jun 11, 2012 12:51:19 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Trl WHERE AD_Process_ID=53133
+;
+
+-- Jun 11, 2012 12:51:19 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process WHERE AD_Process_ID=53133
+;
+
+-- Jun 11, 2012 12:51:31 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53168
+;
+
+-- Jun 11, 2012 12:51:31 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53168
+;
+
+-- Jun 11, 2012 12:51:31 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53168 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 12:51:42 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Para_Trl WHERE AD_Process_Para_ID=53167
+;
+
+-- Jun 11, 2012 12:51:42 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Para WHERE AD_Process_Para_ID=53167
+;
+
+-- Jun 11, 2012 12:51:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Trl WHERE AD_Process_ID=53137
+;
+
+-- Jun 11, 2012 12:51:46 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process WHERE AD_Process_ID=53137
+;
+
+
+-- Jun 11, 2012 12:52:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53167
+;
+
+-- Jun 11, 2012 12:52:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53167
+;
+
+-- Jun 11, 2012 12:52:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53167 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 12:52:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process_Trl WHERE AD_Process_ID=53135
+;
+
+-- Jun 11, 2012 12:52:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Process WHERE AD_Process_ID=53135
+;
+
+-- Jun 11, 2012 12:52:29 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53166
+;
+
+-- Jun 11, 2012 12:52:29 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53166
+;
+
+-- Jun 11, 2012 12:52:29 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53166 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 12:52:38 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=56083
+;
+
+-- Jun 11, 2012 12:52:38 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=56081
+;
+
+-- Jun 11, 2012 12:52:38 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=56082
+;
+
+-- Jun 11, 2012 12:52:38 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=56084
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56085
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56085
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56086
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56086
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56087
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56087
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56088
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56088
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56089
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56089
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56090
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56090
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56091
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56091
+;
+
+-- Jun 11, 2012 12:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56092
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56092
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56093
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56093
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56094
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56094
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56095
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56095
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56096
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56096
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56097
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56097
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56083
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56083
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56081
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56081
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56082
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56082
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field_Trl WHERE AD_Field_ID=56084
+;
+
+-- Jun 11, 2012 12:52:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Field WHERE AD_Field_ID=56084
+;
+
+-- Jun 11, 2012 12:52:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab_Trl WHERE AD_Tab_ID=53166
+;
+
+-- Jun 11, 2012 12:52:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Tab WHERE AD_Tab_ID=53166
+;
+
+-- Jun 11, 2012 12:54:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50015
+;
+
+-- Jun 11, 2012 12:54:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50016
+;
+
+-- Jun 11, 2012 12:54:27 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Window_Trl WHERE AD_Window_ID=53055
+;
+
+-- Jun 11, 2012 12:54:27 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Window WHERE AD_Window_ID=53055
+;
+
+-- Jun 11, 2012 1:22:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50018
+;
+
+-- Jun 11, 2012 1:22:13 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50010
+;
+
+-- Jun 11, 2012 1:22:16 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50013
+;
+
+-- Jun 11, 2012 1:22:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50006
+;
+
+-- Jun 11, 2012 1:22:19 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50008
+;
+
+-- Jun 11, 2012 1:22:20 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50019
+;
+
+-- Jun 11, 2012 1:22:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50017
+;
+
+-- Jun 11, 2012 1:22:23 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50009
+;
+
+-- Jun 11, 2012 1:22:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50005
+;
+
+-- Jun 11, 2012 1:22:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50007
+;
+
+-- Jun 11, 2012 1:22:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50012
+;
+
+-- Jun 11, 2012 1:22:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50014
+;
+
+-- Jun 11, 2012 1:22:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=115
+;
+
+-- Jun 11, 2012 1:22:31 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Preference WHERE AD_Preference_ID=50011
+;
+
+-- Jun 11, 2012 1:24:51 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53169
+;
+
+-- Jun 11, 2012 1:24:51 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53169
+;
+
+-- Jun 11, 2012 1:24:51 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53169 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53284
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=222
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=223
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=185
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=340
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53264
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53206
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=339
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=338
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=363
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=376
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=382
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=486
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=425
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=14, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=378
+;
+
+-- Jun 11, 2012 1:25:07 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=15, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=374
+;
+
+-- Jun 11, 2012 1:25:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=16, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=423
+;
+
+-- Jun 11, 2012 1:25:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=17, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53263
+;
+
+-- Jun 11, 2012 1:25:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=18, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=373
+;
+
+-- Jun 11, 2012 1:25:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=19, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=424
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53284
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=222
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=223
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=185
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=340
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53264
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53206
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=339
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=338
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=363
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=376
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=382
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=486
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=13, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=425
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=14, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=378
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=15, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=374
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=16, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53284
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=17, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=423
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=18, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53263
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=19, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=373
+;
+
+-- Jun 11, 2012 1:25:12 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=163, SeqNo=20, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=424
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53173
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53176
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53175
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53172
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53174
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:25:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53173
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53176
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53175
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53172
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53174
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:25:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 11, 2012 1:25:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53164
+;
+
+-- Jun 11, 2012 1:25:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53164
+;
+
+-- Jun 11, 2012 1:25:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53164 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:25:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=478
+;
+
+-- Jun 11, 2012 1:25:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=478
+;
+
+-- Jun 11, 2012 1:25:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=478 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53154
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53153
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53150
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53152
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:26:03 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:26:05 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53137
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:26:08 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53156
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53162
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53157
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53160
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53159
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53161
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53158
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53276
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53279
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:26:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53134
+;
+
+-- Jun 11, 2012 1:26:23 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53135
+;
+
+-- Jun 11, 2012 1:26:23 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53135
+;
+
+-- Jun 11, 2012 1:26:23 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53135 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:26:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53163
+;
+
+-- Jun 11, 2012 1:26:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53163
+;
+
+-- Jun 11, 2012 1:26:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53163 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:26:35 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53124
+;
+
+-- Jun 11, 2012 1:26:35 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53124
+;
+
+-- Jun 11, 2012 1:26:35 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53124 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:27:00 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53279
+;
+
+-- Jun 11, 2012 1:27:00 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53279
+;
+
+-- Jun 11, 2012 1:27:00 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53279 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:27:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53276
+;
+
+-- Jun 11, 2012 1:27:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53276
+;
+
+-- Jun 11, 2012 1:27:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53276 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:27:14 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu_Trl WHERE AD_Menu_ID=53134
+;
+
+-- Jun 11, 2012 1:27:14 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_Menu WHERE AD_Menu_ID=53134
+;
+
+-- Jun 11, 2012 1:27:14 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+DELETE FROM AD_TreeNodeMM WHERE Node_ID=53134 AND EXISTS (SELECT * FROM AD_Tree t WHERE t.AD_Tree_ID=AD_TreeNodeMM.AD_Tree_ID AND t.TreeType='MM')
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53173
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53176
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53175
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53172
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53174
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:22 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53154
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53153
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53150
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53152
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:24 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:26 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53137
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:28 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53156
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53162
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53157
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53160
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53159
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53161
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53158
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:30 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=431
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=430
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=474
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=400
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=399
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53133, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=348
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:34 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53156
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53162
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53157
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53160
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53159
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53161
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53155, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53158
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:45 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53278
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53137
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53275
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53136, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53138
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:48 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53280
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53154
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53153
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53151
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53150
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53149, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53152
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:27:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53173
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53176
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53175
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53172
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53171, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53174
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=342
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=343
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53171
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53149
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53139
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53136
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53155
+;
+
+-- Jun 11, 2012 1:28:02 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=345, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53133
+;
+
+-- Jun 11, 2012 2:29:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsReadOnly='N',Updated=TO_TIMESTAMP('2012-06-11 14:29:44','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53175
+;
+
+-- Jun 11, 2012 2:30:00 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Tab SET IsReadOnly='N',Updated=TO_TIMESTAMP('2012-06-11 14:30:00','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Tab_ID=53174
+;
+
+-- Jun 11, 2012 2:33:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=56238
+;
+
+-- Jun 11, 2012 2:33:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=40,IsDisplayed='Y' WHERE AD_Field_ID=56231
+;
+
+-- Jun 11, 2012 2:33:40 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=50,IsDisplayed='Y' WHERE AD_Field_ID=56237
+;
+
+-- Jun 11, 2012 4:06:32 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET IsIdentifier='N', SeqNo=NULL, IsUpdateable='N',Updated=TO_TIMESTAMP('2012-06-11 16:06:32','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55631
+;
+
+-- Jun 11, 2012 4:06:49 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET IsIdentifier='Y', SeqNo=10,Updated=TO_TIMESTAMP('2012-06-11 16:06:49','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55733
+;
+
+
+
+
+
+-- *** migration/FA/postgresql/016_FA_Stabilization_postgresql.sql ***
+
+UPDATE ad_column
+SET callout = 'org.idempiere.fa.model.CalloutAsset.Field_Clear' 
+WHERE ad_column_id=55601;
+
+UPDATE ad_column
+SET callout = 'org.idempiere.fa.model.CalloutAsset.Table_Period' 
+WHERE ad_column_id IN (55603,55784);
+
+-- Jun 14, 2012 3:45:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Menu (AD_Menu_ID,IsSummary,"action",IsSOTrx,IsReadOnly,AD_Process_ID,EntityType,IsCentrallyMaintained,Name,Created,IsActive,UpdatedBy,AD_Client_ID,CreatedBy,Updated,AD_Org_ID) VALUES (200006,'N','P','N','N',200000,'FA','Y','Create Asset From Project',TO_TIMESTAMP('2012-06-14 15:45:39','YYYY-MM-DD HH24:MI:SS'),'Y',100,0,100,TO_TIMESTAMP('2012-06-14 15:45:39','YYYY-MM-DD HH24:MI:SS'),0)
+;
+
+-- Jun 14, 2012 3:45:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Menu_Trl (AD_Language,AD_Menu_ID, Name,Description, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Menu_ID, t.Name,t.Description, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Menu t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Menu_ID=200006 AND NOT EXISTS (SELECT * FROM AD_Menu_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Menu_ID=t.AD_Menu_ID)
+;
+
+-- Jun 14, 2012 3:45:44 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_TreeNodeMM (AD_Client_ID,AD_Org_ID, IsActive,Created,CreatedBy,Updated,UpdatedBy, AD_Tree_ID, Node_ID, Parent_ID, SeqNo) SELECT t.AD_Client_ID, 0, 'Y', CURRENT_TIMESTAMP, 100, CURRENT_TIMESTAMP, 100,t.AD_Tree_ID, 200006, 0, 999 FROM AD_Tree t WHERE t.AD_Client_ID=0 AND t.IsActive='Y' AND t.IsAllNodes='Y' AND t.TreeType='MM' AND NOT EXISTS (SELECT * FROM AD_TreeNodeMM e WHERE e.AD_Tree_ID=t.AD_Tree_ID AND Node_ID=200006)
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=0, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=200006
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=1, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53273
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=2, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53274
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=3, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53277
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=4, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53144
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=5, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53148
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=6, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53147
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=7, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53146
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=8, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53143
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=9, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53140
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=10, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53145
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=11, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53142
+;
+
+-- Jun 14, 2012 3:45:52 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_TreeNodeMM SET Parent_ID=53139, SeqNo=12, Updated=CURRENT_TIMESTAMP WHERE AD_Tree_ID=10 AND Node_ID=53141
+;
+
+-- Jun 14, 2012 3:46:39 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Column_ID,AD_Table_ID,EntityType,Version,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsParent,FieldLength,IsSelectionColumn,AD_Reference_ID,IsSyncDatabase,IsKey,AD_Element_ID,IsAutocomplete,IsAllowLogging,IsEncrypted,IsUpdateable,IsAlwaysUpdateable,Name,ColumnName,IsAllowCopy,CreatedBy,Updated,AD_Client_ID,AD_Org_ID,IsActive,Created,UpdatedBy) VALUES (200210,53137,'FA',0,'N','N','N',0,'N',10,'N',22,'N','N',53493,'N','Y','N','Y','N','A_Salvage_Value','A_Salvage_Value','Y',100,TO_TIMESTAMP('2012-06-14 15:46:37','YYYY-MM-DD HH24:MI:SS'),0,0,'Y',TO_TIMESTAMP('2012-06-14 15:46:37','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 14, 2012 3:46:39 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=200210 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET Name='Asset Salvage Value', PrintName='Asset Salvage Value',Updated=TO_TIMESTAMP('2012-06-14 15:47:06','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=53493
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=53493
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET ColumnName='A_Salvage_Value', Name='Asset Salvage Value', Description=NULL, Help=NULL WHERE AD_Element_ID=53493
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Salvage_Value', Name='Asset Salvage Value', Description=NULL, Help=NULL, AD_Element_ID=53493 WHERE UPPER(ColumnName)='A_SALVAGE_VALUE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Process_Para SET ColumnName='A_Salvage_Value', Name='Asset Salvage Value', Description=NULL, Help=NULL WHERE AD_Element_ID=53493 AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Asset Salvage Value', Description=NULL, Help=NULL WHERE AD_Column_ID IN (SELECT AD_Column_ID FROM AD_Column WHERE AD_Element_ID=53493) AND IsCentrallyMaintained='Y'
+;
+
+-- Jun 14, 2012 3:47:06 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Asset Salvage Value', Name='Asset Salvage Value' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=53493)
+;
+
+-- Jun 14, 2012 3:47:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE A_Asset_Addition ADD COLUMN A_Salvage_Value NUMERIC DEFAULT NULL 
+;
+
+-- Jun 14, 2012 3:47:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (AD_Column_ID,AD_Table_ID,EntityType,Version,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsParent,FieldLength,IsSelectionColumn,AD_Reference_ID,IsSyncDatabase,IsKey,AD_Element_ID,IsAutocomplete,IsAllowLogging,IsEncrypted,IsUpdateable,IsAlwaysUpdateable,Name,ColumnName,IsAllowCopy,CreatedBy,Updated,AD_Client_ID,AD_Org_ID,IsActive,Created,UpdatedBy) VALUES (200211,53277,'FA',0,'N','N','N',0,'N',10,'N',22,'N','N',53493,'N','Y','N','Y','N','Asset Salvage Value','A_Salvage_Value','Y',100,TO_TIMESTAMP('2012-06-14 15:47:46','YYYY-MM-DD HH24:MI:SS'),0,0,'Y',TO_TIMESTAMP('2012-06-14 15:47:46','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Jun 14, 2012 3:47:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=200211 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Jun 14, 2012 3:47:51 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+ALTER TABLE I_FixedAsset ADD COLUMN A_Salvage_Value NUMERIC DEFAULT NULL 
+;
+
+-- Jun 14, 2012 3:48:13 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (IsEncrypted,DisplayLength,IsDisplayed,IsSameLine,IsHeading,AD_Column_ID,IsFieldOnly,IsCentrallyMaintained,AD_Tab_ID,AD_Field_ID,IsReadOnly,EntityType,Name,UpdatedBy,AD_Org_ID,IsActive,Created,AD_Client_ID,CreatedBy,Updated) VALUES ('N',10,'Y','N','N',200210,'N','Y',53324,200159,'N','FA','Asset Salvage Value',100,0,'Y',TO_TIMESTAMP('2012-06-14 15:48:12','YYYY-MM-DD HH24:MI:SS'),0,100,TO_TIMESTAMP('2012-06-14 15:48:12','YYYY-MM-DD HH24:MI:SS'))
+;
+
+-- Jun 14, 2012 3:48:13 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200159 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 14, 2012 3:48:14 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (IsEncrypted,DisplayLength,IsDisplayed,IsSameLine,IsHeading,AD_Column_ID,IsFieldOnly,IsCentrallyMaintained,AD_Tab_ID,AD_Field_ID,IsReadOnly,Help,EntityType,Description,Name,UpdatedBy,AD_Org_ID,IsActive,Created,AD_Client_ID,CreatedBy,Updated) VALUES ('N',20,'Y','N','N',59587,'N','Y',53324,200160,'N','The ProcessedOn Date+Time save the exact moment (nanoseconds precision if allowed by the DB) when a document has been processed.','FA','The date+time (expressed in decimal format) when the document has been processed','Processed On',100,0,'Y',TO_TIMESTAMP('2012-06-14 15:48:13','YYYY-MM-DD HH24:MI:SS'),0,100,TO_TIMESTAMP('2012-06-14 15:48:13','YYYY-MM-DD HH24:MI:SS'))
+;
+
+-- Jun 14, 2012 3:48:14 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200160 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=0,IsDisplayed='N' WHERE AD_Field_ID=200160
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=200159
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59127
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59380
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59381
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59382
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=310,IsDisplayed='Y' WHERE AD_Field_ID=59383
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=320,IsDisplayed='Y' WHERE AD_Field_ID=59384
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=330,IsDisplayed='Y' WHERE AD_Field_ID=59385
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=340,IsDisplayed='Y' WHERE AD_Field_ID=59386
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=350,IsDisplayed='Y' WHERE AD_Field_ID=59387
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=360,IsDisplayed='Y' WHERE AD_Field_ID=59388
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=370,IsDisplayed='Y' WHERE AD_Field_ID=59389
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=380,IsDisplayed='Y' WHERE AD_Field_ID=59390
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=390,IsDisplayed='Y' WHERE AD_Field_ID=59393
+;
+
+-- Jun 14, 2012 3:48:36 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=400,IsDisplayed='Y' WHERE AD_Field_ID=59394
+;
+
+-- Jun 14, 2012 3:48:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (IsEncrypted,DisplayLength,IsDisplayed,IsSameLine,IsHeading,AD_Column_ID,IsFieldOnly,IsCentrallyMaintained,AD_Tab_ID,AD_Field_ID,IsReadOnly,EntityType,Name,UpdatedBy,AD_Org_ID,IsActive,Created,AD_Client_ID,CreatedBy,Updated) VALUES ('N',10,'Y','N','N',200211,'N','Y',53334,200161,'N','FA','Asset Salvage Value',100,0,'Y',TO_TIMESTAMP('2012-06-14 15:48:46','YYYY-MM-DD HH24:MI:SS'),0,100,TO_TIMESTAMP('2012-06-14 15:48:46','YYYY-MM-DD HH24:MI:SS'))
+;
+
+-- Jun 14, 2012 3:48:47 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200161 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Jun 14, 2012 3:48:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=200161
+;
+
+-- Jun 14, 2012 3:48:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=240,IsDisplayed='Y' WHERE AD_Field_ID=59508
+;
+
+-- Jun 14, 2012 3:48:56 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=250,IsDisplayed='Y' WHERE AD_Field_ID=59509
+;
+
+-- Jun 14, 2012 3:48:56 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=260,IsDisplayed='Y' WHERE AD_Field_ID=59486
+;
+
+-- Jun 14, 2012 3:48:56 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=270,IsDisplayed='Y' WHERE AD_Field_ID=59471
+;
+
+-- Jun 14, 2012 3:48:56 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=280,IsDisplayed='Y' WHERE AD_Field_ID=59472
+;
+
+-- Jun 14, 2012 3:48:56 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=290,IsDisplayed='Y' WHERE AD_Field_ID=59489
+;
+
+-- Jun 14, 2012 3:48:56 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=300,IsDisplayed='Y' WHERE AD_Field_ID=59499
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=70,IsDisplayed='Y' WHERE AD_Field_ID=56006
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=80,IsDisplayed='Y' WHERE AD_Field_ID=56020
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=90,IsDisplayed='Y' WHERE AD_Field_ID=59017
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=100,IsDisplayed='Y' WHERE AD_Field_ID=59018
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=110,IsDisplayed='Y' WHERE AD_Field_ID=59019
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=120,IsDisplayed='Y' WHERE AD_Field_ID=59020
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=130,IsDisplayed='Y' WHERE AD_Field_ID=59021
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=140,IsDisplayed='Y' WHERE AD_Field_ID=59022
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=150,IsDisplayed='Y' WHERE AD_Field_ID=59023
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=160,IsDisplayed='Y' WHERE AD_Field_ID=59024
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=170,IsDisplayed='Y' WHERE AD_Field_ID=59025
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=180,IsDisplayed='Y' WHERE AD_Field_ID=59026
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=190,IsDisplayed='Y' WHERE AD_Field_ID=59027
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=200,IsDisplayed='Y' WHERE AD_Field_ID=56024
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=210,IsDisplayed='Y' WHERE AD_Field_ID=56011
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=220,IsDisplayed='Y' WHERE AD_Field_ID=59028
+;
+
+-- Jun 14, 2012 3:49:25 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET SeqNo=230,IsDisplayed='Y' WHERE AD_Field_ID=56008
+;
+
+-- Jun 14, 2012 3:50:14 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET IsMandatory='Y',Updated=TO_TIMESTAMP('2012-06-14 15:50:14','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=8047
+;
+
+-- Jun 14, 2012 3:50:20 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO t_alter_column values('a_asset','M_Product_ID','NUMERIC(10)',null,null)
+;
+
+-- Jun 14, 2012 3:50:20 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO t_alter_column values('a_asset','M_Product_ID',null,'NOT NULL',null)
+;
+
+-- Jun 14, 2012 3:51:15 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2012-06-14 15:51:15','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59376
+;
+
+-- Jun 14, 2012 3:51:18 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET IsReadOnly='Y',Updated=TO_TIMESTAMP('2012-06-14 15:51:18','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=59375
+;
+
+-- Jun 14, 2012 4:46:17 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutAsset.asset',Updated=TO_TIMESTAMP('2012-06-14 16:46:17','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55954
+;
+
+-- Jun 14, 2012 4:52:29 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:29','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55773
+;
+
+-- Jun 14, 2012 4:52:43 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:43','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59409
+;
+
+-- Jun 14, 2012 4:52:50 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:50','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=55772
+;
+
+-- Jun 14, 2012 4:52:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59408
+;
+
+-- Jun 14, 2012 4:52:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59281
+;
+
+-- Jun 14, 2012 4:52:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59282
+;
+
+-- Jun 14, 2012 4:52:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59283
+;
+
+-- Jun 14, 2012 4:52:55 PM WIT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Column SET Callout='org.idempiere.fa.model.CalloutA_Depreciation_Workfile.uselifeyear',Updated=TO_TIMESTAMP('2012-06-14 16:52:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=59284
+;
+
+
+-- Oct 5, 2012 3:46:27 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Element (AD_Element_ID,ColumnName,EntityType,Name,PrintName,AD_Client_ID,Created,Updated,IsActive,AD_Org_ID,CreatedBy,UpdatedBy) VALUES (200176,'IsFixedAsset','U','IsFixedAsset','IsFixedAsset',0,TO_TIMESTAMP('2012-10-05 15:46:20','YYYY-MM-DD HH24:MI:SS'),TO_TIMESTAMP('2012-10-05 15:46:20','YYYY-MM-DD HH24:MI:SS'),'Y',0,100,100)
+;
+
+-- Oct 5, 2012 3:46:27 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Element_Trl (AD_Language,AD_Element_ID, Help,PO_Description,PO_Help,Name,Description,PrintName,PO_PrintName,PO_Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Element_ID, t.Help,t.PO_Description,t.PO_Help,t.Name,t.Description,t.PrintName,t.PO_PrintName,t.PO_Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Element t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Element_ID=200176 AND NOT EXISTS (SELECT * FROM AD_Element_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Element_ID=t.AD_Element_ID)
+;
+
+-- Oct 5, 2012 3:47:45 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,AD_Reference_ID,EntityType,Value,Name,Created,CreatedBy,Updated,UpdatedBy,AD_Org_ID,IsActive,AD_Client_ID) VALUES (200039,270,'FA','A','Asset',TO_TIMESTAMP('2012-10-05 15:47:41','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2012-10-05 15:47:41','YYYY-MM-DD HH24:MI:SS'),100,0,'Y',0)
+;
+
+-- Oct 5, 2012 3:47:45 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Ref_List_Trl (AD_Language,AD_Ref_List_ID, Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Ref_List_ID, t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Ref_List t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Ref_List_ID=200039 AND NOT EXISTS (SELECT * FROM AD_Ref_List_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Ref_List_ID=t.AD_Ref_List_ID)
+;
+
+-- Oct 5, 2012 4:10:07 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column (DefaultValue,AD_Table_ID,AD_Column_ID,EntityType,Version,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsParent,FieldLength,IsSelectionColumn,AD_Reference_ID,IsSyncDatabase,IsKey,AD_Element_ID,IsAutocomplete,IsAllowLogging,IsEncrypted,IsUpdateable,IsAlwaysUpdateable,ColumnName,Name,IsAllowCopy,CreatedBy,Updated,AD_Client_ID,AD_Org_ID,IsActive,Created,UpdatedBy) VALUES ('Y',542,200587,'U',0,'N','N','N',0,'N',1,'N',20,'N','N',200176,'N','Y','N','Y','N','IsFixedAsset','IsFixedAsset','Y',100,TO_TIMESTAMP('2012-10-05 16:10:02','YYYY-MM-DD HH24:MI:SS'),0,0,'Y',TO_TIMESTAMP('2012-10-05 16:10:02','YYYY-MM-DD HH24:MI:SS'),100)
+;
+
+-- Oct 5, 2012 4:10:07 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Column_Trl (AD_Language,AD_Column_ID, Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Column_ID, t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Column t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Column_ID=200587 AND NOT EXISTS (SELECT * FROM AD_Column_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Column_ID=t.AD_Column_ID)
+;
+
+-- Oct 5, 2012 4:10:37 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field (IsEncrypted,DisplayLength,AD_Tab_ID,IsDisplayed,IsSameLine,IsHeading,AD_Column_ID,IsFieldOnly,IsCentrallyMaintained,AD_Field_ID,IsReadOnly,EntityType,Name,UpdatedBy,AD_Org_ID,IsActive,Created,AD_Client_ID,CreatedBy,Updated) VALUES ('N',1,452,'Y','N','N',200587,'N','Y',200602,'N','U','IsFixedAsset',100,0,'Y',TO_TIMESTAMP('2012-10-05 16:10:31','YYYY-MM-DD HH24:MI:SS'),0,100,TO_TIMESTAMP('2012-10-05 16:10:31','YYYY-MM-DD HH24:MI:SS'))
+;
+
+-- Oct 5, 2012 4:10:37 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+INSERT INTO AD_Field_Trl (AD_Language,AD_Field_ID, Help,Description,Name, IsTranslated,AD_Client_ID,AD_Org_ID,Created,Createdby,Updated,UpdatedBy) SELECT l.AD_Language,t.AD_Field_ID, t.Help,t.Description,t.Name, 'N',t.AD_Client_ID,t.AD_Org_ID,t.Created,t.Createdby,t.Updated,t.UpdatedBy FROM AD_Language l, AD_Field t WHERE l.IsActive='Y' AND l.IsSystemLanguage='Y' AND l.IsBaseLanguage='N' AND t.AD_Field_ID=200602 AND NOT EXISTS (SELECT * FROM AD_Field_Trl tt WHERE tt.AD_Language=l.AD_Language AND tt.AD_Field_ID=t.AD_Field_ID)
+;
+
+-- Oct 5, 2012 4:11:24 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element SET PrintName='Fixed Asset ?',Updated=TO_TIMESTAMP('2012-10-05 16:11:24','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=200176
+;
+
+-- Oct 5, 2012 4:11:24 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Element_Trl SET IsTranslated='N' WHERE AD_Element_ID=200176
+;
+
+-- Oct 5, 2012 4:11:24 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_PrintFormatItem SET PrintName='Fixed Asset ?', Name='IsFixedAsset' WHERE IsCentrallyMaintained='Y' AND EXISTS (SELECT * FROM AD_Column c WHERE c.AD_Column_ID=AD_PrintFormatItem.AD_Column_ID AND c.AD_Element_ID=200176)
+;
+
+-- Oct 5, 2012 4:11:58 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field SET Name='Fixed Asset?',Updated=TO_TIMESTAMP('2012-10-05 16:11:58','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=200602
+;
+
+-- Oct 5, 2012 4:11:58 PM ICT
+-- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
+UPDATE AD_Field_Trl SET IsTranslated='N' WHERE AD_Field_ID=200602
+;
+
+-- *** migration/FA/postgresql/build.log ***
+
+#Build log:
+
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\001_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\002_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\003_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\004_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\005_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\006_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\007_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\008_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\009_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\010_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\011_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\012_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\013_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\014_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\015_FA_Stabilization_postgresql.sql status 0
+File C:\Users\Owner\workspace\fixed assets\migration\FA\postgresql\016_FA_Stabilization_postgresql.sql status 0
+
+-- *** migration/FA/postgresql/build.xml ***
+
+<project name="migrate-db-postgre" default="run-scripts" basedir=".">
+	<property file="../../postgresql.properties" />
+	<path id="lib.path">
+		<fileset dir="../../../tools/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<fileset dir="../../../tools/lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</classpath>
+	</taskdef>
+
+	<target name="init">
+		<echo message="============================================================" />
+		<echo message="     PostgreSQL database update tool for Adempiere ERP" />
+		<echo message="	  	Adempiere License is GNU GPL License" />
+		<echo message="============================================================" />
+		<echo message="" file="psql.log" append="false" />
+		<echo append="false" file="build.log" message="#Build log:${line.separator}${line.separator}" />
+	</target>
+        
+	<target name="run-scripts" depends="init">
+		<echo message="----- Running migration SQL scripts -----" />
+		<echo file="psql.log" append="true" message="${line.separator}#Run Scripts:${line.separator}${line.separator}" />
+		<foreach param="file.name" target="load">
+			<path>
+				<fileset dir=".">
+					<include name="*.sql" />
+				</fileset>
+			</path>
+		</foreach>
+	</target>
+
+	<target name="load">
+		<echo message="Loading file ${file.name}" />
+		<exec dir="${postgresql.home}/bin" executable="${postgresql.home}/bin/psql" resultproperty="psql.result" output="psql.log" append="true">
+			<arg line="-h ${postgresql.host}" />
+			<arg line="-d ${postgresql.database} -q" />
+			<arg line="-U ${postgresql.user}" /> 
+			<arg line="-p ${postgresql.port}"/>
+			<arg line='-f "${file.name}"' />
+			<env key="PGPASSWORD" value="${postgresql.password}" />
+		</exec>
+		<echo message="File ${file.name} status ${psql.result}" />
+		<echo append="true" file="build.log">File ${file.name} status ${psql.result}</echo>
+		<echo append="true" file="build.log" message="${line.separator}" />
+	</target>
+</project>
+
+-- *** migration/FA/postgresql/psql.log ***
+
+
+
+#Run Scripts:
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:2276: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_product_key" for table "a_asset_product"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:19512: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_class_key" for table "a_asset_class"
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:20050: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_fundingmode_key" for table "a_fundingmode"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:22054: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_reval_key" for table "a_asset_reval"
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/001_FA_Stabilization_postgresql.sql:22709: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_type_key" for table "a_asset_type"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/003_FA_Stabilization_postgresql.sql:57: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "i_fixedasset_key" for table "i_fixedasset"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/005_FA_Stabilization_postgresql.sql:150: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_acct_pkey" for table "a_asset_acct"
+psql:C:/Users/Owner/workspace/fixed assets/migration/FA/postgresql/005_FA_Stabilization_postgresql.sql:227: NOTICE:  CREATE TABLE / PRIMARY KEY will create implicit index "a_asset_group_acct_key" for table "a_asset_group_acct"
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
+ altercolumn 
+-------------
+ 
+(1 row)
+
 
