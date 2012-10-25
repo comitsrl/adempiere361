@@ -597,4 +597,19 @@ public class MAsset extends X_A_Asset
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int getProductR_MailText_ID() {
+		// IDEMPIERE-197 Stabilize Fixed Assets
+		// AssetDelivery is requiring this missing column
+		// TODO: Adding this method to compile correctly and future research,
+		// but the process AssetDelivery will fail with error "** Product Mail Text"
+		return 0;
+	}
+
+	public boolean isDownloadable() {
+		// IDEMPIERE-197 Stabilize Fixed Assets
+		// AssetServlet is requiring this missing column
+		// TODO: Adding this method to compile correctly and future research
+		return false;
+	}
 }

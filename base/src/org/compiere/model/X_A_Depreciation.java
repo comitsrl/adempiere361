@@ -19,18 +19,17 @@ package org.compiere.model;
 
 import java.sql.ResultSet;
 import java.util.Properties;
-import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_A_Depreciation extends PO implements I_A_Depreciation, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121024L;
 
     /** Standard Constructor */
     public X_A_Depreciation (Properties ctx, int A_Depreciation_ID, String trxName)
@@ -38,12 +37,8 @@ public class X_A_Depreciation extends PO implements I_A_Depreciation, I_Persiste
       super (ctx, A_Depreciation_ID, trxName);
       /** if (A_Depreciation_ID == 0)
         {
-			setA_Asset_Life_Years_Min (0);
-// 1
 			setA_Depreciation_ID (0);
 			setDepreciationType (null);
-			setFixMonthOffset (0);
-// 1
 			setName (null);
 			setProcessed (false);
 // N
@@ -78,30 +73,14 @@ public class X_A_Depreciation extends PO implements I_A_Depreciation, I_Persiste
       return sb.toString();
     }
 
-	/** Set Life years (min).
-		@param A_Asset_Life_Years_Min Life years (min)	  */
-	public void setA_Asset_Life_Years_Min (int A_Asset_Life_Years_Min)
-	{
-		set_Value (COLUMNNAME_A_Asset_Life_Years_Min, Integer.valueOf(A_Asset_Life_Years_Min));
-	}
-
-	/** Get Life years (min).
-		@return Life years (min)	  */
-	public int getA_Asset_Life_Years_Min () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Life_Years_Min);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
-
 	/** Set Depreciation.
 		@param A_Depreciation_ID Depreciation	  */
 	public void setA_Depreciation_ID (int A_Depreciation_ID)
 	{
-		if (A_Depreciation_ID < 1)
-			 throw new IllegalArgumentException ("A_Depreciation_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Depreciation_ID, Integer.valueOf(A_Depreciation_ID));
+		if (A_Depreciation_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_ID, Integer.valueOf(A_Depreciation_ID));
 	}
 
 	/** Get Depreciation.
@@ -118,8 +97,6 @@ public class X_A_Depreciation extends PO implements I_A_Depreciation, I_Persiste
 		@param DepreciationType DepreciationType	  */
 	public void setDepreciationType (String DepreciationType)
 	{
-		if (DepreciationType == null)
-			throw new IllegalArgumentException ("DepreciationType is mandatory.");
 		set_Value (COLUMNNAME_DepreciationType, DepreciationType);
 	}
 
@@ -147,34 +124,12 @@ public class X_A_Depreciation extends PO implements I_A_Depreciation, I_Persiste
 		return (String)get_Value(COLUMNNAME_Description);
 	}
 
-	/** Set Fix month offset.
-		@param FixMonthOffset 
-		Number of months (0=same, 1=following)
-	  */
-	public void setFixMonthOffset (int FixMonthOffset)
-	{
-		set_Value (COLUMNNAME_FixMonthOffset, Integer.valueOf(FixMonthOffset));
-	}
-
-	/** Get Fix month offset.
-		@return Number of months (0=same, 1=following)
-	  */
-	public int getFixMonthOffset () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_FixMonthOffset);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
-
 	/** Set Name.
 		@param Name 
 		Alphanumeric identifier of the entity
 	  */
 	public void setName (String Name)
 	{
-		if (Name == null)
-			throw new IllegalArgumentException ("Name is mandatory.");
 		set_Value (COLUMNNAME_Name, Name);
 	}
 
@@ -223,29 +178,4 @@ public class X_A_Depreciation extends PO implements I_A_Depreciation, I_Persiste
 	{
 		return (String)get_Value(COLUMNNAME_Text);
 	}
-
-	/** Set Search Key.
-		@param Value 
-		Search key for the record in the format required - must be unique
-	  */
-	public void setValue (String Value)
-	{
-		set_Value (COLUMNNAME_Value, Value);
-	}
-
-	/** Get Search Key.
-		@return Search key for the record in the format required - must be unique
-	  */
-	public String getValue () 
-	{
-		return (String)get_Value(COLUMNNAME_Value);
-	}
-
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), getValue());
-    }
 }

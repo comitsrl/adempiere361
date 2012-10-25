@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Disposed
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 360LTS.015 - $Id$ */
 public class X_A_Asset_Disposed extends PO implements I_A_Asset_Disposed, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120314L;
+	private static final long serialVersionUID = 20121024L;
 
     /** Standard Constructor */
     public X_A_Asset_Disposed (Properties ctx, int A_Asset_Disposed_ID, String trxName)
@@ -100,17 +100,14 @@ public class X_A_Asset_Disposed extends PO implements I_A_Asset_Disposed, I_Pers
     }
 
 	/** Set Accumulated Depreciation.
-		@param A_Accumulated_Depr 
-		Accumulated Depreciation
-	  */
+		@param A_Accumulated_Depr Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr)
 	{
 		set_Value (COLUMNNAME_A_Accumulated_Depr, A_Accumulated_Depr);
 	}
 
 	/** Get Accumulated Depreciation.
-		@return Accumulated Depreciation
-	  */
+		@return Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Accumulated_Depr);
@@ -156,17 +153,14 @@ public class X_A_Asset_Disposed extends PO implements I_A_Asset_Disposed, I_Pers
 	}
 
 	/** Set Asset Cost.
-		@param A_Asset_Cost 
-		Asset Cost
-	  */
+		@param A_Asset_Cost Asset Cost	  */
 	public void setA_Asset_Cost (BigDecimal A_Asset_Cost)
 	{
 		set_Value (COLUMNNAME_A_Asset_Cost, A_Asset_Cost);
 	}
 
 	/** Get Asset Cost.
-		@return Asset Cost
-	  */
+		@return Asset Cost	  */
 	public BigDecimal getA_Asset_Cost () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Asset_Cost);
@@ -328,10 +322,14 @@ public class X_A_Asset_Disposed extends PO implements I_A_Asset_Disposed, I_Pers
 	public static final String A_DISPOSED_METHOD_Trade = "T1";
 	/** Trade w/cash = T2 */
 	public static final String A_DISPOSED_METHOD_TradeWCash = "T2";
+	/** Cash_ = C_ */
+	public static final String A_DISPOSED_METHOD_Cash_ = "C_";
 	/** Partial Retirement = PD */
 	public static final String A_DISPOSED_METHOD_PartialRetirement = "PD";
 	/** Preservation = PR */
 	public static final String A_DISPOSED_METHOD_Preservation = "PR";
+	/** Simple_ = S_ */
+	public static final String A_DISPOSED_METHOD_Simple_ = "S_";
 	/** Set Disposed Method.
 		@param A_Disposed_Method Disposed Method	  */
 	public void setA_Disposed_Method (String A_Disposed_Method)

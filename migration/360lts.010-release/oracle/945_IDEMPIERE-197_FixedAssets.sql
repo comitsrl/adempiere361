@@ -6214,6 +6214,11 @@ INSERT INTO AD_Reference_Trl (AD_Language,AD_Reference_ID, Description,Help,Name
 
 -- Jun 17, 2010 3:18:50 PM CDT
 -- Generated Central ID for Fixed Asset
+INSERT INTO AD_Ref_Table(AD_Client_ID, AD_Org_ID, CreatedBy, UpdatedBy, AD_Reference_ID, AD_Table_ID, AD_Display, AD_Key ,entityType, isValueDisplayed, OrderByClause,  WhereClause )VALUES(0, 0, 0, 0, 53363, 472, 13086, 6497, 'D', 'N', '', '')
+;
+
+-- Jun 17, 2010 3:18:50 PM CDT
+-- Generated Central ID for Fixed Asset
 INSERT INTO AD_Val_Rule (AD_Client_ID,AD_Org_ID,AD_Val_Rule_ID,Code,Created,CreatedBy,EntityType,IsActive,Name,Type,Updated,UpdatedBy) VALUES (0,0,52086,'A_Processed=''N''',TO_DATE('2010-06-17 15:18:50','YYYY-MM-DD HH24:MI:SS'),0,'D','Y','Document line is not processed from asset perspective','S',TO_DATE('2010-06-17 15:18:50','YYYY-MM-DD HH24:MI:SS'),0)
 ;
 
@@ -6714,7 +6719,7 @@ UPDATE AD_Reference_Trl SET IsTranslated='N' WHERE AD_Reference_ID=53270
 
 -- Jun 17, 2010 3:20:13 PM CDT
 -- Generated Central ID for Fixed Asset
-INSERT INTO AD_Ref_List (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Reference_ID,Created,CreatedBy,Description,EntityType,IsActive,Name,Updated,UpdatedBy,Value) VALUES (0,0,53605,53270,TO_DATE('2010-06-17 15:20:13','YYYY-MM-DD HH24:MI:SS'),0,'Sold for cash','D','N','Cash',TO_DATE('2010-06-17 15:20:13','YYYY-MM-DD HH24:MI:SS'),0,'C_')
+INSERT INTO AD_Ref_List (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Reference_ID,Created,CreatedBy,Description,EntityType,IsActive,Name,Updated,UpdatedBy,Value) VALUES (0,0,53605,53270,TO_DATE('2010-06-17 15:20:13','YYYY-MM-DD HH24:MI:SS'),0,'Sold for cash','D','N','Cash_',TO_DATE('2010-06-17 15:20:13','YYYY-MM-DD HH24:MI:SS'),0,'C_')
 ;
 
 -- Jun 17, 2010 3:20:13 PM CDT
@@ -6744,7 +6749,7 @@ INSERT INTO AD_Ref_List_Trl (AD_Language,AD_Ref_List_ID, Description,Name, IsTra
 
 -- Jun 17, 2010 3:20:16 PM CDT
 -- Generated Central ID for Fixed Asset
-INSERT INTO AD_Ref_List (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Reference_ID,Created,CreatedBy,Description,EntityType,IsActive,Name,Updated,UpdatedBy,Value) VALUES (0,0,53608,53270,TO_DATE('2010-06-17 15:20:15','YYYY-MM-DD HH24:MI:SS'),0,'No cash or trade','D','Y','Simple',TO_DATE('2010-06-17 15:20:15','YYYY-MM-DD HH24:MI:SS'),0,'S_')
+INSERT INTO AD_Ref_List (AD_Client_ID,AD_Org_ID,AD_Ref_List_ID,AD_Reference_ID,Created,CreatedBy,Description,EntityType,IsActive,Name,Updated,UpdatedBy,Value) VALUES (0,0,53608,53270,TO_DATE('2010-06-17 15:20:15','YYYY-MM-DD HH24:MI:SS'),0,'No cash or trade','D','Y','Simple_',TO_DATE('2010-06-17 15:20:15','YYYY-MM-DD HH24:MI:SS'),0,'S_')
 ;
 
 -- Jun 17, 2010 3:20:16 PM CDT
@@ -40229,6 +40234,34 @@ UPDATE AD_Field SET Name='Fixed Asset?',Updated=TO_DATE('2012-10-05 16:11:58','Y
 -- Oct 5, 2012 4:11:58 PM ICT
 -- I forgot to set the DICTIONARY_ID_COMMENTS System Configurator
 UPDATE AD_Field_Trl SET IsTranslated='N' WHERE AD_Field_ID=200602
+;
+
+-- Oct 24, 2012 6:03:46 PM COT
+-- IDEMPIERE-197 Stabilize Fixed Assets
+UPDATE AD_Element SET ColumnName='A_AssetType',Updated=TO_DATE('2012-10-24 18:03:46','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Element_ID=54171
+;
+
+-- Oct 24, 2012 6:03:46 PM COT
+-- IDEMPIERE-197 Stabilize Fixed Assets
+UPDATE AD_Column SET ColumnName='A_AssetType', Name='Asset Type', Description=NULL, Help=NULL WHERE AD_Element_ID=54171
+;
+
+-- Oct 24, 2012 6:03:46 PM COT
+-- IDEMPIERE-197 Stabilize Fixed Assets
+UPDATE AD_Process_Para SET ColumnName='A_AssetType', Name='Asset Type', Description=NULL, Help=NULL, AD_Element_ID=54171 WHERE UPPER(ColumnName)='A_ASSETTYPE' AND IsCentrallyMaintained='Y' AND AD_Element_ID IS NULL
+;
+
+-- Oct 24, 2012 6:03:46 PM COT
+-- IDEMPIERE-197 Stabilize Fixed Assets
+UPDATE AD_Process_Para SET ColumnName='A_AssetType', Name='Asset Type', Description=NULL, Help=NULL WHERE AD_Element_ID=54171 AND IsCentrallyMaintained='Y'
+;
+
+ALTER TABLE A_ASSET RENAME COLUMN A_ASSET_TYPE TO A_ASSETTYPE
+;
+
+-- Oct 24, 2012 9:15:37 PM COT
+-- IDEMPIERE-197 Stabilize Fixed Assets
+ALTER TABLE A_Asset_Group ADD IsFixedAsset CHAR(1) DEFAULT 'Y' CHECK (IsFixedAsset IN ('Y','N'))
 ;
 
 SELECT register_migration_script('945_IDEMPIERE-197_FixedAssets.sql') FROM dual

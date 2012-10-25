@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 360LTS.015
  */
 public interface I_A_Asset 
 {
@@ -40,6 +40,101 @@ public interface I_A_Asset
     BigDecimal accessLevel = BigDecimal.valueOf(3);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_Action */
+    public static final String COLUMNNAME_A_Asset_Action = "A_Asset_Action";
+
+	/** Set Asset Action	  */
+	public void setA_Asset_Action (String A_Asset_Action);
+
+	/** Get Asset Action	  */
+	public String getA_Asset_Action();
+
+    /** Column name A_Asset_Class_ID */
+    public static final String COLUMNNAME_A_Asset_Class_ID = "A_Asset_Class_ID";
+
+	/** Set Asset class	  */
+	public void setA_Asset_Class_ID (int A_Asset_Class_ID);
+
+	/** Get Asset class	  */
+	public int getA_Asset_Class_ID();
+
+	public I_A_Asset_Class getA_Asset_Class() throws RuntimeException;
+
+    /** Column name A_Asset_CreateDate */
+    public static final String COLUMNNAME_A_Asset_CreateDate = "A_Asset_CreateDate";
+
+	/** Set Create Date	  */
+	public void setA_Asset_CreateDate (Timestamp A_Asset_CreateDate);
+
+	/** Get Create Date	  */
+	public Timestamp getA_Asset_CreateDate();
+
+    /** Column name A_Asset_Group_ID */
+    public static final String COLUMNNAME_A_Asset_Group_ID = "A_Asset_Group_ID";
+
+	/** Set Asset Group.
+	  * Group of Assets
+	  */
+	public void setA_Asset_Group_ID (int A_Asset_Group_ID);
+
+	/** Get Asset Group.
+	  * Group of Assets
+	  */
+	public int getA_Asset_Group_ID();
+
+	public I_A_Asset_Group getA_Asset_Group() throws RuntimeException;
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+    /** Column name A_Asset_RevalDate */
+    public static final String COLUMNNAME_A_Asset_RevalDate = "A_Asset_RevalDate";
+
+	/** Set Revaluation Date	  */
+	public void setA_Asset_RevalDate (Timestamp A_Asset_RevalDate);
+
+	/** Get Revaluation Date	  */
+	public Timestamp getA_Asset_RevalDate();
+
+    /** Column name A_Asset_Status */
+    public static final String COLUMNNAME_A_Asset_Status = "A_Asset_Status";
+
+	/** Set Asset Status	  */
+	public void setA_Asset_Status (String A_Asset_Status);
+
+	/** Get Asset Status	  */
+	public String getA_Asset_Status();
+
+    /** Column name A_AssetType */
+    public static final String COLUMNNAME_A_AssetType = "A_AssetType";
+
+	/** Set Asset Type	  */
+	public void setA_AssetType (String A_AssetType);
+
+	/** Get Asset Type	  */
+	public String getA_AssetType();
+
+    /** Column name A_Asset_Type_ID */
+    public static final String COLUMNNAME_A_Asset_Type_ID = "A_Asset_Type_ID";
+
+	/** Set Asset Type	  */
+	public void setA_Asset_Type_ID (int A_Asset_Type_ID);
+
+	/** Get Asset Type	  */
+	public int getA_Asset_Type_ID();
+
+	public I_A_Asset_Type getA_Asset_Type() throws RuntimeException;
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -75,105 +170,18 @@ public interface I_A_Asset
 	  */
 	public int getAD_User_ID();
 
-	public I_AD_User getAD_User();
-
-    /** Column name A_Asset_Action */
-    public static final String COLUMNNAME_A_Asset_Action = "A_Asset_Action";
-
-	/** Set Asset Action	  */
-	public void setA_Asset_Action (String A_Asset_Action);
-
-	/** Get Asset Action	  */
-	public String getA_Asset_Action();
-
-    /** Column name A_Asset_Class_ID */
-    public static final String COLUMNNAME_A_Asset_Class_ID = "A_Asset_Class_ID";
-
-	/** Set Asset class	  */
-	public void setA_Asset_Class_ID (int A_Asset_Class_ID);
-
-	/** Get Asset class	  */
-	public int getA_Asset_Class_ID();
-
-    /** Column name A_Asset_CreateDate */
-    public static final String COLUMNNAME_A_Asset_CreateDate = "A_Asset_CreateDate";
-
-	/** Set A_Asset_CreateDate	  */
-	public void setA_Asset_CreateDate (Timestamp A_Asset_CreateDate);
-
-	/** Get A_Asset_CreateDate	  */
-	public Timestamp getA_Asset_CreateDate();
-
-    /** Column name A_Asset_Group_ID */
-    public static final String COLUMNNAME_A_Asset_Group_ID = "A_Asset_Group_ID";
-
-	/** Set Asset Group.
-	  * Group of Assets
-	  */
-	public void setA_Asset_Group_ID (int A_Asset_Group_ID);
-
-	/** Get Asset Group.
-	  * Group of Assets
-	  */
-	public int getA_Asset_Group_ID();
-
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-    /** Column name A_Asset_RevalDate */
-    public static final String COLUMNNAME_A_Asset_RevalDate = "A_Asset_RevalDate";
-
-	/** Set A_Asset_RevalDate	  */
-	public void setA_Asset_RevalDate (Timestamp A_Asset_RevalDate);
-
-	/** Get A_Asset_RevalDate	  */
-	public Timestamp getA_Asset_RevalDate();
-
-    /** Column name A_Asset_Status */
-    public static final String COLUMNNAME_A_Asset_Status = "A_Asset_Status";
-
-	/** Set Asset Status	  */
-	public void setA_Asset_Status (String A_Asset_Status);
-
-	/** Get Asset Status	  */
-	public String getA_Asset_Status();
-
-    /** Column name A_Asset_Type */
-    public static final String COLUMNNAME_A_Asset_Type = "A_Asset_Type";
-
-	/** Set Asset Type	  */
-	public void setA_Asset_Type (String A_Asset_Type);
-
-	/** Get Asset Type	  */
-	public String getA_Asset_Type();
-
-    /** Column name A_Asset_Type_ID */
-    public static final String COLUMNNAME_A_Asset_Type_ID = "A_Asset_Type_ID";
-
-	/** Set Asset Type	  */
-	public void setA_Asset_Type_ID (int A_Asset_Type_ID);
-
-	/** Get Asset Type	  */
-	public int getA_Asset_Type_ID();
+	public I_AD_User getAD_User() throws RuntimeException;
 
     /** Column name A_Parent_Asset_ID */
     public static final String COLUMNNAME_A_Parent_Asset_ID = "A_Parent_Asset_ID";
 
-	/** Set A_Parent_Asset_ID	  */
+	/** Set Parent Asset	  */
 	public void setA_Parent_Asset_ID (int A_Parent_Asset_ID);
 
-	/** Get A_Parent_Asset_ID	  */
+	/** Get Parent Asset	  */
 	public int getA_Parent_Asset_ID();
+
+	public I_A_Asset getA_Parent_Asset() throws RuntimeException;
 
     /** Column name A_QTY_Current */
     public static final String COLUMNNAME_A_QTY_Current = "A_QTY_Current";
@@ -254,20 +262,7 @@ public interface I_A_Asset
 	  */
 	public int getC_Activity_ID();
 
-	public I_C_Activity getC_Activity();
-
-    /** Column name C_BPartnerSR_ID */
-    public static final String COLUMNNAME_C_BPartnerSR_ID = "C_BPartnerSR_ID";
-
-	/** Set BPartner (Agent).
-	  * Business Partner (Agent or Sales Rep)
-	  */
-	public void setC_BPartnerSR_ID (int C_BPartnerSR_ID);
-
-	/** Get BPartner (Agent).
-	  * Business Partner (Agent or Sales Rep)
-	  */
-	public int getC_BPartnerSR_ID();
+	public I_C_Activity getC_Activity() throws RuntimeException;
 
     /** Column name C_BPartner_ID */
     public static final String COLUMNNAME_C_BPartner_ID = "C_BPartner_ID";
@@ -282,7 +277,7 @@ public interface I_A_Asset
 	  */
 	public int getC_BPartner_ID();
 
-	public I_C_BPartner getC_BPartner();
+	public I_C_BPartner getC_BPartner() throws RuntimeException;
 
     /** Column name C_BPartner_Location_ID */
     public static final String COLUMNNAME_C_BPartner_Location_ID = "C_BPartner_Location_ID";
@@ -297,7 +292,22 @@ public interface I_A_Asset
 	  */
 	public int getC_BPartner_Location_ID();
 
-	public I_C_BPartner_Location getC_BPartner_Location();
+	public I_C_BPartner_Location getC_BPartner_Location() throws RuntimeException;
+
+    /** Column name C_BPartnerSR_ID */
+    public static final String COLUMNNAME_C_BPartnerSR_ID = "C_BPartnerSR_ID";
+
+	/** Set BPartner (Agent).
+	  * Business Partner (Agent or Sales Rep)
+	  */
+	public void setC_BPartnerSR_ID (int C_BPartnerSR_ID);
+
+	/** Get BPartner (Agent).
+	  * Business Partner (Agent or Sales Rep)
+	  */
+	public int getC_BPartnerSR_ID();
+
+	public I_C_BPartner getC_BPartnerSR() throws RuntimeException;
 
     /** Column name C_Location_ID */
     public static final String COLUMNNAME_C_Location_ID = "C_Location_ID";
@@ -312,7 +322,7 @@ public interface I_A_Asset
 	  */
 	public int getC_Location_ID();
 
-	public I_C_Location getC_Location();
+	public I_C_Location getC_Location() throws RuntimeException;
 
     /** Column name C_Project_ID */
     public static final String COLUMNNAME_C_Project_ID = "C_Project_ID";
@@ -327,7 +337,7 @@ public interface I_A_Asset
 	  */
 	public int getC_Project_ID();
 
-	public I_C_Project getC_Project();
+	public I_C_Project getC_Project() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -357,112 +367,6 @@ public interface I_A_Asset
 	  * Optional short description of the record
 	  */
 	public String getDescription();
-
-    /** Column name GZ_Corector */
-    public static final String COLUMNNAME_GZ_Corector = "GZ_Corector";
-
-	/** Set Corector.
-	  * Corector de index ataşat contorului
-	  */
-	public void setGZ_Corector (String GZ_Corector);
-
-	/** Get Corector.
-	  * Corector de index ataşat contorului
-	  */
-	public String getGZ_Corector();
-
-    /** Column name GZ_DataPIF */
-    public static final String COLUMNNAME_GZ_DataPIF = "GZ_DataPIF";
-
-	/** Set Dată PIF.
-	  * Data punerii în funcţiune a asset-ului
-	  */
-	public void setGZ_DataPIF (Timestamp GZ_DataPIF);
-
-	/** Get Dată PIF.
-	  * Data punerii în funcţiune a asset-ului
-	  */
-	public Timestamp getGZ_DataPIF();
-
-    /** Column name GZ_Debit */
-    public static final String COLUMNNAME_GZ_Debit = "GZ_Debit";
-
-	/** Set Debit	  */
-	public void setGZ_Debit (int GZ_Debit);
-
-	/** Get Debit	  */
-	public int getGZ_Debit();
-
-    /** Column name GZ_InFolosinta */
-    public static final String COLUMNNAME_GZ_InFolosinta = "GZ_InFolosinta";
-
-	/** Set În folosinţă	  */
-	public void setGZ_InFolosinta (boolean GZ_InFolosinta);
-
-	/** Get În folosinţă	  */
-	public boolean isGZ_InFolosinta();
-
-    /** Column name GZ_Index */
-    public static final String COLUMNNAME_GZ_Index = "GZ_Index";
-
-	/** Set Index	  */
-	public void setGZ_Index (int GZ_Index);
-
-	/** Get Index	  */
-	public int getGZ_Index();
-
-    /** Column name GZ_PostReglare_ID */
-    public static final String COLUMNNAME_GZ_PostReglare_ID = "GZ_PostReglare_ID";
-
-	/** Set Post reglare	  */
-	public void setGZ_PostReglare_ID (int GZ_PostReglare_ID);
-
-	/** Get Post reglare	  */
-	public int getGZ_PostReglare_ID();
-
-    /** Column name GZ_PunctMasura_ID */
-    public static final String COLUMNNAME_GZ_PunctMasura_ID = "GZ_PunctMasura_ID";
-
-	/** Set Punct măsură	  */
-	public void setGZ_PunctMasura_ID (int GZ_PunctMasura_ID);
-
-	/** Get Punct măsură	  */
-	public int getGZ_PunctMasura_ID();
-
-    /** Column name GZ_TipComponenta */
-    public static final String COLUMNNAME_GZ_TipComponenta = "GZ_TipComponenta";
-
-	/** Set Tip componentă.
-	  * Componentă a reţelei de furnizare şi/sau distribuţie
-	  */
-	public void setGZ_TipComponenta (String GZ_TipComponenta);
-
-	/** Get Tip componentă.
-	  * Componentă a reţelei de furnizare şi/sau distribuţie
-	  */
-	public String getGZ_TipComponenta();
-
-    /** Column name GZ_Tip_Contor */
-    public static final String COLUMNNAME_GZ_Tip_Contor = "GZ_Tip_Contor";
-
-	/** Set Meter Type.
-	  * Type of meter
-	  */
-	public void setGZ_Tip_Contor (String GZ_Tip_Contor);
-
-	/** Get Meter Type.
-	  * Type of meter
-	  */
-	public String getGZ_Tip_Contor();
-
-    /** Column name GZ_Tip_Regulator */
-    public static final String COLUMNNAME_GZ_Tip_Regulator = "GZ_Tip_Regulator";
-
-	/** Set Tip Regulator	  */
-	public void setGZ_Tip_Regulator (String GZ_Tip_Regulator);
-
-	/** Get Tip Regulator	  */
-	public String getGZ_Tip_Regulator();
 
     /** Column name GuaranteeDate */
     public static final String COLUMNNAME_GuaranteeDate = "GuaranteeDate";
@@ -616,19 +520,6 @@ public interface I_A_Asset
 	  */
 	public int getLastMaintenanceUnit();
 
-    /** Column name LeaseTerminationDate */
-    public static final String COLUMNNAME_LeaseTerminationDate = "LeaseTerminationDate";
-
-	/** Set Lease Termination.
-	  * Lease Termination Date
-	  */
-	public void setLeaseTerminationDate (Timestamp LeaseTerminationDate);
-
-	/** Get Lease Termination.
-	  * Lease Termination Date
-	  */
-	public Timestamp getLeaseTerminationDate();
-
     /** Column name Lease_BPartner_ID */
     public static final String COLUMNNAME_Lease_BPartner_ID = "Lease_BPartner_ID";
 
@@ -641,6 +532,21 @@ public interface I_A_Asset
 	  * The Business Partner who rents or leases
 	  */
 	public int getLease_BPartner_ID();
+
+	public I_C_BPartner getLease_BPartner() throws RuntimeException;
+
+    /** Column name LeaseTerminationDate */
+    public static final String COLUMNNAME_LeaseTerminationDate = "LeaseTerminationDate";
+
+	/** Set Lease Termination.
+	  * Lease Termination Date
+	  */
+	public void setLeaseTerminationDate (Timestamp LeaseTerminationDate);
+
+	/** Get Lease Termination.
+	  * Lease Termination Date
+	  */
+	public Timestamp getLeaseTerminationDate();
 
     /** Column name LifeUseUnits */
     public static final String COLUMNNAME_LifeUseUnits = "LifeUseUnits";
@@ -681,64 +587,6 @@ public interface I_A_Asset
 	  */
 	public String getLot();
 
-    /** Column name M_AttributeSetInstance_ID */
-    public static final String COLUMNNAME_M_AttributeSetInstance_ID = "M_AttributeSetInstance_ID";
-
-	/** Set Attribute Set Instance.
-	  * Product Attribute Set Instance
-	  */
-	public void setM_AttributeSetInstance_ID (int M_AttributeSetInstance_ID);
-
-	/** Get Attribute Set Instance.
-	  * Product Attribute Set Instance
-	  */
-	public int getM_AttributeSetInstance_ID();
-
-    /** Column name M_InOutLine_ID */
-    public static final String COLUMNNAME_M_InOutLine_ID = "M_InOutLine_ID";
-
-	/** Set Shipment/Receipt Line.
-	  * Line on Shipment or Receipt document
-	  */
-	public void setM_InOutLine_ID (int M_InOutLine_ID);
-
-	/** Get Shipment/Receipt Line.
-	  * Line on Shipment or Receipt document
-	  */
-	public int getM_InOutLine_ID();
-
-	public I_M_InOutLine getM_InOutLine();
-
-    /** Column name M_Locator_ID */
-    public static final String COLUMNNAME_M_Locator_ID = "M_Locator_ID";
-
-	/** Set Locator.
-	  * Warehouse Locator
-	  */
-	public void setM_Locator_ID (int M_Locator_ID);
-
-	/** Get Locator.
-	  * Warehouse Locator
-	  */
-	public int getM_Locator_ID();
-
-	public I_M_Locator getM_Locator();
-
-    /** Column name M_Product_ID */
-    public static final String COLUMNNAME_M_Product_ID = "M_Product_ID";
-
-	/** Set Product.
-	  * Product, Service, Item
-	  */
-	public void setM_Product_ID (int M_Product_ID);
-
-	/** Get Product.
-	  * Product, Service, Item
-	  */
-	public int getM_Product_ID();
-
-	public I_M_Product getM_Product();
-
     /** Column name ManufacturedYear */
     public static final String COLUMNNAME_ManufacturedYear = "ManufacturedYear";
 
@@ -760,6 +608,66 @@ public interface I_A_Asset
 	  * Manufacturer of the Product
 	  */
 	public String getManufacturer();
+
+    /** Column name M_AttributeSetInstance_ID */
+    public static final String COLUMNNAME_M_AttributeSetInstance_ID = "M_AttributeSetInstance_ID";
+
+	/** Set Attribute Set Instance.
+	  * Product Attribute Set Instance
+	  */
+	public void setM_AttributeSetInstance_ID (int M_AttributeSetInstance_ID);
+
+	/** Get Attribute Set Instance.
+	  * Product Attribute Set Instance
+	  */
+	public int getM_AttributeSetInstance_ID();
+
+	public I_M_AttributeSetInstance getM_AttributeSetInstance() throws RuntimeException;
+
+    /** Column name M_InOutLine_ID */
+    public static final String COLUMNNAME_M_InOutLine_ID = "M_InOutLine_ID";
+
+	/** Set Shipment/Receipt Line.
+	  * Line on Shipment or Receipt document
+	  */
+	public void setM_InOutLine_ID (int M_InOutLine_ID);
+
+	/** Get Shipment/Receipt Line.
+	  * Line on Shipment or Receipt document
+	  */
+	public int getM_InOutLine_ID();
+
+	public I_M_InOutLine getM_InOutLine() throws RuntimeException;
+
+    /** Column name M_Locator_ID */
+    public static final String COLUMNNAME_M_Locator_ID = "M_Locator_ID";
+
+	/** Set Locator.
+	  * Warehouse Locator
+	  */
+	public void setM_Locator_ID (int M_Locator_ID);
+
+	/** Get Locator.
+	  * Warehouse Locator
+	  */
+	public int getM_Locator_ID();
+
+	public I_M_Locator getM_Locator() throws RuntimeException;
+
+    /** Column name M_Product_ID */
+    public static final String COLUMNNAME_M_Product_ID = "M_Product_ID";
+
+	/** Set Product.
+	  * Product, Service, Item
+	  */
+	public void setM_Product_ID (int M_Product_ID);
+
+	/** Get Product.
+	  * Product, Service, Item
+	  */
+	public int getM_Product_ID();
+
+	public I_M_Product getM_Product() throws RuntimeException;
 
     /** Column name Name */
     public static final String COLUMNNAME_Name = "Name";
@@ -928,27 +836,4 @@ public interface I_A_Asset
 	  * Version Number
 	  */
 	public String getVersionNo();
-	
-	/** Column name ProductR_MailText_ID */
-    public static final String COLUMNNAME_ProductR_MailText_ID = "ProductR_MailText_ID";
-
-	/** Set ProductR_MailText_ID.
-	  */
-	public void setProductR_MailText_ID (int ProductR_MailText_ID);
-
-	/** Get ProductR_MailText_ID.
-	  * Product, Service, Item
-	  */
-	public int getProductR_MailText_ID();
-
-	public I_R_MailText getProductR_MailText();
-	
-	 /** Column name isDownloadable */
-    public static final String COLUMNNAME_isDownloadable = "isDownloadable";
-
-	/** Set isDownloadable	  */
-	public void setisDownloadable (boolean isDownloadable);
-
-	/** Get isDownloadable	  */
-	public boolean isDownloadable();
 }

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Disposed
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 360LTS.015
  */
 public interface I_A_Asset_Disposed 
 {
@@ -44,14 +44,10 @@ public interface I_A_Asset_Disposed
     /** Column name A_Accumulated_Depr */
     public static final String COLUMNNAME_A_Accumulated_Depr = "A_Accumulated_Depr";
 
-	/** Set Accumulated Depreciation.
-	  * Accumulated Depreciation
-	  */
+	/** Set Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr);
 
-	/** Get Accumulated Depreciation.
-	  * Accumulated Depreciation
-	  */
+	/** Get Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr();
 
     /** Column name A_Accumulated_Depr_Delta */
@@ -75,14 +71,10 @@ public interface I_A_Asset_Disposed
     /** Column name A_Asset_Cost */
     public static final String COLUMNNAME_A_Asset_Cost = "A_Asset_Cost";
 
-	/** Set Asset Cost.
-	  * Asset Cost
-	  */
+	/** Set Asset Cost	  */
 	public void setA_Asset_Cost (BigDecimal A_Asset_Cost);
 
-	/** Get Asset Cost.
-	  * Asset Cost
-	  */
+	/** Get Asset Cost	  */
 	public BigDecimal getA_Asset_Cost();
 
     /** Column name A_Asset_Disposed_ID */

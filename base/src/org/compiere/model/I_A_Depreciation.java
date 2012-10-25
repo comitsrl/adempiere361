@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 360LTS.015
  */
 public interface I_A_Depreciation 
 {
@@ -30,7 +30,7 @@ public interface I_A_Depreciation
     /** TableName=A_Depreciation */
     public static final String Table_Name = "A_Depreciation";
 
-    /** AD_Table_ID=1000010 */
+    /** AD_Table_ID=53112 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -49,6 +49,15 @@ public interface I_A_Depreciation
 	  */
 	public int getAD_Client_ID();
 
+    /** Column name A_Depreciation_ID */
+    public static final String COLUMNNAME_A_Depreciation_ID = "A_Depreciation_ID";
+
+	/** Set Depreciation	  */
+	public void setA_Depreciation_ID (int A_Depreciation_ID);
+
+	/** Get Depreciation	  */
+	public int getA_Depreciation_ID();
+
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
@@ -61,24 +70,6 @@ public interface I_A_Depreciation
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Asset_Life_Years_Min */
-    public static final String COLUMNNAME_A_Asset_Life_Years_Min = "A_Asset_Life_Years_Min";
-
-	/** Set Life years (min)	  */
-	public void setA_Asset_Life_Years_Min (int A_Asset_Life_Years_Min);
-
-	/** Get Life years (min)	  */
-	public int getA_Asset_Life_Years_Min();
-
-    /** Column name A_Depreciation_ID */
-    public static final String COLUMNNAME_A_Depreciation_ID = "A_Depreciation_ID";
-
-	/** Set Depreciation	  */
-	public void setA_Depreciation_ID (int A_Depreciation_ID);
-
-	/** Get Depreciation	  */
-	public int getA_Depreciation_ID();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -117,19 +108,6 @@ public interface I_A_Depreciation
 	  * Optional short description of the record
 	  */
 	public String getDescription();
-
-    /** Column name FixMonthOffset */
-    public static final String COLUMNNAME_FixMonthOffset = "FixMonthOffset";
-
-	/** Set Fix month offset.
-	  * Number of months (0=same, 1=following)
-	  */
-	public void setFixMonthOffset (int FixMonthOffset);
-
-	/** Get Fix month offset.
-	  * Number of months (0=same, 1=following)
-	  */
-	public int getFixMonthOffset();
 
     /** Column name IsActive */
     public static final String COLUMNNAME_IsActive = "IsActive";
@@ -194,17 +172,4 @@ public interface I_A_Depreciation
 	  * User who updated this records
 	  */
 	public int getUpdatedBy();
-
-    /** Column name Value */
-    public static final String COLUMNNAME_Value = "Value";
-
-	/** Set Search Key.
-	  * Search key for the record in the format required - must be unique
-	  */
-	public void setValue (String Value);
-
-	/** Get Search Key.
-	  * Search key for the record in the format required - must be unique
-	  */
-	public String getValue();
 }
