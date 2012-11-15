@@ -23,7 +23,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for PP_Order_Node
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_PP_Order_Node 
 {

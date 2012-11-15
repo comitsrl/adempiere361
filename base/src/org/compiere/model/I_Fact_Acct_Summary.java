@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for Fact_Acct_Summary
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_Fact_Acct_Summary 
 {

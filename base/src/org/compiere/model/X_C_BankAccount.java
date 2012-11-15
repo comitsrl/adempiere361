@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_BankAccount
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_C_BankAccount extends PO implements I_C_BankAccount, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_C_BankAccount (Properties ctx, int C_BankAccount_ID, String trxName)
@@ -48,6 +48,8 @@ public class X_C_BankAccount extends PO implements I_C_BankAccount, I_Persistent
 			setCreditLimit (Env.ZERO);
 			setCurrentBalance (Env.ZERO);
 			setIsDefault (false);
+			setName (null);
+			setValue (null);
         } */
     }
 
@@ -188,14 +190,6 @@ public class X_C_BankAccount extends PO implements I_C_BankAccount, I_Persistent
 		return ii.intValue();
 	}
 
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), String.valueOf(getC_Bank_ID()));
-    }
-
 	public I_C_Currency getC_Currency() throws RuntimeException
     {
 		return (I_C_Currency)MTable.get(getCtx(), I_C_Currency.Table_Name)
@@ -322,6 +316,31 @@ public class X_C_BankAccount extends PO implements I_C_BankAccount, I_Persistent
 		return false;
 	}
 
+	/** Set Name.
+		@param Name 
+		Alphanumeric identifier of the entity
+	  */
+	public void setName (String Name)
+	{
+		set_Value (COLUMNNAME_Name, Name);
+	}
+
+	/** Get Name.
+		@return Alphanumeric identifier of the entity
+	  */
+	public String getName () 
+	{
+		return (String)get_Value(COLUMNNAME_Name);
+	}
+
+    /** Get Record ID/ColumnName
+        @return ID/ColumnName pair
+      */
+    public KeyNamePair getKeyNamePair() 
+    {
+        return new KeyNamePair(get_ID(), getName());
+    }
+
 	/** Set Payment Export Class.
 		@param PaymentExportClass Payment Export Class	  */
 	public void setPaymentExportClass (String PaymentExportClass)
@@ -334,5 +353,22 @@ public class X_C_BankAccount extends PO implements I_C_BankAccount, I_Persistent
 	public String getPaymentExportClass () 
 	{
 		return (String)get_Value(COLUMNNAME_PaymentExportClass);
+	}
+
+	/** Set Search Key.
+		@param Value 
+		Search key for the record in the format required - must be unique
+	  */
+	public void setValue (String Value)
+	{
+		set_Value (COLUMNNAME_Value, Value);
+	}
+
+	/** Get Search Key.
+		@return Search key for the record in the format required - must be unique
+	  */
+	public String getValue () 
+	{
+		return (String)get_Value(COLUMNNAME_Value);
 	}
 }

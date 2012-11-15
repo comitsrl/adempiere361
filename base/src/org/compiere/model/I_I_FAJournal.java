@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for I_FAJournal
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_I_FAJournal 
 {
@@ -30,7 +30,7 @@ public interface I_I_FAJournal
     /** TableName=I_FAJournal */
     public static final String Table_Name = "I_FAJournal";
 
-    /** AD_Table_ID=1000015 */
+    /** AD_Table_ID=53117 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,6 +40,60 @@ public interface I_I_FAJournal
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+    /** Column name Account_ID */
+    public static final String COLUMNNAME_Account_ID = "Account_ID";
+
+	/** Set Account.
+	  * Account used
+	  */
+	public void setAccount_ID (int Account_ID);
+
+	/** Get Account.
+	  * Account used
+	  */
+	public int getAccount_ID();
+
+	public I_C_ElementValue getAccount() throws RuntimeException;
+
+    /** Column name AccountValue */
+    public static final String COLUMNNAME_AccountValue = "AccountValue";
+
+	/** Set Account Key.
+	  * Key of Account Element
+	  */
+	public void setAccountValue (String AccountValue);
+
+	/** Get Account Key.
+	  * Key of Account Element
+	  */
+	public String getAccountValue();
+
+    /** Column name AcctSchemaName */
+    public static final String COLUMNNAME_AcctSchemaName = "AcctSchemaName";
+
+	/** Set Account Schema Name.
+	  * Name of the Accounting Schema
+	  */
+	public void setAcctSchemaName (String AcctSchemaName);
+
+	/** Get Account Schema Name.
+	  * Name of the Accounting Schema
+	  */
+	public String getAcctSchemaName();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -62,19 +116,6 @@ public interface I_I_FAJournal
 	  */
 	public int getAD_OrgDoc_ID();
 
-    /** Column name AD_OrgTrx_ID */
-    public static final String COLUMNNAME_AD_OrgTrx_ID = "AD_OrgTrx_ID";
-
-	/** Set Trx Organization.
-	  * Performing or initiating organization
-	  */
-	public void setAD_OrgTrx_ID (int AD_OrgTrx_ID);
-
-	/** Get Trx Organization.
-	  * Performing or initiating organization
-	  */
-	public int getAD_OrgTrx_ID();
-
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
@@ -88,18 +129,18 @@ public interface I_I_FAJournal
 	  */
 	public int getAD_Org_ID();
 
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+    /** Column name AD_OrgTrx_ID */
+    public static final String COLUMNNAME_AD_OrgTrx_ID = "AD_OrgTrx_ID";
 
-	/** Set Asset.
-	  * Asset used internally or by customers
+	/** Set Trx Organization.
+	  * Performing or initiating organization
 	  */
-	public void setA_Asset_ID (int A_Asset_ID);
+	public void setAD_OrgTrx_ID (int AD_OrgTrx_ID);
 
-	/** Get Asset.
-	  * Asset used internally or by customers
+	/** Get Trx Organization.
+	  * Performing or initiating organization
 	  */
-	public int getA_Asset_ID();
+	public int getAD_OrgTrx_ID();
 
     /** Column name A_Entry_Type */
     public static final String COLUMNNAME_A_Entry_Type = "A_Entry_Type";
@@ -109,45 +150,6 @@ public interface I_I_FAJournal
 
 	/** Get Entry Type	  */
 	public String getA_Entry_Type();
-
-    /** Column name AccountValue */
-    public static final String COLUMNNAME_AccountValue = "AccountValue";
-
-	/** Set Account Key.
-	  * Key of Account Element
-	  */
-	public void setAccountValue (String AccountValue);
-
-	/** Get Account Key.
-	  * Key of Account Element
-	  */
-	public String getAccountValue();
-
-    /** Column name Account_ID */
-    public static final String COLUMNNAME_Account_ID = "Account_ID";
-
-	/** Set Account.
-	  * Account used
-	  */
-	public void setAccount_ID (int Account_ID);
-
-	/** Get Account.
-	  * Account used
-	  */
-	public int getAccount_ID();
-
-    /** Column name AcctSchemaName */
-    public static final String COLUMNNAME_AcctSchemaName = "AcctSchemaName";
-
-	/** Set Account Schema Name.
-	  * Name of the Accounting Schema
-	  */
-	public void setAcctSchemaName (String AcctSchemaName);
-
-	/** Get Account Schema Name.
-	  * Name of the Accounting Schema
-	  */
-	public String getAcctSchemaName();
 
     /** Column name AmtAcctCr */
     public static final String COLUMNNAME_AmtAcctCr = "AmtAcctCr";
@@ -201,19 +203,6 @@ public interface I_I_FAJournal
 	  */
 	public BigDecimal getAmtSourceDr();
 
-    /** Column name BPartnerValue */
-    public static final String COLUMNNAME_BPartnerValue = "BPartnerValue";
-
-	/** Set Business Partner Key.
-	  * Key of the Business Partner
-	  */
-	public void setBPartnerValue (String BPartnerValue);
-
-	/** Get Business Partner Key.
-	  * Key of the Business Partner
-	  */
-	public String getBPartnerValue();
-
     /** Column name BatchDescription */
     public static final String COLUMNNAME_BatchDescription = "BatchDescription";
 
@@ -240,6 +229,19 @@ public interface I_I_FAJournal
 	  */
 	public String getBatchDocumentNo();
 
+    /** Column name BPartnerValue */
+    public static final String COLUMNNAME_BPartnerValue = "BPartnerValue";
+
+	/** Set Business Partner Key.
+	  * Key of the Business Partner
+	  */
+	public void setBPartnerValue (String BPartnerValue);
+
+	/** Get Business Partner Key.
+	  * Key of the Business Partner
+	  */
+	public String getBPartnerValue();
+
     /** Column name C_AcctSchema_ID */
     public static final String COLUMNNAME_C_AcctSchema_ID = "C_AcctSchema_ID";
 
@@ -253,7 +255,7 @@ public interface I_I_FAJournal
 	  */
 	public int getC_AcctSchema_ID();
 
-	public I_C_AcctSchema getC_AcctSchema();
+	public I_C_AcctSchema getC_AcctSchema() throws RuntimeException;
 
     /** Column name C_Activity_ID */
     public static final String COLUMNNAME_C_Activity_ID = "C_Activity_ID";
@@ -268,7 +270,20 @@ public interface I_I_FAJournal
 	  */
 	public int getC_Activity_ID();
 
-	public I_C_Activity getC_Activity();
+	public I_C_Activity getC_Activity() throws RuntimeException;
+
+    /** Column name CategoryName */
+    public static final String COLUMNNAME_CategoryName = "CategoryName";
+
+	/** Set Category Name.
+	  * Name of the Category
+	  */
+	public void setCategoryName (String CategoryName);
+
+	/** Get Category Name.
+	  * Name of the Category
+	  */
+	public String getCategoryName();
 
     /** Column name C_BPartner_ID */
     public static final String COLUMNNAME_C_BPartner_ID = "C_BPartner_ID";
@@ -283,7 +298,7 @@ public interface I_I_FAJournal
 	  */
 	public int getC_BPartner_ID();
 
-	public I_C_BPartner getC_BPartner();
+	public I_C_BPartner getC_BPartner() throws RuntimeException;
 
     /** Column name C_Campaign_ID */
     public static final String COLUMNNAME_C_Campaign_ID = "C_Campaign_ID";
@@ -298,7 +313,7 @@ public interface I_I_FAJournal
 	  */
 	public int getC_Campaign_ID();
 
-	public I_C_Campaign getC_Campaign();
+	public I_C_Campaign getC_Campaign() throws RuntimeException;
 
     /** Column name C_ConversionType_ID */
     public static final String COLUMNNAME_C_ConversionType_ID = "C_ConversionType_ID";
@@ -326,7 +341,7 @@ public interface I_I_FAJournal
 	  */
 	public int getC_Currency_ID();
 
-	public I_C_Currency getC_Currency();
+	public I_C_Currency getC_Currency() throws RuntimeException;
 
     /** Column name C_DocType_ID */
     public static final String COLUMNNAME_C_DocType_ID = "C_DocType_ID";
@@ -341,7 +356,20 @@ public interface I_I_FAJournal
 	  */
 	public int getC_DocType_ID();
 
-	public I_C_DocType getC_DocType();
+	public I_C_DocType getC_DocType() throws RuntimeException;
+
+    /** Column name ClientValue */
+    public static final String COLUMNNAME_ClientValue = "ClientValue";
+
+	/** Set Client Key.
+	  * Key of the Client
+	  */
+	public void setClientValue (String ClientValue);
+
+	/** Get Client Key.
+	  * Key of the Client
+	  */
+	public String getClientValue();
 
     /** Column name C_LocFrom_ID */
     public static final String COLUMNNAME_C_LocFrom_ID = "C_LocFrom_ID";
@@ -369,6 +397,19 @@ public interface I_I_FAJournal
 	  */
 	public int getC_LocTo_ID();
 
+    /** Column name ConversionTypeValue */
+    public static final String COLUMNNAME_ConversionTypeValue = "ConversionTypeValue";
+
+	/** Set Currency Type Key.
+	  * Key value for the Currency Conversion Rate Type
+	  */
+	public void setConversionTypeValue (String ConversionTypeValue);
+
+	/** Get Currency Type Key.
+	  * Key value for the Currency Conversion Rate Type
+	  */
+	public String getConversionTypeValue();
+
     /** Column name C_Period_ID */
     public static final String COLUMNNAME_C_Period_ID = "C_Period_ID";
 
@@ -382,7 +423,7 @@ public interface I_I_FAJournal
 	  */
 	public int getC_Period_ID();
 
-	public I_C_Period getC_Period();
+	public I_C_Period getC_Period() throws RuntimeException;
 
     /** Column name C_Project_ID */
     public static final String COLUMNNAME_C_Project_ID = "C_Project_ID";
@@ -397,91 +438,7 @@ public interface I_I_FAJournal
 	  */
 	public int getC_Project_ID();
 
-	public I_C_Project getC_Project();
-
-    /** Column name C_SalesRegion_ID */
-    public static final String COLUMNNAME_C_SalesRegion_ID = "C_SalesRegion_ID";
-
-	/** Set Sales Region.
-	  * Sales coverage region
-	  */
-	public void setC_SalesRegion_ID (int C_SalesRegion_ID);
-
-	/** Get Sales Region.
-	  * Sales coverage region
-	  */
-	public int getC_SalesRegion_ID();
-
-	public I_C_SalesRegion getC_SalesRegion();
-
-    /** Column name C_UOM_ID */
-    public static final String COLUMNNAME_C_UOM_ID = "C_UOM_ID";
-
-	/** Set UOM.
-	  * Unit of Measure
-	  */
-	public void setC_UOM_ID (int C_UOM_ID);
-
-	/** Get UOM.
-	  * Unit of Measure
-	  */
-	public int getC_UOM_ID();
-
-	public I_C_UOM getC_UOM();
-
-    /** Column name C_ValidCombination_ID */
-    public static final String COLUMNNAME_C_ValidCombination_ID = "C_ValidCombination_ID";
-
-	/** Set Combination.
-	  * Valid Account Combination
-	  */
-	public void setC_ValidCombination_ID (int C_ValidCombination_ID);
-
-	/** Get Combination.
-	  * Valid Account Combination
-	  */
-	public int getC_ValidCombination_ID();
-
-	public I_C_ValidCombination getC_ValidCombination();
-
-    /** Column name CategoryName */
-    public static final String COLUMNNAME_CategoryName = "CategoryName";
-
-	/** Set Category Name.
-	  * Name of the Category
-	  */
-	public void setCategoryName (String CategoryName);
-
-	/** Get Category Name.
-	  * Name of the Category
-	  */
-	public String getCategoryName();
-
-    /** Column name ClientValue */
-    public static final String COLUMNNAME_ClientValue = "ClientValue";
-
-	/** Set Client Key.
-	  * Key of the Client
-	  */
-	public void setClientValue (String ClientValue);
-
-	/** Get Client Key.
-	  * Key of the Client
-	  */
-	public String getClientValue();
-
-    /** Column name ConversionTypeValue */
-    public static final String COLUMNNAME_ConversionTypeValue = "ConversionTypeValue";
-
-	/** Set Currency Type Key.
-	  * Key value for the Currency Conversion Rate Type
-	  */
-	public void setConversionTypeValue (String ConversionTypeValue);
-
-	/** Get Currency Type Key.
-	  * Key value for the Currency Conversion Rate Type
-	  */
-	public String getConversionTypeValue();
+	public I_C_Project getC_Project() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -498,6 +455,49 @@ public interface I_I_FAJournal
 	  * User who created this records
 	  */
 	public int getCreatedBy();
+
+    /** Column name C_SalesRegion_ID */
+    public static final String COLUMNNAME_C_SalesRegion_ID = "C_SalesRegion_ID";
+
+	/** Set Sales Region.
+	  * Sales coverage region
+	  */
+	public void setC_SalesRegion_ID (int C_SalesRegion_ID);
+
+	/** Get Sales Region.
+	  * Sales coverage region
+	  */
+	public int getC_SalesRegion_ID();
+
+	public I_C_SalesRegion getC_SalesRegion() throws RuntimeException;
+
+    /** Column name C_SubAcct_ID */
+    public static final String COLUMNNAME_C_SubAcct_ID = "C_SubAcct_ID";
+
+	/** Set Sub Account.
+	  * Sub account for Element Value
+	  */
+	public void setC_SubAcct_ID (int C_SubAcct_ID);
+
+	/** Get Sub Account.
+	  * Sub account for Element Value
+	  */
+	public int getC_SubAcct_ID();
+
+    /** Column name C_UOM_ID */
+    public static final String COLUMNNAME_C_UOM_ID = "C_UOM_ID";
+
+	/** Set UOM.
+	  * Unit of Measure
+	  */
+	public void setC_UOM_ID (int C_UOM_ID);
+
+	/** Get UOM.
+	  * Unit of Measure
+	  */
+	public int getC_UOM_ID();
+
+	public I_C_UOM getC_UOM() throws RuntimeException;
 
     /** Column name CurrencyRate */
     public static final String COLUMNNAME_CurrencyRate = "CurrencyRate";
@@ -520,6 +520,21 @@ public interface I_I_FAJournal
 
 	/** Get CurrencyRateType	  */
 	public String getCurrencyRateType();
+
+    /** Column name C_ValidCombination_ID */
+    public static final String COLUMNNAME_C_ValidCombination_ID = "C_ValidCombination_ID";
+
+	/** Set Combination.
+	  * Valid Account Combination
+	  */
+	public void setC_ValidCombination_ID (int C_ValidCombination_ID);
+
+	/** Get Combination.
+	  * Valid Account Combination
+	  */
+	public int getC_ValidCombination_ID();
+
+	public I_C_ValidCombination getC_ValidCombination() throws RuntimeException;
 
     /** Column name DateAcct */
     public static final String COLUMNNAME_DateAcct = "DateAcct";
@@ -573,7 +588,7 @@ public interface I_I_FAJournal
 	  */
 	public int getGL_Budget_ID();
 
-	public I_GL_Budget getGL_Budget();
+	public I_GL_Budget getGL_Budget() throws RuntimeException;
 
     /** Column name GL_Category_ID */
     public static final String COLUMNNAME_GL_Category_ID = "GL_Category_ID";
@@ -588,7 +603,7 @@ public interface I_I_FAJournal
 	  */
 	public int getGL_Category_ID();
 
-	public I_GL_Category getGL_Category();
+	public I_GL_Category getGL_Category() throws RuntimeException;
 
     /** Column name GL_JournalBatch_ID */
     public static final String COLUMNNAME_GL_JournalBatch_ID = "GL_JournalBatch_ID";
@@ -603,22 +618,7 @@ public interface I_I_FAJournal
 	  */
 	public int getGL_JournalBatch_ID();
 
-	public I_GL_JournalBatch getGL_JournalBatch();
-
-    /** Column name GL_JournalLine_ID */
-    public static final String COLUMNNAME_GL_JournalLine_ID = "GL_JournalLine_ID";
-
-	/** Set Journal Line.
-	  * General Ledger Journal Line
-	  */
-	public void setGL_JournalLine_ID (int GL_JournalLine_ID);
-
-	/** Get Journal Line.
-	  * General Ledger Journal Line
-	  */
-	public int getGL_JournalLine_ID();
-
-	public I_GL_JournalLine getGL_JournalLine();
+	public I_GL_JournalBatch getGL_JournalBatch() throws RuntimeException;
 
     /** Column name GL_Journal_ID */
     public static final String COLUMNNAME_GL_Journal_ID = "GL_Journal_ID";
@@ -633,20 +633,22 @@ public interface I_I_FAJournal
 	  */
 	public int getGL_Journal_ID();
 
-	public I_GL_Journal getGL_Journal();
+	public I_GL_Journal getGL_Journal() throws RuntimeException;
 
-    /** Column name ISO_Code */
-    public static final String COLUMNNAME_ISO_Code = "ISO_Code";
+    /** Column name GL_JournalLine_ID */
+    public static final String COLUMNNAME_GL_JournalLine_ID = "GL_JournalLine_ID";
 
-	/** Set ISO Currency Code.
-	  * Three letter ISO 4217 Code of the Currency
+	/** Set Journal Line.
+	  * General Ledger Journal Line
 	  */
-	public void setISO_Code (String ISO_Code);
+	public void setGL_JournalLine_ID (int GL_JournalLine_ID);
 
-	/** Get ISO Currency Code.
-	  * Three letter ISO 4217 Code of the Currency
+	/** Get Journal Line.
+	  * General Ledger Journal Line
 	  */
-	public String getISO_Code();
+	public int getGL_JournalLine_ID();
+
+	public I_GL_JournalLine getGL_JournalLine() throws RuntimeException;
 
     /** Column name I_ErrorMsg */
     public static final String COLUMNNAME_I_ErrorMsg = "I_ErrorMsg";
@@ -664,10 +666,10 @@ public interface I_I_FAJournal
     /** Column name I_FAJournal_ID */
     public static final String COLUMNNAME_I_FAJournal_ID = "I_FAJournal_ID";
 
-	/** Set I_FAJournal_ID	  */
+	/** Set FA Journal	  */
 	public void setI_FAJournal_ID (int I_FAJournal_ID);
 
-	/** Get I_FAJournal_ID	  */
+	/** Get FA Journal	  */
 	public int getI_FAJournal_ID();
 
     /** Column name I_IsImported */
@@ -709,6 +711,19 @@ public interface I_I_FAJournal
 	  */
 	public String getIsDepreciated();
 
+    /** Column name ISO_Code */
+    public static final String COLUMNNAME_ISO_Code = "ISO_Code";
+
+	/** Set ISO Currency Code.
+	  * Three letter ISO 4217 Code of the Currency
+	  */
+	public void setISO_Code (String ISO_Code);
+
+	/** Get ISO Currency Code.
+	  * Three letter ISO 4217 Code of the Currency
+	  */
+	public String getISO_Code();
+
     /** Column name JournalDocumentNo */
     public static final String COLUMNNAME_JournalDocumentNo = "JournalDocumentNo";
 
@@ -748,7 +763,7 @@ public interface I_I_FAJournal
 	  */
 	public int getM_Product_ID();
 
-	public I_M_Product getM_Product();
+	public I_M_Product getM_Product() throws RuntimeException;
 
     /** Column name OrgTrxValue */
     public static final String COLUMNNAME_OrgTrxValue = "OrgTrxValue";
@@ -905,6 +920,8 @@ public interface I_I_FAJournal
 	  */
 	public int getUser1_ID();
 
+	public I_C_ElementValue getUser1() throws RuntimeException;
+
     /** Column name User2_ID */
     public static final String COLUMNNAME_User2_ID = "User2_ID";
 
@@ -917,4 +934,32 @@ public interface I_I_FAJournal
 	  * User defined list element #2
 	  */
 	public int getUser2_ID();
+
+	public I_C_ElementValue getUser2() throws RuntimeException;
+
+    /** Column name UserElement1_ID */
+    public static final String COLUMNNAME_UserElement1_ID = "UserElement1_ID";
+
+	/** Set User Element 1.
+	  * User defined accounting Element
+	  */
+	public void setUserElement1_ID (int UserElement1_ID);
+
+	/** Get User Element 1.
+	  * User defined accounting Element
+	  */
+	public int getUserElement1_ID();
+
+    /** Column name UserElement2_ID */
+    public static final String COLUMNNAME_UserElement2_ID = "UserElement2_ID";
+
+	/** Set User Element 2.
+	  * User defined accounting Element
+	  */
+	public void setUserElement2_ID (int UserElement2_ID);
+
+	/** Get User Element 2.
+	  * User defined accounting Element
+	  */
+	public int getUserElement2_ID();
 }

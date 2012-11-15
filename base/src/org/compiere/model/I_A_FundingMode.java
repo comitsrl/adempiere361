@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_FundingMode
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_FundingMode 
 {
@@ -30,7 +30,7 @@ public interface I_A_FundingMode
     /** TableName=A_FundingMode */
     public static final String Table_Name = "A_FundingMode";
 
-    /** AD_Table_ID=1500046 */
+    /** AD_Table_ID=53273 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);

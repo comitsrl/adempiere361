@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_RecentItem
  *  @author Adempiere (generated) 
- *  @version 360LTS.015
+ *  @version 361LTS.Final
  */
 public interface I_AD_RecentItem 
 {
@@ -30,7 +30,7 @@ public interface I_AD_RecentItem
     /** TableName=AD_RecentItem */
     public static final String Table_Name = "AD_RecentItem";
 
-    /** AD_Table_ID=1000000 */
+    /** AD_Table_ID=200000 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);

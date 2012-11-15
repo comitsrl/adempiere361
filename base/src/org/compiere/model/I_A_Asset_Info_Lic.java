@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Info_Lic
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Info_Lic 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Info_Lic
     /** TableName=A_Asset_Info_Lic */
     public static final String Table_Name = "A_Asset_Info_Lic";
 
-    /** AD_Table_ID=1000032 */
+    /** AD_Table_ID=53134 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,6 +40,30 @@ public interface I_A_Asset_Info_Lic
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+	public I_A_Asset getA_Asset() throws RuntimeException;
+
+    /** Column name A_Asset_Info_Lic_ID */
+    public static final String COLUMNNAME_A_Asset_Info_Lic_ID = "A_Asset_Info_Lic_ID";
+
+	/** Set A_Asset_Info_Lic_ID	  */
+	public void setA_Asset_Info_Lic_ID (int A_Asset_Info_Lic_ID);
+
+	/** Get A_Asset_Info_Lic_ID	  */
+	public int getA_Asset_Info_Lic_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -62,30 +86,6 @@ public interface I_A_Asset_Info_Lic
 	  */
 	public int getAD_Org_ID();
 
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-	public I_A_Asset getA_Asset();
-
-    /** Column name A_Asset_Info_Lic_ID */
-    public static final String COLUMNNAME_A_Asset_Info_Lic_ID = "A_Asset_Info_Lic_ID";
-
-	/** Set A_Asset_Info_Lic_ID	  */
-	public void setA_Asset_Info_Lic_ID (int A_Asset_Info_Lic_ID);
-
-	/** Get A_Asset_Info_Lic_ID	  */
-	public int getA_Asset_Info_Lic_ID();
-
     /** Column name A_Issuing_Agency */
     public static final String COLUMNNAME_A_Issuing_Agency = "A_Issuing_Agency";
 
@@ -98,28 +98,28 @@ public interface I_A_Asset_Info_Lic
     /** Column name A_License_Fee */
     public static final String COLUMNNAME_A_License_Fee = "A_License_Fee";
 
-	/** Set A_License_Fee	  */
+	/** Set Asset License Fee	  */
 	public void setA_License_Fee (BigDecimal A_License_Fee);
 
-	/** Get A_License_Fee	  */
+	/** Get Asset License Fee	  */
 	public BigDecimal getA_License_Fee();
 
     /** Column name A_License_No */
     public static final String COLUMNNAME_A_License_No = "A_License_No";
 
-	/** Set A_License_No	  */
+	/** Set Asset License No	  */
 	public void setA_License_No (String A_License_No);
 
-	/** Get A_License_No	  */
+	/** Get Asset License No	  */
 	public String getA_License_No();
 
     /** Column name A_Renewal_Date */
     public static final String COLUMNNAME_A_Renewal_Date = "A_Renewal_Date";
 
-	/** Set A_Renewal_Date	  */
+	/** Set Asset Renewal Date	  */
 	public void setA_Renewal_Date (Timestamp A_Renewal_Date);
 
-	/** Get A_Renewal_Date	  */
+	/** Get Asset Renewal Date	  */
 	public Timestamp getA_Renewal_Date();
 
     /** Column name A_State */

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for GL_JournalLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.015
+ *  @version 361LTS.Final
  */
 public interface I_GL_JournalLine 
 {
@@ -89,10 +89,10 @@ public interface I_GL_JournalLine
     /** Column name A_CreateAsset */
     public static final String COLUMNNAME_A_CreateAsset = "A_CreateAsset";
 
-	/** Set Asset Related?	  */
+	/** Set Create Asset	  */
 	public void setA_CreateAsset (boolean A_CreateAsset);
 
-	/** Get Asset Related?	  */
+	/** Get Create Asset	  */
 	public boolean isA_CreateAsset();
 
     /** Column name AD_Client_ID */

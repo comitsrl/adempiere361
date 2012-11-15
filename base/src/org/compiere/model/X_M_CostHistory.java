@@ -20,19 +20,18 @@ package org.compiere.model;
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.util.Properties;
-import org.compiere.model.*;
 import org.compiere.util.Env;
 
 /** Generated Model for M_CostHistory
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_CostHistory extends PO implements I_M_CostHistory, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120308L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_CostHistory (Properties ctx, int M_CostHistory_ID, String trxName)
@@ -109,9 +108,9 @@ public class X_M_CostHistory extends PO implements I_M_CostHistory, I_Persistent
 		return ii.intValue();
 	}
 
-	public org.compiere.model.I_M_CostDetail getM_CostDetail() throws RuntimeException
+	public I_M_CostDetail getM_CostDetail() throws RuntimeException
     {
-		return (org.compiere.model.I_M_CostDetail)MTable.get(getCtx(), org.compiere.model.I_M_CostDetail.Table_Name)
+		return (I_M_CostDetail)MTable.get(getCtx(), I_M_CostDetail.Table_Name)
 			.getPO(getM_CostDetail_ID(), get_TrxName());	}
 
 	/** Set Cost Detail.
@@ -137,9 +136,9 @@ public class X_M_CostHistory extends PO implements I_M_CostHistory, I_Persistent
 		return ii.intValue();
 	}
 
-	public org.compiere.model.I_M_CostElement getM_CostElement() throws RuntimeException
+	public I_M_CostElement getM_CostElement() throws RuntimeException
     {
-		return (org.compiere.model.I_M_CostElement)MTable.get(getCtx(), org.compiere.model.I_M_CostElement.Table_Name)
+		return (I_M_CostElement)MTable.get(getCtx(), I_M_CostElement.Table_Name)
 			.getPO(getM_CostElement_ID(), get_TrxName());	}
 
 	/** Set Cost Element.
@@ -202,9 +201,9 @@ public class X_M_CostHistory extends PO implements I_M_CostHistory, I_Persistent
 		return (String)get_Value(COLUMNNAME_M_CostHistory_UU);
 	}
 
-	public org.compiere.model.I_M_CostType getM_CostType() throws RuntimeException
+	public I_M_CostType getM_CostType() throws RuntimeException
     {
-		return (org.compiere.model.I_M_CostType)MTable.get(getCtx(), org.compiere.model.I_M_CostType.Table_Name)
+		return (I_M_CostType)MTable.get(getCtx(), I_M_CostType.Table_Name)
 			.getPO(getM_CostType_ID(), get_TrxName());	}
 
 	/** Set Cost Type.

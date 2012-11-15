@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_InvoiceLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_C_InvoiceLine 
 {
@@ -74,19 +74,19 @@ public interface I_C_InvoiceLine
     /** Column name A_CapvsExp */
     public static final String COLUMNNAME_A_CapvsExp = "A_CapvsExp";
 
-	/** Set Capital vs Expense	  */
+	/** Set Capital/Expense	  */
 	public void setA_CapvsExp (String A_CapvsExp);
 
-	/** Get Capital vs Expense	  */
+	/** Get Capital/Expense	  */
 	public String getA_CapvsExp();
 
     /** Column name A_CreateAsset */
     public static final String COLUMNNAME_A_CreateAsset = "A_CreateAsset";
 
-	/** Set Asset Related?	  */
+	/** Set Create Asset	  */
 	public void setA_CreateAsset (boolean A_CreateAsset);
 
-	/** Get Asset Related?	  */
+	/** Get Create Asset	  */
 	public boolean isA_CreateAsset();
 
     /** Column name AD_Client_ID */
@@ -349,6 +349,15 @@ public interface I_C_InvoiceLine
 	  * if true, the line is just description and no transaction
 	  */
 	public boolean isDescription();
+
+    /** Column name IsFixedAssetInvoice */
+    public static final String COLUMNNAME_IsFixedAssetInvoice = "IsFixedAssetInvoice";
+
+	/** Set IsFixedAssetInvoice	  */
+	public void setIsFixedAssetInvoice (boolean IsFixedAssetInvoice);
+
+	/** Get IsFixedAssetInvoice	  */
+	public boolean isFixedAssetInvoice();
 
     /** Column name IsPrinted */
     public static final String COLUMNNAME_IsPrinted = "IsPrinted";

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_QualityTestResult
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 361LTS.Final
  */
 public interface I_M_QualityTestResult 
 {
@@ -30,7 +30,7 @@ public interface I_M_QualityTestResult
     /** TableName=M_QualityTestResult */
     public static final String Table_Name = "M_QualityTestResult";
 
-    /** AD_Table_ID=1000006 */
+    /** AD_Table_ID=53331 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -52,13 +52,13 @@ public interface I_M_QualityTestResult
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
-	/** Set Organisation.
-	  * Organisational entity within client
+	/** Set Organization.
+	  * Organizational entity within client
 	  */
 	public void setAD_Org_ID (int AD_Org_ID);
 
-	/** Get Organisation.
-	  * Organisational entity within client
+	/** Get Organization.
+	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
 

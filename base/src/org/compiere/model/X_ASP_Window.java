@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for ASP_Window
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_ASP_Window extends PO implements I_ASP_Window, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_ASP_Window (Properties ctx, int ASP_Window_ID, String trxName)

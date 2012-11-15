@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_ProductionPlan
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_ProductionPlan extends PO implements I_M_ProductionPlan, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20101206L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_ProductionPlan (Properties ctx, int M_ProductionPlan_ID, String trxName)

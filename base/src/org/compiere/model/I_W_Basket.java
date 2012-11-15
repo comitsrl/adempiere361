@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for W_Basket
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_W_Basket 
 {

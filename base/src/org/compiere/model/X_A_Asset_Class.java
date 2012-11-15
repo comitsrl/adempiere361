@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for A_Asset_Class
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Class extends PO implements I_A_Asset_Class, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Class (Properties ctx, int A_Asset_Class_ID, String trxName)
@@ -77,9 +77,10 @@ public class X_A_Asset_Class extends PO implements I_A_Asset_Class, I_Persistent
 		@param A_Asset_Class_ID Asset class	  */
 	public void setA_Asset_Class_ID (int A_Asset_Class_ID)
 	{
-		if (A_Asset_Class_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Class_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_Class_ID, Integer.valueOf(A_Asset_Class_ID));
+		if (A_Asset_Class_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Class_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Class_ID, Integer.valueOf(A_Asset_Class_ID));
 	}
 
 	/** Get Asset class.
@@ -248,8 +249,6 @@ public class X_A_Asset_Class extends PO implements I_A_Asset_Class, I_Persistent
 	  */
 	public void setName (String Name)
 	{
-		if (Name == null)
-			throw new IllegalArgumentException ("Name is mandatory.");
 		set_Value (COLUMNNAME_Name, Name);
 	}
 
@@ -267,8 +266,6 @@ public class X_A_Asset_Class extends PO implements I_A_Asset_Class, I_Persistent
 	  */
 	public void setValue (String Value)
 	{
-		if (Value == null)
-			throw new IllegalArgumentException ("Value is mandatory.");
 		set_Value (COLUMNNAME_Value, Value);
 	}
 

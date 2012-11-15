@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Info_Tax
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Info_Tax 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Info_Tax
     /** TableName=A_Asset_Info_Tax */
     public static final String Table_Name = "A_Asset_Info_Tax";
 
-    /** AD_Table_ID=1000029 */
+    /** AD_Table_ID=53131 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,6 +40,28 @@ public interface I_A_Asset_Info_Tax
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+    /** Column name A_Asset_Info_Tax_ID */
+    public static final String COLUMNNAME_A_Asset_Info_Tax_ID = "A_Asset_Info_Tax_ID";
+
+	/** Set Asset Info Tax	  */
+	public void setA_Asset_Info_Tax_ID (int A_Asset_Info_Tax_ID);
+
+	/** Get Asset Info Tax	  */
+	public int getA_Asset_Info_Tax_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -62,53 +84,31 @@ public interface I_A_Asset_Info_Tax
 	  */
 	public int getAD_Org_ID();
 
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-    /** Column name A_Asset_Info_Tax_ID */
-    public static final String COLUMNNAME_A_Asset_Info_Tax_ID = "A_Asset_Info_Tax_ID";
-
-	/** Set A_Asset_Info_Tax_ID	  */
-	public void setA_Asset_Info_Tax_ID (int A_Asset_Info_Tax_ID);
-
-	/** Get A_Asset_Info_Tax_ID	  */
-	public int getA_Asset_Info_Tax_ID();
-
     /** Column name A_Finance_Meth */
     public static final String COLUMNNAME_A_Finance_Meth = "A_Finance_Meth";
 
-	/** Set A_Finance_Meth	  */
+	/** Set Asset Finance Method	  */
 	public void setA_Finance_Meth (String A_Finance_Meth);
 
-	/** Get A_Finance_Meth	  */
+	/** Get Asset Finance Method	  */
 	public String getA_Finance_Meth();
 
     /** Column name A_Investment_CR */
     public static final String COLUMNNAME_A_Investment_CR = "A_Investment_CR";
 
-	/** Set A_Investment_CR	  */
+	/** Set Asset Investment CR	  */
 	public void setA_Investment_CR (int A_Investment_CR);
 
-	/** Get A_Investment_CR	  */
+	/** Get Asset Investment CR	  */
 	public int getA_Investment_CR();
 
     /** Column name A_New_Used */
     public static final String COLUMNNAME_A_New_Used = "A_New_Used";
 
-	/** Set A_New_Used	  */
+	/** Set Asset New Used	  */
 	public void setA_New_Used (boolean A_New_Used);
 
-	/** Get A_New_Used	  */
+	/** Get Asset New Used	  */
 	public boolean isA_New_Used();
 
     /** Column name A_State */
@@ -127,10 +127,10 @@ public interface I_A_Asset_Info_Tax
     /** Column name A_Tax_Entity */
     public static final String COLUMNNAME_A_Tax_Entity = "A_Tax_Entity";
 
-	/** Set A_Tax_Entity	  */
+	/** Set Asset Tax Entity	  */
 	public void setA_Tax_Entity (String A_Tax_Entity);
 
-	/** Get A_Tax_Entity	  */
+	/** Get Asset Tax Entity	  */
 	public String getA_Tax_Entity();
 
     /** Column name Created */

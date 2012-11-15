@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Reval
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Reval 
 {
@@ -30,16 +30,76 @@ public interface I_A_Asset_Reval
     /** TableName=A_Asset_Reval */
     public static final String Table_Name = "A_Asset_Reval";
 
-    /** AD_Table_ID=1500102 */
+    /** AD_Table_ID=53275 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
 
-    /** AccessLevel = 7 - System - Client - Org 
+    /** AccessLevel = 3 - Client - Org 
      */
-    BigDecimal accessLevel = BigDecimal.valueOf(7);
+    BigDecimal accessLevel = BigDecimal.valueOf(3);
 
     /** Load Meta Data */
+
+    /** Column name A_Accumulated_Depr */
+    public static final String COLUMNNAME_A_Accumulated_Depr = "A_Accumulated_Depr";
+
+	/** Set Accumulated Depreciation	  */
+	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr);
+
+	/** Get Accumulated Depreciation	  */
+	public BigDecimal getA_Accumulated_Depr();
+
+    /** Column name A_Asset_Cost */
+    public static final String COLUMNNAME_A_Asset_Cost = "A_Asset_Cost";
+
+	/** Set Asset Cost	  */
+	public void setA_Asset_Cost (BigDecimal A_Asset_Cost);
+
+	/** Get Asset Cost	  */
+	public BigDecimal getA_Asset_Cost();
+
+    /** Column name A_Asset_Cost_Change */
+    public static final String COLUMNNAME_A_Asset_Cost_Change = "A_Asset_Cost_Change";
+
+	/** Set Asset Cost Change	  */
+	public void setA_Asset_Cost_Change (BigDecimal A_Asset_Cost_Change);
+
+	/** Get Asset Cost Change	  */
+	public BigDecimal getA_Asset_Cost_Change();
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+	public I_A_Asset getA_Asset() throws RuntimeException;
+
+    /** Column name A_Asset_Reval_ID */
+    public static final String COLUMNNAME_A_Asset_Reval_ID = "A_Asset_Reval_ID";
+
+	/** Set Asset Revaluation	  */
+	public void setA_Asset_Reval_ID (int A_Asset_Reval_ID);
+
+	/** Get Asset Revaluation	  */
+	public int getA_Asset_Reval_ID();
+
+    /** Column name A_Change_Acumulated_Depr */
+    public static final String COLUMNNAME_A_Change_Acumulated_Depr = "A_Change_Acumulated_Depr";
+
+	/** Set Change Acumulated Depreciation	  */
+	public void setA_Change_Acumulated_Depr (BigDecimal A_Change_Acumulated_Depr);
+
+	/** Get Change Acumulated Depreciation	  */
+	public BigDecimal getA_Change_Acumulated_Depr();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -61,66 +121,6 @@ public interface I_A_Asset_Reval
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Accumulated_Depr */
-    public static final String COLUMNNAME_A_Accumulated_Depr = "A_Accumulated_Depr";
-
-	/** Set A_Accumulated_Depr	  */
-	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr);
-
-	/** Get A_Accumulated_Depr	  */
-	public BigDecimal getA_Accumulated_Depr();
-
-    /** Column name A_Asset_Cost */
-    public static final String COLUMNNAME_A_Asset_Cost = "A_Asset_Cost";
-
-	/** Set A_Asset_Cost	  */
-	public void setA_Asset_Cost (BigDecimal A_Asset_Cost);
-
-	/** Get A_Asset_Cost	  */
-	public BigDecimal getA_Asset_Cost();
-
-    /** Column name A_Asset_Cost_Change */
-    public static final String COLUMNNAME_A_Asset_Cost_Change = "A_Asset_Cost_Change";
-
-	/** Set A_Asset_Cost_Change	  */
-	public void setA_Asset_Cost_Change (BigDecimal A_Asset_Cost_Change);
-
-	/** Get A_Asset_Cost_Change	  */
-	public BigDecimal getA_Asset_Cost_Change();
-
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-	public I_A_Asset getA_Asset();
-
-    /** Column name A_Asset_Reval_ID */
-    public static final String COLUMNNAME_A_Asset_Reval_ID = "A_Asset_Reval_ID";
-
-	/** Set A_Asset_Reval_ID	  */
-	public void setA_Asset_Reval_ID (int A_Asset_Reval_ID);
-
-	/** Get A_Asset_Reval_ID	  */
-	public int getA_Asset_Reval_ID();
-
-    /** Column name A_Change_Acumulated_Depr */
-    public static final String COLUMNNAME_A_Change_Acumulated_Depr = "A_Change_Acumulated_Depr";
-
-	/** Set A_Change_Acumulated_Depr	  */
-	public void setA_Change_Acumulated_Depr (BigDecimal A_Change_Acumulated_Depr);
-
-	/** Get A_Change_Acumulated_Depr	  */
-	public BigDecimal getA_Change_Acumulated_Depr();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -254,6 +254,19 @@ public interface I_A_Asset_Reval
 	  * The document has been processed
 	  */
 	public boolean isProcessed();
+
+    /** Column name ProcessedOn */
+    public static final String COLUMNNAME_ProcessedOn = "ProcessedOn";
+
+	/** Set Processed On.
+	  * The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public void setProcessedOn (BigDecimal ProcessedOn);
+
+	/** Get Processed On.
+	  * The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public BigDecimal getProcessedOn();
 
     /** Column name Processing */
     public static final String COLUMNNAME_Processing = "Processing";

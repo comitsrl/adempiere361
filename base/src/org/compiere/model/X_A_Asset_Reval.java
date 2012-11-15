@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Reval
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Reval (Properties ctx, int A_Asset_Reval_ID, String trxName)
@@ -69,7 +69,7 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
     }
 
     /** AccessLevel
-      * @return 7 - System - Client - Org 
+      * @return 3 - Client - Org 
       */
     protected int get_AccessLevel()
     {
@@ -90,15 +90,15 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
       return sb.toString();
     }
 
-	/** Set A_Accumulated_Depr.
-		@param A_Accumulated_Depr A_Accumulated_Depr	  */
+	/** Set Accumulated Depreciation.
+		@param A_Accumulated_Depr Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr)
 	{
 		set_Value (COLUMNNAME_A_Accumulated_Depr, A_Accumulated_Depr);
 	}
 
-	/** Get A_Accumulated_Depr.
-		@return A_Accumulated_Depr	  */
+	/** Get Accumulated Depreciation.
+		@return Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Accumulated_Depr);
@@ -107,15 +107,15 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 		return bd;
 	}
 
-	/** Set A_Asset_Cost.
-		@param A_Asset_Cost A_Asset_Cost	  */
+	/** Set Asset Cost.
+		@param A_Asset_Cost Asset Cost	  */
 	public void setA_Asset_Cost (BigDecimal A_Asset_Cost)
 	{
 		set_Value (COLUMNNAME_A_Asset_Cost, A_Asset_Cost);
 	}
 
-	/** Get A_Asset_Cost.
-		@return A_Asset_Cost	  */
+	/** Get Asset Cost.
+		@return Asset Cost	  */
 	public BigDecimal getA_Asset_Cost () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Asset_Cost);
@@ -124,17 +124,15 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 		return bd;
 	}
 
-	/** Set A_Asset_Cost_Change.
-		@param A_Asset_Cost_Change A_Asset_Cost_Change	  */
+	/** Set Asset Cost Change.
+		@param A_Asset_Cost_Change Asset Cost Change	  */
 	public void setA_Asset_Cost_Change (BigDecimal A_Asset_Cost_Change)
 	{
-		if (A_Asset_Cost_Change == null)
-			throw new IllegalArgumentException ("A_Asset_Cost_Change is mandatory.");
 		set_Value (COLUMNNAME_A_Asset_Cost_Change, A_Asset_Cost_Change);
 	}
 
-	/** Get A_Asset_Cost_Change.
-		@return A_Asset_Cost_Change	  */
+	/** Get Asset Cost Change.
+		@return Asset Cost Change	  */
 	public BigDecimal getA_Asset_Cost_Change () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Asset_Cost_Change);
@@ -143,7 +141,7 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 		return bd;
 	}
 
-	public I_A_Asset getA_Asset()
+	public I_A_Asset getA_Asset() throws RuntimeException
     {
 		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
 			.getPO(getA_Asset_ID(), get_TrxName());	}
@@ -154,9 +152,10 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -170,17 +169,18 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set A_Asset_Reval_ID.
-		@param A_Asset_Reval_ID A_Asset_Reval_ID	  */
+	/** Set Asset Revaluation.
+		@param A_Asset_Reval_ID Asset Revaluation	  */
 	public void setA_Asset_Reval_ID (int A_Asset_Reval_ID)
 	{
-		if (A_Asset_Reval_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Reval_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_Reval_ID, Integer.valueOf(A_Asset_Reval_ID));
+		if (A_Asset_Reval_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Reval_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Reval_ID, Integer.valueOf(A_Asset_Reval_ID));
 	}
 
-	/** Get A_Asset_Reval_ID.
-		@return A_Asset_Reval_ID	  */
+	/** Get Asset Revaluation.
+		@return Asset Revaluation	  */
 	public int getA_Asset_Reval_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Asset_Reval_ID);
@@ -197,17 +197,15 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
         return new KeyNamePair(get_ID(), String.valueOf(getA_Asset_Reval_ID()));
     }
 
-	/** Set A_Change_Acumulated_Depr.
-		@param A_Change_Acumulated_Depr A_Change_Acumulated_Depr	  */
+	/** Set Change Acumulated Depreciation.
+		@param A_Change_Acumulated_Depr Change Acumulated Depreciation	  */
 	public void setA_Change_Acumulated_Depr (BigDecimal A_Change_Acumulated_Depr)
 	{
-		if (A_Change_Acumulated_Depr == null)
-			throw new IllegalArgumentException ("A_Change_Acumulated_Depr is mandatory.");
 		set_Value (COLUMNNAME_A_Change_Acumulated_Depr, A_Change_Acumulated_Depr);
 	}
 
-	/** Get A_Change_Acumulated_Depr.
-		@return A_Change_Acumulated_Depr	  */
+	/** Get Change Acumulated Depreciation.
+		@return Change Acumulated Depreciation	  */
 	public BigDecimal getA_Change_Acumulated_Depr () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Change_Acumulated_Depr);
@@ -222,8 +220,6 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 	  */
 	public void setDateAcct (Timestamp DateAcct)
 	{
-		if (DateAcct == null)
-			throw new IllegalArgumentException ("DateAcct is mandatory.");
 		set_Value (COLUMNNAME_DateAcct, DateAcct);
 	}
 
@@ -437,6 +433,26 @@ public class X_A_Asset_Reval extends PO implements I_A_Asset_Reval, I_Persistent
 			return "Y".equals(oo);
 		}
 		return false;
+	}
+
+	/** Set Processed On.
+		@param ProcessedOn 
+		The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public void setProcessedOn (BigDecimal ProcessedOn)
+	{
+		set_Value (COLUMNNAME_ProcessedOn, ProcessedOn);
+	}
+
+	/** Get Processed On.
+		@return The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public BigDecimal getProcessedOn () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_ProcessedOn);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	/** Set Process Now.

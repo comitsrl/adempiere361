@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Process_Para
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_AD_Process_Para 
 {
@@ -298,6 +298,19 @@ public interface I_AD_Process_Para
 	  */
 	public boolean isCentrallyMaintained();
 
+    /** Column name IsEncrypted */
+    public static final String COLUMNNAME_IsEncrypted = "IsEncrypted";
+
+	/** Set Encrypted.
+	  * Display or Storage is encrypted
+	  */
+	public void setIsEncrypted (boolean IsEncrypted);
+
+	/** Get Encrypted.
+	  * Display or Storage is encrypted
+	  */
+	public boolean isEncrypted();
+
     /** Column name IsMandatory */
     public static final String COLUMNNAME_IsMandatory = "IsMandatory";
 
@@ -421,17 +434,4 @@ public interface I_AD_Process_Para
  Can contain fixed format elements, Variables: "_lLoOaAcCa09"
 	  */
 	public String getVFormat();
-	
-	  /** Column name IsEncrypted */
-    public static final String COLUMNNAME_IsEncrypted = "IsEncrypted";
-
-	/** Set Encrypted.
-	  * Display or Storage is encrypted
-	  */
-	public void setIsEncrypted (boolean IsEncrypted);
-
-	/** Get Encrypted.
-	  * Display or Storage is encrypted
-	  */
-	public boolean isEncrypted();
 }

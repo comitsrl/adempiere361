@@ -24,14 +24,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Forecast
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Depreciation_Forecast extends PO implements I_A_Depreciation_Forecast, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Forecast (Properties ctx, int A_Depreciation_Forecast_ID, String trxName)
@@ -43,6 +43,7 @@ public class X_A_Depreciation_Forecast extends PO implements I_A_Depreciation_Fo
 			setA_End_Asset_ID (0);
 			setA_Start_Asset_ID (0);
 			setDateDoc (new Timestamp( System.currentTimeMillis() ));
+			setPostingType (null);
         } */
     }
 
@@ -74,17 +75,18 @@ public class X_A_Depreciation_Forecast extends PO implements I_A_Depreciation_Fo
       return sb.toString();
     }
 
-	/** Set A_Depreciation_Forecast_ID.
-		@param A_Depreciation_Forecast_ID A_Depreciation_Forecast_ID	  */
+	/** Set Depreciation Forecast.
+		@param A_Depreciation_Forecast_ID Depreciation Forecast	  */
 	public void setA_Depreciation_Forecast_ID (int A_Depreciation_Forecast_ID)
 	{
-		if (A_Depreciation_Forecast_ID < 1)
-			 throw new IllegalArgumentException ("A_Depreciation_Forecast_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Depreciation_Forecast_ID, Integer.valueOf(A_Depreciation_Forecast_ID));
+		if (A_Depreciation_Forecast_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Forecast_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Forecast_ID, Integer.valueOf(A_Depreciation_Forecast_ID));
 	}
 
-	/** Get A_Depreciation_Forecast_ID.
-		@return A_Depreciation_Forecast_ID	  */
+	/** Get Depreciation Forecast.
+		@return Depreciation Forecast	  */
 	public int getA_Depreciation_Forecast_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Depreciation_Forecast_ID);
@@ -101,13 +103,19 @@ public class X_A_Depreciation_Forecast extends PO implements I_A_Depreciation_Fo
         return new KeyNamePair(get_ID(), String.valueOf(getA_Depreciation_Forecast_ID()));
     }
 
+	public I_A_Asset getA_End_Asset() throws RuntimeException
+    {
+		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
+			.getPO(getA_End_Asset_ID(), get_TrxName());	}
+
 	/** Set To Asset.
 		@param A_End_Asset_ID To Asset	  */
 	public void setA_End_Asset_ID (int A_End_Asset_ID)
 	{
-		if (A_End_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_End_Asset_ID is mandatory.");
-		set_Value (COLUMNNAME_A_End_Asset_ID, Integer.valueOf(A_End_Asset_ID));
+		if (A_End_Asset_ID < 1) 
+			set_Value (COLUMNNAME_A_End_Asset_ID, null);
+		else 
+			set_Value (COLUMNNAME_A_End_Asset_ID, Integer.valueOf(A_End_Asset_ID));
 	}
 
 	/** Get To Asset.
@@ -120,13 +128,19 @@ public class X_A_Depreciation_Forecast extends PO implements I_A_Depreciation_Fo
 		return ii.intValue();
 	}
 
+	public I_A_Asset getA_Start_Asset() throws RuntimeException
+    {
+		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
+			.getPO(getA_Start_Asset_ID(), get_TrxName());	}
+
 	/** Set From Asset.
 		@param A_Start_Asset_ID From Asset	  */
 	public void setA_Start_Asset_ID (int A_Start_Asset_ID)
 	{
-		if (A_Start_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_Start_Asset_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Start_Asset_ID, Integer.valueOf(A_Start_Asset_ID));
+		if (A_Start_Asset_ID < 1) 
+			set_Value (COLUMNNAME_A_Start_Asset_ID, null);
+		else 
+			set_Value (COLUMNNAME_A_Start_Asset_ID, Integer.valueOf(A_Start_Asset_ID));
 	}
 
 	/** Get From Asset.
@@ -145,8 +159,6 @@ public class X_A_Depreciation_Forecast extends PO implements I_A_Depreciation_Fo
 	  */
 	public void setDateDoc (Timestamp DateDoc)
 	{
-		if (DateDoc == null)
-			throw new IllegalArgumentException ("DateDoc is mandatory.");
 		set_Value (COLUMNNAME_DateDoc, DateDoc);
 	}
 

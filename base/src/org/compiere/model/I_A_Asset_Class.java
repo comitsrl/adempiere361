@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Class
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Class 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Class
     /** TableName=A_Asset_Class */
     public static final String Table_Name = "A_Asset_Class";
 
-    /** AD_Table_ID=1000048 */
+    /** AD_Table_ID=53269 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,6 +40,15 @@ public interface I_A_Asset_Class
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_Class_ID */
+    public static final String COLUMNNAME_A_Asset_Class_ID = "A_Asset_Class_ID";
+
+	/** Set Asset class	  */
+	public void setA_Asset_Class_ID (int A_Asset_Class_ID);
+
+	/** Get Asset class	  */
+	public int getA_Asset_Class_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -61,15 +70,6 @@ public interface I_A_Asset_Class
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Asset_Class_ID */
-    public static final String COLUMNNAME_A_Asset_Class_ID = "A_Asset_Class_ID";
-
-	/** Set Asset class	  */
-	public void setA_Asset_Class_ID (int A_Asset_Class_ID);
-
-	/** Get Asset class	  */
-	public int getA_Asset_Class_ID();
 
     /** Column name A_Life_Period_2004 */
     public static final String COLUMNNAME_A_Life_Period_2004 = "A_Life_Period_2004";

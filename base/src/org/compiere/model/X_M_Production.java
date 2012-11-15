@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_Production
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_Production extends PO implements I_M_Production, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110405L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_Production (Properties ctx, int M_Production_ID, String trxName)
@@ -84,9 +84,9 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
       return sb.toString();
     }
 
-	/** Set Trx Organisation.
+	/** Set Trx Organization.
 		@param AD_OrgTrx_ID 
-		Performing or initiating organisation
+		Performing or initiating organization
 	  */
 	public void setAD_OrgTrx_ID (int AD_OrgTrx_ID)
 	{
@@ -96,8 +96,8 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 			set_Value (COLUMNNAME_AD_OrgTrx_ID, Integer.valueOf(AD_OrgTrx_ID));
 	}
 
-	/** Get Trx Organisation.
-		@return Performing or initiating organisation
+	/** Get Trx Organization.
+		@return Performing or initiating organization
 	  */
 	public int getAD_OrgTrx_ID () 
 	{
@@ -130,6 +130,30 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 	public int getC_Activity_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_C_Activity_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_C_BPartner getC_BPartner() throws RuntimeException
+    {
+		return (I_C_BPartner)MTable.get(getCtx(), I_C_BPartner.Table_Name)
+			.getPO(getC_BPartner_ID(), get_TrxName());	}
+
+	/** Set Business Partner .
+		@param C_BPartner_ID 
+		Identifies a Business Partner
+	  */
+	public void setC_BPartner_ID (int C_BPartner_ID)
+	{
+		throw new IllegalArgumentException ("C_BPartner_ID is virtual column");	}
+
+	/** Get Business Partner .
+		@return Identifies a Business Partner
+	  */
+	public int getC_BPartner_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_C_BPartner_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
@@ -219,6 +243,23 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 		return ii.intValue();
 	}
 
+	/** Set Create lines from.
+		@param CreateFrom 
+		Process which will generate a new document lines based on an existing document
+	  */
+	public void setCreateFrom (String CreateFrom)
+	{
+		set_Value (COLUMNNAME_CreateFrom, CreateFrom);
+	}
+
+	/** Get Create lines from.
+		@return Process which will generate a new document lines based on an existing document
+	  */
+	public String getCreateFrom () 
+	{
+		return (String)get_Value(COLUMNNAME_CreateFrom);
+	}
+
 	/** Set Date Promised.
 		@param DatePromised 
 		Date Order was promised
@@ -295,10 +336,17 @@ public class X_M_Production extends PO implements I_M_Production, I_Persistent
 		return (String)get_Value(COLUMNNAME_IsComplete);
 	}
 
+	/** IsCreated AD_Reference_ID=319 */
+	public static final int ISCREATED_AD_Reference_ID=319;
+	/** Yes = Y */
+	public static final String ISCREATED_Yes = "Y";
+	/** No = N */
+	public static final String ISCREATED_No = "N";
 	/** Set Records created.
 		@param IsCreated Records created	  */
 	public void setIsCreated (String IsCreated)
 	{
+
 		set_Value (COLUMNNAME_IsCreated, IsCreated);
 	}
 

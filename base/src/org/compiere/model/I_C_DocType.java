@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_DocType
  *  @author Adempiere (generated) 
- *  @version 360LTS.015
+ *  @version 361LTS.Final
  */
 public interface I_C_DocType 
 {

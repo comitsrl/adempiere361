@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for M_PromotionGroupLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_PromotionGroupLine extends PO implements I_M_PromotionGroupLine, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_PromotionGroupLine (Properties ctx, int M_PromotionGroupLine_ID, String trxName)

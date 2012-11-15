@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation_Method
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Depreciation_Method 
 {
@@ -30,7 +30,7 @@ public interface I_A_Depreciation_Method
     /** TableName=A_Depreciation_Method */
     public static final String Table_Name = "A_Depreciation_Method";
 
-    /** AD_Table_ID=1000022 */
+    /** AD_Table_ID=53124 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -49,6 +49,15 @@ public interface I_A_Depreciation_Method
 	  */
 	public int getAD_Client_ID();
 
+    /** Column name A_Depreciation_Method_ID */
+    public static final String COLUMNNAME_A_Depreciation_Method_ID = "A_Depreciation_Method_ID";
+
+	/** Set Depreciation Method	  */
+	public void setA_Depreciation_Method_ID (int A_Depreciation_Method_ID);
+
+	/** Get Depreciation Method	  */
+	public int getA_Depreciation_Method_ID();
+
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
 
@@ -61,15 +70,6 @@ public interface I_A_Depreciation_Method
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Depreciation_Method_ID */
-    public static final String COLUMNNAME_A_Depreciation_Method_ID = "A_Depreciation_Method_ID";
-
-	/** Set Depreciation Method	  */
-	public void setA_Depreciation_Method_ID (int A_Depreciation_Method_ID);
-
-	/** Get Depreciation Method	  */
-	public int getA_Depreciation_Method_ID();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";

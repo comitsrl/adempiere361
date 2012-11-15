@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_ProductionLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110427L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_ProductionLine (Properties ctx, int M_ProductionLine_ID, String trxName)
@@ -80,34 +80,6 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
         .append(get_ID()).append("]");
       return sb.toString();
     }
-
-	public I_C_OrderLine getC_OrderLine() throws RuntimeException
-    {
-		return (I_C_OrderLine)MTable.get(getCtx(), I_C_OrderLine.Table_Name)
-			.getPO(getC_OrderLine_ID(), get_TrxName());	}
-
-	/** Set Sales Order Line.
-		@param C_OrderLine_ID 
-		Sales Order Line
-	  */
-	public void setC_OrderLine_ID (int C_OrderLine_ID)
-	{
-		if (C_OrderLine_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_C_OrderLine_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_C_OrderLine_ID, Integer.valueOf(C_OrderLine_ID));
-	}
-
-	/** Get Sales Order Line.
-		@return Sales Order Line
-	  */
-	public int getC_OrderLine_ID () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_C_OrderLine_ID);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
 
 	/** Set Description.
 		@param Description 
@@ -169,14 +141,6 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 			 return 0;
 		return ii.intValue();
 	}
-
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), String.valueOf(getLine()));
-    }
 
 	public I_M_AttributeSetInstance getM_AttributeSetInstance() throws RuntimeException
     {
@@ -310,6 +274,14 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 		return ii.intValue();
 	}
 
+    /** Get Record ID/ColumnName
+        @return ID/ColumnName pair
+      */
+    public KeyNamePair getKeyNamePair() 
+    {
+        return new KeyNamePair(get_ID(), String.valueOf(getM_Production_ID()));
+    }
+
 	/** Set Production Line.
 		@param M_ProductionLine_ID 
 		Document Line representing a production
@@ -403,6 +375,41 @@ public class X_M_ProductionLine extends PO implements I_M_ProductionLine, I_Pers
 			return "Y".equals(oo);
 		}
 		return false;
+	}
+
+	/** Set Product Type.
+		@param ProductType 
+		Type of product
+	  */
+	public void setProductType (String ProductType)
+	{
+		throw new IllegalArgumentException ("ProductType is virtual column");	}
+
+	/** Get Product Type.
+		@return Type of product
+	  */
+	public String getProductType () 
+	{
+		return (String)get_Value(COLUMNNAME_ProductType);
+	}
+
+	/** Set Available Quantity.
+		@param QtyAvailable 
+		Available Quantity (On Hand - Reserved)
+	  */
+	public void setQtyAvailable (BigDecimal QtyAvailable)
+	{
+		throw new IllegalArgumentException ("QtyAvailable is virtual column");	}
+
+	/** Get Available Quantity.
+		@return Available Quantity (On Hand - Reserved)
+	  */
+	public BigDecimal getQtyAvailable () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_QtyAvailable);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	/** Set Quantity Used.

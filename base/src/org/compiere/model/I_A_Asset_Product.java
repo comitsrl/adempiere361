@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Product
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Product 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Product
     /** TableName=A_Asset_Product */
     public static final String Table_Name = "A_Asset_Product";
 
-    /** AD_Table_ID=1000051 */
+    /** AD_Table_ID=53270 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,6 +40,30 @@ public interface I_A_Asset_Product
     BigDecimal accessLevel = BigDecimal.valueOf(3);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+	public I_A_Asset getA_Asset() throws RuntimeException;
+
+    /** Column name A_Asset_Product_ID */
+    public static final String COLUMNNAME_A_Asset_Product_ID = "A_Asset_Product_ID";
+
+	/** Set Asset Product	  */
+	public void setA_Asset_Product_ID (int A_Asset_Product_ID);
+
+	/** Get Asset Product	  */
+	public int getA_Asset_Product_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -61,30 +85,6 @@ public interface I_A_Asset_Product
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-	public I_A_Asset getA_Asset();
-
-    /** Column name A_Asset_Product_ID */
-    public static final String COLUMNNAME_A_Asset_Product_ID = "A_Asset_Product_ID";
-
-	/** Set Asset Product	  */
-	public void setA_Asset_Product_ID (int A_Asset_Product_ID);
-
-	/** Get Asset Product	  */
-	public int getA_Asset_Product_ID();
 
     /** Column name A_QTY_Current */
     public static final String COLUMNNAME_A_QTY_Current = "A_QTY_Current";
@@ -150,6 +150,8 @@ public interface I_A_Asset_Product
 	  */
 	public int getM_AttributeSetInstance_ID();
 
+	public I_M_AttributeSetInstance getM_AttributeSetInstance() throws RuntimeException;
+
     /** Column name M_Locator_ID */
     public static final String COLUMNNAME_M_Locator_ID = "M_Locator_ID";
 
@@ -163,7 +165,7 @@ public interface I_A_Asset_Product
 	  */
 	public int getM_Locator_ID();
 
-	public I_M_Locator getM_Locator();
+	public I_M_Locator getM_Locator() throws RuntimeException;
 
     /** Column name M_Product_ID */
     public static final String COLUMNNAME_M_Product_ID = "M_Product_ID";
@@ -177,6 +179,8 @@ public interface I_A_Asset_Product
 	  * Product, Service, Item
 	  */
 	public int getM_Product_ID();
+
+	public I_M_Product getM_Product() throws RuntimeException;
 
     /** Column name Updated */
     public static final String COLUMNNAME_Updated = "Updated";

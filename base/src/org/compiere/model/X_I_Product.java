@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for I_Product
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_I_Product extends PO implements I_I_Product, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120406L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_I_Product (Properties ctx, int I_Product_ID, String trxName)
@@ -737,6 +737,8 @@ public class X_I_Product extends PO implements I_I_Product, I_Persistent
 	public static final String PRODUCTTYPE_ExpenseType = "E";
 	/** Online = O */
 	public static final String PRODUCTTYPE_Online = "O";
+	/** Asset = A */
+	public static final String PRODUCTTYPE_Asset = "A";
 	/** Set Product Type.
 		@param ProductType 
 		Type of product

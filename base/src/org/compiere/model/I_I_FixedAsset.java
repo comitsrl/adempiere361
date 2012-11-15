@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for I_FixedAsset
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 361LTS.Final
  */
 public interface I_I_FixedAsset 
 {
@@ -189,10 +189,10 @@ public interface I_I_FixedAsset
     /** Column name A_Salvage_Value */
     public static final String COLUMNNAME_A_Salvage_Value = "A_Salvage_Value";
 
-	/** Set A_Salvage_Value	  */
+	/** Set Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value);
 
-	/** Get A_Salvage_Value	  */
+	/** Get Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value();
 
     /** Column name AssetDepreciationDate */

@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Process_Para
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_Process_Para extends PO implements I_AD_Process_Para, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_Process_Para (Properties ctx, int AD_Process_Para_ID, String trxName)
@@ -47,6 +47,8 @@ public class X_AD_Process_Para extends PO implements I_AD_Process_Para, I_Persis
 			setFieldLength (0);
 			setIsCentrallyMaintained (true);
 // Y
+			setIsEncrypted (false);
+// N
 			setIsMandatory (false);
 			setIsRange (false);
 			setName (null);
@@ -409,6 +411,30 @@ public class X_AD_Process_Para extends PO implements I_AD_Process_Para, I_Persis
 		return false;
 	}
 
+	/** Set Encrypted.
+		@param IsEncrypted 
+		Display or Storage is encrypted
+	  */
+	public void setIsEncrypted (boolean IsEncrypted)
+	{
+		set_Value (COLUMNNAME_IsEncrypted, Boolean.valueOf(IsEncrypted));
+	}
+
+	/** Get Encrypted.
+		@return Display or Storage is encrypted
+	  */
+	public boolean isEncrypted () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsEncrypted);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
 	/** Set Mandatory.
 		@param IsMandatory 
 		Data entry is required in this column
@@ -568,23 +594,5 @@ public class X_AD_Process_Para extends PO implements I_AD_Process_Para, I_Persis
 	public String getVFormat () 
 	{
 		return (String)get_Value(COLUMNNAME_VFormat);
-	}
-
-	@Override
-	public void setIsEncrypted(boolean IsEncrypted) {
-		// TODO Auto-generated method stub
-		set_Value (COLUMNNAME_IsEncrypted, Boolean.valueOf(IsEncrypted));
-	}
-
-	@Override
-	public boolean isEncrypted() {
-		Object oo = get_Value(COLUMNNAME_IsEncrypted);
-		if (oo != null) 
-		{
-			 if (oo instanceof Boolean) 
-				 return ((Boolean)oo).booleanValue(); 
-			return "Y".equals(oo);
-		}
-		return false;
 	}
 }

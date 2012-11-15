@@ -19,19 +19,18 @@ package org.compiere.model;
 
 import java.sql.ResultSet;
 import java.util.Properties;
-import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Group
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Group extends PO implements I_A_Asset_Group, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20121005L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Group (Properties ctx, int A_Asset_Group_ID, String trxName)

@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_UserDef_Tab
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_UserDef_Tab extends PO implements I_AD_UserDef_Tab, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120307L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_UserDef_Tab (Properties ctx, int AD_UserDef_Tab_ID, String trxName)
@@ -44,7 +44,6 @@ public class X_AD_UserDef_Tab extends PO implements I_AD_UserDef_Tab, I_Persiste
 			setIsMultiRowOnly (false);
 			setIsReadOnly (false);
 			setIsSingleRow (false);
-			setName (null);
         } */
     }
 
@@ -103,6 +102,14 @@ public class X_AD_UserDef_Tab extends PO implements I_AD_UserDef_Tab, I_Persiste
 			 return 0;
 		return ii.intValue();
 	}
+
+    /** Get Record ID/ColumnName
+        @return ID/ColumnName pair
+      */
+    public KeyNamePair getKeyNamePair() 
+    {
+        return new KeyNamePair(get_ID(), String.valueOf(getAD_Tab_ID()));
+    }
 
 	/** Set User defined Tab.
 		@param AD_UserDef_Tab_ID User defined Tab	  */
@@ -271,14 +278,6 @@ public class X_AD_UserDef_Tab extends PO implements I_AD_UserDef_Tab, I_Persiste
 	{
 		return (String)get_Value(COLUMNNAME_Name);
 	}
-
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), getName());
-    }
 
 	/** Set Read Only Logic.
 		@param ReadOnlyLogic 

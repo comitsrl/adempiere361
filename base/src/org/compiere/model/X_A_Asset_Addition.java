@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Addition
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Addition extends PO implements I_A_Asset_Addition, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120314L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Addition (Properties ctx, int A_Asset_Addition_ID, String trxName)
@@ -112,17 +112,14 @@ public class X_A_Asset_Addition extends PO implements I_A_Asset_Addition, I_Pers
     }
 
 	/** Set Accumulated Depreciation.
-		@param A_Accumulated_Depr 
-		Accumulated Depreciation
-	  */
+		@param A_Accumulated_Depr Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr)
 	{
 		set_Value (COLUMNNAME_A_Accumulated_Depr, A_Accumulated_Depr);
 	}
 
 	/** Get Accumulated Depreciation.
-		@return Accumulated Depreciation
-	  */
+		@return Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Accumulated_Depr);
@@ -325,15 +322,15 @@ public class X_A_Asset_Addition extends PO implements I_A_Asset_Addition, I_Pers
 		return bd;
 	}
 
-	/** Set A_Salvage_Value.
-		@param A_Salvage_Value A_Salvage_Value	  */
+	/** Set Asset Salvage Value.
+		@param A_Salvage_Value Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value)
 	{
 		set_Value (COLUMNNAME_A_Salvage_Value, A_Salvage_Value);
 	}
 
-	/** Get A_Salvage_Value.
-		@return A_Salvage_Value	  */
+	/** Get Asset Salvage Value.
+		@return Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Salvage_Value);

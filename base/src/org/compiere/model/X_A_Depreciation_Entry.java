@@ -17,21 +17,23 @@
 /** Generated Model - DO NOT CHANGE */
 package org.compiere.model;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Properties;
+import org.compiere.util.Env;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Entry
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Entry (Properties ctx, int A_Depreciation_Entry_ID, String trxName)
@@ -73,7 +75,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
     }
 
     /** AccessLevel
-      * @return 7 - System - Client - Org 
+      * @return 3 - Client - Org 
       */
     protected int get_AccessLevel()
     {
@@ -98,9 +100,10 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		@param A_Depreciation_Entry_ID Depreciation Entry	  */
 	public void setA_Depreciation_Entry_ID (int A_Depreciation_Entry_ID)
 	{
-		if (A_Depreciation_Entry_ID < 1)
-			 throw new IllegalArgumentException ("A_Depreciation_Entry_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Depreciation_Entry_ID, Integer.valueOf(A_Depreciation_Entry_ID));
+		if (A_Depreciation_Entry_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Entry_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Entry_ID, Integer.valueOf(A_Depreciation_Entry_ID));
 	}
 
 	/** Get Depreciation Entry.
@@ -121,20 +124,20 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
         return new KeyNamePair(get_ID(), String.valueOf(getA_Depreciation_Entry_ID()));
     }
 
-	/** A_Entry_Type AD_Reference_ID=1000014 */
-	public static final int A_ENTRY_TYPE_AD_Reference_ID=1000014;
-	/** Forecasts = FOR */
-	public static final String A_ENTRY_TYPE_Forecasts = "FOR";
+	/** A_Entry_Type AD_Reference_ID=53257 */
+	public static final int A_ENTRY_TYPE_AD_Reference_ID=53257;
 	/** Depreciation = DEP */
 	public static final String A_ENTRY_TYPE_Depreciation = "DEP";
-	/** Transfers = TRN */
-	public static final String A_ENTRY_TYPE_Transfers = "TRN";
 	/** Disposals = DIS */
 	public static final String A_ENTRY_TYPE_Disposals = "DIS";
-	/** Splits = SPL */
-	public static final String A_ENTRY_TYPE_Splits = "SPL";
+	/** Forecasts = FOR */
+	public static final String A_ENTRY_TYPE_Forecasts = "FOR";
 	/** New = NEW */
 	public static final String A_ENTRY_TYPE_New = "NEW";
+	/** Splits = SPL */
+	public static final String A_ENTRY_TYPE_Splits = "SPL";
+	/** Transfers = TRN */
+	public static final String A_ENTRY_TYPE_Transfers = "TRN";
 	/** Set Entry Type.
 		@param A_Entry_Type Entry Type	  */
 	public void setA_Entry_Type (String A_Entry_Type)
@@ -150,7 +153,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return (String)get_Value(COLUMNNAME_A_Entry_Type);
 	}
 
-	public I_C_AcctSchema getC_AcctSchema()
+	public I_C_AcctSchema getC_AcctSchema() throws RuntimeException
     {
 		return (I_C_AcctSchema)MTable.get(getCtx(), I_C_AcctSchema.Table_Name)
 			.getPO(getC_AcctSchema_ID(), get_TrxName());	}
@@ -161,9 +164,10 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setC_AcctSchema_ID (int C_AcctSchema_ID)
 	{
-		if (C_AcctSchema_ID < 1)
-			 throw new IllegalArgumentException ("C_AcctSchema_ID is mandatory.");
-		set_Value (COLUMNNAME_C_AcctSchema_ID, Integer.valueOf(C_AcctSchema_ID));
+		if (C_AcctSchema_ID < 1) 
+			set_Value (COLUMNNAME_C_AcctSchema_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_AcctSchema_ID, Integer.valueOf(C_AcctSchema_ID));
 	}
 
 	/** Get Accounting Schema.
@@ -177,7 +181,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return ii.intValue();
 	}
 
-	public I_C_Currency getC_Currency()
+	public I_C_Currency getC_Currency() throws RuntimeException
     {
 		return (I_C_Currency)MTable.get(getCtx(), I_C_Currency.Table_Name)
 			.getPO(getC_Currency_ID(), get_TrxName());	}
@@ -188,9 +192,10 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setC_Currency_ID (int C_Currency_ID)
 	{
-		if (C_Currency_ID < 1)
-			 throw new IllegalArgumentException ("C_Currency_ID is mandatory.");
-		set_Value (COLUMNNAME_C_Currency_ID, Integer.valueOf(C_Currency_ID));
+		if (C_Currency_ID < 1) 
+			set_Value (COLUMNNAME_C_Currency_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Currency_ID, Integer.valueOf(C_Currency_ID));
 	}
 
 	/** Get Currency.
@@ -204,7 +209,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return ii.intValue();
 	}
 
-	public I_C_DocType getC_DocType()
+	public I_C_DocType getC_DocType() throws RuntimeException
     {
 		return (I_C_DocType)MTable.get(getCtx(), I_C_DocType.Table_Name)
 			.getPO(getC_DocType_ID(), get_TrxName());	}
@@ -215,9 +220,10 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setC_DocType_ID (int C_DocType_ID)
 	{
-		if (C_DocType_ID < 0)
-			 throw new IllegalArgumentException ("C_DocType_ID is mandatory.");
-		set_Value (COLUMNNAME_C_DocType_ID, Integer.valueOf(C_DocType_ID));
+		if (C_DocType_ID < 0) 
+			set_Value (COLUMNNAME_C_DocType_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_DocType_ID, Integer.valueOf(C_DocType_ID));
 	}
 
 	/** Get Document Type.
@@ -231,15 +237,21 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return ii.intValue();
 	}
 
+	public I_C_Period getC_Period() throws RuntimeException
+    {
+		return (I_C_Period)MTable.get(getCtx(), I_C_Period.Table_Name)
+			.getPO(getC_Period_ID(), get_TrxName());	}
+
 	/** Set Period.
 		@param C_Period_ID 
 		Period of the Calendar
 	  */
 	public void setC_Period_ID (int C_Period_ID)
 	{
-		if (C_Period_ID < 1)
-			 throw new IllegalArgumentException ("C_Period_ID is mandatory.");
-		set_Value (COLUMNNAME_C_Period_ID, Integer.valueOf(C_Period_ID));
+		if (C_Period_ID < 1) 
+			set_Value (COLUMNNAME_C_Period_ID, null);
+		else 
+			set_Value (COLUMNNAME_C_Period_ID, Integer.valueOf(C_Period_ID));
 	}
 
 	/** Get Period.
@@ -259,8 +271,6 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setDateAcct (Timestamp DateAcct)
 	{
-		if (DateAcct == null)
-			throw new IllegalArgumentException ("DateAcct is mandatory.");
 		set_Value (COLUMNNAME_DateAcct, DateAcct);
 	}
 
@@ -278,8 +288,6 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setDateDoc (Timestamp DateDoc)
 	{
-		if (DateDoc == null)
-			throw new IllegalArgumentException ("DateDoc is mandatory.");
 		set_Value (COLUMNNAME_DateDoc, DateDoc);
 	}
 
@@ -406,8 +414,6 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setDocumentNo (String DocumentNo)
 	{
-		if (DocumentNo == null)
-			throw new IllegalArgumentException ("DocumentNo is mandatory.");
 		set_Value (COLUMNNAME_DocumentNo, DocumentNo);
 	}
 
@@ -419,7 +425,7 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 		return (String)get_Value(COLUMNNAME_DocumentNo);
 	}
 
-	public I_GL_Category getGL_Category()
+	public I_GL_Category getGL_Category() throws RuntimeException
     {
 		return (I_GL_Category)MTable.get(getCtx(), I_GL_Category.Table_Name)
 			.getPO(getGL_Category_ID(), get_TrxName());	}
@@ -430,9 +436,10 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 	  */
 	public void setGL_Category_ID (int GL_Category_ID)
 	{
-		if (GL_Category_ID < 1)
-			 throw new IllegalArgumentException ("GL_Category_ID is mandatory.");
-		set_Value (COLUMNNAME_GL_Category_ID, Integer.valueOf(GL_Category_ID));
+		if (GL_Category_ID < 1) 
+			set_Value (COLUMNNAME_GL_Category_ID, null);
+		else 
+			set_Value (COLUMNNAME_GL_Category_ID, Integer.valueOf(GL_Category_ID));
 	}
 
 	/** Get GL Category.
@@ -546,6 +553,26 @@ public class X_A_Depreciation_Entry extends PO implements I_A_Depreciation_Entry
 			return "Y".equals(oo);
 		}
 		return false;
+	}
+
+	/** Set Processed On.
+		@param ProcessedOn 
+		The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public void setProcessedOn (BigDecimal ProcessedOn)
+	{
+		set_Value (COLUMNNAME_ProcessedOn, ProcessedOn);
+	}
+
+	/** Get Processed On.
+		@return The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public BigDecimal getProcessedOn () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_ProcessedOn);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	/** Set Process Now.

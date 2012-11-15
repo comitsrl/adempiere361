@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for EXP_Format
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_EXP_Format extends PO implements I_EXP_Format, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_EXP_Format (Properties ctx, int EXP_Format_ID, String trxName)

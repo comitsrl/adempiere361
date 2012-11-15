@@ -18,12 +18,11 @@ package org.compiere.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Group
  *  @author Adempiere (generated) 
- *  @version 360LTS.015
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Group 
 {

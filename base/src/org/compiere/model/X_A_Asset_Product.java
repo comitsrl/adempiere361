@@ -24,14 +24,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for A_Asset_Product
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Product (Properties ctx, int A_Asset_Product_ID, String trxName)
@@ -76,7 +76,7 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
       return sb.toString();
     }
 
-	public I_A_Asset getA_Asset()
+	public I_A_Asset getA_Asset() throws RuntimeException
     {
 		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
 			.getPO(getA_Asset_ID(), get_TrxName());	}
@@ -87,9 +87,10 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -107,9 +108,10 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
 		@param A_Asset_Product_ID Asset Product	  */
 	public void setA_Asset_Product_ID (int A_Asset_Product_ID)
 	{
-		if (A_Asset_Product_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Product_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_Product_ID, Integer.valueOf(A_Asset_Product_ID));
+		if (A_Asset_Product_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Product_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Product_ID, Integer.valueOf(A_Asset_Product_ID));
 	}
 
 	/** Get Asset Product.
@@ -126,8 +128,6 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
 		@param A_QTY_Current Current Qty	  */
 	public void setA_QTY_Current (BigDecimal A_QTY_Current)
 	{
-		if (A_QTY_Current == null)
-			throw new IllegalArgumentException ("A_QTY_Current is mandatory.");
 		set_Value (COLUMNNAME_A_QTY_Current, A_QTY_Current);
 	}
 
@@ -158,15 +158,21 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
 		return (String)get_Value(COLUMNNAME_Description);
 	}
 
+	public I_M_AttributeSetInstance getM_AttributeSetInstance() throws RuntimeException
+    {
+		return (I_M_AttributeSetInstance)MTable.get(getCtx(), I_M_AttributeSetInstance.Table_Name)
+			.getPO(getM_AttributeSetInstance_ID(), get_TrxName());	}
+
 	/** Set Attribute Set Instance.
 		@param M_AttributeSetInstance_ID 
 		Product Attribute Set Instance
 	  */
 	public void setM_AttributeSetInstance_ID (int M_AttributeSetInstance_ID)
 	{
-		if (M_AttributeSetInstance_ID < 0)
-			 throw new IllegalArgumentException ("M_AttributeSetInstance_ID is mandatory.");
-		set_Value (COLUMNNAME_M_AttributeSetInstance_ID, Integer.valueOf(M_AttributeSetInstance_ID));
+		if (M_AttributeSetInstance_ID < 0) 
+			set_Value (COLUMNNAME_M_AttributeSetInstance_ID, null);
+		else 
+			set_Value (COLUMNNAME_M_AttributeSetInstance_ID, Integer.valueOf(M_AttributeSetInstance_ID));
 	}
 
 	/** Get Attribute Set Instance.
@@ -180,7 +186,7 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
 		return ii.intValue();
 	}
 
-	public I_M_Locator getM_Locator()
+	public I_M_Locator getM_Locator() throws RuntimeException
     {
 		return (I_M_Locator)MTable.get(getCtx(), I_M_Locator.Table_Name)
 			.getPO(getM_Locator_ID(), get_TrxName());	}
@@ -208,15 +214,21 @@ public class X_A_Asset_Product extends PO implements I_A_Asset_Product, I_Persis
 		return ii.intValue();
 	}
 
+	public I_M_Product getM_Product() throws RuntimeException
+    {
+		return (I_M_Product)MTable.get(getCtx(), I_M_Product.Table_Name)
+			.getPO(getM_Product_ID(), get_TrxName());	}
+
 	/** Set Product.
 		@param M_Product_ID 
 		Product, Service, Item
 	  */
 	public void setM_Product_ID (int M_Product_ID)
 	{
-		if (M_Product_ID < 1)
-			 throw new IllegalArgumentException ("M_Product_ID is mandatory.");
-		set_Value (COLUMNNAME_M_Product_ID, Integer.valueOf(M_Product_ID));
+		if (M_Product_ID < 1) 
+			set_Value (COLUMNNAME_M_Product_ID, null);
+		else 
+			set_Value (COLUMNNAME_M_Product_ID, Integer.valueOf(M_Product_ID));
 	}
 
 	/** Get Product.

@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_System
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_System extends PO implements I_AD_System, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_System (Properties ctx, int AD_System_ID, String trxName)
@@ -381,6 +381,23 @@ public class X_AD_System extends PO implements I_AD_System, I_Persistent
 	public String getLastBuildInfo () 
 	{
 		return (String)get_Value(COLUMNNAME_LastBuildInfo);
+	}
+
+	/** Set Last Migration Script Applied.
+		@param LastMigrationScriptApplied 
+		Register of the filename for the last migration script applied on this database
+	  */
+	public void setLastMigrationScriptApplied (String LastMigrationScriptApplied)
+	{
+		set_Value (COLUMNNAME_LastMigrationScriptApplied, LastMigrationScriptApplied);
+	}
+
+	/** Get Last Migration Script Applied.
+		@return Register of the filename for the last migration script applied on this database
+	  */
+	public String getLastMigrationScriptApplied () 
+	{
+		return (String)get_Value(COLUMNNAME_LastMigrationScriptApplied);
 	}
 
 	/** Set LDAP Domain.

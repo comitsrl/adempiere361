@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_Client
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_AD_Client 
 {
@@ -170,19 +170,6 @@ public interface I_AD_Client
 	  * The record is active in the system
 	  */
 	public boolean isActive();
-
-    /** Column name IsCostImmediate */
-    public static final String COLUMNNAME_IsCostImmediate = "IsCostImmediate";
-
-	/** Set Cost Immediately.
-	  * Update Costs immediately for testing
-	  */
-	public void setIsCostImmediate (boolean IsCostImmediate);
-
-	/** Get Cost Immediately.
-	  * Update Costs immediately for testing
-	  */
-	public boolean isCostImmediate();
 
     /** Column name IsMultiLingualDocument */
     public static final String COLUMNNAME_IsMultiLingualDocument = "IsMultiLingualDocument";

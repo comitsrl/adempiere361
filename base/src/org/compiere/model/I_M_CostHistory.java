@@ -18,12 +18,11 @@ package org.compiere.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import org.compiere.model.*;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_CostHistory
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 361LTS.Final
  */
 public interface I_M_CostHistory 
 {
@@ -32,7 +31,7 @@ public interface I_M_CostHistory
     public static final String Table_Name = "M_CostHistory";
 
     /** AD_Table_ID=200001 */
-    public static final int Table_ID = 200001;
+    public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
 
@@ -120,7 +119,7 @@ public interface I_M_CostHistory
 	  */
 	public int getM_CostDetail_ID();
 
-	public org.compiere.model.I_M_CostDetail getM_CostDetail() throws RuntimeException;
+	public I_M_CostDetail getM_CostDetail() throws RuntimeException;
 
     /** Column name M_CostElement_ID */
     public static final String COLUMNNAME_M_CostElement_ID = "M_CostElement_ID";
@@ -135,7 +134,7 @@ public interface I_M_CostHistory
 	  */
 	public int getM_CostElement_ID();
 
-	public org.compiere.model.I_M_CostElement getM_CostElement() throws RuntimeException;
+	public I_M_CostElement getM_CostElement() throws RuntimeException;
 
     /** Column name M_CostHistory_ID */
     public static final String COLUMNNAME_M_CostHistory_ID = "M_CostHistory_ID";
@@ -172,7 +171,7 @@ public interface I_M_CostHistory
 	  */
 	public int getM_CostType_ID();
 
-	public org.compiere.model.I_M_CostType getM_CostType() throws RuntimeException;
+	public I_M_CostType getM_CostType() throws RuntimeException;
 
     /** Column name NewCAmt */
     public static final String COLUMNNAME_NewCAmt = "NewCAmt";

@@ -24,14 +24,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Use
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Use (Properties ctx, int A_Asset_Use_ID, String trxName)
@@ -75,15 +75,21 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
       return sb.toString();
     }
 
+	public I_A_Asset getA_Asset() throws RuntimeException
+    {
+		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
+			.getPO(getA_Asset_ID(), get_TrxName());	}
+
 	/** Set Asset.
 		@param A_Asset_ID 
 		Asset used internally or by customers
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -101,9 +107,10 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
 		@param A_Asset_Use_ID A_Asset_Use_ID	  */
 	public void setA_Asset_Use_ID (int A_Asset_Use_ID)
 	{
-		if (A_Asset_Use_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Use_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Asset_Use_ID, Integer.valueOf(A_Asset_Use_ID));
+		if (A_Asset_Use_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Use_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Use_ID, Integer.valueOf(A_Asset_Use_ID));
 	}
 
 	/** Get A_Asset_Use_ID.
@@ -145,8 +152,6 @@ public class X_A_Asset_Use extends PO implements I_A_Asset_Use, I_Persistent
 		@param UseDate UseDate	  */
 	public void setUseDate (Timestamp UseDate)
 	{
-		if (UseDate == null)
-			throw new IllegalArgumentException ("UseDate is mandatory.");
 		set_Value (COLUMNNAME_UseDate, UseDate);
 	}
 

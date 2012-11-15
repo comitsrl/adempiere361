@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation_Workfile
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Depreciation_Workfile 
 {
@@ -30,7 +30,7 @@ public interface I_A_Depreciation_Workfile
     /** TableName=A_Depreciation_Workfile */
     public static final String Table_Name = "A_Depreciation_Workfile";
 
-    /** AD_Table_ID=1000014 */
+    /** AD_Table_ID=53116 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -41,34 +41,13 @@ public interface I_A_Depreciation_Workfile
 
     /** Load Meta Data */
 
-    /** Column name AD_Client_ID */
-    public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
-
-	/** Get Client.
-	  * Client/Tenant for this installation.
-	  */
-	public int getAD_Client_ID();
-
-    /** Column name AD_Org_ID */
-    public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
-
-	/** Set Organization.
-	  * Organizational entity within client
-	  */
-	public void setAD_Org_ID (int AD_Org_ID);
-
-	/** Get Organization.
-	  * Organizational entity within client
-	  */
-	public int getAD_Org_ID();
-
     /** Column name A_Accumulated_Depr */
     public static final String COLUMNNAME_A_Accumulated_Depr = "A_Accumulated_Depr";
 
-	/** Set A_Accumulated_Depr	  */
+	/** Set Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr);
 
-	/** Get A_Accumulated_Depr	  */
+	/** Get Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr();
 
     /** Column name A_Accumulated_Depr_F */
@@ -83,10 +62,10 @@ public interface I_A_Depreciation_Workfile
     /** Column name A_Asset_Cost */
     public static final String COLUMNNAME_A_Asset_Cost = "A_Asset_Cost";
 
-	/** Set A_Asset_Cost	  */
+	/** Set Asset Cost	  */
 	public void setA_Asset_Cost (BigDecimal A_Asset_Cost);
 
-	/** Get A_Asset_Cost	  */
+	/** Get Asset Cost	  */
 	public BigDecimal getA_Asset_Cost();
 
     /** Column name A_Asset_ID */
@@ -102,7 +81,7 @@ public interface I_A_Depreciation_Workfile
 	  */
 	public int getA_Asset_ID();
 
-	public I_A_Asset getA_Asset();
+	public I_A_Asset getA_Asset() throws RuntimeException;
 
     /** Column name A_Asset_Life_Current_Year */
     public static final String COLUMNNAME_A_Asset_Life_Current_Year = "A_Asset_Life_Current_Year";
@@ -185,6 +164,14 @@ public interface I_A_Depreciation_Workfile
 	/** Get Current Period	  */
 	public int getA_Current_Period();
 
+    /** Column name AD_Client_ID */
+    public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
+
+	/** Get Client.
+	  * Client/Tenant for this installation.
+	  */
+	public int getAD_Client_ID();
+
     /** Column name A_Depreciation_Workfile_ID */
     public static final String COLUMNNAME_A_Depreciation_Workfile_ID = "A_Depreciation_Workfile_ID";
 
@@ -193,6 +180,19 @@ public interface I_A_Depreciation_Workfile
 
 	/** Get A_Depreciation_Workfile_ID	  */
 	public int getA_Depreciation_Workfile_ID();
+
+    /** Column name AD_Org_ID */
+    public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
+
+	/** Set Organization.
+	  * Organizational entity within client
+	  */
+	public void setAD_Org_ID (int AD_Org_ID);
+
+	/** Get Organization.
+	  * Organizational entity within client
+	  */
+	public int getAD_Org_ID();
 
     /** Column name A_Expense_SL */
     public static final String COLUMNNAME_A_Expense_SL = "A_Expense_SL";
@@ -221,7 +221,7 @@ public interface I_A_Depreciation_Workfile
 	/** Get Asset Funding Mode	  */
 	public int getA_FundingMode_ID();
 
-	public I_A_FundingMode getA_FundingMode();
+	public I_A_FundingMode getA_FundingMode() throws RuntimeException;
 
     /** Column name A_Life_Period */
     public static final String COLUMNNAME_A_Life_Period = "A_Life_Period";
@@ -298,42 +298,11 @@ public interface I_A_Depreciation_Workfile
     /** Column name A_Salvage_Value */
     public static final String COLUMNNAME_A_Salvage_Value = "A_Salvage_Value";
 
-	/** Set A_Salvage_Value	  */
+	/** Set Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value);
 
-	/** Get A_Salvage_Value	  */
+	/** Get Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value();
-
-    /** Column name A_Tip_Finantare */
-    public static final String COLUMNNAME_A_Tip_Finantare = "A_Tip_Finantare";
-
-	/** Set Tip finantare.
-	  * Tipul finantarii
-	  */
-	public void setA_Tip_Finantare (String A_Tip_Finantare);
-
-	/** Get Tip finantare.
-	  * Tipul finantarii
-	  */
-	public String getA_Tip_Finantare();
-
-    /** Column name A_Valoare_Cofinantare */
-    public static final String COLUMNNAME_A_Valoare_Cofinantare = "A_Valoare_Cofinantare";
-
-	/** Set Contribuţia proprie	  */
-	public void setA_Valoare_Cofinantare (BigDecimal A_Valoare_Cofinantare);
-
-	/** Get Contribuţia proprie	  */
-	public BigDecimal getA_Valoare_Cofinantare();
-
-    /** Column name A_Valoare_Tert */
-    public static final String COLUMNNAME_A_Valoare_Tert = "A_Valoare_Tert";
-
-	/** Set Contributie tert	  */
-	public void setA_Valoare_Tert (BigDecimal A_Valoare_Tert);
-
-	/** Get Contributie tert	  */
-	public BigDecimal getA_Valoare_Tert();
 
     /** Column name AssetDepreciationDate */
     public static final String COLUMNNAME_AssetDepreciationDate = "AssetDepreciationDate";
@@ -347,6 +316,37 @@ public interface I_A_Depreciation_Workfile
 	  * Date of last depreciation
 	  */
 	public Timestamp getAssetDepreciationDate();
+
+    /** Column name A_Tip_Finantare */
+    public static final String COLUMNNAME_A_Tip_Finantare = "A_Tip_Finantare";
+
+	/** Set Financing Type.
+	  * Financing Type
+	  */
+	public void setA_Tip_Finantare (String A_Tip_Finantare);
+
+	/** Get Financing Type.
+	  * Financing Type
+	  */
+	public String getA_Tip_Finantare();
+
+    /** Column name A_Valoare_Cofinantare */
+    public static final String COLUMNNAME_A_Valoare_Cofinantare = "A_Valoare_Cofinantare";
+
+	/** Set Own contribution	  */
+	public void setA_Valoare_Cofinantare (BigDecimal A_Valoare_Cofinantare);
+
+	/** Get Own contribution	  */
+	public BigDecimal getA_Valoare_Cofinantare();
+
+    /** Column name A_Valoare_Tert */
+    public static final String COLUMNNAME_A_Valoare_Tert = "A_Valoare_Tert";
+
+	/** Set Third contribution	  */
+	public void setA_Valoare_Tert (BigDecimal A_Valoare_Tert);
+
+	/** Get Third contribution	  */
+	public BigDecimal getA_Valoare_Tert();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";

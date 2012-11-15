@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_UserDef_Win
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_UserDef_Win extends PO implements I_AD_UserDef_Win, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120307L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_UserDef_Win (Properties ctx, int AD_UserDef_Win_ID, String trxName)
@@ -38,13 +38,11 @@ public class X_AD_UserDef_Win extends PO implements I_AD_UserDef_Win, I_Persiste
       super (ctx, AD_UserDef_Win_ID, trxName);
       /** if (AD_UserDef_Win_ID == 0)
         {
-			setAD_Language (null);
 			setAD_UserDef_Win_ID (0);
 			setAD_Window_ID (0);
 			setIsDefault (false);
 			setIsReadOnly (false);
 			setIsUserUpdateable (false);
-			setName (null);
         } */
     }
 
@@ -200,6 +198,14 @@ public class X_AD_UserDef_Win extends PO implements I_AD_UserDef_Win, I_Persiste
 		return ii.intValue();
 	}
 
+    /** Get Record ID/ColumnName
+        @return ID/ColumnName pair
+      */
+    public KeyNamePair getKeyNamePair() 
+    {
+        return new KeyNamePair(get_ID(), String.valueOf(getAD_Window_ID()));
+    }
+
 	/** Set Description.
 		@param Description 
 		Optional short description of the record
@@ -322,12 +328,4 @@ public class X_AD_UserDef_Win extends PO implements I_AD_UserDef_Win, I_Persiste
 	{
 		return (String)get_Value(COLUMNNAME_Name);
 	}
-
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), getName());
-    }
 }

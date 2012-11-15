@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_OrderLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_C_OrderLine extends PO implements I_C_OrderLine, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_C_OrderLine (Properties ctx, int C_OrderLine_ID, String trxName)
@@ -437,6 +437,34 @@ public class X_C_OrderLine extends PO implements I_C_OrderLine, I_Persistent
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
+	}
+
+	/** Set Create Production.
+		@param CreateProduction Create Production	  */
+	public void setCreateProduction (String CreateProduction)
+	{
+		set_Value (COLUMNNAME_CreateProduction, CreateProduction);
+	}
+
+	/** Get Create Production.
+		@return Create Production	  */
+	public String getCreateProduction () 
+	{
+		return (String)get_Value(COLUMNNAME_CreateProduction);
+	}
+
+	/** Set Create Shipment.
+		@param CreateShipment Create Shipment	  */
+	public void setCreateShipment (String CreateShipment)
+	{
+		set_Value (COLUMNNAME_CreateShipment, CreateShipment);
+	}
+
+	/** Get Create Shipment.
+		@return Create Shipment	  */
+	public String getCreateShipment () 
+	{
+		return (String)get_Value(COLUMNNAME_CreateShipment);
 	}
 
 	public I_C_Tax getC_Tax() throws RuntimeException

@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for M_PartType
  *  @author Adempiere (generated) 
- *  @version 360LTS.013 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_PartType extends PO implements I_M_PartType, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110803L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_PartType (Properties ctx, int M_PartType_ID, String trxName)

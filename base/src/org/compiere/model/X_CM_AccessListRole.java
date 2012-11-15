@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for CM_AccessListRole
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_CM_AccessListRole extends PO implements I_CM_AccessListRole, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_CM_AccessListRole (Properties ctx, int CM_AccessListRole_ID, String trxName)

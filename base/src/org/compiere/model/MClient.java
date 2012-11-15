@@ -137,7 +137,7 @@ public class MClient extends X_AD_Client
 				setAutoArchive(AUTOARCHIVE_None);
 				setMMPolicy (MMPOLICY_FiFo);	// F
 				setIsPostImmediate(false);
-				setIsCostImmediate(false);
+				//setIsCostImmediate(false);
 			}
 			else
 				load(get_TrxName());

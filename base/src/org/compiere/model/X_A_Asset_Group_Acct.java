@@ -25,14 +25,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Group_Acct
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Group_Acct extends PO implements I_A_Asset_Group_Acct, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120314L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Group_Acct (Properties ctx, int A_Asset_Group_Acct_ID, String trxName)
@@ -621,15 +621,15 @@ public class X_A_Asset_Group_Acct extends PO implements I_A_Asset_Group_Acct, I_
 		return (I_C_ValidCombination)MTable.get(getCtx(), I_C_ValidCombination.Table_Name)
 			.getPO(getA_Disposal_Revenue_Acct(), get_TrxName());	}
 
-	/** Set Disposal Revenue.
-		@param A_Disposal_Revenue_Acct Disposal Revenue	  */
+	/** Set Disposal Revenue Acct.
+		@param A_Disposal_Revenue_Acct Disposal Revenue Acct	  */
 	public void setA_Disposal_Revenue_Acct (int A_Disposal_Revenue_Acct)
 	{
 		set_Value (COLUMNNAME_A_Disposal_Revenue_Acct, Integer.valueOf(A_Disposal_Revenue_Acct));
 	}
 
-	/** Get Disposal Revenue.
-		@return Disposal Revenue	  */
+	/** Get Disposal Revenue Acct.
+		@return Disposal Revenue Acct	  */
 	public int getA_Disposal_Revenue_Acct () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Disposal_Revenue_Acct);

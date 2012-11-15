@@ -23,14 +23,14 @@ import java.util.Properties;
 
 /** Generated Model for M_PromotionPreCondition
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_PromotionPreCondition extends PO implements I_M_PromotionPreCondition, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_PromotionPreCondition (Properties ctx, int M_PromotionPreCondition_ID, String trxName)

@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_MigrationScript
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_MigrationScript extends PO implements I_AD_MigrationScript, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_MigrationScript (Properties ctx, int AD_MigrationScript_ID, String trxName)
@@ -303,7 +303,7 @@ public class X_AD_MigrationScript extends PO implements I_AD_MigrationScript, I_
 
 	/** Set URL.
 		@param URL 
-		Full URL address - e.g. http://www.adempiere.org
+		Full URL address - e.g. http://www.idempiere.org
 	  */
 	public void setURL (String URL)
 	{
@@ -311,7 +311,7 @@ public class X_AD_MigrationScript extends PO implements I_AD_MigrationScript, I_
 	}
 
 	/** Get URL.
-		@return Full URL address - e.g. http://www.adempiere.org
+		@return Full URL address - e.g. http://www.idempiere.org
 	  */
 	public String getURL () 
 	{

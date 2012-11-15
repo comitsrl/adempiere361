@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Use
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Use 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Use
     /** TableName=A_Asset_Use */
     public static final String Table_Name = "A_Asset_Use";
 
-    /** AD_Table_ID=1000036 */
+    /** AD_Table_ID=53138 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,6 +40,30 @@ public interface I_A_Asset_Use
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
+
+    /** Column name A_Asset_ID */
+    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
+
+	/** Set Asset.
+	  * Asset used internally or by customers
+	  */
+	public void setA_Asset_ID (int A_Asset_ID);
+
+	/** Get Asset.
+	  * Asset used internally or by customers
+	  */
+	public int getA_Asset_ID();
+
+	public I_A_Asset getA_Asset() throws RuntimeException;
+
+    /** Column name A_Asset_Use_ID */
+    public static final String COLUMNNAME_A_Asset_Use_ID = "A_Asset_Use_ID";
+
+	/** Set A_Asset_Use_ID	  */
+	public void setA_Asset_Use_ID (int A_Asset_Use_ID);
+
+	/** Get A_Asset_Use_ID	  */
+	public int getA_Asset_Use_ID();
 
     /** Column name AD_Client_ID */
     public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
@@ -61,28 +85,6 @@ public interface I_A_Asset_Use
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Asset_ID */
-    public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
-
-	/** Set Asset.
-	  * Asset used internally or by customers
-	  */
-	public void setA_Asset_ID (int A_Asset_ID);
-
-	/** Get Asset.
-	  * Asset used internally or by customers
-	  */
-	public int getA_Asset_ID();
-
-    /** Column name A_Asset_Use_ID */
-    public static final String COLUMNNAME_A_Asset_Use_ID = "A_Asset_Use_ID";
-
-	/** Set A_Asset_Use_ID	  */
-	public void setA_Asset_Use_ID (int A_Asset_Use_ID);
-
-	/** Get A_Asset_Use_ID	  */
-	public int getA_Asset_Use_ID();
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";

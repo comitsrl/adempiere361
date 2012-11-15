@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Addition
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Addition 
 {
@@ -44,14 +44,10 @@ public interface I_A_Asset_Addition
     /** Column name A_Accumulated_Depr */
     public static final String COLUMNNAME_A_Accumulated_Depr = "A_Accumulated_Depr";
 
-	/** Set Accumulated Depreciation.
-	  * Accumulated Depreciation
-	  */
+	/** Set Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr);
 
-	/** Get Accumulated Depreciation.
-	  * Accumulated Depreciation
-	  */
+	/** Get Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr();
 
     /** Column name A_Accumulated_Depr_Adjust */
@@ -174,10 +170,10 @@ public interface I_A_Asset_Addition
     /** Column name A_Salvage_Value */
     public static final String COLUMNNAME_A_Salvage_Value = "A_Salvage_Value";
 
-	/** Set A_Salvage_Value	  */
+	/** Set Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value);
 
-	/** Get A_Salvage_Value	  */
+	/** Get Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value();
 
     /** Column name A_SourceType */

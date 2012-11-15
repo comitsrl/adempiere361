@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for M_Product_BOM
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_M_Product_BOM 
 {
@@ -88,6 +88,32 @@ public interface I_M_Product_BOM
 	  */
 	public String getBOMType();
 
+    /** Column name CostStandard */
+    public static final String COLUMNNAME_CostStandard = "CostStandard";
+
+	/** Set Standard Cost.
+	  * Standard Costs
+	  */
+	public void setCostStandard (BigDecimal CostStandard);
+
+	/** Get Standard Cost.
+	  * Standard Costs
+	  */
+	public BigDecimal getCostStandard();
+
+    /** Column name CostStandardCumAmt */
+    public static final String COLUMNNAME_CostStandardCumAmt = "CostStandardCumAmt";
+
+	/** Set Std Cost Amount Sum.
+	  * Standard Cost Invoice Amount Sum (internal)
+	  */
+	public void setCostStandardCumAmt (BigDecimal CostStandardCumAmt);
+
+	/** Get Std Cost Amount Sum.
+	  * Standard Cost Invoice Amount Sum (internal)
+	  */
+	public BigDecimal getCostStandardCumAmt();
+
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
 
@@ -130,6 +156,19 @@ public interface I_M_Product_BOM
 	  */
 	public boolean isActive();
 
+    /** Column name IsBillOfMaterial */
+    public static final String COLUMNNAME_IsBillOfMaterial = "IsBillOfMaterial";
+
+	/** Set Bill of Materials.
+	  * Bill of Materials
+	  */
+	public void setIsBillOfMaterial (boolean IsBillOfMaterial);
+
+	/** Get Bill of Materials.
+	  * Bill of Materials
+	  */
+	public boolean isBillOfMaterial();
+
     /** Column name Line */
     public static final String COLUMNNAME_Line = "Line";
 
@@ -142,6 +181,17 @@ public interface I_M_Product_BOM
 	  * Unique line for this document
 	  */
 	public int getLine();
+
+    /** Column name M_PartType_ID */
+    public static final String COLUMNNAME_M_PartType_ID = "M_PartType_ID";
+
+	/** Set Part Type	  */
+	public void setM_PartType_ID (int M_PartType_ID);
+
+	/** Get Part Type	  */
+	public int getM_PartType_ID();
+
+	public I_M_PartType getM_PartType() throws RuntimeException;
 
     /** Column name M_Product_BOM_ID */
     public static final String COLUMNNAME_M_Product_BOM_ID = "M_Product_BOM_ID";
@@ -197,4 +247,17 @@ public interface I_M_Product_BOM
 	  * User who updated this records
 	  */
 	public int getUpdatedBy();
+
+    /** Column name Value */
+    public static final String COLUMNNAME_Value = "Value";
+
+	/** Set Search Key.
+	  * Search key for the record in the format required - must be unique
+	  */
+	public void setValue (String Value);
+
+	/** Get Search Key.
+	  * Search key for the record in the format required - must be unique
+	  */
+	public String getValue();
 }

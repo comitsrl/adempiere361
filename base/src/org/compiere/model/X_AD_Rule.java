@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Rule
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_Rule extends PO implements I_AD_Rule, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_Rule (Properties ctx, int AD_Rule_ID, String trxName)
@@ -181,6 +181,8 @@ public class X_AD_Rule extends PO implements I_AD_Rule, I_Persistent
 	public static final String EVENTTYPE_HumanResourcePayroll = "H";
 	/** Measure for Performance Analysis = M */
 	public static final String EVENTTYPE_MeasureForPerformanceAnalysis = "M";
+	/** GL Reconciliation = R */
+	public static final String EVENTTYPE_GLReconciliation = "R";
 	/** Set Event Type.
 		@param EventType 
 		Type of Event

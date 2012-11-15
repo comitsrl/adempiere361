@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_POS
  *  @author Adempiere (generated) 
- *  @version 360LTS.013
+ *  @version 361LTS.Final
  */
 public interface I_C_POS 
 {

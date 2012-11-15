@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Type
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Type (Properties ctx, int A_Asset_Type_ID, String trxName)
@@ -57,7 +57,7 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
     }
 
     /** AccessLevel
-      * @return 7 - System - Client - Org 
+      * @return 3 - Client - Org 
       */
     protected int get_AccessLevel()
     {
@@ -82,9 +82,10 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
 		@param A_Asset_Type_ID Asset Type	  */
 	public void setA_Asset_Type_ID (int A_Asset_Type_ID)
 	{
-		if (A_Asset_Type_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Type_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_Type_ID, Integer.valueOf(A_Asset_Type_ID));
+		if (A_Asset_Type_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Type_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Type_ID, Integer.valueOf(A_Asset_Type_ID));
 	}
 
 	/** Get Asset Type.
@@ -114,18 +115,18 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
 		return (String)get_Value(COLUMNNAME_Description);
 	}
 
-	/** IsDepreciable AD_Reference_ID=1000058 */
-	public static final int ISDEPRECIABLE_AD_Reference_ID=1000058;
-	/** Yes = YX */
-	public static final String ISDEPRECIABLE_Yes = "YX";
+	/** IsDepreciable AD_Reference_ID=53365 */
+	public static final int ISDEPRECIABLE_AD_Reference_ID=53365;
 	/** No = NX */
 	public static final String ISDEPRECIABLE_No = "NX";
-	/** - = XX */
-	public static final String ISDEPRECIABLE__ = "XX";
 	/** - / Default No = XN */
 	public static final String ISDEPRECIABLE__DefaultNo = "XN";
+	/** - = XX */
+	public static final String ISDEPRECIABLE__ = "XX";
 	/** - / Default Yes = XY */
 	public static final String ISDEPRECIABLE__DefaultYes = "XY";
+	/** Yes = YX */
+	public static final String ISDEPRECIABLE_Yes = "YX";
 	/** Set Is Depreciable.
 		@param IsDepreciable 
 		This asset CAN be depreciated
@@ -144,18 +145,18 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
 		return (String)get_Value(COLUMNNAME_IsDepreciable);
 	}
 
-	/** IsInPosession AD_Reference_ID=1000058 */
-	public static final int ISINPOSESSION_AD_Reference_ID=1000058;
-	/** Yes = YX */
-	public static final String ISINPOSESSION_Yes = "YX";
+	/** IsInPosession AD_Reference_ID=53365 */
+	public static final int ISINPOSESSION_AD_Reference_ID=53365;
 	/** No = NX */
 	public static final String ISINPOSESSION_No = "NX";
-	/** - = XX */
-	public static final String ISINPOSESSION__ = "XX";
 	/** - / Default No = XN */
 	public static final String ISINPOSESSION__DefaultNo = "XN";
+	/** - = XX */
+	public static final String ISINPOSESSION__ = "XX";
 	/** - / Default Yes = XY */
 	public static final String ISINPOSESSION__DefaultYes = "XY";
+	/** Yes = YX */
+	public static final String ISINPOSESSION_Yes = "YX";
 	/** Set In Possession.
 		@param IsInPosession 
 		The asset is in the possession of the organization
@@ -174,18 +175,18 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
 		return (String)get_Value(COLUMNNAME_IsInPosession);
 	}
 
-	/** IsOwned AD_Reference_ID=1000058 */
-	public static final int ISOWNED_AD_Reference_ID=1000058;
-	/** Yes = YX */
-	public static final String ISOWNED_Yes = "YX";
+	/** IsOwned AD_Reference_ID=53365 */
+	public static final int ISOWNED_AD_Reference_ID=53365;
 	/** No = NX */
 	public static final String ISOWNED_No = "NX";
-	/** - = XX */
-	public static final String ISOWNED__ = "XX";
 	/** - / Default No = XN */
 	public static final String ISOWNED__DefaultNo = "XN";
+	/** - = XX */
+	public static final String ISOWNED__ = "XX";
 	/** - / Default Yes = XY */
 	public static final String ISOWNED__DefaultYes = "XY";
+	/** Yes = YX */
+	public static final String ISOWNED_Yes = "YX";
 	/** Set Owned.
 		@param IsOwned 
 		The asset is owned by the organization
@@ -210,8 +211,6 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
 	  */
 	public void setName (String Name)
 	{
-		if (Name == null)
-			throw new IllegalArgumentException ("Name is mandatory.");
 		set_Value (COLUMNNAME_Name, Name);
 	}
 
@@ -237,8 +236,6 @@ public class X_A_Asset_Type extends PO implements I_A_Asset_Type, I_Persistent
 	  */
 	public void setValue (String Value)
 	{
-		if (Value == null)
-			throw new IllegalArgumentException ("Value is mandatory.");
 		set_Value (COLUMNNAME_Value, Value);
 	}
 

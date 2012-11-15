@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Acct
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Acct extends PO implements I_A_Asset_Acct, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120314L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Acct (Properties ctx, int A_Asset_Acct_ID, String trxName)
@@ -601,15 +601,15 @@ public class X_A_Asset_Acct extends PO implements I_A_Asset_Acct, I_Persistent
 		return (I_C_ValidCombination)MTable.get(getCtx(), I_C_ValidCombination.Table_Name)
 			.getPO(getA_Disposal_Revenue_Acct(), get_TrxName());	}
 
-	/** Set Disposal Revenue.
-		@param A_Disposal_Revenue_Acct Disposal Revenue	  */
+	/** Set Disposal Revenue Acct.
+		@param A_Disposal_Revenue_Acct Disposal Revenue Acct	  */
 	public void setA_Disposal_Revenue_Acct (int A_Disposal_Revenue_Acct)
 	{
 		set_Value (COLUMNNAME_A_Disposal_Revenue_Acct, Integer.valueOf(A_Disposal_Revenue_Acct));
 	}
 
-	/** Get Disposal Revenue.
-		@return Disposal Revenue	  */
+	/** Get Disposal Revenue Acct.
+		@return Disposal Revenue Acct	  */
 	public int getA_Disposal_Revenue_Acct () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Disposal_Revenue_Acct);
@@ -895,15 +895,15 @@ public class X_A_Asset_Acct extends PO implements I_A_Asset_Acct, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set A_Salvage_Value.
-		@param A_Salvage_Value A_Salvage_Value	  */
+	/** Set Asset Salvage Value.
+		@param A_Salvage_Value Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value)
 	{
 		set_Value (COLUMNNAME_A_Salvage_Value, A_Salvage_Value);
 	}
 
-	/** Get A_Salvage_Value.
-		@return A_Salvage_Value	  */
+	/** Get Asset Salvage Value.
+		@return Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Salvage_Value);

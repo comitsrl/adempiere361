@@ -19,18 +19,17 @@ package org.compiere.model;
 
 import java.sql.ResultSet;
 import java.util.Properties;
-import org.compiere.model.*;
 
 /** Generated Model for AD_ToolBarButtonRestrict
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_ToolBarButtonRestrict extends PO implements I_AD_ToolBarButtonRestrict, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120329L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_ToolBarButtonRestrict (Properties ctx, int AD_ToolBarButtonRestrict_ID, String trxName)
@@ -38,8 +37,6 @@ public class X_AD_ToolBarButtonRestrict extends PO implements I_AD_ToolBarButton
       super (ctx, AD_ToolBarButtonRestrict_ID, trxName);
       /** if (AD_ToolBarButtonRestrict_ID == 0)
         {
-			setAction (null);
-			setAD_Role_ID (0);
 			setAD_ToolBarButtonRestrict_ID (0);
         } */
     }
@@ -95,7 +92,7 @@ public class X_AD_ToolBarButtonRestrict extends PO implements I_AD_ToolBarButton
 	public void setAction (String Action)
 	{
 
-		set_Value (COLUMNNAME_Action, Action);
+		set_ValueNoCheck (COLUMNNAME_Action, Action);
 	}
 
 	/** Get Action.
@@ -118,9 +115,9 @@ public class X_AD_ToolBarButtonRestrict extends PO implements I_AD_ToolBarButton
 	public void setAD_Role_ID (int AD_Role_ID)
 	{
 		if (AD_Role_ID < 0) 
-			set_Value (COLUMNNAME_AD_Role_ID, null);
+			set_ValueNoCheck (COLUMNNAME_AD_Role_ID, null);
 		else 
-			set_Value (COLUMNNAME_AD_Role_ID, Integer.valueOf(AD_Role_ID));
+			set_ValueNoCheck (COLUMNNAME_AD_Role_ID, Integer.valueOf(AD_Role_ID));
 	}
 
 	/** Get Role.
@@ -191,9 +188,9 @@ public class X_AD_ToolBarButtonRestrict extends PO implements I_AD_ToolBarButton
 	public void setAD_Window_ID (int AD_Window_ID)
 	{
 		if (AD_Window_ID < 1) 
-			set_Value (COLUMNNAME_AD_Window_ID, null);
+			set_ValueNoCheck (COLUMNNAME_AD_Window_ID, null);
 		else 
-			set_Value (COLUMNNAME_AD_Window_ID, Integer.valueOf(AD_Window_ID));
+			set_ValueNoCheck (COLUMNNAME_AD_Window_ID, Integer.valueOf(AD_Window_ID));
 	}
 
 	/** Get Window.

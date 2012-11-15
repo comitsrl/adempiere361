@@ -23,14 +23,14 @@ import java.util.Properties;
 
 /** Generated Model for C_Recurring_Run
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_C_Recurring_Run extends PO implements I_C_Recurring_Run, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_C_Recurring_Run (Properties ctx, int C_Recurring_Run_ID, String trxName)

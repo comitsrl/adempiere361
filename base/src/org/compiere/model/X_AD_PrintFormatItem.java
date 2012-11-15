@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_PrintFormatItem
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_PrintFormatItem extends PO implements I_AD_PrintFormatItem, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_PrintFormatItem (Properties ctx, int AD_PrintFormatItem_ID, String trxName)
@@ -48,6 +48,8 @@ public class X_AD_PrintFormatItem extends PO implements I_AD_PrintFormatItem, I_
 			setIsAveraged (false);
 			setIsCentrallyMaintained (false);
 			setIsCounted (false);
+			setIsDesc (false);
+// N
 			setIsDeviationCalc (false);
 			setIsFilledRectangle (false);
 // N
@@ -571,6 +573,30 @@ public class X_AD_PrintFormatItem extends PO implements I_AD_PrintFormatItem, I_
 	public boolean isCounted () 
 	{
 		Object oo = get_Value(COLUMNNAME_IsCounted);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Descending.
+		@param IsDesc 
+		Sort your data using a SQL Desc Order By statement
+	  */
+	public void setIsDesc (boolean IsDesc)
+	{
+		set_Value (COLUMNNAME_IsDesc, Boolean.valueOf(IsDesc));
+	}
+
+	/** Get Descending.
+		@return Sort your data using a SQL Desc Order By statement
+	  */
+	public boolean isDesc () 
+	{
+		Object oo = get_Value(COLUMNNAME_IsDesc);
 		if (oo != null) 
 		{
 			 if (oo instanceof Boolean) 

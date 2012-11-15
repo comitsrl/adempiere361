@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Table_Header
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Depreciation_Table_Header extends PO implements I_A_Depreciation_Table_Header, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Table_Header (Properties ctx, int A_Depreciation_Table_Header_ID, String trxName)
@@ -75,17 +75,15 @@ public class X_A_Depreciation_Table_Header extends PO implements I_A_Depreciatio
       return sb.toString();
     }
 
-	/** Set A_Depreciation_Table_Code.
-		@param A_Depreciation_Table_Code A_Depreciation_Table_Code	  */
+	/** Set Depreciation Code.
+		@param A_Depreciation_Table_Code Depreciation Code	  */
 	public void setA_Depreciation_Table_Code (String A_Depreciation_Table_Code)
 	{
-		if (A_Depreciation_Table_Code == null)
-			throw new IllegalArgumentException ("A_Depreciation_Table_Code is mandatory.");
 		set_Value (COLUMNNAME_A_Depreciation_Table_Code, A_Depreciation_Table_Code);
 	}
 
-	/** Get A_Depreciation_Table_Code.
-		@return A_Depreciation_Table_Code	  */
+	/** Get Depreciation Code.
+		@return Depreciation Code	  */
 	public String getA_Depreciation_Table_Code () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Depreciation_Table_Code);
@@ -95,9 +93,10 @@ public class X_A_Depreciation_Table_Header extends PO implements I_A_Depreciatio
 		@param A_Depreciation_Table_Header_ID A_Depreciation_Table_Header_ID	  */
 	public void setA_Depreciation_Table_Header_ID (int A_Depreciation_Table_Header_ID)
 	{
-		if (A_Depreciation_Table_Header_ID < 1)
-			 throw new IllegalArgumentException ("A_Depreciation_Table_Header_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Depreciation_Table_Header_ID, Integer.valueOf(A_Depreciation_Table_Header_ID));
+		if (A_Depreciation_Table_Header_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Table_Header_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Table_Header_ID, Integer.valueOf(A_Depreciation_Table_Header_ID));
 	}
 
 	/** Get A_Depreciation_Table_Header_ID.
@@ -118,43 +117,43 @@ public class X_A_Depreciation_Table_Header extends PO implements I_A_Depreciatio
         return new KeyNamePair(get_ID(), String.valueOf(getA_Depreciation_Table_Header_ID()));
     }
 
-	/** A_Table_Rate_Type AD_Reference_ID=1000012 */
-	public static final int A_TABLE_RATE_TYPE_AD_Reference_ID=1000012;
+	/** A_Table_Rate_Type AD_Reference_ID=53255 */
+	public static final int A_TABLE_RATE_TYPE_AD_Reference_ID=53255;
 	/** Amount = AM */
 	public static final String A_TABLE_RATE_TYPE_Amount = "AM";
 	/** Rate = RT */
 	public static final String A_TABLE_RATE_TYPE_Rate = "RT";
-	/** Set A_Table_Rate_Type.
-		@param A_Table_Rate_Type A_Table_Rate_Type	  */
+	/** Set Type.
+		@param A_Table_Rate_Type Type	  */
 	public void setA_Table_Rate_Type (String A_Table_Rate_Type)
 	{
 
 		set_Value (COLUMNNAME_A_Table_Rate_Type, A_Table_Rate_Type);
 	}
 
-	/** Get A_Table_Rate_Type.
-		@return A_Table_Rate_Type	  */
+	/** Get Type.
+		@return Type	  */
 	public String getA_Table_Rate_Type () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Table_Rate_Type);
 	}
 
-	/** A_Term AD_Reference_ID=1000013 */
-	public static final int A_TERM_AD_Reference_ID=1000013;
-	/** Yearly = YR */
-	public static final String A_TERM_Yearly = "YR";
+	/** A_Term AD_Reference_ID=53256 */
+	public static final int A_TERM_AD_Reference_ID=53256;
 	/** Period = PR */
 	public static final String A_TERM_Period = "PR";
-	/** Set A_Term.
-		@param A_Term A_Term	  */
+	/** Yearly = YR */
+	public static final String A_TERM_Yearly = "YR";
+	/** Set Period/Yearly.
+		@param A_Term Period/Yearly	  */
 	public void setA_Term (String A_Term)
 	{
 
 		set_Value (COLUMNNAME_A_Term, A_Term);
 	}
 
-	/** Get A_Term.
-		@return A_Term	  */
+	/** Get Period/Yearly.
+		@return Period/Yearly	  */
 	public String getA_Term () 
 	{
 		return (String)get_Value(COLUMNNAME_A_Term);
@@ -166,8 +165,6 @@ public class X_A_Depreciation_Table_Header extends PO implements I_A_Depreciatio
 	  */
 	public void setDescription (String Description)
 	{
-		if (Description == null)
-			throw new IllegalArgumentException ("Description is mandatory.");
 		set_Value (COLUMNNAME_Description, Description);
 	}
 

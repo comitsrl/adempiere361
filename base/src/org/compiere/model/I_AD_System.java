@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_System
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_AD_System 
 {
@@ -273,6 +273,19 @@ public interface I_AD_System
 
 	/** Get Last Build Info	  */
 	public String getLastBuildInfo();
+
+    /** Column name LastMigrationScriptApplied */
+    public static final String COLUMNNAME_LastMigrationScriptApplied = "LastMigrationScriptApplied";
+
+	/** Set Last Migration Script Applied.
+	  * Register of the filename for the last migration script applied on this database
+	  */
+	public void setLastMigrationScriptApplied (String LastMigrationScriptApplied);
+
+	/** Get Last Migration Script Applied.
+	  * Register of the filename for the last migration script applied on this database
+	  */
+	public String getLastMigrationScriptApplied();
 
     /** Column name LDAPDomain */
     public static final String COLUMNNAME_LDAPDomain = "LDAPDomain";

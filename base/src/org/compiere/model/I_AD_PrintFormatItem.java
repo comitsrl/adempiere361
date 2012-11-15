@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_PrintFormatItem
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_AD_PrintFormatItem 
 {
@@ -323,6 +323,19 @@ public interface I_AD_PrintFormatItem
 	  * Count number of not empty elements
 	  */
 	public boolean isCounted();
+
+    /** Column name IsDesc */
+    public static final String COLUMNNAME_IsDesc = "IsDesc";
+
+	/** Set Descending.
+	  * Sort your data using a SQL Desc Order By statement
+	  */
+	public void setIsDesc (boolean IsDesc);
+
+	/** Get Descending.
+	  * Sort your data using a SQL Desc Order By statement
+	  */
+	public boolean isDesc();
 
     /** Column name IsDeviationCalc */
     public static final String COLUMNNAME_IsDeviationCalc = "IsDeviationCalc";

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_User
  *  @author Adempiere (generated) 
- *  @version 360LTS.015
+ *  @version 361LTS.Final
  */
 public interface I_AD_User 
 {

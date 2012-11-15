@@ -21,20 +21,19 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.Properties;
-import org.compiere.model.*;
 import org.compiere.util.Env;
 import org.compiere.util.KeyNamePair;
 
 /** Generated Model for M_Product
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_M_Product extends PO implements I_M_Product, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20121005L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_M_Product (Properties ctx, int M_Product_ID, String trxName)
@@ -108,6 +107,42 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
         .append(get_ID()).append("]");
       return sb.toString();
     }
+
+	/** Set Classification.
+		@param Classification 
+		Classification for grouping
+	  */
+	public void setClassification (String Classification)
+	{
+		set_Value (COLUMNNAME_Classification, Classification);
+	}
+
+	/** Get Classification.
+		@return Classification for grouping
+	  */
+	public String getClassification () 
+	{
+		return (String)get_Value(COLUMNNAME_Classification);
+	}
+
+	/** Set Standard Cost.
+		@param CostStandard 
+		Standard Costs
+	  */
+	public void setCostStandard (BigDecimal CostStandard)
+	{
+		throw new IllegalArgumentException ("CostStandard is virtual column");	}
+
+	/** Get Standard Cost.
+		@return Standard Costs
+	  */
+	public BigDecimal getCostStandard () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_CostStandard);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
 
 	public I_C_RevenueRecognition getC_RevenueRecognition() throws RuntimeException
     {
@@ -219,42 +254,6 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
-	}
-
-	/** Set Classification.
-		@param Classification 
-		Classification for grouping
-	  */
-	public void setClassification (String Classification)
-	{
-		set_Value (COLUMNNAME_Classification, Classification);
-	}
-
-	/** Get Classification.
-		@return Classification for grouping
-	  */
-	public String getClassification () 
-	{
-		return (String)get_Value(COLUMNNAME_Classification);
-	}
-
-	/** Set Standard Cost.
-		@param CostStandard 
-		Standard Costs
-	  */
-	public void setCostStandard (BigDecimal CostStandard)
-	{
-		throw new IllegalArgumentException ("CostStandard is virtual column");	}
-
-	/** Get Standard Cost.
-		@return Standard Costs
-	  */
-	public BigDecimal getCostStandard () 
-	{
-		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_CostStandard);
-		if (bd == null)
-			 return Env.ZERO;
-		return bd;
 	}
 
 	/** Set Description.
@@ -596,14 +595,17 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 	}
 
 	/** Set Phantom.
-		@param IsPhantom Phantom	  */
+		@param IsPhantom 
+		Phantom Component
+	  */
 	public void setIsPhantom (boolean IsPhantom)
 	{
 		set_Value (COLUMNNAME_IsPhantom, Boolean.valueOf(IsPhantom));
 	}
 
 	/** Get Phantom.
-		@return Phantom	  */
+		@return Phantom Component
+	  */
 	public boolean isPhantom () 
 	{
 		Object oo = get_Value(COLUMNNAME_IsPhantom);
@@ -1114,62 +1116,6 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 		return ii.intValue();
 	}
 
-	public I_S_ExpenseType getS_ExpenseType() throws RuntimeException
-    {
-		return (I_S_ExpenseType)MTable.get(getCtx(), I_S_ExpenseType.Table_Name)
-			.getPO(getS_ExpenseType_ID(), get_TrxName());	}
-
-	/** Set Expense Type.
-		@param S_ExpenseType_ID 
-		Expense report type
-	  */
-	public void setS_ExpenseType_ID (int S_ExpenseType_ID)
-	{
-		if (S_ExpenseType_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_S_ExpenseType_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_S_ExpenseType_ID, Integer.valueOf(S_ExpenseType_ID));
-	}
-
-	/** Get Expense Type.
-		@return Expense report type
-	  */
-	public int getS_ExpenseType_ID () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_S_ExpenseType_ID);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
-
-	public I_S_Resource getS_Resource() throws RuntimeException
-    {
-		return (I_S_Resource)MTable.get(getCtx(), I_S_Resource.Table_Name)
-			.getPO(getS_Resource_ID(), get_TrxName());	}
-
-	/** Set Resource.
-		@param S_Resource_ID 
-		Resource
-	  */
-	public void setS_Resource_ID (int S_Resource_ID)
-	{
-		if (S_Resource_ID < 1) 
-			set_ValueNoCheck (COLUMNNAME_S_Resource_ID, null);
-		else 
-			set_ValueNoCheck (COLUMNNAME_S_Resource_ID, Integer.valueOf(S_Resource_ID));
-	}
-
-	/** Get Resource.
-		@return Resource
-	  */
-	public int getS_Resource_ID () 
-	{
-		Integer ii = (Integer)get_Value(COLUMNNAME_S_Resource_ID);
-		if (ii == null)
-			 return 0;
-		return ii.intValue();
-	}
-
 	public I_AD_User getSalesRep() throws RuntimeException
     {
 		return (I_AD_User)MTable.get(getCtx(), I_AD_User.Table_Name)
@@ -1193,6 +1139,34 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 	public int getSalesRep_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_SalesRep_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
+	}
+
+	public I_S_ExpenseType getS_ExpenseType() throws RuntimeException
+    {
+		return (I_S_ExpenseType)MTable.get(getCtx(), I_S_ExpenseType.Table_Name)
+			.getPO(getS_ExpenseType_ID(), get_TrxName());	}
+
+	/** Set Expense Type.
+		@param S_ExpenseType_ID 
+		Expense report type
+	  */
+	public void setS_ExpenseType_ID (int S_ExpenseType_ID)
+	{
+		if (S_ExpenseType_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_S_ExpenseType_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_S_ExpenseType_ID, Integer.valueOf(S_ExpenseType_ID));
+	}
+
+	/** Get Expense Type.
+		@return Expense report type
+	  */
+	public int getS_ExpenseType_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_S_ExpenseType_ID);
 		if (ii == null)
 			 return 0;
 		return ii.intValue();
@@ -1273,6 +1247,34 @@ public class X_M_Product extends PO implements I_M_Product, I_Persistent
 	public String getSKU () 
 	{
 		return (String)get_Value(COLUMNNAME_SKU);
+	}
+
+	public I_S_Resource getS_Resource() throws RuntimeException
+    {
+		return (I_S_Resource)MTable.get(getCtx(), I_S_Resource.Table_Name)
+			.getPO(getS_Resource_ID(), get_TrxName());	}
+
+	/** Set Resource.
+		@param S_Resource_ID 
+		Resource
+	  */
+	public void setS_Resource_ID (int S_Resource_ID)
+	{
+		if (S_Resource_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_S_Resource_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_S_Resource_ID, Integer.valueOf(S_Resource_ID));
+	}
+
+	/** Get Resource.
+		@return Resource
+	  */
+	public int getS_Resource_ID () 
+	{
+		Integer ii = (Integer)get_Value(COLUMNNAME_S_Resource_ID);
+		if (ii == null)
+			 return 0;
+		return ii.intValue();
 	}
 
 	/** Set UnitsPerPack.

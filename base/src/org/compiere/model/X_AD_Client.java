@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for AD_Client
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_Client extends PO implements I_AD_Client, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_Client (Properties ctx, int AD_Client_ID, String trxName)
@@ -39,8 +39,6 @@ public class X_AD_Client extends PO implements I_AD_Client, I_Persistent
       /** if (AD_Client_ID == 0)
         {
 			setAutoArchive (null);
-// N
-			setIsCostImmediate (false);
 // N
 			setIsMultiLingualDocument (false);
 			setIsPostImmediate (false);
@@ -214,30 +212,6 @@ public class X_AD_Client extends PO implements I_AD_Client, I_Persistent
 	public String getEMailTest () 
 	{
 		return (String)get_Value(COLUMNNAME_EMailTest);
-	}
-
-	/** Set Cost Immediately.
-		@param IsCostImmediate 
-		Update Costs immediately for testing
-	  */
-	public void setIsCostImmediate (boolean IsCostImmediate)
-	{
-		set_Value (COLUMNNAME_IsCostImmediate, Boolean.valueOf(IsCostImmediate));
-	}
-
-	/** Get Cost Immediately.
-		@return Update Costs immediately for testing
-	  */
-	public boolean isCostImmediate () 
-	{
-		Object oo = get_Value(COLUMNNAME_IsCostImmediate);
-		if (oo != null) 
-		{
-			 if (oo instanceof Boolean) 
-				 return ((Boolean)oo).booleanValue(); 
-			return "Y".equals(oo);
-		}
-		return false;
 	}
 
 	/** Set Multi Lingual Documents.

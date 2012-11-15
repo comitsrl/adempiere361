@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for AD_MigrationScript
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_AD_MigrationScript 
 {
@@ -255,12 +255,12 @@ public interface I_AD_MigrationScript
     public static final String COLUMNNAME_URL = "URL";
 
 	/** Set URL.
-	  * Full URL address - e.g. http://www.adempiere.org
+	  * Full URL address - e.g. http://www.idempiere.org
 	  */
 	public void setURL (String URL);
 
 	/** Get URL.
-	  * Full URL address - e.g. http://www.adempiere.org
+	  * Full URL address - e.g. http://www.idempiere.org
 	  */
 	public String getURL();
 }

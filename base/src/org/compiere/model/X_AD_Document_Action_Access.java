@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for AD_Document_Action_Access
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_Document_Action_Access extends PO implements I_AD_Document_Action_Access, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_Document_Action_Access (Properties ctx, int AD_Document_Action_Access_ID, String trxName)

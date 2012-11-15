@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_Invoice
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_C_Invoice 
 {
@@ -580,6 +580,15 @@ public interface I_C_Invoice
 	  * Print Discount on Invoice and Order
 	  */
 	public boolean isDiscountPrinted();
+
+    /** Column name IsFixedAssetInvoice */
+    public static final String COLUMNNAME_IsFixedAssetInvoice = "IsFixedAssetInvoice";
+
+	/** Set IsFixedAssetInvoice	  */
+	public void setIsFixedAssetInvoice (boolean IsFixedAssetInvoice);
+
+	/** Get IsFixedAssetInvoice	  */
+	public boolean isFixedAssetInvoice();
 
     /** Column name IsInDispute */
     public static final String COLUMNNAME_IsInDispute = "IsInDispute";

@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for GL_JournalLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120725L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_GL_JournalLine (Properties ctx, int GL_JournalLine_ID, String trxName)
@@ -173,15 +173,15 @@ public class X_GL_JournalLine extends PO implements I_GL_JournalLine, I_Persiste
 		return ii.intValue();
 	}
 
-	/** Set Asset Related?.
-		@param A_CreateAsset Asset Related?	  */
+	/** Set Create Asset.
+		@param A_CreateAsset Create Asset	  */
 	public void setA_CreateAsset (boolean A_CreateAsset)
 	{
 		set_Value (COLUMNNAME_A_CreateAsset, Boolean.valueOf(A_CreateAsset));
 	}
 
-	/** Get Asset Related?.
-		@return Asset Related?	  */
+	/** Get Create Asset.
+		@return Create Asset	  */
 	public boolean isA_CreateAsset () 
 	{
 		Object oo = get_Value(COLUMNNAME_A_CreateAsset);

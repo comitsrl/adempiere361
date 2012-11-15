@@ -25,14 +25,14 @@ import org.compiere.util.Env;
 
 /** Generated Model for I_FixedAsset
  *  @author Adempiere (generated) 
- *  @version Release 3.6.0LTS - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_I_FixedAsset extends PO implements I_I_FixedAsset, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120314L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_I_FixedAsset (Properties ctx, int I_FixedAsset_ID, String trxName)
@@ -316,15 +316,15 @@ public class X_I_FixedAsset extends PO implements I_I_FixedAsset, I_Persistent
 		return ii.intValue();
 	}
 
-	/** Set A_Salvage_Value.
-		@param A_Salvage_Value A_Salvage_Value	  */
+	/** Set Asset Salvage Value.
+		@param A_Salvage_Value Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value)
 	{
 		set_Value (COLUMNNAME_A_Salvage_Value, A_Salvage_Value);
 	}
 
-	/** Get A_Salvage_Value.
-		@return A_Salvage_Value	  */
+	/** Get Asset Salvage Value.
+		@return Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Salvage_Value);

@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for C_OrderLine
  *  @author Adempiere (generated) 
- *  @version 360LTS.010
+ *  @version 361LTS.Final
  */
 public interface I_C_OrderLine 
 {
@@ -253,6 +253,24 @@ public interface I_C_OrderLine
 	  * User who created this records
 	  */
 	public int getCreatedBy();
+
+    /** Column name CreateProduction */
+    public static final String COLUMNNAME_CreateProduction = "CreateProduction";
+
+	/** Set Create Production	  */
+	public void setCreateProduction (String CreateProduction);
+
+	/** Get Create Production	  */
+	public String getCreateProduction();
+
+    /** Column name CreateShipment */
+    public static final String COLUMNNAME_CreateShipment = "CreateShipment";
+
+	/** Set Create Shipment	  */
+	public void setCreateShipment (String CreateShipment);
+
+	/** Get Create Shipment	  */
+	public String getCreateShipment();
 
     /** Column name C_Tax_ID */
     public static final String COLUMNNAME_C_Tax_ID = "C_Tax_ID";

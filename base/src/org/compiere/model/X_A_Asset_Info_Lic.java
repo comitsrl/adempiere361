@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Asset_Info_Lic
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Asset_Info_Lic extends PO implements I_A_Asset_Info_Lic, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Asset_Info_Lic (Properties ctx, int A_Asset_Info_Lic_ID, String trxName)
@@ -74,7 +74,7 @@ public class X_A_Asset_Info_Lic extends PO implements I_A_Asset_Info_Lic, I_Pers
       return sb.toString();
     }
 
-	public I_A_Asset getA_Asset()
+	public I_A_Asset getA_Asset() throws RuntimeException
     {
 		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
 			.getPO(getA_Asset_ID(), get_TrxName());	}
@@ -85,9 +85,10 @@ public class X_A_Asset_Info_Lic extends PO implements I_A_Asset_Info_Lic, I_Pers
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -105,9 +106,10 @@ public class X_A_Asset_Info_Lic extends PO implements I_A_Asset_Info_Lic, I_Pers
 		@param A_Asset_Info_Lic_ID A_Asset_Info_Lic_ID	  */
 	public void setA_Asset_Info_Lic_ID (int A_Asset_Info_Lic_ID)
 	{
-		if (A_Asset_Info_Lic_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_Info_Lic_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Asset_Info_Lic_ID, Integer.valueOf(A_Asset_Info_Lic_ID));
+		if (A_Asset_Info_Lic_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Info_Lic_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_Info_Lic_ID, Integer.valueOf(A_Asset_Info_Lic_ID));
 	}
 
 	/** Get A_Asset_Info_Lic_ID.
@@ -142,15 +144,15 @@ public class X_A_Asset_Info_Lic extends PO implements I_A_Asset_Info_Lic, I_Pers
 		return (String)get_Value(COLUMNNAME_A_Issuing_Agency);
 	}
 
-	/** Set A_License_Fee.
-		@param A_License_Fee A_License_Fee	  */
+	/** Set Asset License Fee.
+		@param A_License_Fee Asset License Fee	  */
 	public void setA_License_Fee (BigDecimal A_License_Fee)
 	{
 		set_Value (COLUMNNAME_A_License_Fee, A_License_Fee);
 	}
 
-	/** Get A_License_Fee.
-		@return A_License_Fee	  */
+	/** Get Asset License Fee.
+		@return Asset License Fee	  */
 	public BigDecimal getA_License_Fee () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_License_Fee);
@@ -159,29 +161,29 @@ public class X_A_Asset_Info_Lic extends PO implements I_A_Asset_Info_Lic, I_Pers
 		return bd;
 	}
 
-	/** Set A_License_No.
-		@param A_License_No A_License_No	  */
+	/** Set Asset License No.
+		@param A_License_No Asset License No	  */
 	public void setA_License_No (String A_License_No)
 	{
 		set_Value (COLUMNNAME_A_License_No, A_License_No);
 	}
 
-	/** Get A_License_No.
-		@return A_License_No	  */
+	/** Get Asset License No.
+		@return Asset License No	  */
 	public String getA_License_No () 
 	{
 		return (String)get_Value(COLUMNNAME_A_License_No);
 	}
 
-	/** Set A_Renewal_Date.
-		@param A_Renewal_Date A_Renewal_Date	  */
+	/** Set Asset Renewal Date.
+		@param A_Renewal_Date Asset Renewal Date	  */
 	public void setA_Renewal_Date (Timestamp A_Renewal_Date)
 	{
 		set_Value (COLUMNNAME_A_Renewal_Date, A_Renewal_Date);
 	}
 
-	/** Get A_Renewal_Date.
-		@return A_Renewal_Date	  */
+	/** Get Asset Renewal Date.
+		@return Asset Renewal Date	  */
 	public Timestamp getA_Renewal_Date () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_A_Renewal_Date);

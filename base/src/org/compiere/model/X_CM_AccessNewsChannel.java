@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for CM_AccessNewsChannel
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_CM_AccessNewsChannel extends PO implements I_CM_AccessNewsChannel, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_CM_AccessNewsChannel (Properties ctx, int CM_AccessNewsChannel_ID, String trxName)

@@ -23,14 +23,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for C_POSKeyLayout
  *  @author Adempiere (generated) 
- *  @version 360LTS.013 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_C_POSKeyLayout extends PO implements I_C_POSKeyLayout, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110813L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_C_POSKeyLayout (Properties ctx, int C_POSKeyLayout_ID, String trxName)

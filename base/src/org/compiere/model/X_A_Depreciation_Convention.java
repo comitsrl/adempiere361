@@ -19,18 +19,17 @@ package org.compiere.model;
 
 import java.sql.ResultSet;
 import java.util.Properties;
-import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Convention
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Depreciation_Convention extends PO implements I_A_Depreciation_Convention, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Convention (Properties ctx, int A_Depreciation_Convention_ID, String trxName)
@@ -40,6 +39,7 @@ public class X_A_Depreciation_Convention extends PO implements I_A_Depreciation_
         {
 			setA_Depreciation_Convention_ID (0);
 			setProcessed (false);
+// N
         } */
     }
 
@@ -71,17 +71,18 @@ public class X_A_Depreciation_Convention extends PO implements I_A_Depreciation_
       return sb.toString();
     }
 
-	/** Set A_Depreciation_Convention_ID.
-		@param A_Depreciation_Convention_ID A_Depreciation_Convention_ID	  */
+	/** Set Depreciation Convention.
+		@param A_Depreciation_Convention_ID Depreciation Convention	  */
 	public void setA_Depreciation_Convention_ID (int A_Depreciation_Convention_ID)
 	{
-		if (A_Depreciation_Convention_ID < 1)
-			 throw new IllegalArgumentException ("A_Depreciation_Convention_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Depreciation_Convention_ID, Integer.valueOf(A_Depreciation_Convention_ID));
+		if (A_Depreciation_Convention_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Convention_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Convention_ID, Integer.valueOf(A_Depreciation_Convention_ID));
 	}
 
-	/** Get A_Depreciation_Convention_ID.
-		@return A_Depreciation_Convention_ID	  */
+	/** Get Depreciation Convention.
+		@return Depreciation Convention	  */
 	public int getA_Depreciation_Convention_ID () 
 	{
 		Integer ii = (Integer)get_Value(COLUMNNAME_A_Depreciation_Convention_ID);
@@ -89,14 +90,6 @@ public class X_A_Depreciation_Convention extends PO implements I_A_Depreciation_
 			 return 0;
 		return ii.intValue();
 	}
-
-    /** Get Record ID/ColumnName
-        @return ID/ColumnName pair
-      */
-    public KeyNamePair getKeyNamePair() 
-    {
-        return new KeyNamePair(get_ID(), String.valueOf(getA_Depreciation_Convention_ID()));
-    }
 
 	/** Set ConventionType.
 		@param ConventionType ConventionType	  */
@@ -161,6 +154,27 @@ public class X_A_Depreciation_Convention extends PO implements I_A_Depreciation_
 	public boolean isProcessed () 
 	{
 		Object oo = get_Value(COLUMNNAME_Processed);
+		if (oo != null) 
+		{
+			 if (oo instanceof Boolean) 
+				 return ((Boolean)oo).booleanValue(); 
+			return "Y".equals(oo);
+		}
+		return false;
+	}
+
+	/** Set Process Now.
+		@param Processing Process Now	  */
+	public void setProcessing (boolean Processing)
+	{
+		set_Value (COLUMNNAME_Processing, Boolean.valueOf(Processing));
+	}
+
+	/** Get Process Now.
+		@return Process Now	  */
+	public boolean isProcessing () 
+	{
+		Object oo = get_Value(COLUMNNAME_Processing);
 		if (oo != null) 
 		{
 			 if (oo instanceof Boolean) 

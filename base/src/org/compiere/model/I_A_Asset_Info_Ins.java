@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Asset_Info_Ins
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Asset_Info_Ins 
 {
@@ -30,7 +30,7 @@ public interface I_A_Asset_Info_Ins
     /** TableName=A_Asset_Info_Ins */
     public static final String Table_Name = "A_Asset_Info_Ins";
 
-    /** AD_Table_ID=1000033 */
+    /** AD_Table_ID=53135 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
@@ -40,27 +40,6 @@ public interface I_A_Asset_Info_Ins
     BigDecimal accessLevel = BigDecimal.valueOf(7);
 
     /** Load Meta Data */
-
-    /** Column name AD_Client_ID */
-    public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
-
-	/** Get Client.
-	  * Client/Tenant for this installation.
-	  */
-	public int getAD_Client_ID();
-
-    /** Column name AD_Org_ID */
-    public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
-
-	/** Set Organization.
-	  * Organizational entity within client
-	  */
-	public void setAD_Org_ID (int AD_Org_ID);
-
-	/** Get Organization.
-	  * Organizational entity within client
-	  */
-	public int getAD_Org_ID();
 
     /** Column name A_Asset_ID */
     public static final String COLUMNNAME_A_Asset_ID = "A_Asset_ID";
@@ -84,58 +63,79 @@ public interface I_A_Asset_Info_Ins
 	/** Get A_Asset_Info_Ins_ID	  */
 	public int getA_Asset_Info_Ins_ID();
 
+    /** Column name AD_Client_ID */
+    public static final String COLUMNNAME_AD_Client_ID = "AD_Client_ID";
+
+	/** Get Client.
+	  * Client/Tenant for this installation.
+	  */
+	public int getAD_Client_ID();
+
+    /** Column name AD_Org_ID */
+    public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
+
+	/** Set Organization.
+	  * Organizational entity within client
+	  */
+	public void setAD_Org_ID (int AD_Org_ID);
+
+	/** Get Organization.
+	  * Organizational entity within client
+	  */
+	public int getAD_Org_ID();
+
     /** Column name A_Ins_Premium */
     public static final String COLUMNNAME_A_Ins_Premium = "A_Ins_Premium";
 
-	/** Set A_Ins_Premium	  */
+	/** Set Asset Insurance Premium	  */
 	public void setA_Ins_Premium (BigDecimal A_Ins_Premium);
 
-	/** Get A_Ins_Premium	  */
+	/** Get Asset Insurance Premium	  */
 	public BigDecimal getA_Ins_Premium();
-
-    /** Column name A_Ins_Value */
-    public static final String COLUMNNAME_A_Ins_Value = "A_Ins_Value";
-
-	/** Set A_Ins_Value	  */
-	public void setA_Ins_Value (BigDecimal A_Ins_Value);
-
-	/** Get A_Ins_Value	  */
-	public BigDecimal getA_Ins_Value();
 
     /** Column name A_Insurance_Co */
     public static final String COLUMNNAME_A_Insurance_Co = "A_Insurance_Co";
 
-	/** Set A_Insurance_Co	  */
+	/** Set Insurance Company	  */
 	public void setA_Insurance_Co (String A_Insurance_Co);
 
-	/** Get A_Insurance_Co	  */
+	/** Get Insurance Company	  */
 	public String getA_Insurance_Co();
+
+    /** Column name A_Ins_Value */
+    public static final String COLUMNNAME_A_Ins_Value = "A_Ins_Value";
+
+	/** Set Asset Insurance Value	  */
+	public void setA_Ins_Value (BigDecimal A_Ins_Value);
+
+	/** Get Asset Insurance Value	  */
+	public BigDecimal getA_Ins_Value();
 
     /** Column name A_Policy_No */
     public static final String COLUMNNAME_A_Policy_No = "A_Policy_No";
 
-	/** Set A_Policy_No	  */
+	/** Set Asset Policy No	  */
 	public void setA_Policy_No (String A_Policy_No);
 
-	/** Get A_Policy_No	  */
+	/** Get Asset Policy No	  */
 	public String getA_Policy_No();
 
     /** Column name A_Renewal_Date */
     public static final String COLUMNNAME_A_Renewal_Date = "A_Renewal_Date";
 
-	/** Set A_Renewal_Date	  */
+	/** Set Asset Renewal Date	  */
 	public void setA_Renewal_Date (Timestamp A_Renewal_Date);
 
-	/** Get A_Renewal_Date	  */
+	/** Get Asset Renewal Date	  */
 	public Timestamp getA_Renewal_Date();
 
     /** Column name A_Replace_Cost */
     public static final String COLUMNNAME_A_Replace_Cost = "A_Replace_Cost";
 
-	/** Set A_Replace_Cost	  */
+	/** Set Asset Replace Cost	  */
 	public void setA_Replace_Cost (BigDecimal A_Replace_Cost);
 
-	/** Get A_Replace_Cost	  */
+	/** Get Asset Replace Cost	  */
 	public BigDecimal getA_Replace_Cost();
 
     /** Column name Created */

@@ -22,14 +22,14 @@ import java.util.Properties;
 
 /** Generated Model for AD_RecentItem
  *  @author Adempiere (generated) 
- *  @version 360LTS.015 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_AD_RecentItem extends PO implements I_AD_RecentItem, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20120127L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_AD_RecentItem (Properties ctx, int AD_RecentItem_ID, String trxName)

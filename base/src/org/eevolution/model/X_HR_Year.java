@@ -24,14 +24,14 @@ import org.compiere.model.*;
 
 /** Generated Model for HR_Year
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_HR_Year extends PO implements I_HR_Year, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_HR_Year (Properties ctx, int HR_Year_ID, String trxName)

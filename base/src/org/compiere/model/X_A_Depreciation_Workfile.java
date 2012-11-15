@@ -26,14 +26,14 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Model for A_Depreciation_Workfile
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Workfile, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20081221L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_A_Depreciation_Workfile (Properties ctx, int A_Depreciation_Workfile_ID, String trxName)
@@ -107,17 +107,15 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
       return sb.toString();
     }
 
-	/** Set A_Accumulated_Depr.
-		@param A_Accumulated_Depr A_Accumulated_Depr	  */
+	/** Set Accumulated Depreciation.
+		@param A_Accumulated_Depr Accumulated Depreciation	  */
 	public void setA_Accumulated_Depr (BigDecimal A_Accumulated_Depr)
 	{
-		if (A_Accumulated_Depr == null)
-			throw new IllegalArgumentException ("A_Accumulated_Depr is mandatory.");
 		set_Value (COLUMNNAME_A_Accumulated_Depr, A_Accumulated_Depr);
 	}
 
-	/** Get A_Accumulated_Depr.
-		@return A_Accumulated_Depr	  */
+	/** Get Accumulated Depreciation.
+		@return Accumulated Depreciation	  */
 	public BigDecimal getA_Accumulated_Depr () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Accumulated_Depr);
@@ -130,8 +128,6 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		@param A_Accumulated_Depr_F Accumulated Depreciation (fiscal)	  */
 	public void setA_Accumulated_Depr_F (BigDecimal A_Accumulated_Depr_F)
 	{
-		if (A_Accumulated_Depr_F == null)
-			throw new IllegalArgumentException ("A_Accumulated_Depr_F is mandatory.");
 		set_Value (COLUMNNAME_A_Accumulated_Depr_F, A_Accumulated_Depr_F);
 	}
 
@@ -145,17 +141,15 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		return bd;
 	}
 
-	/** Set A_Asset_Cost.
-		@param A_Asset_Cost A_Asset_Cost	  */
+	/** Set Asset Cost.
+		@param A_Asset_Cost Asset Cost	  */
 	public void setA_Asset_Cost (BigDecimal A_Asset_Cost)
 	{
-		if (A_Asset_Cost == null)
-			throw new IllegalArgumentException ("A_Asset_Cost is mandatory.");
 		set_Value (COLUMNNAME_A_Asset_Cost, A_Asset_Cost);
 	}
 
-	/** Get A_Asset_Cost.
-		@return A_Asset_Cost	  */
+	/** Get Asset Cost.
+		@return Asset Cost	  */
 	public BigDecimal getA_Asset_Cost () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Asset_Cost);
@@ -164,7 +158,7 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		return bd;
 	}
 
-	public I_A_Asset getA_Asset()
+	public I_A_Asset getA_Asset() throws RuntimeException
     {
 		return (I_A_Asset)MTable.get(getCtx(), I_A_Asset.Table_Name)
 			.getPO(getA_Asset_ID(), get_TrxName());	}
@@ -175,9 +169,10 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 	  */
 	public void setA_Asset_ID (int A_Asset_ID)
 	{
-		if (A_Asset_ID < 1)
-			 throw new IllegalArgumentException ("A_Asset_ID is mandatory.");
-		set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
+		if (A_Asset_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Asset_ID, Integer.valueOf(A_Asset_ID));
 	}
 
 	/** Get Asset.
@@ -195,8 +190,6 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		@param A_Asset_Life_Current_Year A_Asset_Life_Current_Year	  */
 	public void setA_Asset_Life_Current_Year (BigDecimal A_Asset_Life_Current_Year)
 	{
-		if (A_Asset_Life_Current_Year == null)
-			throw new IllegalArgumentException ("A_Asset_Life_Current_Year is mandatory.");
 		set_Value (COLUMNNAME_A_Asset_Life_Current_Year, A_Asset_Life_Current_Year);
 	}
 
@@ -316,8 +309,6 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		@param A_Curr_Dep_Exp A_Curr_Dep_Exp	  */
 	public void setA_Curr_Dep_Exp (BigDecimal A_Curr_Dep_Exp)
 	{
-		if (A_Curr_Dep_Exp == null)
-			throw new IllegalArgumentException ("A_Curr_Dep_Exp is mandatory.");
 		set_Value (COLUMNNAME_A_Curr_Dep_Exp, A_Curr_Dep_Exp);
 	}
 
@@ -352,9 +343,10 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		@param A_Depreciation_Workfile_ID A_Depreciation_Workfile_ID	  */
 	public void setA_Depreciation_Workfile_ID (int A_Depreciation_Workfile_ID)
 	{
-		if (A_Depreciation_Workfile_ID < 1)
-			 throw new IllegalArgumentException ("A_Depreciation_Workfile_ID is mandatory.");
-		set_Value (COLUMNNAME_A_Depreciation_Workfile_ID, Integer.valueOf(A_Depreciation_Workfile_ID));
+		if (A_Depreciation_Workfile_ID < 1) 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Workfile_ID, null);
+		else 
+			set_ValueNoCheck (COLUMNNAME_A_Depreciation_Workfile_ID, Integer.valueOf(A_Depreciation_Workfile_ID));
 	}
 
 	/** Get A_Depreciation_Workfile_ID.
@@ -407,7 +399,7 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		return bd;
 	}
 
-	public I_A_FundingMode getA_FundingMode()
+	public I_A_FundingMode getA_FundingMode() throws RuntimeException
     {
 		return (I_A_FundingMode)MTable.get(getCtx(), I_A_FundingMode.Table_Name)
 			.getPO(getA_FundingMode_ID(), get_TrxName());	}
@@ -553,8 +545,6 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		@param A_QTY_Current Current Qty	  */
 	public void setA_QTY_Current (BigDecimal A_QTY_Current)
 	{
-		if (A_QTY_Current == null)
-			throw new IllegalArgumentException ("A_QTY_Current is mandatory.");
 		set_Value (COLUMNNAME_A_QTY_Current, A_QTY_Current);
 	}
 
@@ -568,80 +558,18 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 		return bd;
 	}
 
-	/** Set A_Salvage_Value.
-		@param A_Salvage_Value A_Salvage_Value	  */
+	/** Set Asset Salvage Value.
+		@param A_Salvage_Value Asset Salvage Value	  */
 	public void setA_Salvage_Value (BigDecimal A_Salvage_Value)
 	{
-		if (A_Salvage_Value == null)
-			throw new IllegalArgumentException ("A_Salvage_Value is mandatory.");
 		set_Value (COLUMNNAME_A_Salvage_Value, A_Salvage_Value);
 	}
 
-	/** Get A_Salvage_Value.
-		@return A_Salvage_Value	  */
+	/** Get Asset Salvage Value.
+		@return Asset Salvage Value	  */
 	public BigDecimal getA_Salvage_Value () 
 	{
 		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Salvage_Value);
-		if (bd == null)
-			 return Env.ZERO;
-		return bd;
-	}
-
-	/** A_Tip_Finantare AD_Reference_ID=1000076 */
-	public static final int A_TIP_FINANTARE_AD_Reference_ID=1000076;
-	/** Terti = T */
-	public static final String A_TIP_FINANTARE_Terti = "T";
-	/** Cofinantare = C */
-	public static final String A_TIP_FINANTARE_Cofinantare = "C";
-	/** Proprie = P */
-	public static final String A_TIP_FINANTARE_Proprie = "P";
-	/** Set Tip finantare.
-		@param A_Tip_Finantare 
-		Tipul finantarii
-	  */
-	public void setA_Tip_Finantare (String A_Tip_Finantare)
-	{
-
-		set_Value (COLUMNNAME_A_Tip_Finantare, A_Tip_Finantare);
-	}
-
-	/** Get Tip finantare.
-		@return Tipul finantarii
-	  */
-	public String getA_Tip_Finantare () 
-	{
-		return (String)get_Value(COLUMNNAME_A_Tip_Finantare);
-	}
-
-	/** Set Contribuţia proprie.
-		@param A_Valoare_Cofinantare Contribuţia proprie	  */
-	public void setA_Valoare_Cofinantare (BigDecimal A_Valoare_Cofinantare)
-	{
-		set_Value (COLUMNNAME_A_Valoare_Cofinantare, A_Valoare_Cofinantare);
-	}
-
-	/** Get Contribuţia proprie.
-		@return Contribuţia proprie	  */
-	public BigDecimal getA_Valoare_Cofinantare () 
-	{
-		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Valoare_Cofinantare);
-		if (bd == null)
-			 return Env.ZERO;
-		return bd;
-	}
-
-	/** Set Contributie tert.
-		@param A_Valoare_Tert Contributie tert	  */
-	public void setA_Valoare_Tert (BigDecimal A_Valoare_Tert)
-	{
-		set_Value (COLUMNNAME_A_Valoare_Tert, A_Valoare_Tert);
-	}
-
-	/** Get Contributie tert.
-		@return Contributie tert	  */
-	public BigDecimal getA_Valoare_Tert () 
-	{
-		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Valoare_Tert);
 		if (bd == null)
 			 return Env.ZERO;
 		return bd;
@@ -662,6 +590,66 @@ public class X_A_Depreciation_Workfile extends PO implements I_A_Depreciation_Wo
 	public Timestamp getAssetDepreciationDate () 
 	{
 		return (Timestamp)get_Value(COLUMNNAME_AssetDepreciationDate);
+	}
+
+	/** A_Tip_Finantare AD_Reference_ID=53361 */
+	public static final int A_TIP_FINANTARE_AD_Reference_ID=53361;
+	/** Cofinantare = C */
+	public static final String A_TIP_FINANTARE_Cofinantare = "C";
+	/** Proprie = P */
+	public static final String A_TIP_FINANTARE_Proprie = "P";
+	/** Terti = T */
+	public static final String A_TIP_FINANTARE_Terti = "T";
+	/** Set Financing Type.
+		@param A_Tip_Finantare 
+		Financing Type
+	  */
+	public void setA_Tip_Finantare (String A_Tip_Finantare)
+	{
+
+		set_Value (COLUMNNAME_A_Tip_Finantare, A_Tip_Finantare);
+	}
+
+	/** Get Financing Type.
+		@return Financing Type
+	  */
+	public String getA_Tip_Finantare () 
+	{
+		return (String)get_Value(COLUMNNAME_A_Tip_Finantare);
+	}
+
+	/** Set Own contribution.
+		@param A_Valoare_Cofinantare Own contribution	  */
+	public void setA_Valoare_Cofinantare (BigDecimal A_Valoare_Cofinantare)
+	{
+		set_Value (COLUMNNAME_A_Valoare_Cofinantare, A_Valoare_Cofinantare);
+	}
+
+	/** Get Own contribution.
+		@return Own contribution	  */
+	public BigDecimal getA_Valoare_Cofinantare () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Valoare_Cofinantare);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
+	}
+
+	/** Set Third contribution.
+		@param A_Valoare_Tert Third contribution	  */
+	public void setA_Valoare_Tert (BigDecimal A_Valoare_Tert)
+	{
+		set_Value (COLUMNNAME_A_Valoare_Tert, A_Valoare_Tert);
+	}
+
+	/** Get Third contribution.
+		@return Third contribution	  */
+	public BigDecimal getA_Valoare_Tert () 
+	{
+		BigDecimal bd = (BigDecimal)get_Value(COLUMNNAME_A_Valoare_Tert);
+		if (bd == null)
+			 return Env.ZERO;
+		return bd;
 	}
 
 	/** Set Account Date.

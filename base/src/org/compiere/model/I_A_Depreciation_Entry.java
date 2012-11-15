@@ -22,7 +22,7 @@ import org.compiere.util.KeyNamePair;
 
 /** Generated Interface for A_Depreciation_Entry
  *  @author Adempiere (generated) 
- *  @version Release 3.5.3a
+ *  @version 361LTS.Final
  */
 public interface I_A_Depreciation_Entry 
 {
@@ -30,14 +30,14 @@ public interface I_A_Depreciation_Entry
     /** TableName=A_Depreciation_Entry */
     public static final String Table_Name = "A_Depreciation_Entry";
 
-    /** AD_Table_ID=1000019 */
+    /** AD_Table_ID=53121 */
     public static final int Table_ID = MTable.getTable_ID(Table_Name);
 
     KeyNamePair Model = new KeyNamePair(Table_ID, Table_Name);
 
-    /** AccessLevel = 7 - System - Client - Org 
+    /** AccessLevel = 3 - Client - Org 
      */
-    BigDecimal accessLevel = BigDecimal.valueOf(7);
+    BigDecimal accessLevel = BigDecimal.valueOf(3);
 
     /** Load Meta Data */
 
@@ -48,6 +48,15 @@ public interface I_A_Depreciation_Entry
 	  * Client/Tenant for this installation.
 	  */
 	public int getAD_Client_ID();
+
+    /** Column name A_Depreciation_Entry_ID */
+    public static final String COLUMNNAME_A_Depreciation_Entry_ID = "A_Depreciation_Entry_ID";
+
+	/** Set Depreciation Entry	  */
+	public void setA_Depreciation_Entry_ID (int A_Depreciation_Entry_ID);
+
+	/** Get Depreciation Entry	  */
+	public int getA_Depreciation_Entry_ID();
 
     /** Column name AD_Org_ID */
     public static final String COLUMNNAME_AD_Org_ID = "AD_Org_ID";
@@ -61,15 +70,6 @@ public interface I_A_Depreciation_Entry
 	  * Organizational entity within client
 	  */
 	public int getAD_Org_ID();
-
-    /** Column name A_Depreciation_Entry_ID */
-    public static final String COLUMNNAME_A_Depreciation_Entry_ID = "A_Depreciation_Entry_ID";
-
-	/** Set Depreciation Entry	  */
-	public void setA_Depreciation_Entry_ID (int A_Depreciation_Entry_ID);
-
-	/** Get Depreciation Entry	  */
-	public int getA_Depreciation_Entry_ID();
 
     /** Column name A_Entry_Type */
     public static final String COLUMNNAME_A_Entry_Type = "A_Entry_Type";
@@ -93,7 +93,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getC_AcctSchema_ID();
 
-	public I_C_AcctSchema getC_AcctSchema();
+	public I_C_AcctSchema getC_AcctSchema() throws RuntimeException;
 
     /** Column name C_Currency_ID */
     public static final String COLUMNNAME_C_Currency_ID = "C_Currency_ID";
@@ -108,7 +108,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getC_Currency_ID();
 
-	public I_C_Currency getC_Currency();
+	public I_C_Currency getC_Currency() throws RuntimeException;
 
     /** Column name C_DocType_ID */
     public static final String COLUMNNAME_C_DocType_ID = "C_DocType_ID";
@@ -123,7 +123,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getC_DocType_ID();
 
-	public I_C_DocType getC_DocType();
+	public I_C_DocType getC_DocType() throws RuntimeException;
 
     /** Column name C_Period_ID */
     public static final String COLUMNNAME_C_Period_ID = "C_Period_ID";
@@ -137,6 +137,8 @@ public interface I_A_Depreciation_Entry
 	  * Period of the Calendar
 	  */
 	public int getC_Period_ID();
+
+	public I_C_Period getC_Period() throws RuntimeException;
 
     /** Column name Created */
     public static final String COLUMNNAME_Created = "Created";
@@ -245,7 +247,7 @@ public interface I_A_Depreciation_Entry
 	  */
 	public int getGL_Category_ID();
 
-	public I_GL_Category getGL_Category();
+	public I_GL_Category getGL_Category() throws RuntimeException;
 
     /** Column name IsActive */
     public static final String COLUMNNAME_IsActive = "IsActive";
@@ -311,6 +313,19 @@ public interface I_A_Depreciation_Entry
 	  * The document has been processed
 	  */
 	public boolean isProcessed();
+
+    /** Column name ProcessedOn */
+    public static final String COLUMNNAME_ProcessedOn = "ProcessedOn";
+
+	/** Set Processed On.
+	  * The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public void setProcessedOn (BigDecimal ProcessedOn);
+
+	/** Get Processed On.
+	  * The date+time (expressed in decimal format) when the document has been processed
+	  */
+	public BigDecimal getProcessedOn();
 
     /** Column name Processing */
     public static final String COLUMNNAME_Processing = "Processing";

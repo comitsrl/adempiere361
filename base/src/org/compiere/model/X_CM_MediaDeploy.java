@@ -23,14 +23,14 @@ import java.util.Properties;
 
 /** Generated Model for CM_MediaDeploy
  *  @author Adempiere (generated) 
- *  @version 360LTS.010 - $Id$ */
+ *  @version 361LTS.Final - $Id$ */
 public class X_CM_MediaDeploy extends PO implements I_CM_MediaDeploy, I_Persistent 
 {
 
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = 20110222L;
+	private static final long serialVersionUID = 20121115L;
 
     /** Standard Constructor */
     public X_CM_MediaDeploy (Properties ctx, int CM_MediaDeploy_ID, String trxName)
