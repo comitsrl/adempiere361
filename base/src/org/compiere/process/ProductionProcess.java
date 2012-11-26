@@ -5,8 +5,6 @@ import java.util.logging.Level;
 
 import org.compiere.model.MProduction;
 import org.compiere.model.MProductionLine;
-import org.compiere.process.ProcessInfoParameter;
-import org.compiere.process.SvrProcess;
 import org.compiere.util.AdempiereSystemError;
 import org.compiere.util.AdempiereUserError;
 
@@ -24,9 +22,6 @@ public class ProductionProcess extends SvrProcess {
 	private Timestamp p_MovementDate = null;
 	private MProduction m_production = null;
 	private boolean mustBeStocked = false;  //not used
-	private boolean recreate = false;
-	private boolean issued = false;
-	//private int p_M_Locator_ID=0;
 	
 	
 	protected void prepare() {
@@ -72,12 +67,12 @@ public class ProductionProcess extends SvrProcess {
 		int processed = 0;
 		m_production.setMovementDate(p_MovementDate);
 		MProductionLine[] lines = m_production.getLines();
-		StringBuffer errors = new StringBuffer();
+		StringBuilder errors = new StringBuilder();
 		for ( int i = 0; i<lines.length; i++) {
 			errors.append( lines[i].createTransactions(m_production.getMovementDate(), mustBeStocked) );
 			//TODO error handling 
 			lines[i].setProcessed( true );
-			lines[i].save(get_TrxName());
+			lines[i].saveEx(get_TrxName());
 			processed++;
 		}
 		
@@ -88,8 +83,9 @@ public class ProductionProcess extends SvrProcess {
 		
 		m_production.setProcessed(true);
 		
-		m_production.save(get_TrxName());
-		return processed + " production lines were processed";
+		m_production.saveEx(get_TrxName());
+		StringBuilder msgreturn = new StringBuilder().append(processed).append(" production lines were processed");
+		return msgreturn.toString();
 	}
 
 

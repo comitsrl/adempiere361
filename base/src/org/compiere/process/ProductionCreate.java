@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.util.logging.Level;
 
 import org.compiere.model.MProduction;
+import org.compiere.model.MSysConfig;
 import org.compiere.util.AdempiereUserError;
 import org.compiere.util.DB;
+import org.compiere.util.Env;
 
 
 /**
@@ -60,21 +62,28 @@ public class ProductionCreate extends SvrProcess {
 	private boolean costsOK(int M_Product_ID) throws AdempiereUserError {
 		// Warning will not work if non-standard costing is used
 		String sql = "SELECT ABS(((cc.currentcostprice-(SELECT SUM(c.currentcostprice*bom.bomqty)"
-            + " FROM m_cost c"
-            + " INNER JOIN m_product_bom bom ON (c.m_product_id=bom.m_productbom_id)"
-            + " WHERE bom.m_product_id = pp.m_product_id)"
-            + " )/cc.currentcostprice))"
-            + " FROM m_product pp"
-            + " INNER JOIN m_cost cc on (cc.m_product_id=pp.m_product_id)"
-            + " INNER JOIN m_costelement ce ON (cc.m_costelement_id=ce.m_costelement_id)"
-            + " WHERE cc.currentcostprice > 0 AND pp.M_Product_ID = ?"
-            + " AND ce.costingmethod='S'";
-		
+	            + " FROM m_cost c"
+	            + " INNER JOIN m_product_bom bom ON (c.m_product_id=bom.m_productbom_id)"
+	            + " INNER JOIN m_costelement ce ON (c.m_costelement_id = ce.m_costelement_id AND ce.costingmethod = 'S')"
+	            + " WHERE bom.m_product_id = pp.m_product_id)"
+	            + " )/cc.currentcostprice))"
+	            + " FROM m_product pp"
+	            + " INNER JOIN m_cost cc on (cc.m_product_id=pp.m_product_id)"
+	            + " INNER JOIN m_costelement ce ON (cc.m_costelement_id=ce.m_costelement_id)"
+	            + " WHERE cc.currentcostprice > 0 AND pp.M_Product_ID = ?"
+	            + " AND ce.costingmethod='S'";
+
 		BigDecimal costPercentageDiff = DB.getSQLValueBD(get_TrxName(), sql, M_Product_ID);
 		
 		if (costPercentageDiff == null)
 		{
-			throw new AdempiereUserError("Could not retrieve costs");
+			costPercentageDiff = Env.ZERO;
+			String msg = "Could not retrieve costs";
+			if (MSysConfig.getBooleanValue("MFG_ValidateCostsOnCreate", false, getAD_Client_ID())) {
+				throw new AdempiereUserError(msg);
+			} else {
+				log.warning(msg);
+			}
 		}
 		
 		if ( (costPercentageDiff.compareTo(new BigDecimal("0.005")))< 0 )
@@ -88,13 +97,19 @@ public class ProductionCreate extends SvrProcess {
 		int created = 0;
 		isBom(m_production.getM_Product_ID());
 		
-		if (!costsOK(m_production.getM_Product_ID()))
-			throw new AdempiereUserError("Excessive difference in standard costs");
+		if (!costsOK(m_production.getM_Product_ID())) {
+			String msg = "Excessive difference in standard costs";
+			if (MSysConfig.getBooleanValue("MFG_ValidateCostsDifferenceOnCreate", false, getAD_Client_ID())) {
+				throw new AdempiereUserError("Excessive difference in standard costs");
+			} else {
+				log.warning(msg);
+			}
+		}
 		
-		if (!recreate && "true".equalsIgnoreCase(m_production.get_ValueAsString("IsCreated")))
+		if (!recreate && "Y".equalsIgnoreCase(m_production.getIsCreated()))
 			throw new AdempiereUserError("Production already created.");
 		
-		if (newQty != null )
+		if (newQty != null)
 			m_production.setProductionQty(newQty);
 		
 		m_production.deleteLines(get_TrxName());
@@ -105,7 +120,8 @@ public class ProductionCreate extends SvrProcess {
 		
 		m_production.setIsCreated("Y");
 		m_production.save(get_TrxName());
-		return created + " production lines were created";
+		StringBuilder msgreturn = new StringBuilder().append(created).append(" production lines were created");
+		return msgreturn.toString();
 	}
 	
 	protected void isBom(int M_Product_ID) throws Exception

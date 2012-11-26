@@ -99,7 +99,7 @@ public class BOMValidate extends SvrProcess
 		ResultSet rs = null;
 		try
 		{
-			pstmt = DB.prepareStatement (sql, null);
+			pstmt = DB.prepareStatement (sql, get_TrxName());
 			if (p_M_Product_Category_ID == 0)
 				pstmt.setInt (1, AD_Client_ID);
 			else
@@ -107,7 +107,7 @@ public class BOMValidate extends SvrProcess
 			rs = pstmt.executeQuery ();
 			while (rs.next ())
 			{
-				String info = validateProduct(new MProduct(getCtx(), rs.getInt(1), get_TrxName()));
+				String info = validateProduct(new MProduct(getCtx(), rs.getInt("M_Product_ID"), get_TrxName()));
 				addLog(0, null, null, info);
 				counter++;
 			}
