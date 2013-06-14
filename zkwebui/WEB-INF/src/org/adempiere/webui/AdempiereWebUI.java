@@ -309,15 +309,11 @@ public class AdempiereWebUI extends Window implements EventListener, IWebClient
     	appDesktop.logout();
     	Executions.getCurrent().getDesktop().getSession().getAttributes().clear();
 
-    	MSession mSession = MSession.get(Env.getCtx(), false);
-    	if (mSession != null) {
-    		mSession.logout();
-    	}
-
         SessionManager.clearSession();
         super.getChildren().clear();
         Page page = this.getPage();
         page.removeComponents();
+    	AEnv.logout();
         Executions.sendRedirect("index.zul");
     }
 
