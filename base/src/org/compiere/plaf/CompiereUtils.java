@@ -36,10 +36,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
-
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageDecoder;
 
 /**
  *  UI utilities
@@ -423,9 +421,10 @@ public class CompiereUtils
 			InputStream in = null;
 			try
 			{
-				in = url.openStream();
-				JPEGImageDecoder decoder = JPEGCodec.createJPEGDecoder(in);
-				image = decoder.decodeAsBufferedImage();
+//				in = url.openStream();
+//				JPEGImageDecoder decoder = JPEGCodec.createJPEGDecoder(in);
+//				image = decoder.decodeAsBufferedImage();
+			    image = ImageIO.read(url);
 			}
 			catch (Exception e)
 			{

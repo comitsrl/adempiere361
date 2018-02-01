@@ -79,3 +79,4 @@ syntax: regexp
 ^lib/mobile\.war$
 syntax: regexp
 ^test\.properties$
+/.settings/

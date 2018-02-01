@@ -107,6 +107,10 @@ public class Login
                 if (jVersion.startsWith("1.6.0"))
 			return true;
                 //end
+		if (jVersion.startsWith("1.7.0"))
+			return true;
+		if (jVersion.startsWith("1.8.0"))
+			return true;
 		//  Warning
 		boolean ok = false;
 	//	if (jVersion.startsWith("1.4")
