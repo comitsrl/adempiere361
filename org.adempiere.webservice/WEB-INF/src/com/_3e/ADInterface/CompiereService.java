@@ -69,35 +69,35 @@ public class CompiereService {
 		
 	public final String dateFormatOnlyForCtx =  "yyyy-MM-dd";
     
-    public int getM_AD_Client_ID() {
+    public int getAD_Client_ID() {
 		return m_AD_Client_ID;
 	}
 
-	public void setM_AD_Client_ID(int client_ID) {
+	public void setAD_Client_ID(int client_ID) {
 		m_AD_Client_ID = client_ID;
 	}
 
-	public int getM_AD_Org_ID() {
+	public int getAD_Org_ID() {
 		return m_AD_Org_ID;
 	}
 
-	public void setM_AD_Org_ID(int org_ID) {
+	public void setAD_Org_ID(int org_ID) {
 		m_AD_Org_ID = org_ID;
 	}
 
-	public Properties getM_ctx() {
+	public Properties getCtx() {
 		return m_ctx;
 	}
 
-	public void setM_ctx(Properties m_ctx) {
+	public void setCtx(Properties m_ctx) {
 		this.m_ctx = m_ctx;
 	}
 
-	public String getM_trx_name() {
+	public String get_TrxName() {
 		return m_trx_name;
 	}
 
-	public void setM_trx_name(String m_trx_name) {
+	public void setTrxName(String m_trx_name) {
 		this.m_trx_name = m_trx_name;
 	}
 	
@@ -136,11 +136,11 @@ public class CompiereService {
 		
 	}
 
-	public Language getM_lang() {
+	public Language getLang() {
 		return m_lang;
 	}
 
-	public void setM_lang(Language m_lang) {
+	public void setLang(Language m_lang) {
 		this.m_lang = m_lang;
 	}
 
@@ -256,7 +256,7 @@ public class CompiereService {
 
 	public boolean login( int AD_User_ID, int AD_Role_ID, int AD_Client_ID, int AD_Org_ID, int AD_Warehouse_ID, String Lang ) {
 		LoggedIn = false;
-		String loginInfo = checkLogin (getM_ctx(), AD_User_ID, AD_Role_ID, AD_Client_ID, AD_Org_ID, AD_Warehouse_ID );				
+		String loginInfo = checkLogin (getCtx(), AD_User_ID, AD_Role_ID, AD_Client_ID, AD_Org_ID, AD_Warehouse_ID );
 		if (loginInfo == null)
 			return false;	
 		
@@ -271,7 +271,7 @@ public class CompiereService {
 		Env.setCtx(m_ctx);
 		Env.setContext( m_ctx, "#AD_Language", Lang);
 		m_lang = Language.getLanguage(Lang);
-		Env.verifyLanguage( getM_ctx(), m_lang );
+		Env.verifyLanguage( getCtx(), m_lang );
 		
 		modelDateFormat = new SimpleDateFormat( datePattern );
 		modelDateTimeFormat = new SimpleDateFormat( datePattern );
@@ -285,10 +285,10 @@ public class CompiereService {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		
 		SimpleDateFormat dateFormat4Timestamp = new SimpleDateFormat( dateFormatOnlyForCtx ); 
-		Env.setContext( getM_ctx(), "#Date", dateFormat4Timestamp.format(ts)+" 00:00:00" );    //  JDBC format
-		log.info(" #Date = "+ Env.getContextAsDate( getM_ctx(), "#Date"));
+		Env.setContext( getCtx(), "#Date", dateFormat4Timestamp.format(ts)+" 00:00:00" );    //  JDBC format
+		log.info(" #Date = "+ Env.getContextAsDate( getCtx(), "#Date"));
 
-		Env.setContext( getM_ctx(), "#M_Warehouse_ID", AD_Warehouse_ID );
+		Env.setContext( getCtx(), "#M_Warehouse_ID", AD_Warehouse_ID );
 		Env.setContext(m_ctx, Env.LANGUAGE, m_lang.getAD_Language());
 		//Env.setContext( getM_ctx(), "#AD_Language", Lang );
 		

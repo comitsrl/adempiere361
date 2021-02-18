@@ -2,6 +2,8 @@ package com._3e.ADInterface;
 
 import java.io.StringWriter;
 import java.math.BigDecimal;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -30,6 +32,9 @@ import org.compiere.model.MQuery;
 import org.compiere.model.MRegion;
 import org.compiere.model.MTree;
 import org.compiere.model.MTreeNode;
+import org.compiere.model.MWebService;
+import org.compiere.model.MWebServiceType;
+import org.compiere.model.X_WS_WebServiceMethod;
 import org.compiere.util.CLogger;
 import org.compiere.util.DB;
 import org.compiere.util.DisplayType;
@@ -283,7 +288,7 @@ public class ADServiceImpl implements ADService {
     	GridWindowVO w = (GridWindowVO)WindowVOCache.get(""+AD_Window_ID+"_"+AD_Menu_ID+"_"+WindowNo);
     	if (w != null)
     			return w;
-    	w = GridWindowVO.create(m_cs.getM_ctx(), WindowNo, AD_Window_ID, AD_Menu_ID);
+    	w = GridWindowVO.create(m_cs.getCtx(), WindowNo, AD_Window_ID, AD_Menu_ID);
     	//create(m_cs.getM_ctx(), WindowNo, AD_Window_ID);
     	if (w!=null) 
     		WindowVOCache.put(""+AD_Window_ID+"_"+AD_Menu_ID+"_"+WindowNo, w);
@@ -1227,7 +1232,7 @@ public class ADServiceImpl implements ADService {
     	  lk.getLookupSearchValues( reqt.getParams(), ds, ws.ctx, WindowNo );
     	} else {
   		  ADLookup lk = new ADLookup( df[0].getVal());
-    	  lk.getLookupSearchValues( reqt.getParams(), ds, this.m_cs.getM_ctx(), 0 );
+    	  lk.getLookupSearchValues( reqt.getParams(), ds, this.m_cs.getCtx(), 0 );
     	}
     	return ret;		
 	}
@@ -1274,7 +1279,7 @@ public class ADServiceImpl implements ADService {
     	menu.setName("Menu");
     	menu.setType("Summary");
     	
-    	AD_Role_ID = Integer.parseInt(  m_cs.getM_ctx().getProperty("#AD_Role_ID") );
+    	AD_Role_ID = Integer.parseInt(  m_cs.getCtx().getProperty("#AD_Role_ID") );
     	
 		//  Load Menu Structure     ----------------------
 		int AD_Tree_ID = DB.getSQLValue(null,
@@ -1287,7 +1292,7 @@ public class ADServiceImpl implements ADService {
 		
 		//log.fine("doPost - AD_Tree_ID=" + AD_Tree_ID + " - " + Env.getAD_Language(wsc.ctx));
 		
-		MTree tree = new MTree (m_cs.getM_ctx(), AD_Tree_ID, false, false, null);	// Language set in WLogin
+		MTree tree = new MTree (m_cs.getCtx(), AD_Tree_ID, false, false, null);	// Language set in WLogin
 		//	Trim tree
 		MTreeNode root = tree.getRoot();
 		Enumeration en = root.preorderEnumeration();
@@ -1341,7 +1346,7 @@ public class ADServiceImpl implements ADService {
 			}
 				
 			//	Print Node
-			ADMenuItem it_last = printNode(nd, m_cs.getM_ctx(), itl );
+			ADMenuItem it_last = printNode(nd, m_cs.getCtx(), itl );
 			if (nd.isSummary())
 				it = it_last;
 			//if(nd.isOnBar() && !nd.isSummary())
@@ -1403,7 +1408,7 @@ public class ADServiceImpl implements ADService {
 			KeyNamePair[] orgs  = null;
 			KeyNamePair[] warehouses = null;
 			
-			Login login = new Login(m_cs.getM_ctx());
+			Login login = new Login(m_cs.getCtx());
 			
 			roles = login.getRoles(r.getUser(), r.getPass());
 			if (roles == null)
@@ -1432,7 +1437,7 @@ public class ADServiceImpl implements ADService {
 		} else
 		if (r.getStage()==2)  // Verify user and pass
 		{
-			Login login = new Login(m_cs.getM_ctx());
+			Login login = new Login(m_cs.getCtx());
 			KeyNamePair[] roles = login.getRoles(r.getUser(), r.getPass());
 			if (roles != null)
 			{
@@ -1444,7 +1449,7 @@ public class ADServiceImpl implements ADService {
 					return res;							
 				}						
 
-				int AD_User_ID = Env.getAD_User_ID(m_cs.getM_ctx());
+				int AD_User_ID = Env.getAD_User_ID(m_cs.getCtx());
 				
 				if ( !m_cs.login( AD_User_ID, r.getRoleID(), r.getClientID(), r.getOrgID(), r.getWarehouseID(), r.getLang() ) ) {
 					lr.setStatus(-1);
@@ -1484,7 +1489,7 @@ public class ADServiceImpl implements ADService {
     		
     	Location rloc = req.getLocation(); 
     	
-		MLocation location = new MLocation(m_cs.getM_ctx(), rloc.getCLocationID(), null);
+		MLocation location = new MLocation(m_cs.getCtx(), rloc.getCLocationID(), null);
 		//log.fine("doPost updating C_Location_ID=" + C_Location_ID + " - " + targetBase);
 
 		location.setAddress1 (rloc.getAddress1());
@@ -1509,7 +1514,7 @@ public class ADServiceImpl implements ADService {
     	LocationDocument ret = LocationDocument.Factory.newInstance();
     	Location loc = ret.addNewLocation();
     	
-		MLocation location = new MLocation(m_cs.getM_ctx(), req.getLocation().getCLocationID(), null);
+		MLocation location = new MLocation(m_cs.getCtx(), req.getLocation().getCLocationID(), null);
 		loc.setAddress1( location.getAddress1() );
 		loc.setAddress2( location.getAddress2() );
 		loc.setCity( location.getCity() );
@@ -1527,7 +1532,7 @@ public class ADServiceImpl implements ADService {
 		MCountry[] countries =  MCountry.getCountries (location.getCtx());
 		int comp = location.getC_Country_ID();
 		if (comp == 0)
-			comp = Env.getContextAsInt(m_cs.getM_ctx(), "C_Country_ID");
+			comp = Env.getContextAsInt(m_cs.getCtx(), "C_Country_ID");
 		
 		LookupValues lvs = LookupValues.Factory.newInstance();		
 		for (int i = 0; i < countries.length; i++)
@@ -1546,7 +1551,7 @@ public class ADServiceImpl implements ADService {
 		MRegion[] regions =  MRegion.getRegions (location.getCtx(), location.getC_Country_ID());
 		int comp = location.getC_Region_ID();
 		if (comp == 0)
-			comp = Env.getContextAsInt(m_cs.getM_ctx(), "C_Region_ID");
+			comp = Env.getContextAsInt(m_cs.getCtx(), "C_Region_ID");
 
 		LookupValues lvs = LookupValues.Factory.newInstance();
 		for (int i = 0; i < regions.length; i++)

@@ -129,7 +129,7 @@ public class ModelADServiceImpl implements ModelADService {
 	}
 	
 	public String getVersion() {
-		return "0.7.0";
+		return "0.8.0";
 	}
 	
 	/*
@@ -153,7 +153,7 @@ public class ModelADServiceImpl implements ModelADService {
         	return ret;
     	}
     	
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
 
     	// Validate parameters
     	modelSetDocAction.setTableName(validateParameter("tableName", modelSetDocAction.getTableName()));
@@ -273,15 +273,15 @@ public class ModelADServiceImpl implements ModelADService {
 
     	// TODO: Share login between different sessions
 		if (   m_cs.isLoggedIn()
-			&& m_cs.getM_AD_Client_ID() == r.getClientID()
-			&& m_cs.getM_AD_Org_ID() == r.getOrgID()
+			&& m_cs.getAD_Client_ID() == r.getClientID()
+			&& m_cs.getAD_Org_ID() == r.getOrgID()
 			&& m_cs.getM_AD_Role_ID() == r.getRoleID()
 			&& m_cs.getM_AD_Warehouse_ID() == r.getWarehouseID()
 			&& r.getUser().equals(m_cs.getUser())
 			)
 			return authenticate(webService, method, serviceType); // already logged with same data
 
-		Login login = new Login(m_cs.getM_ctx());
+		Login login = new Login(m_cs.getCtx());
 		KeyNamePair[] roles = login.getRoles(r.getUser(), r.getPass());
 		if (roles != null)
 		{
@@ -342,7 +342,7 @@ public class ModelADServiceImpl implements ModelADService {
 			if (error != null && error.length() > 0)
 				return error;
 
-			int AD_User_ID = Env.getAD_User_ID(m_cs.getM_ctx());
+			int AD_User_ID = Env.getAD_User_ID(m_cs.getCtx());
 			
 			if ( !m_cs.login( AD_User_ID, r.getRoleID(), r.getClientID(), r.getOrgID(), r.getWarehouseID(), r.getLang() ) )
 				return "Error logging in";
@@ -356,7 +356,7 @@ public class ModelADServiceImpl implements ModelADService {
 	}
 
 	private String authenticate(String webServiceValue, String methodValue, String serviceTypeValue) throws XFireFault {
-		m_webservice  = MWebService.get(m_cs.getM_ctx(), webServiceValue);
+		m_webservice  = MWebService.get(m_cs.getCtx(), webServiceValue);
 		if (m_webservice == null || ! m_webservice.isActive())
 			return "Web Service " + webServiceValue + " not registered";
 
@@ -396,7 +396,7 @@ public class ModelADServiceImpl implements ModelADService {
 			
 			rs = pstmt.executeQuery ();
 			if (rs.next ())
-				m_webservicetype = new MWebServiceType (m_cs.getM_ctx(), rs, null);
+				m_webservicetype = new MWebServiceType (m_cs.getCtx(), rs, null);
 		}
 		catch (Exception e)
 		{
@@ -477,7 +477,7 @@ public class ModelADServiceImpl implements ModelADService {
     	else
     		filter = " AND " + filter;
 
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
 
     	X_AD_Reference ref = new X_AD_Reference(ctx, ref_id, null);
     	
@@ -679,7 +679,7 @@ public class ModelADServiceImpl implements ModelADService {
     	int recordID = modelCRUD.getRecordID();
     	resp.setRecordID (recordID);
 
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
     	
     	// start a trx
     	String trxName = Trx.createTrxName("ws_modelDeleteData");
@@ -732,7 +732,7 @@ public class ModelADServiceImpl implements ModelADService {
 
     	String tableName = modelCRUD.getTableName();
 
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
     	
     	// start a trx
     	String trxName = Trx.createTrxName("ws_modelCreateData");
@@ -864,7 +864,7 @@ public class ModelADServiceImpl implements ModelADService {
     	int recordID = modelCRUD.getRecordID();
     	resp.setRecordID (recordID);
 
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
     	
     	// start a trx
     	String trxName = Trx.createTrxName("ws_modelUpdateData");
@@ -938,7 +938,7 @@ public class ModelADServiceImpl implements ModelADService {
     	// Validate parameters vs service type
 		validateCRUD(modelCRUD);
 
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
     	String tableName = modelCRUD.getTableName();
     	int recordID = modelCRUD.getRecordID();
 
@@ -1016,7 +1016,7 @@ public class ModelADServiceImpl implements ModelADService {
     	// Validate parameters vs service type
 		validateCRUD(modelCRUD);
 
-    	Properties ctx = m_cs.getM_ctx();
+    	Properties ctx = m_cs.getCtx();
     	String tableName = modelCRUD.getTableName();
     	// get the PO for the tablename and record ID
     	MTable table = MTable.get(ctx, tableName);
