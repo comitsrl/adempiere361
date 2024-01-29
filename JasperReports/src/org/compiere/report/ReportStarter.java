@@ -931,11 +931,12 @@ public class ReportStarter implements ProcessCall, ClientProcess
 
         //test if the compiled report exists
         File jasperFile = new File( reportDir.getAbsolutePath(), jasperName+".jasper");
+        File jasperFilePath = new File(jasperFile.getAbsolutePath());
         if (jasperFile.exists()) { // test time
             if (reportFile.lastModified() == jasperFile.lastModified()) {
             	log.info(" no need to compile use "+jasperFile.getAbsolutePath());
                 try {
-                    jasperReport = (JasperReport)JRLoader.loadObject(jasperFile.getAbsolutePath());
+                    jasperReport = (JasperReport)JRLoader.loadObject(jasperFilePath);
                 } catch (JRException e) {
                     jasperReport = null;
                     log.severe("Can not load report - "+ e.getMessage());

@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import org.adempiere.exceptions.NoVendorForProductException;
-import org.apache.commons.collections.keyvalue.MultiKey;
+import org.apache.commons.collections4.keyvalue.MultiKey;
 import org.compiere.model.MBPartner;
 import org.compiere.model.MCharge;
 import org.compiere.model.MOrder;

@@ -11,7 +11,7 @@ import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRCsvExporter;
-import net.sf.jasperreports.engine.export.JRHtmlExporter;
+//import net.sf.jasperreports.engine.export.JRHtmlExporter;
 import net.sf.jasperreports.engine.export.JRHtmlExporterParameter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
@@ -162,16 +162,16 @@ public class ZkJRViewer extends Window implements EventListener, ITabOnCloseHand
 			}
 			File file = File.createTempFile(prefix, ".html", new File(path));
 			
-			JRHtmlExporter exporter = new JRHtmlExporter();
-	          exporter.setParameter(JRExporterParameter.JASPER_PRINT,jasperPrint);
-	          exporter.setParameter(JRExporterParameter.OUTPUT_FILE, file);
-	          // Make images available for the HTML output  
-	         exporter.setParameter(JRHtmlExporterParameter.IS_OUTPUT_IMAGES_TO_DIR, Boolean.TRUE);
-	         exporter.setParameter(JRHtmlExporterParameter.IMAGES_DIR_NAME, Executions.getCurrent().getDesktop().getSession().getWebApp().getRealPath("/images/report/"));
-	         HttpServletRequest request = (HttpServletRequest)Executions.getCurrent().getNativeRequest();
-	         exporter.setParameter(JRHtmlExporterParameter.IMAGES_URI, request.getContextPath()+"/images/report/");
-	 	     exporter.exportReport();			
-			media = new AMedia(getTitle(), "html", "text/html", file, false);
+//			JRHtmlExporter exporter = new JRHtmlExporter();
+//	          exporter.setParameter(JRExporterParameter.JASPER_PRINT,jasperPrint);
+//	          exporter.setParameter(JRExporterParameter.OUTPUT_FILE, file);
+//	          // Make images available for the HTML output  
+//	         exporter.setParameter(JRHtmlExporterParameter.IS_OUTPUT_IMAGES_TO_DIR, Boolean.TRUE);
+//	         exporter.setParameter(JRHtmlExporterParameter.IMAGES_DIR_NAME, Executions.getCurrent().getDesktop().getSession().getWebApp().getRealPath("/images/report/"));
+//	         HttpServletRequest request = (HttpServletRequest)Executions.getCurrent().getNativeRequest();
+//	         exporter.setParameter(JRHtmlExporterParameter.IMAGES_URI, request.getContextPath()+"/images/report/");
+//	 	     exporter.exportReport();			
+//			media = new AMedia(getTitle(), "html", "text/html", file, false);
 		} else if ("XLS".equals(previewType.getSelectedItem().getValue())) {
 			String path = System.getProperty("java.io.tmpdir");
 			String prefix = makePrefix(jasperPrint.getName());

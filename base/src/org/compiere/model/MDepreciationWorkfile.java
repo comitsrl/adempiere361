@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Properties;
 
 import org.adempiere.exceptions.AdempiereException;
-import org.apache.commons.collections.keyvalue.MultiKey;
+import org.apache.commons.collections4.keyvalue.MultiKey;
 import org.compiere.model.Query;
 import org.compiere.util.CCache;
 import org.compiere.util.CLogMgt;

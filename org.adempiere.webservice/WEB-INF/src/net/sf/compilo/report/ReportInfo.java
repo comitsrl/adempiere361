@@ -86,14 +86,14 @@ public class ReportInfo
         // Marco LOMBARDO: this is the local one, there is the same 
         // field at class level. There was a bug on it about subreports.
         JasperReport jasperReport = null;
-        
+        File jasperFilePath = new File(jasperFile.getAbsolutePath());
         if (jasperFile.exists())
         { 	// test time
             if (JasperDesignFile.lastModified() <= jasperFile.lastModified())
             {
                 try
                 {
-                    jasperReport = (JasperReport)JRLoader.loadObject(jasperFile.getAbsolutePath());   // Marco LOMBARDO: should refer to local.
+                    jasperReport = (JasperReport)JRLoader.loadObject(jasperFilePath);   // Marco LOMBARDO: should refer to local.
                 }
                 catch (JRException e)
                 {
@@ -155,7 +155,8 @@ public class ReportInfo
    	    System.setProperty("jasper.reports.compile.class.path", compiere_home+"/lib/reporttools.jar;"+compiere_home+"/lib/Compiere.jar");
             JasperCompileManager.compileReportToFile( reportFile.getAbsolutePath(), jasperFile.getAbsolutePath());
             jasperFile.setLastModified( reportFile.lastModified());
-            res = (JasperReport)JRLoader.loadObject(jasperFile.getAbsolutePath());
+            File jasperFilePath = new File(jasperFile.getAbsolutePath());
+            res = (JasperReport)JRLoader.loadObject(jasperFilePath);
         }
         catch (JRException e)
         {

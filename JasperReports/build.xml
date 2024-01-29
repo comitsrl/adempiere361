@@ -63,14 +63,26 @@
 	      <pathelement path="../extend/Extend.jar"/>
 	      <pathelement path="../lib/CSTools.jar"/>
 	      <pathelement path="../lib/oracle.jar"/>
-		  <pathelement path="../JasperReportsTools/lib/jasperreports-3.7.3.jar"/>
-	      <pathelement path="../JasperReportsTools/lib/commons-digester-1.7.jar"/>
+		  <pathelement path="../JasperReportsTools/lib/jasperreports-6.17.0.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/commons-digester-2.1.0.jar"/>
 	      <pathelement path="../tools/lib/commons-logging.jar"/>
 	      <pathelement path="../JasperReportsTools/lib/commons-beanutils-1.7.jar"/>      	
       	  <pathelement path="../tools/lib/xercesImpl.jar"/>
       	  <pathelement path="../tools/lib/xml-apis.jar"/>
       	  <pathelement path="../tools/lib/postgresql.jar"/>  
 		  <pathelement path="../tools/lib/iText-2.1.7.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/castor-core.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/castor-xml.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/com.github.librepdf.openpdf_1.3.26.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/jasperreports-chart-customizers.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/jasperreports-chart-themes.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/jasperreports-fonts.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/jasperreports-functions.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/olap4j.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/SparseBitSet-1.2.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/spring-beans-5.2.22.RELEASE.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/spring-core-5.2.22.RELEASE.jar"/>
+	      <pathelement path="../JasperReportsTools/lib/xmpcore.jar"/>
       	  <fileset dir="../jboss/client" includes="*.jar"/>
       </classpath>
     </javac>
@@ -129,10 +141,10 @@
 	  index="yes"
   	  duplicate="preserve">
       <fileset dir="${needed.dir}"/>
-  	  <zipfileset src="../JasperReportsTools/lib/jasperreports-3.7.3.jar" >
+  	  <zipfileset src="../JasperReportsTools/lib/jasperreports-6.17.0.jar" >
 		<patternset refid="manifest.exclude"/>
 	  </zipfileset>
-  	  <zipfileset src="../JasperReportsTools/lib/commons-digester-1.7.jar" >
+  	  <zipfileset src="../JasperReportsTools/lib/commons-digester-2.1.0.jar" >
 		<patternset refid="manifest.exclude"/>
 	  </zipfileset>
   	  <zipfileset src="../tools/lib/commons-logging.jar" >
@@ -146,6 +158,42 @@
 	  </zipfileset>
   	  <zipfileset src="../tools/lib/xml-apis.jar" >
 		<patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/castor-core.jar" >
+      	<patternset refid="manifest.exclude"/>
+	  </zipfileset>
+      <zipfileset src="../JasperReportsTools/lib/castor-xml.jar" >
+	  	<patternset refid="manifest.exclude"/>
+      </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/com.github.librepdf.openpdf_1.3.26.jar" >
+	  	<patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/jasperreports-chart-customizers.jar" >
+        <patternset refid="manifest.exclude"/>
+	  </zipfileset>
+      <zipfileset src="../JasperReportsTools/lib/jasperreports-chart-themes.jar" >
+        <patternset refid="manifest.exclude"/>
+      </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/jasperreports-fonts.jar" >
+        <patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/jasperreports-functions.jar" >
+	    <patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/olap4j.jar" >
+        <patternset refid="manifest.exclude"/>
+      </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/SparseBitSet-1.2.jar" >
+        <patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/spring-beans-5.2.22.RELEASE.jar" >
+	    <patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/spring-core-5.2.22.RELEASE.jar" >
+        <patternset refid="manifest.exclude"/>
+	  </zipfileset>
+	  <zipfileset src="../JasperReportsTools/lib/xmpcore.jar" >
+        <patternset refid="manifest.exclude"/>
 	  </zipfileset>
       <manifest>
 	<attribute name="Specification-Title" value="Needed libraries for Jasper Reports integration on org.compiere.report.ReportStarter"/>

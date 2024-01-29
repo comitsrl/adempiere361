@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import org.apache.commons.collections.keyvalue.MultiKey;
+import org.apache.commons.collections4.keyvalue.MultiKey;
 import org.compiere.model.MAccount;
 import org.compiere.model.MAcctSchema;
 import org.compiere.model.ProductCost;

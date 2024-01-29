@@ -30,7 +30,7 @@
 	<classpathentry exported="true" kind="lib" path="tools/lib/bsh-engine.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/c3p0-0.9.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/c3p0-oracle-thin-extras-0.9.1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="tools/lib/commons-collections-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="tools/lib/commons-collections-4.4.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/commons-logging.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/commons-net-1.4.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/cron4j-2.2.1.jar"/>
@@ -38,8 +38,8 @@
 	<classpathentry exported="true" kind="lib" path="tools/lib/groovy-engine.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/iText-2.1.7.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/javaee.jar"/>
-	<classpathentry exported="true" kind="lib" path="tools/lib/jcommon-1.0.16.jar"/>
-	<classpathentry exported="true" kind="lib" path="tools/lib/jfreechart-1.0.13.jar"/>
+	<classpathentry kind="lib" path="tools/lib/jcommon-1.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="tools/lib/jfreechart-1.0.19.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/jgraph.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/jnlp.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/jpayment.jar"/>
@@ -55,7 +55,7 @@
 	<classpathentry exported="true" kind="lib" path="tools/lib/miglayout-3.7.1-swing.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/ojdbc6.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/payflow.jar"/>
-	<classpathentry exported="true" kind="lib" path="tools/lib/poi-3.5-FINAL-20090928.jar"/>
+	<classpathentry exported="true" kind="lib" path="tools/lib/poi-4.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/postgresql.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/script-api.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/servlet-api.jar"/>
@@ -72,7 +72,7 @@
 	<classpathentry exported="true" kind="lib" path="zkpackages/liberozkHR.jar"/>
 	<classpathentry exported="true" kind="lib" path="zkpackages/liberozkMFG.jar"/>
 	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/iReport.jar"/>
-	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-3.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-6.17.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="glassfishfacet/lib/appserv-rt.jar"/>
 	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/asm.jar"/>
 	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/bsh.jar"/>
@@ -107,8 +107,8 @@
 	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-beanutils-bean-collections.jar"/>
 	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-beanutils-core.jar"/>
 	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-beanutils.jar"/>
-	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-codec-1.3.jar"/>
-	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-digester-1.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-codec-1.14.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-digester-2.1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-fileupload.jar"/>
 	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-lang-2.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="serverApps/src/web/WEB-INF/lib/commons-validator-1.2.0.jar"/>
@@ -125,7 +125,7 @@
 	<classpathentry exported="true" kind="lib" path="posterita/reference/aspectJ/aspectjlib.jar"/>
 	<classpathentry exported="true" kind="lib" path="posterita/reference/aspectJ/aspectjtools.jar"/>
 	<classpathentry exported="true" kind="lib" path="posterita/reference/aspectJ/aspectjweaver.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v5.5 jdk5">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
@@ -139,5 +139,19 @@
 	<classpathentry kind="lib" path="org.adempiere.webservice/WEB-INF/lib/xbean.jar"/>
 	<classpathentry kind="lib" path="org.adempiere.webservice/WEB-INF/lib/xbean-spring-2.8.jar"/>
 	<classpathentry kind="lib" path="org.adempiere.webservice/WEB-INF/lib/generated_xmlbeans.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/castor-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/castor-xml.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/com.github.librepdf.openpdf_1.3.26.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/com.github.librepdf.openpdf-fonts-extra_1.3.26.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-chart-customizers.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-chart-themes.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-fonts.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/jasperreports-functions.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/olap4j.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/SparseBitSet-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/spring-beans-5.2.22.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/spring-core-5.2.22.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="JasperReportsTools/lib/xmpcore.jar"/>
+	<classpathentry exported="true" kind="lib" path="tools/lib/commons-math3-3.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
