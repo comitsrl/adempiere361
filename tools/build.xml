@@ -281,7 +281,7 @@
 			<zipfileset src="lib/c3p0-oracle-thin-extras-0.9.5.5.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
-			<zipfileset src="lib/mchange-commons-java-0.2.19.jar">
+			<zipfileset src="lib/mchange-commons-java-0.2.20.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
 			<!-- POI -->
@@ -447,7 +447,7 @@
 			<zipfileset src="lib/c3p0-oracle-thin-extras-0.9.5.5.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
-			<zipfileset src="lib/mchange-commons-java-0.2.19.jar">
+			<zipfileset src="lib/mchange-commons-java-0.2.20.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
 			<!-- POI -->
