@@ -122,9 +122,10 @@ public class WListItemRenderer implements ListitemRenderer, EventListener, Listi
 	/* (non-Javadoc)
 	 * @see org.zkoss.zul.ListitemRenderer#render(org.zkoss.zul.Listitem, java.lang.Object)
 	 */
-	public void render(Listitem item, Object data) throws Exception
+	@Override
+	public void render(Listitem item, Object data, int index) throws Exception
 	{
-		render((ListItem)item, data);
+		render((ListItem)item, data, index);
 	}
 
 	/**
@@ -137,7 +138,7 @@ public class WListItemRenderer implements ListitemRenderer, EventListener, Listi
 	 * @throws Exception
 	 * @see {@link #render(Listitem, Object)}
 	 */
-	private void render(ListItem item, Object data)
+	private void render(ListItem item, Object data, int index)
 	{
 		Listcell listcell = null;
 		int colIndex = 0;

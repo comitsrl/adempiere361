@@ -43,6 +43,10 @@
 	<system-config>
 		<id-generator-class>org.adempiere.webui.AdempiereIdGenerator</id-generator-class>
 	</system-config>
+	
+	<system-config>
+		<disable-event-thread>false</disable-event-thread>
+        </system-config>
 
 	<!--
 		polling - org.zkoss.zkex.ui.impl.PollingServerPush
@@ -50,7 +54,7 @@
 	-->
 	<device-config>
  		<device-type>ajax</device-type>
-		<server-push-class>org.zkoss.zkmax.ui.comet.CometServerPush</server-push-class>
+		<server-push-class>org.zkoss.zkex.ui.impl.PollingServerPush</server-push-class>
 	</device-config>
 
 	<library-property>
@@ -73,4 +77,9 @@
 		</name>
 		<value>11px</value>
 	</library-property>
+	<library-property>
+                <name>org.zkoss.zul.Button.mold</name>
+                <value>trendy</value>
+        </library-property>
+
 </zk>
