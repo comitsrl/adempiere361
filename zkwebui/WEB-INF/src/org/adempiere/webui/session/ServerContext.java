@@ -28,36 +28,29 @@ import org.compiere.util.Language;
  * @date    Feb 25, 2007
  * @version $Revision: 0.10 $
  */
-public final class ServerContext extends Properties
+public final class ServerContext
 {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -4686544952076576992L;
-
+	
 	private ServerContext()
     {
-        super();
-        /**
-         * Set english as default language
-         */
-        this.put(Env.LANGUAGE, Language.getBaseAD_Language());        
     }
     
-    private static InheritableThreadLocal<ServerContext> context = new InheritableThreadLocal<ServerContext>() {
-        protected ServerContext initialValue()
+    private static InheritableThreadLocal<Properties> context = new InheritableThreadLocal<Properties>() {
+        protected Properties initialValue()
         {
-            return new ServerContext();
+        	Properties ctx = new Properties();
+        	ctx.put(Env.LANGUAGE, Language.getBaseAD_Language());
+            return ctx;
         }
     };
     
     /**
      * Get server context for current thread
-     * @return ServerContext
+     * @return Properties
      */
-    public static ServerContext getCurrentInstance()
+    public static Properties getCurrentInstance()
     {
-        return (ServerContext)context.get();
+        return (Properties)context.get();
     }
     
     /**
@@ -69,20 +62,10 @@ public final class ServerContext extends Properties
     }
     
     /**
-     * Allocate new server context for current thread
-     * @return ServerContext
-     */
-    public static ServerContext newInstance() 
-    {
-    	dispose();
-    	return getCurrentInstance();
-    }
-    
-    /**
      * Set server context for current thread
      * @param ctx
      */
-    public static void setCurrentInstance(ServerContext ctx)
+    public static void setCurrentInstance(Properties ctx)
     {
         context.set(ctx);
     }

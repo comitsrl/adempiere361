@@ -14,6 +14,7 @@ package org.adempiere.webui;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 import org.adempiere.webui.session.ServerContext;
 
@@ -32,7 +33,7 @@ public class ServerContextCallback implements InvocationHandler, Serializable {
 
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		ServerContext context = ServerContext.getCurrentInstance();
+		Properties context = ServerContext.getCurrentInstance();
 		//optimize for the 2 most common access
 		if (method.getName().equals("getProperty")) {
 			Class<?>[] types = method.getParameterTypes();

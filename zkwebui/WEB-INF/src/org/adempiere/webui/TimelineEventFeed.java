@@ -42,14 +42,17 @@ public class TimelineEventFeed extends HttpServlet {
              return;
         } 
         
-        ServerContext serverContext = ServerContext.getCurrentInstance();
-        if (serverContext == null) {
-        	serverContext = ServerContext.newInstance();
+        ServerContext.setCurrentInstance(ctx);
+        try {
+        	doGet0(req, resp);
+        } finally {
+        	ServerContext.dispose();
         }
-        serverContext.clear();
-        serverContext.putAll(ctx);
-         
-		int resourceId  = 0;
+	} 
+	
+    private void doGet0(HttpServletRequest req, HttpServletResponse resp) 
+    		throws IOException {
+    	int resourceId  = 0;
 		String resourceIdParam = req.getParameter("S_Resource_ID");
 		if (resourceIdParam != null && resourceIdParam.trim().length() > 0) {
 			try {
@@ -136,5 +139,5 @@ public class TimelineEventFeed extends HttpServlet {
 		BufferedWriter buffer = new BufferedWriter(writer);
 		buffer.write(xml.toString());
 		buffer.flush();
-	}	
+    }      				
 }

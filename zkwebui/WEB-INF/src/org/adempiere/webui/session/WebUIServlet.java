@@ -18,6 +18,7 @@
 package org.adempiere.webui.session;
 
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.Level;
 
 import javax.servlet.ServletConfig;
@@ -47,10 +48,11 @@ import org.zkoss.zk.ui.http.DHtmlLayoutServlet;
  */
 public class WebUIServlet extends DHtmlLayoutServlet
 {
-    /**
+   
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 261899419681731L;
+	 private static final long serialVersionUID = 1L;
 	
 	/** Logger for the class * */
     private static final CLogger logger;
@@ -65,23 +67,25 @@ public class WebUIServlet extends DHtmlLayoutServlet
         super.init(servletConfig);
 
         /** Initialise context for the current thread*/
-        ServerContext.newInstance();
-        Env.setContextProvider(new ZkContextProvider());
-        
-        /**
-         * Start ADempiere
-         */
+        Properties serverContext = new Properties();
+        serverContext.put(ServerContextURLHandler.SERVER_CONTEXT_URL_HANDLER, new ServerContextURLHandler() {
+			public void showURL(String url) {
+				SessionManager.getAppDesktop().showURL(url, true);
+			}
+		});
+        ServerContext.setCurrentInstance(serverContext);
+
         boolean started = Adempiere.startup(false);
         if(!started)
         {
             throw new ServletException("Could not start ADempiere");
         }
-        
+
         // hengsin: temporary solution for problem with zk client
         Ini.setProperty(Ini.P_ADEMPIERESYS, false);
         ReportCtl.setReportViewerProvider(new ZkReportViewerProvider());
         ReportStarter.setReportViewerProvider(new ZkJRViewerProvider());
-        logger.info("ADempiere started successfully");
+        logger.log(Level.OFF, "ADempiere started successfully");
         /**
          * End ADempiere Start
          */

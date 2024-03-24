@@ -234,7 +234,8 @@ public final class Ini implements Serializable
 	private static String s_propertyFileName = null;
 	
 	/**	Logger						*/
-	private static Logger			log = null;
+	private static Logger                   log = Logger.getLogger(Ini.class.getName());
+
 
 	/**
 	 *	Save INI parameters to disk
@@ -711,11 +712,8 @@ public final class Ini implements Serializable
 	 */
 	public static void setClient (boolean client)
 	{
-		if (log != null) //already initialized
-			return;
 		s_client = client;
 		CLogMgt.initialize(client);
-		log = Logger.getLogger(Ini.class.getName());
 	}   //  setClient
 	
 	/**
