@@ -43,6 +43,11 @@ import org.zkoss.zul.South;
 import org.zkoss.zul.Detail;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Space;
+import org.zkoss.zul.Tree;
+import org.zkoss.zul.Treecell;
+import org.zkoss.zul.Treechildren;
+import org.zkoss.zul.Treeitem;
+import org.zkoss.zul.Treerow;
 
 /**
  * 	Application Chat
@@ -57,7 +62,7 @@ public class WChat extends Window implements EventListener
 	 */
 	private static final long serialVersionUID = -5265835393257520762L;
 	
-	private static final String REPLY_DIV_STYLE = "padding-left: 10px";
+	//private static final String REPLY_DIV_STYLE = "padding-left: 10px";
 	private static final String USER_LABEL_STYLE = "font-weight: bold";
 	private static final String TIME_LABEL_STYLE = "font-size:xx-small;color:gray;margin-left:20px";
 
@@ -119,7 +124,7 @@ public class WChat extends Window implements EventListener
 	private Borderlayout 	mainPanel = new Borderlayout();
 	private Textbox			newText = new Textbox();
 	private ConfirmPanel	confirmPanel = new ConfirmPanel(false);
-	private Grid			messageGrid = new Grid();
+	private Tree                    messageTree = new Tree();
 	private Button addButton;
 	private Map<Integer, Component> entryMap = new HashMap<Integer, Component>();
 	private SimpleDateFormat m_format;
@@ -135,7 +140,7 @@ public class WChat extends Window implements EventListener
 		//
 		
 		Center center = new Center();
-		center.appendChild(messageGrid);
+		center.appendChild(messageTree);
 		center.setFlex(true);
 		center.setAutoscroll(true);
 		mainPanel.appendChild(center);
@@ -172,8 +177,13 @@ public class WChat extends Window implements EventListener
 	 */
 	private void loadChat()
 	{
-		messageGrid.newRows();
-		messageGrid.appendChild(new Columns());
+		Treechildren treeChildren = messageTree.getTreechildren();
+		if(treeChildren == null)
+		{
+			 treeChildren = new Treechildren();
+			 messageTree.appendChild(treeChildren);
+			 messageTree.setMultiple(false);
+		}
 		
 		MChatEntry[] entries = m_chat.getEntries(true);
 		for(MChatEntry entry : entries)
@@ -184,11 +194,13 @@ public class WChat extends Window implements EventListener
 
 	protected void addEntry(MChatEntry entry) {
 		if (entry.getCM_ChatEntryParent_ID() == 0) {			
-			Rows rows = (Rows) messageGrid.getRows(); 
-			Row row = rows.newRow();
-			entryMap.put(entry.getCM_ChatEntry_ID(), row);
+			Treechildren treeChildren = messageTree.getTreechildren();
+			Treeitem treeitem = new Treeitem();
+			treeChildren.appendChild(treeitem);
+			entryMap.put(entry.getCM_ChatEntry_ID(), treeitem);
 			Label userLabel = createUserNameLabel(entry);
 			Div div = new Div();
+			div.setStyle("display:inline;");
 			div.appendChild(userLabel);
 			Label msgLabel = new Label(entry.getCharacterData());
 			div.appendChild(msgLabel);
@@ -197,77 +209,47 @@ public class WChat extends Window implements EventListener
 			div.appendChild(new Space());
 			div.appendChild(button);
 			div.appendChild(timeLabel);
-			row.appendChild(new Space());
-			row.appendChild(div);
+			
+			Treerow treerow = new Treerow();
+			treerow.setStyle("vertical-align:top;");
+			treeitem.appendChild(treerow);
+			Treecell treecell = new Treecell();
+			treerow.appendChild(treecell);
+			treecell.appendChild(div);
 		} else {
 			Component comp = entryMap.get(entry.getCM_ChatEntryParent_ID());
-			if (comp != null && comp instanceof Row) {
-				Row row = (Row) comp;
-				Component firstChild = row.getFirstChild();
-				if (firstChild instanceof Space) {
-					Label userLabel = createUserNameLabel(entry);
-					Div div = new Div();
-					div.setWidth("100%");
-					div.appendChild(userLabel);
-					Label msgLabel = new Label(entry.getCharacterData());
-					div.appendChild(msgLabel);
-					Button button = createReplyButton(entry);
-					div.appendChild(new Space());
-					div.appendChild(button);
-					Label timeLabel = createTimestampLabel(entry);
-					div.appendChild(timeLabel);
-					div.setStyle(REPLY_DIV_STYLE);
-					Detail detail = new Detail();
-					detail.appendChild(div);
-					entryMap.put(entry.getCM_ChatEntry_ID(), detail);
-					row.insertBefore(detail, firstChild);
-					firstChild.detach();
-				} else {
-					Detail detail = (Detail) firstChild;
-					Label userLabel = createUserNameLabel(entry);
-					Div div = new Div();
-					div.setWidth("100%");
-					div.appendChild(userLabel);
-					Label msgLabel = new Label(entry.getCharacterData());
-					div.appendChild(msgLabel);
-					Button button = createReplyButton(entry);
-					div.appendChild(new Space());
-					div.appendChild(button);
-					Label timeLabel = createTimestampLabel(entry);
-					div.appendChild(timeLabel);
-					div.setStyle(REPLY_DIV_STYLE);
-					detail.appendChild(div);
-				}
-			} else if (comp != null && comp instanceof Detail) {
-				Detail parentDetail = (Detail) comp;
-				Div firstChild = (Div) parentDetail.getFirstChild();
-				firstChild.detach();
-				firstChild.setStyle("");
-				Grid grid = new Grid();
-				grid.appendChild(new Columns());
-				Rows rows = grid.newRows();
-				Row row = rows.newRow();
-				Detail detail = new Detail();
-				row.appendChild(detail);
-				row.appendChild(firstChild);
-				entryMap.remove(entry.getCM_ChatEntryParent_ID());
-				entryMap.put(entry.getCM_ChatEntryParent_ID(), row);								
-				entryMap.put(entry.getCM_ChatEntry_ID(), detail);
+			if (comp != null && comp instanceof Treeitem) {
+				Treeitem treeitem = (Treeitem) comp;
+				
 				Label userLabel = createUserNameLabel(entry);
-				userLabel.setStyle(USER_LABEL_STYLE);
 				Div div = new Div();
+				div.setStyle("display:inline;");
 				div.appendChild(userLabel);
-				div.setStyle(REPLY_DIV_STYLE);
 				Label msgLabel = new Label(entry.getCharacterData());
 				div.appendChild(msgLabel);
 				Button button = createReplyButton(entry);
 				div.appendChild(new Space());
 				div.appendChild(button);
 				Label timeLabel = createTimestampLabel(entry);
-				div.appendChild(timeLabel);
-				detail.appendChild(div);				
+				div.appendChild(timeLabel);			
+//				div.setStyle(REPLY_DIV_STYLE);
+
+				Treechildren treeChildren = treeitem.getTreechildren();
+				if (treeChildren == null)
+				{
+					treeChildren = new Treechildren();
+					treeitem.appendChild(treeChildren);
+				}
+				Treeitem childItem = new Treeitem();
+				treeChildren.appendChild(childItem);
+				Treerow treerow = new Treerow();
+				treerow.setStyle("vertical-align:top;");
+				childItem.appendChild(treerow);				
+				Treecell treecell = new Treecell();
+				treerow.appendChild(treecell);
+				treecell.appendChild(div);
 				
-				parentDetail.appendChild(grid);
+				entryMap.put(entry.getCM_ChatEntry_ID(), childItem);
 			}
 		}
 	}
