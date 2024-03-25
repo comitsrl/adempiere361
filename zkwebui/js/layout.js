@@ -6,22 +6,23 @@ function ad_deferRenderBorderLayout(uuid, timeout) {
 }		
 
 function _ad_deferBDL(uuid) {			
-	zk.Widget.$(uuid).resize();
+	var cmp = zk.Widget.$(uuid);
+	if (cmp) { cmp.resize(); }
 }
 
 function ad_closeBuble(uuid) {
 	var cmp = zk.Widget.$(uuid);
-	for(var i=0;i<cmp.bandInfos.length;i++){
-		cmp.instance.getBand(i).closeBubble();
-	}
+	if (cmp) {
+		for(var i=0;i<cmp.bandInfos.length;i++){
+			cmp.instance.getBand(i).closeBubble();
+		}
 }
 
 function scrollToRow(uuid){  
 	var cmp = zk.Widget.$(uuid);
-	if (!(typeof cmp == "undefined") && !(cmp == null)) {
-		cmp.$n().style.display='inline';
-		cmp.focus();
-		cmp.$n().style.display='none';
-	}
+	if (cmp) {
+		 cmp.scrollIntoView();
+		 	cmp.focus();
+		}
 }
  
