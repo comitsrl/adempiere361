@@ -91,7 +91,7 @@ import org.zkoss.zul.Treeitem;
  *
  * @author Low Heng Sin
  */
-public class ADTabpanel extends Div implements Evaluatee, EventListener,
+public class ADTabpanel extends Div implements Evaluatee, EventListener<Event>,
 DataStatusListener, IADTabpanel, VetoableChangeListener
 {
 	/**
