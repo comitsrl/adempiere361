@@ -38,6 +38,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.impl.InputElement;
 
 /**
@@ -470,14 +471,16 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
         		!(getComponent() instanceof Datebox)) {
         		String width = tableEditor ? "98%" : "100%";
         		if (getComponent() instanceof Button) {
-        			Button btn = (Button) getComponent();
-        			String zclass = btn.getZclass();
-        			if (gridField.getDisplayType() == DisplayType.Image) {
-        				if (!zclass.contains("image-button-field ")) {
-            				btn.setZclass("image-button-field " + zclass);
-        				}
-        			} else if (!zclass.contains("form-button ")) {
-        				btn.setZclass("form-button " + zclass);
+        			if (!tableEditor) {
+        				Button btn = (Button) getComponent();
+        				String zclass = btn.getZclass();
+        				if (gridField.getDisplayType() == DisplayType.Image) {
+        					if (!zclass.contains("image-button-field ")) {
+        						btn.setZclass("image-button-field " + zclass);
+        					}
+        				} else if (!zclass.contains("form-button ")) {
+        					btn.setZclass("form-button " + zclass);
+        					}
         			}
         		} else if (getComponent() instanceof Image) {
         			Image image = (Image) getComponent();
@@ -488,6 +491,13 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
         				((InputElement)getComponent()).setHflex("1");
         			} else {
         				((HtmlBasedComponent)getComponent()).setWidth(width);
+        			}
+        			
+        			if (getComponent() instanceof Textbox && tableEditor) {
+        				 Textbox textbox = (Textbox) getComponent();
+        				 if(textbox.isMultiline()) {
+        					 textbox.setRows(1);
+        				 }
         			}
         		}
         	}
