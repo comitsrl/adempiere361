@@ -59,13 +59,13 @@ import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
-import org.zkoss.zkex.zul.West;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.DefaultTreeNode;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
+import org.zkoss.zul.West;
 import org.zkoss.zul.Separator;
-import org.zkoss.zul.SimpleTreeNode;
 import org.zkoss.zul.Space;
 import org.zkoss.zul.Tree;
 import org.zkoss.zul.Treecol;
@@ -264,8 +264,11 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 		if (event.getTarget() instanceof Tree )	
 		{
 			Treeitem ti = m_tree.getSelectedItem(); 
-			if (ti == null)
-				ADialog.beep();
+			if (ti == null) {
+				//ADialog.beep();
+				// TODO: review what is this beep for - no zk6 equivalent
+				log.log(Level.WARNING, "WTreeBOM.onEvent treeItem=null");
+			}			
 			else
 			{
 				mySimpleTreeNode tn = (mySimpleTreeNode)ti.getValue();
@@ -382,7 +385,9 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 			m_tree.setModel(model);
 		}
 		
-		int[] path = m_tree.getModel().getPath(parent, m_root);
+		//TODO: check zk6 - was:
+		//int[] path = m_tree.getModel().getPath(parent, m_root);
+		int[] path = m_tree.getModel().getPath(m_root);
 		Treeitem ti = m_tree.renderItemByPath(path);
 		m_tree.setSelectedItem(ti);
 		ti.setOpen(true);
@@ -532,7 +537,7 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
  *  - Override toString method for display
  *  
  */
-class mySimpleTreeNode extends SimpleTreeNode
+class mySimpleTreeNode extends DefaultTreeNode
 {
 
 	public mySimpleTreeNode(Object data, List<Object> children) {
