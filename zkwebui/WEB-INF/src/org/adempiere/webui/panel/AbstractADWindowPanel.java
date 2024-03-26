@@ -1286,11 +1286,13 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
         }
         if (canHaveAttachment)
         {
-            toolbar.enableAttachment(true);
+
             toolbar.getButton("Attachment").setPressed(curTab.hasAttachment());
+            toolbar.enableAttachment(true);
         }
         else
         {
+        	toolbar.getButton("Attachment").setPressed(false);
             toolbar.enableAttachment(false);
         }
 
