@@ -1285,14 +1285,12 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
             canHaveAttachment = false;
         }
         if (canHaveAttachment)
-        {
-
-            toolbar.getButton("Attachment").setPressed(curTab.hasAttachment());
+        {      
             toolbar.enableAttachment(true);
+            toolbar.getButton("Attachment").setPressed(curTab.hasAttachment());
         }
         else
         {
-        	toolbar.getButton("Attachment").setPressed(false);
             toolbar.enableAttachment(false);
         }
 
@@ -1505,7 +1503,7 @@ public abstract class AbstractADWindowPanel extends AbstractUIPart implements To
     	else
     	{
 	        curTab.dataIgnore();
-	        curTab.dataRefresh(false);
+	        curTab.dataRefresh(true);       // update statusbar & toolbar
 	        curTabpanel.dynamicDisplay(0);
 	        toolbar.enableIgnore(false);
     	}
