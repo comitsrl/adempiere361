@@ -135,7 +135,8 @@
 	<classpathentry kind="lib" path="org.adempiere.webservice/WEB-INF/lib/xbean-spring-2.8.jar"/>
 	<classpathentry kind="lib" path="org.adempiere.webservice/WEB-INF/lib/generated_xmlbeans.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/mchange-commons-java-0.2.20.jar"/>
-	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/zkbind.jar"/>
-	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/zel.jar"/>
+	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/zkbind.jar"/>
+	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/zel.jar"/>
+	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/ckez.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
