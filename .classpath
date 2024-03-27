@@ -138,5 +138,10 @@
 	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/zel.jar"/>
 	<classpathentry exported="true" kind="lib" path="zkwebui/WEB-INF/lib/ckez.jar"/>
 	<classpathentry exported="true" kind="lib" path="tools/lib/cglib.jar"/>
+	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/atmosphere-runtime-0.9.jar"/>
+	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/atmosphere-compat-tomcat7-0.9.jar"/>
+	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/atmosphere-compat-tomcat-0.9.jar"/>
+	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/atmosphere-compat-jbossweb-0.9.jar"/>
+	<classpathentry kind="lib" path="zkwebui/WEB-INF/lib/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
