@@ -136,14 +136,7 @@ public class AtmosphereServerPush implements ServerPush {
     }
 
     @Override
-    public void onPiggyback() {
-    	Desktop desktop = this.desktop.get();
-        if (desktop == null) {
-            return;
-        }
-        
-		if (Executions.getCurrent() != null && _carryOver == null)
-    		_carryOver = new ExecutionCarryOver(desktop);
+    public void onPiggyback() {   	
     }
 
     @Override
