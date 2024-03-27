@@ -447,6 +447,10 @@ div.z-vfiletree-body td.menu-tree-cell {
 	font-size: ${fontSizeM}; font-weight: normal; overflow: visible;
 }
 
+.z-west-colpsd {
+	cursor: pointer;
+}
+
 <%-- FOCUSED FIELD in different color --%>
 
 .z-textbox-focus, .z-textbox-focus input,
