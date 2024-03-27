@@ -15,7 +15,7 @@
  * or via info@posterita.org or http://www.posterita.org/                     *
  *****************************************************************************/
 
-package org.adempiere.webui.session;
+package org.adempiere.util;
 
 import java.util.Properties;
 

@@ -1,4 +1,4 @@
-package org.adempiere.webui.session;
+package org.adempiere.util;
 
 public interface ServerContextURLHandler {
 	public final static String SERVER_CONTEXT_URL_HANDLER = "SERVER_CONTEXT_URL_HANDLER";

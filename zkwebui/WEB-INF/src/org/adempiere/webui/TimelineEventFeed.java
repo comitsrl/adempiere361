@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.adempiere.util.ServerContext;
 import org.adempiere.webui.component.ZkCssHelper;
-import org.adempiere.webui.session.ServerContext;
 import org.adempiere.webui.session.SessionContextListener;
 import org.compiere.model.MAssignmentSlot;
 import org.compiere.model.ScheduleUtil;

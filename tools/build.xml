@@ -473,6 +473,10 @@
 			<zipfileset src="lib/commons-lang-2.1.jar">
 				<patternset refid="manifest.exclude" />
 			</zipfileset>
+			<!-- CGLib -->
+			<zipfileset src="lib/cglib.jar">
+				<patternset refid="manifest.exclude" />
+			</zipfileset>
 		</jar>
 
 	</target>

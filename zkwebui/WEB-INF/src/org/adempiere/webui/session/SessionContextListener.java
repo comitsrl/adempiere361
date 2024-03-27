@@ -22,6 +22,8 @@ import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
 
+import org.adempiere.util.ServerContext;
+import org.adempiere.util.ServerContextURLHandler;
 import org.compiere.util.Env;
 import org.zkoss.util.Locales;
 import org.zkoss.zk.ui.Component;

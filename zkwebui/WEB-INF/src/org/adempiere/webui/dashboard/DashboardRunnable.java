@@ -20,9 +20,9 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.Level;
 
+import org.adempiere.util.ServerContext;
 import org.adempiere.webui.AdempiereWebUI;
 import org.adempiere.webui.desktop.IDesktop;
-import org.adempiere.webui.session.ServerContext;
 import org.adempiere.webui.session.SessionContextListener;
 import org.adempiere.webui.util.ServerPushTemplate;
 import org.compiere.model.MSysConfig;

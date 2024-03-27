@@ -14,11 +14,10 @@
  * Copyright (C) 2007 Low Heng Sin hengsin@avantz.com
  * _____________________________________________
  *****************************************************************************/
-package org.adempiere.webui.session;
+package org.adempiere.util;
 
 import java.util.Properties;
 
-import org.adempiere.webui.ServerContextCallback;
 import org.compiere.util.ContextProvider;
 
 import net.sf.cglib.proxy.Enhancer;

@@ -28,6 +28,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.adempiere.util.ServerContext;
+import org.adempiere.util.ServerContextURLHandler;
 import org.adempiere.webui.ZkContextProvider;
 import org.adempiere.webui.window.ZkJRViewerProvider;
 import org.adempiere.webui.window.ZkReportViewerProvider;
