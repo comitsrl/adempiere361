@@ -29,15 +29,20 @@ import org.adempiere.webui.component.Datebox;
 import org.adempiere.webui.component.Label;
 import org.adempiere.webui.event.ValueChangeEvent;
 import org.adempiere.webui.event.ValueChangeListener;
+import org.adempiere.webui.window.WFieldRecordInfo;
 import org.compiere.model.GridField;
 import org.compiere.model.GridTab;
+import org.compiere.model.MRole;
 import org.compiere.util.DisplayType;
+import org.compiere.util.Env;
+import org.compiere.util.Msg;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Menuitem;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.impl.InputElement;
 
@@ -76,6 +81,8 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
     private String columnName;
 
 	protected boolean hasFocus;
+	
+	protected WEditorPopupMenu popupMenu;
 	
 	private boolean tableEditor;
 
@@ -302,7 +309,7 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
      */
     public WEditorPopupMenu getPopupMenu()
     {
-        return null;
+        return popupMenu;
     }
 
     /**
@@ -521,7 +528,34 @@ public abstract class WEditor implements EventListener<Event>, PropertyChangeLis
 		}
 	}
 
-    private static final String STYLE_ZOOMABLE_LABEL = "cursor: pointer; text-decoration: underline;";
+	/**
+	 * @return boolean
+	 */
+	protected boolean isShowPreference() {
+		return MRole.getDefault().isShowPreference() && gridField != null && !gridField.isEncrypted() && !gridField.isEncryptedColumn();
+	}
+
+	/**
+	 * @param popupMenu
+	 */
+    protected void addChangeLogMenu(WEditorPopupMenu popupMenu) {
+		if (popupMenu != null && gridField != null && gridField.getGridTab() != null)
+		{
+			WFieldRecordInfo.addMenu(popupMenu);
+		}
+	}
+
+    /**
+     * @param popupMenu
+     */
+	protected void addTextEditorMenu(WEditorPopupMenu popupMenu) {
+		Menuitem editor = new Menuitem(Msg.getMsg(Env.getCtx(), "Editor"), "images/Editor16.png");
+		editor.setAttribute("EVENT", WEditorPopupMenu.EDITOR_EVENT);
+		editor.addEventListener(Events.ON_CLICK, popupMenu);
+		popupMenu.appendChild(editor);
+	}
+
+	private static final String STYLE_ZOOMABLE_LABEL = "cursor: pointer; text-decoration: underline;";
 	private static final String STYLE_NORMAL_LABEL = "color:black;";
 	private static final String STYLE_EMPTY_MANDATORY_LABEL = "color: red;";
 

@@ -50,8 +50,6 @@ public class WPAttributeEditor extends WEditor implements ContextMenuListener, S
 
 	private int m_C_BPartner_ID;
 
-	private WEditorPopupMenu	popupMenu;
-
 	private Object m_value;
 
 	private GridTab m_GridTab;
@@ -77,17 +75,9 @@ public class WPAttributeEditor extends WEditor implements ContextMenuListener, S
 		//	Popup
 		popupMenu = new WEditorPopupMenu(true, false, false);
 		getComponent().getTextbox().setContext(popupMenu.getId());
-		if (gridField != null && gridField.getGridTab() != null)
-		{
-			WFieldRecordInfo.addMenu(popupMenu);
-		}
+		addChangeLogMenu(popupMenu);
 		
 		getComponent().getTextbox().setReadonly(true);
-	}
-
-	@Override
-	public WEditorPopupMenu getPopupMenu() {
-		return popupMenu;
 	}
 
 	@Override

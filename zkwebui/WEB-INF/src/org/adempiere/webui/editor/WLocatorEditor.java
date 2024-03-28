@@ -24,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
+import org.adempiere.webui.ValuePreference;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.EditorBox;
 import org.adempiere.webui.event.ContextMenuEvent;
@@ -61,8 +62,6 @@ public class WLocatorEditor extends WEditor implements EventListener<Event>, Pro
 	private MLocatorLookup m_mLocator;
 	private Object m_value;
 	private int m_WindowNo;
-	
-	private WEditorPopupMenu popupMenu;
 	
 	private static CLogger log = CLogger.getCLogger(WLocatorEditor.class);
 	/**
@@ -114,11 +113,8 @@ public class WLocatorEditor extends WEditor implements EventListener<Event>, Pro
 		
 		if (gridField != null) 
         {
-        	popupMenu = new WEditorPopupMenu(true, true, false);
-        	if (gridField != null && gridField.getGridTab() != null)
-    		{
-    			WFieldRecordInfo.addMenu(popupMenu);
-    		}
+        	popupMenu = new WEditorPopupMenu(true, true, isShowPreference());
+        	addChangeLogMenu(popupMenu);
         	getComponent().setContext(popupMenu.getId());
         }			
 	}
@@ -250,11 +246,6 @@ public class WLocatorEditor extends WEditor implements EventListener<Event>, Pro
 		}
 	}
 	
-	public WEditorPopupMenu getPopupMenu()
-    {
-    	return popupMenu;
-    }
-	
 	public void actionRefresh()
     {    	
 		if (m_mLocator != null)
@@ -298,6 +289,11 @@ public class WLocatorEditor extends WEditor implements EventListener<Event>, Pro
 		else if (WEditorPopupMenu.CHANGE_LOG_EVENT.equals(evt.getContextEvent()))
 		{
 			WFieldRecordInfo.start(gridField);
+		} 
+		else if (WEditorPopupMenu.PREFERENCE_EVENT.equals(evt.getContextEvent()))
+		{
+			if (isShowPreference())
+				ValuePreference.start (this.getGridField(), getValue());
 		}
 	}
 	
