@@ -99,6 +99,20 @@ html,body {
 	padding-right: 5px;
 }
 
+.desktop-header {
+       background-image: url(../images/header-bg.png);
+       background-repeat: repeat-x;
+       background-position: bottom left;
+       background-color: white;
+       width: 100%;
+       height: 35px;
+}
+
+.desktop-header-font {
+       font-family: Verdana, Arial, Helvetica, sans-serif;
+       font-size: 10px;
+}
+
 .disableFilter img {
 	opacity: 0.2;
 	filter: progid : DXImageTransform . Microsoft . Alpha(opacity = 20);
@@ -138,19 +152,6 @@ html,body {
 	padding: 0px 1px 0px 1px;
 }
 
-.desktop-header {
-	background-image: url(../images/header-bg.png);
-	background-repeat: repeat-x;
-	background-position: bottom left;
-	background-color: white;
-	width: 100%;
-	height: 35px;
-}
-
-.desktop-header-font {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 10px;
-}
 
 <%-- button --%>
 .action-button {
@@ -192,6 +193,10 @@ div.wc-modal, div.wc-modal-none, div.wc-highlighted, div.wc-highlighted-none {
 
 .menu-search {
 	background-color: #E0EAF7;
+}
+
+.desktop-left-column {
+       width: 310px;
 }
 
 <%-- adwindow and form --%>
@@ -407,45 +412,21 @@ input:focus, textarea:focus, .z-combobox-inp:focus, z-datebox-inp:focus {
 	text-decoration: none; font-size: xx-small; vertical-align: top; color:red;
 }
 <%-- menu tree cell --%>
-div.z-tree-body td.menu-tree-cell {
-	cursor: pointer;
-	padding: 0 2px;
-   	font-size: ${fontSizeM};
-   	font-weight: normal;
-   	overflow: visible;
-}
 
-div.menu-tree-cell-cnt {
+.menu-treecell-cnt div {
 	border: 0; margin: 0; padding: 0;
 	font-family: ${fontFamilyC};
-	font-size: ${fontSizeM}; font-weight: normal;
-    white-space:nowrap
+	font-size: ${fontSizeM};
+	font-weight: normal;
+    	overflow-x: hidden;
+    	white-space: nowrap;
+    	text-overflow: ellipsis !important;
+    	cursor: pointer;
 }
 
-td.menu-tree-cell-disd * {
-	color: #C5CACB !important; cursor: default!important;
-}
-
-td.menu-tree-cell-disd a:visited, td.menu-tree-cell-disd a:hover {
-	text-decoration: none !important;
-	cursor: default !important;;
-	border-color: #D0DEF0 !important;
-}
-
-div.z-dottree-body td.menu-tree-cell {
-	cursor: pointer; padding: 0 2px;
-	font-size: ${fontSizeM}; font-weight: normal; overflow: visible;
-}
-
-div.z-filetree-body td.menu-tree-cell {
-	cursor: pointer; padding: 0 2px;
-	font-size: ${fontSizeM}; font-weight: normal; overflow: visible;
-}
-
-div.z-vfiletree-body td.menu-tree-cell {
-	cursor: pointer; padding: 0 2px;
-	font-size: ${fontSizeM}; font-weight: normal; overflow: visible;
-}
+span.z-tree-tee, span.z-tree-last {
+	width:0px;
+} 
 
 .z-west-colpsd {
 	cursor: pointer;
