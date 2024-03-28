@@ -176,9 +176,9 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 
 	private void init() {
 		Borderlayout layout = new Borderlayout();
-		layout.setStyle("position: absolute; height: 99%; width: 99%");
+		layout.setStyle("position: absolute; height: 97%; width: 98%; border:none; padding:none; margin:none;");
 		this.appendChild(layout);
-		this.setStyle("width: 100%; height: 100%; position: absolute");
+		this.setStyle("width: 100%; height: 100%; position: absolute; border:none; padding:none; margin:none;");
 
 		toolBar.setHeight("26px");
 		
@@ -269,8 +269,6 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 		layout.appendChild(center);
 		iframe = new Iframe();
 		iframe.setId("reportFrame");
-		iframe.setHeight("100%");
-		iframe.setWidth("100%");
 		iframe.addEventListener(Events.ON_CLICK, this);
 		iframe.addEventListener(Events.ON_RIGHT_CLICK, this);
 		center.appendChild(iframe);

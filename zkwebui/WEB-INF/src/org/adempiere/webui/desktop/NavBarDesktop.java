@@ -120,10 +120,7 @@ public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serial
 
     protected Component doCreatePart(Component parent)
     {
-    	SidePanel pnlSide = new SidePanel();
     	HeaderPanel pnlHead = new HeaderPanel();
-
-        pnlSide.getMenuPanel().addMenuListener(this);
 
         layout = new Borderlayout();
         if (parent != null)
@@ -167,6 +164,9 @@ public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serial
 
         navigationPanel.setWidth("100%");
         navigationPanel.setHeight("100%");
+        
+        SidePanel pnlSide = new SidePanel(parent.getPage());
+        pnlSide.getMenuPanel().addMenuListener(this);       
         navigationPanel.add(pnlSide, "Application Menu");
 
         Div div = new Div();

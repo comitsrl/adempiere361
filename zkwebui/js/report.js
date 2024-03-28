@@ -1,18 +1,18 @@
 function zoom(cmpid, column, value){
 	var widget = zk.Widget.$(cmpid);
-	var event = new zk.Event({target: widget, name: 'onZoom', data: [column, value], opts: {ctl: true}});
+	var event = new zk.Event(widget, 'onZoom', {data: [column, value]}, {toServer: true});
 	zAu.send(event);
 }
 
 function drillAcross(cmpid, column, value){
 	var widget = zk.Widget.$(cmpid);
-	var event = new zk.Event({target: widget, name: 'onDrillAcross', data: [column, value], opts: {ctl: true}});
+	var event = new zk.Event(widget, 'onDrillAcross', {data: [column, value]}, {toServer: true});
 	zAu.send(event);
 }
 
 function drillDown(cmpid, column, value){
 	var widget = zk.Widget.$(cmpid);
-	var event = new zk.Event({target: widget, name: 'onDrillDown', data: [column, value], opts: {ctl: true}});
+	var event = new zk.Event(widget, 'onDrillDown', {data: [column, value]}, {toServer: true});
 	zAu.send(event);
 }
 

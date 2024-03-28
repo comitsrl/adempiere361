@@ -21,26 +21,26 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import org.adempiere.webui.component.Checkbox;
 import org.adempiere.webui.component.ToolBarButton;
 import org.adempiere.webui.event.MenuListener;
+import org.adempiere.webui.event.TouchEventHelper;
+import org.adempiere.webui.event.TouchEvents;
 import org.adempiere.webui.exception.ApplicationException;
 import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.util.TreeUtils;
-import org.compiere.model.MRole;
 import org.compiere.model.MTree;
 import org.compiere.model.MTreeNode;
-import org.compiere.model.MUser;
-import org.compiere.model.SystemIDs;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Panel;
 import org.zkoss.zul.Panelchildren;
 import org.zkoss.zul.Toolbar;
@@ -58,10 +58,10 @@ import org.zkoss.zul.Treerow;
  * @date    Feb 25, 2007
  * @version $Revision: 0.10 $
  */
-public class MenuPanel extends Panel implements EventListener, SystemIDs
+public class MenuPanel extends Panel implements EventListener<Event>
 {
-	private static final String ON_EXPAND_MENU_EVENT = "onExpandMenu";
-    /**
+    private static final String ON_EXPAND_MENU_EVENT = "onExpandMenu";
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -593280866781665891L;
@@ -70,32 +70,33 @@ public class MenuPanel extends Panel implements EventListener, SystemIDs
     private Tree menuTree;
     private ArrayList<MenuListener> menuListeners = new ArrayList<MenuListener>();
     
-    private ToolBarButton expandToggle;
+	private ToolBarButton expandToggle;
     
-    public MenuPanel()
+	public MenuPanel(Page page)
+	{
+		setPage(page);
+		init();
+	}
+	
+    public MenuPanel(Component parent)
     {
-        ctx = Env.getCtx();
+    	if (parent != null)
+    		this.setParent(parent);
+        init();
+    }
+
+	private void init() {
+		ctx = Env.getCtx();
         int adRoleId = Env.getAD_Role_ID(ctx);
         int adTreeId = getTreeId(ctx, adRoleId);
-        MTree mTree = new MTree(ctx, adTreeId, false, true, null);
-        
-        if(mTree == null)
-        {
-            throw new ApplicationException("Could not load menu tree");
-        }
-        
+        MTree mTree = new MTree(ctx, adTreeId, false, true, null);        
         MTreeNode rootNode = mTree.getRoot();
-        init();
+        initComponents();
         initMenu(rootNode);
         pnlSearch.initialise();
-
-        // Auto Expand Tree - nmicoud IDEMPIERE 195
-     	if (MUser.get(ctx).isMenuAutoExpand())
-     		expandAll();
-     	// Auto Expand Tree - nmicoud IDEMPIERE 195
-    }
+	}
     
-    private void init()
+    private void initComponents()
     {
     	this.setWidth("100%");
     	this.setHeight("100%");
@@ -141,12 +142,13 @@ public class MenuPanel extends Panel implements EventListener, SystemIDs
         Treecols treeCols = new Treecols();
         Treecol treeCol = new Treecol();
         
-        Treechildren rootTreeChildren = new Treechildren();
-        generateMenu(rootTreeChildren, rootNode);
+        Treechildren rootTreeChildren = new Treechildren();        
         
         treeCols.appendChild(treeCol);
         menuTree.appendChild(treeCols);
         menuTree.appendChild(rootTreeChildren);
+        
+        generateMenu(rootTreeChildren, rootNode);
     }
     
     private int getTreeId(Properties ctx, int adRoleId)
@@ -157,7 +159,7 @@ public class MenuPanel extends Panel implements EventListener, SystemIDs
                 + " INNER JOIN AD_Role r ON (ci.AD_Client_ID=r.AD_Client_ID) "
                 + "WHERE AD_Role_ID=?", adRoleId);
         if (AD_Tree_ID <= 0)
-            AD_Tree_ID = TREE_MENUPRIMARY;    //  Menu
+            AD_Tree_ID = 10;    //  Menu
         return AD_Tree_ID;
     }
     
@@ -169,39 +171,50 @@ public class MenuPanel extends Panel implements EventListener, SystemIDs
         {
             MTreeNode mChildNode = (MTreeNode)nodeEnum.nextElement();
             Treeitem treeitem = new Treeitem();
-            treeChildren.appendChild(treeitem);
-            treeitem.setLabel(mChildNode.getName());
-            treeitem.setTooltiptext(mChildNode.getDescription());
-            Treecell cell = (Treecell)treeitem.getTreerow().getFirstChild();
-            cell.setSclass("menu-treecell-cnt");
-
-           
+            treeChildren.appendChild(treeitem);            
+            treeitem.setTooltiptext(mChildNode.getDescription());            
+            
             if(mChildNode.getChildCount() != 0)
             {
                 treeitem.setOpen(false);
+                treeitem.setLabel(mChildNode.getName());
+                Treecell cell = (Treecell)treeitem.getTreerow().getFirstChild();
+                cell.setSclass("menu-treecell-cnt");
                 Treechildren treeItemChildren = new Treechildren();
+                treeitem.appendChild(treeItemChildren);
                 generateMenu(treeItemChildren, mChildNode);
-                if(treeItemChildren.getChildren().size() != 0)
-                    treeitem.appendChild(treeItemChildren);
+                if (treeItemChildren.getChildren().size() == 0)
+                {
+                	treeItemChildren.detach();
+                }
                 
                 treeitem.getTreerow().addEventListener(Events.ON_CLICK, this);
             }
             else
             {
                 treeitem.setValue(String.valueOf(mChildNode.getNode_ID()));
+                Treerow treeRow = new Treerow();
+                treeitem.appendChild(treeRow);
+                Treecell treeCell = new Treecell();
+                treeRow.appendChild(treeCell);
+                A link = new A();
+                treeCell.appendChild(link);
                 
                 if (mChildNode.isReport())
-                	treeitem.setImage("/images/mReport.png");
+                	link.setImage("/images/mReport.png");
                 else if (mChildNode.isProcess() || mChildNode.isTask())
-                	treeitem.setImage("/images/mProcess.png");
+                	link.setImage("/images/mProcess.png");
                 else if (mChildNode.isWorkFlow())
-                	treeitem.setImage("/images/mWorkFlow.png");
+                	link.setImage("/images/mWorkFlow.png");
                 else
-                	treeitem.setImage("/images/mWindow.png");
+                	link.setImage("/images/mWindow.png");
+                link.setLabel(mChildNode.getName());
                 
                 treeitem.getTreerow().setDraggable("favourite"); // Elaine 2008/07/24
                 
-                treeitem.getTreerow().addEventListener(Events.ON_CLICK, this);
+                link.addEventListener(Events.ON_CLICK, this);
+                link.setSclass("menu-href");
+                TouchEventHelper.addOnTapEventListener(link, this);
             }
         }
     }
@@ -220,27 +233,19 @@ public class MenuPanel extends Panel implements EventListener, SystemIDs
     {
         Component comp = event.getTarget();
         String eventName = event.getName();
-        
-        if (eventName.equals(Events.ON_CLICK))
+        if (eventName.equals(TouchEvents.ON_TAP))
         {
-        	if (comp instanceof Treerow) 
-        	{
-        		Treeitem selectedItem = (Treeitem) comp.getParent();
-                if(selectedItem.getValue() != null)
-                {
-                    fireMenuSelectedEvent(selectedItem);
-                }
-                else
-                {
-                	selectedItem.setOpen(!selectedItem.isOpen());
-                }
-        	}
+        	doOnClick(comp);
+        }
+        else if (eventName.equals(Events.ON_CLICK) && !TouchEventHelper.isIgnoreClick(comp))
+        {
+        	doOnClick(comp);
         }
         // Elaine 2009/02/27 - expand tree
         else if (eventName.equals(Events.ON_CHECK) && event.getTarget() == expandToggle)
         {
         	Clients.showBusy(null);
-        	Events.echoEvent(ON_EXPAND_MENU_EVENT, this, null);
+        	Events.echoEvent(ON_EXPAND_MENU_EVENT, this, null);        	
         }
         else if (eventName.equals(ON_EXPAND_MENU_EVENT)) 
         {
@@ -249,6 +254,25 @@ public class MenuPanel extends Panel implements EventListener, SystemIDs
         }
         //
     }
+
+	private void doOnClick(Component comp) {
+		if (comp instanceof A) {
+			comp = comp.getParent().getParent();
+		}
+		if (comp instanceof Treerow) 
+		{
+			Treeitem selectedItem = (Treeitem) comp.getParent();
+		    if(selectedItem.getValue() != null)
+		    {
+		        fireMenuSelectedEvent(selectedItem);
+		    }
+		    else
+		    {
+		    	selectedItem.setOpen(!selectedItem.isOpen());
+		    }
+		    selectedItem.setSelected(true);
+		}
+	}
     
     protected void fireMenuSelectedEvent(Treeitem selectedItem) {
     	int nodeId = Integer.parseInt((String)selectedItem.getValue());

@@ -119,11 +119,8 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
     }
 
     protected Component doCreatePart(Component parent)
-    {
-    	SidePanel pnlSide = new SidePanel();
+    {   	
     	HeaderPanel pnlHead = new HeaderPanel();
-
-        pnlSide.getMenuPanel().addMenuListener(this);
 
         layout = new Borderlayout();
         if (parent != null)
@@ -162,7 +159,9 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         UserPreference pref = SessionManager.getSessionApplication().getUserPreference();
         boolean menuCollapsed= pref.isPropertyBool(UserPreference.P_MENU_COLLAPSED);
         w.setOpen(!menuCollapsed);
-        pnlSide.setParent(w);
+        
+        SidePanel pnlSide = new SidePanel(w);
+        pnlSide.getMenuPanel().addMenuListener(this);
 
         windowArea = new Center();
         windowArea.setParent(layout);

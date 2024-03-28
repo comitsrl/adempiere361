@@ -17,6 +17,7 @@ import java.util.Enumeration;
 
 import org.adempiere.exceptions.DBException;
 import org.adempiere.webui.component.ToolBarButton;
+import org.adempiere.webui.event.TouchEventHelper;
 import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.window.FDialog;
 import org.compiere.model.MTree;
@@ -30,6 +31,7 @@ import org.zkoss.zk.ui.event.DropEvent;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Box;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Label;
@@ -45,8 +47,10 @@ import org.zkoss.zul.Vbox;
  * @author Elaine
  * @date November 20, 2008
  */
-public class DPFavourites extends DashboardPanel implements EventListener, SystemIDs {
+public class DPFavourites extends DashboardPanel implements EventListener<Event>, SystemIDs {
 
+	private static final String NODE_ID_ATTR = "Node_ID";
+	
 	/**
 	 * 
 	 */
@@ -70,8 +74,10 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
 		this.appendChild(panel);
 		
 		Panelchildren favContent = new Panelchildren();
-		panel.appendChild(favContent);
-		favContent.appendChild(createFavouritesPanel());
+		panel.appendChild(favContent);	
+        bxFav = new Vbox();
+        favContent.appendChild(bxFav);
+        createFavouritesPanel();
 		
 		Toolbar favToolbar = new Toolbar();
 		this.appendChild(favToolbar);
@@ -88,9 +94,8 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
         favContent.addEventListener(Events.ON_DROP, this);
 	}
 	
-	private Box createFavouritesPanel()
+	private void createFavouritesPanel()
 	{
-		bxFav = new Vbox();
 		
 		int AD_Role_ID = Env.getAD_Role_ID(Env.getCtx());
 		int AD_Tree_ID = DB.getSQLValue(null,
@@ -115,13 +120,17 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
 				MTreeNode nd = (MTreeNode)en.nextElement();
 				if (nd.isOnBar()) {
 					String label = nd.toString().trim();
-					ToolBarButton btnFavItem = new ToolBarButton(String.valueOf(nd.getNode_ID()));
+					
+					A btnFavItem = new A();
+					btnFavItem.setAttribute(NODE_ID_ATTR, String.valueOf(nd.getNode_ID()));
+					bxFav.appendChild(btnFavItem);
 					btnFavItem.setLabel(label);
 					btnFavItem.setImage(getIconFile(nd));
 					btnFavItem.setDraggable(DELETE_FAV_DROPPABLE);
 					btnFavItem.addEventListener(Events.ON_CLICK, this);
 					btnFavItem.addEventListener(Events.ON_DROP, this);
-					bxFav.appendChild(btnFavItem);
+					btnFavItem.setSclass("menu-href");
+					TouchEventHelper.addOnTapEventListener(btnFavItem, this);
 				}
 			}
 		}
@@ -129,7 +138,6 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
 		lblMsg = new Label("(Drag and drop menu item here)"); 
 		if(bxFav.getChildren().isEmpty()) bxFav.appendChild(lblMsg);
 				
-		return bxFav;
 	}
 	
     /**
@@ -166,23 +174,13 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
         Component comp = event.getTarget();
         String eventName = event.getName();
         
-        if(eventName.equals(Events.ON_CLICK))
+        if (eventName.equals(TouchEventHelper.ON_TAP))
         {
-            if(comp instanceof ToolBarButton)
-            {
-            	ToolBarButton btn = (ToolBarButton) comp;
-            	
-            	int menuId = 0;
-            	try
-            	{
-            		menuId = Integer.valueOf(btn.getName());            		
-            	}
-            	catch (Exception e) {
-					
-				}
-            	
-            	if(menuId > 0) SessionManager.getAppDesktop().onMenuSelected(menuId);
-            }
+        	doOnClick(comp);
+        }
+        else if(eventName.equals(Events.ON_CLICK) && !TouchEventHelper.isIgnoreClick(comp))
+        {
+        	doOnClick(comp);
         }
         // Elaine 2008/07/24
         else if(eventName.equals(Events.ON_DROP))
@@ -202,9 +200,9 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
         	}
         	else if(comp instanceof Image)
         	{
-        		if(dragged instanceof ToolBarButton)
+        		if(dragged instanceof A)
         		{
-        			ToolBarButton btn = (ToolBarButton) dragged;
+        			A btn = (A) dragged;
         			removeLink(btn);
         		}
         	}
@@ -212,8 +210,26 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
         //
 	}
 
-	private void removeLink(ToolBarButton btn) {
-		String value = btn.getName();
+    private void doOnClick(Component comp) {
+		if(comp instanceof A)
+		{
+			A btn = (A) comp;
+			
+			int menuId = 0;
+			try
+			{
+				menuId = Integer.valueOf((String)btn.getAttribute(NODE_ID_ATTR));            		
+			}
+			catch (Exception e) {
+				
+			}
+			
+			if(menuId > 0) SessionManager.getAppDesktop().onMenuSelected(menuId);
+		}
+	}
+    
+	private void removeLink(A btn) {
+		 String value = (String) btn.getAttribute(NODE_ID_ATTR);
 		
 		if(value != null)
 		{
@@ -241,14 +257,29 @@ public class DPFavourites extends DashboardPanel implements EventListener, Syste
 			int Node_ID = Integer.valueOf(value.toString());
 			if(barDBupdate(true, Node_ID))
 			{
-				String label = treeitem.getLabel().trim();
-				ToolBarButton btnFavItem = new ToolBarButton(String.valueOf(Node_ID));
+				String label = null;
+				String image = null;
+				if (treeitem.getLabel() != null && treeitem.getLabel().trim().length() > 0)
+				{
+					label = treeitem.getLabel().trim();
+					image = treeitem.getImage();
+				}
+				else
+				{
+					A link = (A) treeitem.getTreerow().getFirstChild().getFirstChild();
+					label = link.getLabel();
+					image = link.getImage();
+				}
+				A btnFavItem = new A();
+				bxFav.appendChild(btnFavItem);
+				btnFavItem.setAttribute(NODE_ID_ATTR, String.valueOf(Node_ID));
 				btnFavItem.setLabel(label);
-				btnFavItem.setImage(treeitem.getImage());
+				btnFavItem.setImage(image);
 				btnFavItem.setDraggable(DELETE_FAV_DROPPABLE);
 				btnFavItem.addEventListener(Events.ON_CLICK, this);
 				btnFavItem.addEventListener(Events.ON_DROP, this);
-				bxFav.appendChild(btnFavItem);
+				btnFavItem.setSclass("menu-href");
+				TouchEventHelper.addOnTapEventListener(btnFavItem, this);
 				bxFav.removeChild(lblMsg);        					
 				bxFav.invalidate();
 			} else {
