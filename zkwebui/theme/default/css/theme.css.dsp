@@ -461,6 +461,16 @@ span.z-tree-tee, span.z-tree-last {
 	background: #FFFFCC;
 }
 
+%-- Editor --%>
+.editor-box {
+	display: inline-block;
+	border: none; padding: 0px; margin: 0px; background-color: transparent;
+}
+
+.number-box {
+	display: inline-block; white-space:nowrap;
+}
+
 <%-- Group --%>
 tr.z-group {
 	background: #E9F2FB repeat-x 0 0;
