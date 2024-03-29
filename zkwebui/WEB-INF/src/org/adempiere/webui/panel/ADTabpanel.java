@@ -77,6 +77,7 @@ import org.zkoss.zul.Separator;
 import org.zkoss.zul.DefaultTreeNode;
 import org.zkoss.zul.Space;
 import org.zkoss.zul.Treeitem;
+import org.zkoss.zul.impl.XulElement;
 
 /**
  *
@@ -483,7 +484,11 @@ DataStatusListener, IADTabpanel, VetoableChangeListener
 	                        	label.addEventListener(Events.ON_CLICK, new ZoomListener((IZoomableEditor) editor));
 	                        }
 
-	                        label.setContext(popupMenu.getUuid());
+	                        popupMenu.addContextElement(label);
+	                        if (editor.getComponent() instanceof XulElement)
+	                        {
+	                        	popupMenu.addContextElement((XulElement) editor.getComponent());
+	                        }
                         }
                     }
                 }

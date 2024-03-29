@@ -51,6 +51,7 @@ import org.zkoss.zul.RendererCtrl;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.RowRenderer;
 import org.zkoss.zul.RowRendererExt;
+import org.zkoss.zul.impl.XulElement;
 import org.zkoss.zhtml.Label;
 import org.zkoss.zhtml.Text;
 
@@ -460,7 +461,7 @@ public class GridTabRowRenderer implements RowRenderer<Object[]>, RowRendererExt
 				org.zkoss.zul.Column column = (org.zkoss.zul.Column) columns.getChildren().get(colIndex);
 				if (column.isVisible()) {
 					Div div = (Div) currentRow.getChildren().get(colIndex);
-					div.getFirstChild().detach();
+					div.getChildren().clear();
 					WEditor editor = getEditorCell(gridField[i]);
 					div.appendChild(editor.getComponent());
 					WEditorPopupMenu popupMenu = editor.getPopupMenu();
@@ -469,8 +470,9 @@ public class GridTabRowRenderer implements RowRenderer<Object[]>, RowRendererExt
 		            {
 		            	popupMenu.addMenuListener((ContextMenuListener)editor);
 		            	div.appendChild(popupMenu);
+		            	popupMenu.addContextElement((XulElement) editor.getComponent());
 		            }
-		            div.getFirstChild().setVisible(false);
+		            
 		            //check context
 					if (!gridField[i].isDisplayed(true)) 
 					{
