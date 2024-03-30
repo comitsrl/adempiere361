@@ -524,7 +524,7 @@ img.z-group-img-close {
 }
 
 <%-- Tablet --%>
-.mobile-scrolling {
+.tablet-scrolling {
        -webkit-overflow-scrolling: touch;
 }
 

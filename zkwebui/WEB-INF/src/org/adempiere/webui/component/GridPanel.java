@@ -20,7 +20,9 @@ import java.util.Map;
 import javax.swing.table.AbstractTableModel;
 
 import org.adempiere.webui.LayoutUtils;
+import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.editor.WEditor;
+import org.adempiere.webui.event.TouchEventHelper;
 import org.adempiere.webui.panel.AbstractADWindowPanel;
 import org.adempiere.webui.util.SortComparator;
 import org.compiere.model.GridField;
@@ -306,7 +308,9 @@ public class GridPanel extends Borderlayout implements EventListener
 
 		Center center = new Center();
 		center.appendChild(listbox);
-		LayoutUtils.addSclass("mobile-scrolling", center);
+		if (AEnv.isTablet()) {
+			LayoutUtils.addSclass("tablet-scrolling", center);
+		}
 		this.appendChild(center);
 
 		if (pageSize > 0)
@@ -324,6 +328,9 @@ public class GridPanel extends Borderlayout implements EventListener
 			south.setVisible(false);
 		}
 
+		if (AEnv.isTablet()) {
+			TouchEventHelper.addTabletScrollingFix(listbox);
+		}
 	}
 
 	private void updateModel() {
