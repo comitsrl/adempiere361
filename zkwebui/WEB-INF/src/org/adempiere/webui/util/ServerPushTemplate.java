@@ -17,6 +17,8 @@ import org.adempiere.exceptions.AdempiereException;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.DesktopUnavailableException;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 
 /**
  * Zk UI update must be done in either UI thread or using server push. This class help to implement
@@ -37,9 +39,33 @@ public class ServerPushTemplate {
 	}
 
 	/**
-	 * Execute callback in UI thread
+	 * Execute asynchronous task in UI thread. This is implemented
+	 * using Executions.schedule and will return immediately
 	 * @param callback
 	 */
+	public void executeAsync(final IServerPushCallback callback) {
+		try {
+    		EventListener<Event> task = new EventListener<Event>() {
+				@Override
+				public void onEvent(Event event) throws Exception {
+					callback.updateUI();
+				}
+			};
+    		Executions.schedule(desktop, task, new Event("onExecute"));
+		} catch (DesktopUnavailableException de) {
+			throw de;
+    	} catch (Exception e) {
+    		throw new AdempiereException("Failed to update client in server push worker thread.", e);
+		}
+	}
+	
+	/**
+	+        * Execute synchronous task in UI thread. This is implemented
+	+        * using Executions.activate/deactivate and will only return after the
+	+        * invoked task have ended. For better scalability, if possible, you
+	+        * should use executeAsync instead. 
+	+        * @param callback
+	+        */
 	public void execute(IServerPushCallback callback) {
 		boolean inUIThread = Executions.getCurrent() != null;
 		boolean desktopActivated = false;

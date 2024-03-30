@@ -228,7 +228,7 @@ public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serial
 					}
 				};
 				ServerPushTemplate template = new ServerPushTemplate(layout.getDesktop());
-				template.execute(callback);
+				template.executeAsync(callback);
 			}
 		};
 		
@@ -462,7 +462,7 @@ public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serial
     	noOfRequest = DPActivities.getRequestCount();
     	noOfWorkflow = DPActivities.getWorkflowCount();
 
-    	template.execute(this);
+    	template.executeAsync(this);
 	}
 
 	/**
