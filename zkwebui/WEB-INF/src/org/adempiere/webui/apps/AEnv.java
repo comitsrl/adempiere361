@@ -36,6 +36,7 @@ import java.util.logging.Level;
 
 import javax.servlet.ServletRequest;
 
+import org.adempiere.webui.AdempiereWebUI;
 import org.adempiere.webui.component.Window;
 import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.theme.ThemeManager;
@@ -56,6 +57,7 @@ import org.compiere.util.Ini;
 import org.compiere.util.Language;
 import org.zkoss.web.servlet.Servlets;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
 
@@ -741,5 +743,11 @@ public final class AEnv
 		if (header.length() == 0)
 			header = ThemeManager.getBrowserTitle();
 		return header;
+	}
+	
+	public static Desktop getDesktop() {
+		boolean inUIThread = Executions.getCurrent() != null;
+		return inUIThread ? Executions.getCurrent().getDesktop()
+				: (Desktop) Env.getCtx().get(AdempiereWebUI.ZK_DESKTOP_SESSION_KEY);
 	}
 }	//	AEnv

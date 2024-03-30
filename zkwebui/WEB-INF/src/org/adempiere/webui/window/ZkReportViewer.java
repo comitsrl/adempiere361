@@ -157,7 +157,6 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 	public ZkReportViewer(ReportEngine re, String title) {		
 		super();
 		
-		setPage(SessionManager.getAppDesktop().getComponent().getPage());
 		
 		log.info("");
 		m_WindowNo = SessionManager.getAppDesktop().registerWindow(this);

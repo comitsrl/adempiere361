@@ -35,7 +35,6 @@ import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
@@ -71,12 +70,6 @@ public class MenuPanel extends Panel implements EventListener<Event>
     private ArrayList<MenuListener> menuListeners = new ArrayList<MenuListener>();
     
 	private ToolBarButton expandToggle;
-    
-	public MenuPanel(Page page)
-	{
-		setPage(page);
-		init();
-	}
 	
     public MenuPanel(Component parent)
     {
