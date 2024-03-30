@@ -365,7 +365,7 @@ public class GridTabRowRenderer implements RowRenderer<Object[]>, RowRendererExt
 					colIndex ++;
 
 					Div div = new Div();
-					String divStyle = "border: none; width: 100%; height: 100%;";
+					String divStyle = "border: none; width: 100%; height: 100%; cursor: pointer;";
 					org.zkoss.zul.Column column = (org.zkoss.zul.Column) columns.getChildren().get(colIndex);
 					if (column.isVisible()) {
 						Component component = getDisplayComponent(currentValues[i], gridField[i]);
@@ -384,6 +384,7 @@ public class GridTabRowRenderer implements RowRenderer<Object[]>, RowRendererExt
 					div.addEventListener(Events.ON_CLICK, rowListener);
 					div.addEventListener(Events.ON_DOUBLE_CLICK, rowListener);
 					row.addEventListener(Events.ON_CLICK, rowListener);
+					row.setStyle("cursor:pointer");
 					row.appendChild(div);
 				}
 

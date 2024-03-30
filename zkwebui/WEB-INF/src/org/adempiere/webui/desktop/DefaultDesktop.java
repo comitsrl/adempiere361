@@ -28,6 +28,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 
 import org.adempiere.util.ServerContext;
+import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.apps.BusyDialog;
 import org.adempiere.webui.apps.graph.WGraph;
 import org.adempiere.webui.apps.graph.WPerformanceDetail;
@@ -217,6 +218,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         style.setPage(homeTab.getPage());
         
         homeTab.getChildren().clear();
+        homeTab.addEventListener("onAddMobileScrolling", this);
         
         portalLayout = new Anchorlayout();
         portalLayout.setWidth("99%");
@@ -401,6 +403,8 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         dashboardThread = new Thread(dashboardRunnable, "UpdateInfo");
         dashboardThread.setDaemon(true);
         dashboardThread.start();
+        
+        Events.echoEvent("onAddMobileScrolling", homeTab, null);
 	}
 
     public void onEvent(Event event)
@@ -420,6 +424,10 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
             		if(menuId > 0) onMenuSelected(menuId);
             	}            	            	            	            	
             }
+        }
+        else if(eventName.equals("onAddMobileScrolling"))
+        {
+        	LayoutUtils.addSclass("mobile-scrolling", homeTab);
         }
         else if (event instanceof MaximizeEvent) {
         	MaximizeEvent me = (MaximizeEvent) event;

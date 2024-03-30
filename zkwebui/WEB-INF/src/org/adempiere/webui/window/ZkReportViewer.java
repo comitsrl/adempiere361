@@ -25,6 +25,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.adempiere.exceptions.AdempiereException;
 import org.adempiere.pdf.Document;
 import org.adempiere.webui.apps.AEnv;
@@ -58,11 +60,14 @@ import org.compiere.util.Env;
 import org.compiere.util.KeyNamePair;
 import org.compiere.util.Msg;
 import org.zkoss.util.media.AMedia;
+import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.ext.render.DynamicMedia;
+import org.zkoss.zul.A;
 import org.zkoss.zul.Borderlayout;
 import org.zkoss.zul.Center;
 import org.zkoss.zul.North;
@@ -73,10 +78,12 @@ import org.zkoss.zul.Iframe;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Menuitem;
 import org.zkoss.zul.Separator;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Toolbar;
 import org.zkoss.zul.Toolbarbutton;
 import org.zkoss.zul.Vbox;
-
+import org.zkoss.zul.impl.Utils;
+import org.zkoss.zul.impl.XulElement;
 
 /**
  *	Print View Frame
@@ -95,7 +102,7 @@ import org.zkoss.zul.Vbox;
  * 
  * @author Low Heng Sin
  */
-public class ZkReportViewer extends Window implements EventListener, SystemIDs {
+public class ZkReportViewer extends Window implements EventListener<Event>, SystemIDs {
 	
 	private static final long serialVersionUID = 4640088641140012438L;
 	/** Window No					*/
@@ -139,12 +146,18 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 	private Listbox cboType = new Listbox();
 	private Checkbox summary = new Checkbox();
 	
+	private AMedia media;
+	private int mediaVersion = 0;
+	private A reportLink;
+	
 	/**
 	 * 	Static Layout
 	 * 	@throws Exception
 	 */
 	public ZkReportViewer(ReportEngine re, String title) {		
 		super();
+		
+		setPage(SessionManager.getAppDesktop().getComponent().getPage());
 		
 		log.info("");
 		m_WindowNo = SessionManager.getAppDesktop().registerWindow(this);
@@ -181,6 +194,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 		this.setStyle("width: 100%; height: 100%; position: absolute; border:none; padding:none; margin:none;");
 
 		toolBar.setHeight("26px");
+		toolBar.setWidth("100%");
 		
 		previewType.setMold("select");
 		previewType.appendItem("PDF", "PDF");
@@ -269,9 +283,17 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 		layout.appendChild(center);
 		iframe = new Iframe();
 		iframe.setId("reportFrame");
-		iframe.addEventListener(Events.ON_CLICK, this);
-		iframe.addEventListener(Events.ON_RIGHT_CLICK, this);
 		center.appendChild(iframe);
+		
+		South south = new South();
+		south.setHeight("22px");
+		layout.appendChild(south);
+		reportLink = new A();
+		reportLink.setTarget("_blank");
+		Div linkDiv = new Div();
+		linkDiv.setStyle("width:100%; height: 20px");
+		linkDiv.appendChild(reportLink);
+		south.appendChild(linkDiv);
 
 		try {
 			renderReport();
@@ -283,7 +305,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 
 		this.setBorder("normal");
 		
-		this.addEventListener("onZoom", new EventListener() {
+		this.addEventListener("onZoom", new EventListener<Event>() {
 			
 			public void onEvent(Event event) throws Exception {
 				if (event instanceof ZoomEvent) {
@@ -296,7 +318,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 			}
 		});
 		
-		this.addEventListener(DrillEvent.ON_DRILL_ACROSS, new EventListener() {
+		this.addEventListener(DrillEvent.ON_DRILL_ACROSS, new EventListener<Event>() {
 			
 			public void onEvent(Event event) throws Exception {
 				if (event instanceof DrillEvent) {
@@ -315,7 +337,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 			}
 		});
 		
-		this.addEventListener(DrillEvent.ON_DRILL_DOWN, new EventListener() {
+		this.addEventListener(DrillEvent.ON_DRILL_DOWN, new EventListener<Event>() {
 			
 			public void onEvent(Event event) throws Exception {
 				if (event instanceof DrillEvent) {
@@ -331,7 +353,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 	}
 
 	private void renderReport() throws Exception {
-		AMedia media = null;
+		media = null;
 		Listitem selected = previewType.getSelectedItem();
 		if (selected == null || "PDF".equals(selected.getValue())) {
 			String path = System.getProperty("java.io.tmpdir");
@@ -342,7 +364,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 			}
 			File file = File.createTempFile(prefix, ".pdf", new File(path));
 			m_reportEngine.createPDF(file);
-			media = new AMedia(getTitle(), "pdf", "application/pdf", file, true);
+			media = new AMedia(file.getName(), "pdf", "application/pdf", file, true);
 		} else if ("HTML".equals(previewType.getSelectedItem().getValue())) {
 			String path = System.getProperty("java.io.tmpdir");
 			String prefix = makePrefix(m_reportEngine.getName());
@@ -352,7 +374,7 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 			}
 			File file = File.createTempFile(prefix, ".html", new File(path));
 			m_reportEngine.createHTML(file, false, AEnv.getLanguage(Env.getCtx()), new HTMLExtension(Executions.getCurrent().getContextPath(), "rp", this.getUuid()));
-			media = new AMedia(getTitle(), "html", "text/html", file, false);
+			media = new AMedia(file.getName(), "html", "text/html", file, false);
 		} else if ("XLS".equals(previewType.getSelectedItem().getValue())) {
 			String path = System.getProperty("java.io.tmpdir");
 			String prefix = makePrefix(m_reportEngine.getName());
@@ -362,10 +384,21 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 			}
 			File file = File.createTempFile(prefix, ".xls", new File(path));
 			m_reportEngine.createXLS(file, AEnv.getLanguage(Env.getCtx()));
-			media = new AMedia(getTitle(), "xls", "application/vnd.ms-excel", file, true);
+			media = new AMedia(file.getName(), "xls", "application/vnd.ms-excel", file, true);
 		}
 		
+		Events.echoEvent("onPreviewReport", this, null);	
+	}
+	
+	public void onPreviewReport() {
+		mediaVersion++;
+		String url = Utils.getDynamicMediaURI(this, mediaVersion, media.getName(), media.getFormat());		
 		iframe.setContent(media);
+		HttpServletRequest request = (HttpServletRequest) Executions.getCurrent().getNativeRequest();
+		if (url.startsWith(request.getContextPath() + "/"))
+			url = url.substring((request.getContextPath() + "/").length());
+		reportLink.setHref(url);
+		reportLink.setLabel(media.getName());
 	}
 
 	private String makePrefix(String name) {
@@ -951,4 +984,19 @@ public class ZkReportViewer extends Window implements EventListener, SystemIDs {
 		int AD_PrintFormat_ID = m_reportEngine.getPrintFormat().get_ID();
 		AEnv.zoom(AD_Window_ID, MQuery.getEqualQuery("AD_PrintFormat_ID", AD_PrintFormat_ID));
 	}	//	cmd_customize
+	
+	//-- ComponentCtrl --//
+		public Object getExtraCtrl() {
+			return new ExtraCtrl();
+		}
+		/** A utility class to implement {@link #getExtraCtrl}.
+		 * It is used only by component developers.
+		 */
+		protected class ExtraCtrl extends XulElement.ExtraCtrl
+		implements DynamicMedia {
+			//-- DynamicMedia --//
+			public Media getMedia(String pathInfo) {
+				return media;
+			}
+		}
 }
