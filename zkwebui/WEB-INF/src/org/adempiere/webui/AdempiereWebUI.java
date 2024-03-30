@@ -86,7 +86,7 @@ public class AdempiereWebUI extends Window implements EventListener<Event>, IWeb
 
     private IDesktop           appDesktop;
 
-    private ClientInfo		   clientInfo;
+    private ClientInfo		   clientInfo = new ClientInfo();
 
 	private String langSession;
 
@@ -97,6 +97,8 @@ public class AdempiereWebUI extends Window implements EventListener<Event>, IWeb
 	public static final String EXECUTION_CARRYOVER_SESSION_KEY = "execution.carryover";
 
 	public static final String ZK_DESKTOP_SESSION_KEY = "zk.desktop";
+	
+	private static final String CLIENT_INFO = "client.info";
 
     public AdempiereWebUI()
     {
@@ -254,6 +256,10 @@ public class AdempiereWebUI extends Window implements EventListener<Event>, IWeb
 					}
 					
 					currSess.setAttribute(ZK_DESKTOP_SESSION_KEY, this.getPage().getDesktop());
+					ClientInfo sessionClientInfo = (ClientInfo) currSess.getAttribute(CLIENT_INFO);
+					if (sessionClientInfo != null) {
+						clientInfo = sessionClientInfo;
+					}
 				} catch (Throwable t) {
 					//restore fail
 					appDesktop = null;
@@ -351,6 +357,9 @@ public class AdempiereWebUI extends Window implements EventListener<Event>, IWeb
 				} else if (ua.indexOf("android") >= 0 && ua.indexOf("chrome") >= 0 && ua.indexOf("mobile") < 0) {
 					clientInfo.tablet = true;
 				}
+			}
+			if (getDesktop() != null && getDesktop().getSession() != null) {
+				getDesktop().getSession().setAttribute(CLIENT_INFO, clientInfo);
 			}
 		}
 
