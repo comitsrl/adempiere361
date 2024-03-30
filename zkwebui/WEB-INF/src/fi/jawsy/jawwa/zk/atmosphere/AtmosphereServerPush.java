@@ -21,6 +21,7 @@ the License.
 package fi.jawsy.jawwa.zk.atmosphere;
 
 
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicReference;
 
 import org.atmosphere.cpr.AtmosphereResource;
@@ -114,16 +115,34 @@ public class AtmosphereServerPush implements ServerPush {
     	return true;
     }
 
-    public void clearResource(AtmosphereResource resource) {
+	public synchronized void clearResource(AtmosphereResource resource) {
         this.resource.compareAndSet(resource, null);
     }
 
-    private void commitResponse() {
+	private synchronized void commitResponse() throws IOException {
         AtmosphereResource resource = this.resource.getAndSet(null);
         if (resource != null) {
             resource.resume();
         }
     }
+	
+	private synchronized void onPush() throws IOException {
+		AtmosphereResource resource = this.resource.get();
+		if (resource != null) {
+			switch (resource.transport()) {
+			case JSONP:
+			case LONG_POLLING:
+				if (resource.isSuspended())
+					commitResponse();
+				break;
+			case WEBSOCKET :
+			case STREAMING:
+				resource.getResponse().getWriter().write("@");
+				resource.getResponse().getWriter().flush();
+				break;
+			}
+		}
+	}
 
     @Override
     public boolean deactivate(boolean stop) {
@@ -159,10 +178,17 @@ public class AtmosphereServerPush implements ServerPush {
     }
 
     @Override
-	public <T extends Event> void schedule(EventListener<T> task, T event,
+    public synchronized <T extends Event> void schedule(EventListener<T> task, T event,
 			Scheduler<T> scheduler) {
+    	boolean pendingPush = ((DesktopCtrl)desktop.get()).scheduledServerPush();
         scheduler.schedule(task, event);
-        commitResponse();
+        if (!pendingPush || (this.resource.get() != null && this.resource.get().isSuspended())) {
+        	try {
+        		onPush();
+        	} catch (IOException e) {
+        		log.warn(e.getLocalizedMessage(), e);
+        	}
+        }
     }
 
     @Override
@@ -189,31 +215,39 @@ public class AtmosphereServerPush implements ServerPush {
 
         log.debug("Stopping server push for " + desktop);
         Clients.response("jawwa.atmosphere.serverpush", new AuScript(null, "jawwa.atmosphere.stopServerPush('" + desktop.getId() + "');"));
-        commitResponse();
-    }
-
-    public void updateResource(AtmosphereResource resource) {
-        commitResponse();
-
-        boolean shouldSuspend = true;
-        Desktop desktop = this.desktop.get();
-        if (desktop == null) {
-            return;
-        }
-
-        if (desktop instanceof DesktopCtrl) {
-        	DesktopCtrl desktopCtrl = (DesktopCtrl) desktop;
-            shouldSuspend = !desktopCtrl.scheduledServerPush();
-        }
-
-        if (shouldSuspend) {
-            resource.suspend(timeout, false);
-            this.resource.set(resource);
-        } else {
-            this.resource.set(null);
+        try {
+        	commitResponse();
+        } catch (IOException e) {
         }
     }
-    
+
+    public synchronized void onRequest(AtmosphereResource resource) {
+    	if (this.resource.get() != null) {
+    		AtmosphereResource aResource = this.resource.get();
+    		if (aResource.isSuspended()) {
+    			try {
+					commitResponse();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+    		}
+		} 
+
+    	Desktop desktop = this.desktop.get();
+    	if (desktop != null && desktop instanceof DesktopCtrl)
+		{
+			if (((DesktopCtrl)desktop).scheduledServerPush()) 
+		  	{
+		  		return;
+		  	}
+		}
+    	
+	  	this.resource.set(resource);
+	  	if (!resource.isSuspended()) {
+	  		resource.suspend(-1, true);
+	  	}
+    }
+       
     private static class ThreadInfo {
 		private final Thread thread;
 		/** # of activate() was called. */

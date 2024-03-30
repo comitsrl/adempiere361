@@ -17,6 +17,7 @@
 
 package org.adempiere.util;
 
+import java.io.Serializable;
 import java.util.Properties;
 
 import org.compiere.util.Env;
@@ -28,7 +29,7 @@ import org.compiere.util.Language;
  * @date    Feb 25, 2007
  * @version $Revision: 0.10 $
  */
-public final class ServerContext
+public final class ServerContext implements Serializable
 {
 	
 	private ServerContext()

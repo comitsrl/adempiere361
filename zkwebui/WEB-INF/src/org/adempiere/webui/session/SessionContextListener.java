@@ -55,7 +55,7 @@ public class SessionContextListener implements ExecutionInit,
      * @param exec
      * @param createNew
      */
-    private void setupExecutionContextFromSession(Execution exec) {
+    public static void setupExecutionContextFromSession(Execution exec) {
     	Session session = exec.getDesktop().getSession();
 		Properties ctx = (Properties)session.getAttribute(SESSION_CTX);
 		HttpSession httpSession = (HttpSession)session.getNativeSession();
@@ -127,7 +127,7 @@ public class SessionContextListener implements ExecutionInit,
      * @param errs
      * @see ExecutionCleanup#cleanup(Execution, Execution, List)
      */
-    public void cleanup(Execution exec, Execution parent, List errs)
+    public void cleanup(Execution exec, Execution parent, List<Throwable> errs)
     {
     	//in servlet thread
         if (parent == null)
@@ -267,13 +267,13 @@ public class SessionContextListener implements ExecutionInit,
      * @param errs
      * @see EventThreadCleanup#cleanup(Component, Event, List)
      */
-	public void cleanup(Component comp, Event evt, List errs) throws Exception
+    public void cleanup(Component comp, Event evt, List<Throwable> errs) throws Exception
 	{
 		//in event processing thread
 //    	ServerContext.dispose();
 	}
 	
-	private boolean isContextValid() {
+    public static boolean isContextValid() {
 		Execution exec = Executions.getCurrent();
 		Properties ctx = ServerContext.getCurrentInstance();
 		if (ctx == null)
@@ -286,6 +286,24 @@ public class SessionContextListener implements ExecutionInit,
 		{
 			return false;
 		}
+		
+		Properties sessionCtx = (Properties) session.getAttribute(SESSION_CTX);
+		if (sessionCtx != null) 
+		{
+			if (Env.getAD_Client_ID(sessionCtx) != Env.getAD_Client_ID(ctx))
+			{
+				return false;
+			}
+			if (Env.getAD_User_ID(sessionCtx) != Env.getAD_User_ID(ctx))
+			{
+				return false;
+			}			
+			if (Env.getAD_Role_ID(sessionCtx) != Env.getAD_Role_ID(ctx))
+			{
+				return false;
+			}
+		}
+		
 		return true;
 	}
 }
