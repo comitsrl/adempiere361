@@ -118,7 +118,15 @@ public class GridPanel extends Borderlayout implements EventListener
 		this.appendChild(south);
 
 		//default paging size
-		pageSize = MSysConfig.getIntValue(PAGE_SIZE_KEY, 100);
+		if (AEnv.isTablet())
+		{
+			//anything more than 20 is very slow on a tablet
+			pageSize = 20;
+		}
+		else
+		{
+			pageSize = MSysConfig.getIntValue(PAGE_SIZE_KEY, 100);
+		}
 
 		//default false for better performance
 		modeless = MSysConfig.getBooleanValue(MODE_LESS_KEY, false);
