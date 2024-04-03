@@ -24,5 +24,5 @@ function scrollToRow(uuid){
 		 cmp.scrollIntoView();
 		 	cmp.focus();
 		}
-}
- 
+	}
+} 
