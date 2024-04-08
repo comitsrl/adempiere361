@@ -26,6 +26,7 @@ import org.compiere.util.Msg;
 import org.compiere.util.Trace;
 
 import org.zkoss.zk.ui.Component;
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Messagebox;
 
@@ -133,17 +134,9 @@ public class FDialog
     		newTitle = title;
     	}
     	
-		try
-		{
-			String s = out.toString().replace("\n", "<br>");
-			Messagebox.showDialog(s, newTitle, Messagebox.OK, Messagebox.EXCLAMATION);
-		}
-		catch (InterruptedException exception)
-		{
-			// Restore the interrupted status
-            Thread.currentThread().interrupt();
-		}
-
+    	String s = out.toString().replace("\n", "<br>");
+    	Messagebox.showDialog(s, newTitle, Messagebox.OK, Messagebox.EXCLAMATION);
+    	
 		return;
     }
 
@@ -232,68 +225,92 @@ public class FDialog
 
 		out = constructMessage(adMessage, message);
 		
-		try
-		{
-			String s = out.toString().replace("\n", "<br>");
-			Messagebox.showDialog(s, AEnv.getDialogHeader(ctx, windowNo), Messagebox.OK, Messagebox.ERROR);
-		}
-		catch (InterruptedException exception)
-		{
-			// Restore the interrupted status
-            Thread.currentThread().interrupt();
-		}
+		String s = out.toString().replace("\n", "<br>");
+		Messagebox.showDialog(s, AEnv.getDialogHeader(ctx, windowNo), Messagebox.OK, Messagebox.ERROR);
 		
 		return;
     }
 
     /**************************************************************************
-	 *	Ask Question with question icon and (OK) (Cancel) buttons
-	 *
-	 *	@param	WindowNo	Number of Window
-	 *  @param  c           Container (owner)
-	 *	@param	AD_Message	Message to be translated
-	 *	@param	msg			Additional clear text message
-	 *
-	 *	@return true, if OK
-	 */    
-    public static boolean ask(int windowNo, Component comp, String adMessage, String msg)
-    {
-    	StringBuffer out = new StringBuffer();
-		if (adMessage != null && !adMessage.equals(""))
-			out.append(Msg.getMsg(Env.getCtx(), adMessage));
-		if (msg != null && msg.length() > 0)
-			out.append("\n").append(msg);
-		String s = out.toString().replace("\n", "<br>");
-		return ask(windowNo, comp, s);
-    }
-    
-	/**************************************************************************
-	 *	Ask Question with question icon and (OK) (Cancel) buttons
-	 *
-	 *	@param	WindowNo	Number of Window
-	 *  @param  c           Container (owner)
-	 *	@param	AD_Message	Message to be translated
-	 *
-	 *	@return true, if OK
-	 */
-    
-    public static boolean ask(int windowNo, Component comp, String adMessage)
-    {
-        try
-        {
-        	String s = Msg.getMsg(Env.getCtx(), adMessage).replace("\n", "<br>");
-            int response = Messagebox.showDialog(s, AEnv.getDialogHeader(Env.getCtx(), windowNo), Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION);
+   	 *	Ask Question with question icon and (OK) (Cancel) buttons
+   	 *
+   	 *	@param	WindowNo	Number of Window
+   	 *  @param  c           Container (owner)
+   	 *	@param	AD_Message	Message to be translated
+   	 *	@param	msg			Additional clear text message
+   	 *
+   	 *	@return true, if OK
+   	 */    
+       public static boolean ask(int windowNo, Component comp, String adMessage, String msg)
+       {
+       	return ask(windowNo, comp, adMessage, msg, (Callback<Boolean>)null);
+       }
+       
+       /**************************************************************************
+   	 *	Ask Question with question icon and (OK) (Cancel) buttons
+   	 *
+   	 *	@param	WindowNo	Number of Window
+   	 *  @param  c           Container (owner)
+   	 *	@param	AD_Message	Message to be translated
+   	 *	@param	msg			Additional clear text message
+   	 *
+   	 *	@return true, if OK
+   	 */    
+       public static boolean ask(int windowNo, Component comp, String adMessage, String msg, Callback<Boolean> callback)
+       {
+       	StringBuffer out = new StringBuffer();
+   		if (adMessage != null && !adMessage.equals(""))
+   			out.append(Msg.getMsg(Env.getCtx(), adMessage));
+   		if (msg != null && msg.length() > 0)
+   			out.append("\n").append(msg);
+   		String s = out.toString().replace("\n", "<br>");
+   		return ask(windowNo, comp, s, callback);
+       }
+       
+       /**************************************************************************
+   	 *	Ask Question with question icon and (OK) (Cancel) buttons
+   	 *
+   	 *	@param	WindowNo	Number of Window
+   	 *  @param  c           Container (owner)
+   	 *	@param	AD_Message	Message to be translated
+   	 *
+   	 *	@return true, if OK
+   	 */
+       
+       public static boolean ask(int windowNo, Component comp, String adMessage)
+       {
+       	return ask(windowNo, comp, adMessage, (Callback<Boolean>)null);
+       }
+       
+   	/**************************************************************************
+   	 *	Ask Question with question icon and (OK) (Cancel) buttons
+   	 *
+   	 *	@param	WindowNo	Number of Window
+   	 *  @param  c           Container (owner)
+   	 *	@param	AD_Message	Message to be translated
+   	 *
+   	 *	@return true, if OK
+   	 */
+       
+       public static boolean ask(int windowNo, Component comp, String adMessage, final Callback<Boolean> callback)
+       {
+       	Callback<Integer> msgCallback = null;
+       	if (callback != null) 
+       	{
+       		msgCallback = new Callback<Integer>() {
+   				@Override
+   				public void onCallback(Integer result) {
+   					boolean b = result != null && result.intValue() == Messagebox.OK;
+   					callback.onCallback(b);
+   				}
+   			};
+       	}
+       	String s = Msg.getMsg(Env.getCtx(), adMessage).replace("\n", "<br>");
+           int response = Messagebox.showDialog(s, AEnv.getDialogHeader(Env.getCtx(), windowNo), 
+           		Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, msgCallback, (msgCallback == null));
 
-            return (response == Messagebox.OK);
-        }
-        catch (InterruptedException ex)
-        {
-			// Restore the interrupted status
-            Thread.currentThread().interrupt();
-        }
-    	
-        return true;
-    }
+           return (response == Messagebox.OK);
+       }
     
     /**
      *  Display information with information icon.
@@ -339,16 +356,8 @@ public class FDialog
 
         out = constructMessage(adMessage, message);
 
-        try
-        {
-        	String s = out.toString().replace("\n", "<br>");
-        	Messagebox.showDialog(s, AEnv.getDialogHeader(ctx, windowNo), Messagebox.OK, Messagebox.INFORMATION);
-        }
-        catch (InterruptedException exception)
-        {
-            // Restore the interrupted status
-            Thread.currentThread().interrupt();
-        }
+        String s = out.toString().replace("\n", "<br>");
+        Messagebox.showDialog(s, AEnv.getDialogHeader(ctx, windowNo), Messagebox.OK, Messagebox.INFORMATION);
         
         return;
     }

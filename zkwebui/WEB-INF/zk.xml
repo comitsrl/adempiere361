@@ -58,6 +58,10 @@
 		<server-push-class>fi.jawsy.jawwa.zk.atmosphere.AtmosphereServerPush</server-push-class>
 	</device-config>
 
+	<system-config>
+		<disable-event-thread>true</disable-event-thread>
+	</system-config>
+
 	<library-property>
 		<name>org.zkoss.zul.theme.fontSizeM
 		</name>

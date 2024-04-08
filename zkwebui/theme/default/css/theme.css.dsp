@@ -538,3 +538,6 @@ img.z-group-img-close {
        padding-right:18px;
 }
 
+div.simileAjax-bubble-container {
+z-index: 2800 !important;
+}

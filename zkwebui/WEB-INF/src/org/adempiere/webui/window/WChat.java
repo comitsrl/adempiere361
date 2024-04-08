@@ -32,11 +32,13 @@ import org.adempiere.webui.component.Row;
 import org.adempiere.webui.component.Rows;
 import org.adempiere.webui.component.Textbox;
 import org.adempiere.webui.component.Window;
+import org.adempiere.webui.event.DialogEvents;
 import org.compiere.model.*;
 import org.compiere.util.*;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Borderlayout;
 import org.zkoss.zul.Center;
 import org.zkoss.zul.South;
@@ -55,7 +57,7 @@ import org.zkoss.zul.Treerow;
  *  @author Jorg Janke
  *  @version $Id: AChat.java,v 1.3 2006/07/30 00:51:27 jjanke Exp $
  */
-public class WChat extends Window implements EventListener
+public class WChat extends Window implements EventListener<Event>, DialogEvents
 {
 	/**
 	 * 
@@ -82,7 +84,6 @@ public class WChat extends Window implements EventListener
 	{
 		super();
 		setTitle(Msg.getMsg(Env.getCtx(), "Chat") + " " + Description);
-		setAttribute(Window.MODE_KEY, Window.MODE_MODAL);
 		log.config("ID=" + CM_Chat_ID
 			+ ", Table=" + AD_Table_ID + ", Record=" + Record_ID);
 		//
@@ -103,15 +104,14 @@ public class WChat extends Window implements EventListener
 			m_chat = new MChat (Env.getCtx(), CM_Chat_ID, trxName);
 		loadChat();
 		//
-		try
-		{
-			newText.focus();
-			AEnv.showCenterScreen(this);
-		}
-		catch (Exception e)
-		{
-		}		
 	}	//	Attachment
+	
+	public void showWindow()
+	{
+		 this.setAttribute(MODE_KEY, MODE_HIGHLIGHTED);
+		 AEnv.showWindow(this);
+		 newText.focus();
+	}
 
 	/**	Window No				*/
 	@SuppressWarnings("unused")

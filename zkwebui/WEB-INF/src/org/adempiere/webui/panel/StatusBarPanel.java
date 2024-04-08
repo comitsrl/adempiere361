@@ -236,6 +236,14 @@ public class StatusBarPanel extends Panel implements EventListener, IStatusBar
     	}
     }
 
+    /**
+    *
+    * @return current status line text
+    */
+   public String getStatusLine() {
+  		return statusLine.getValue();
+  	}
+    
 	private void createPopup() {
 		popupContent = new Div();
 

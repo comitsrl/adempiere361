@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.Checkbox;
@@ -613,7 +614,6 @@ public class WAcctViewer extends Window implements EventListener
 		south.setHeight("26px");
 		southPanel.setParent(south);
 
-		this.setAttribute("mode", "modal");
 		this.setTitle(TITLE);
 		this.setBorder("normal");
 		this.setClosable(true);
@@ -1295,18 +1295,27 @@ public class WAcctViewer extends Window implements EventListener
 	private void actionRePost()
 	{
 		if (m_data.documentQuery
-			&& m_data.AD_Table_ID != 0 && m_data.Record_ID != 0
-			&& FDialog.ask(m_data.WindowNo, this, "PostImmediate?"))
+				&& m_data.AD_Table_ID != 0 && m_data.Record_ID != 0)
 		{
-			//setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-			boolean force = forcePost.isChecked();
-			String error = AEnv.postImmediate (m_data.WindowNo, m_data.AD_Client_ID,
-				m_data.AD_Table_ID, m_data.Record_ID, force);
-			//setCursor(Cursor.getDefaultCursor());
-			if (error != null)
-				FDialog.error(0, this, "PostingError-N", error);
-
-			actionQuery();
+			FDialog.ask(m_data.WindowNo, this, "PostImmediate?", new Callback<Boolean>() {
+				
+				@Override
+				public void onCallback(Boolean result)
+				{
+					if (result)
+					{
+						//setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+						boolean force = forcePost.isChecked();
+						String error = AEnv.postImmediate (m_data.WindowNo, m_data.AD_Client_ID,
+								m_data.AD_Table_ID, m_data.Record_ID, force);
+						//setCursor(Cursor.getDefaultCursor());
+						if (error != null)
+							FDialog.error(0, WAcctViewer.this, "PostingError-N", error);
+						
+						actionQuery();
+					}
+				}
+			});
 		}
 	} // actionRePost
 

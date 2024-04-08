@@ -18,11 +18,13 @@ package org.adempiere.webui.panel;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 import java.util.logging.Level;
 
+import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.component.Panel;
 import org.adempiere.webui.component.ToolBarButton;
+import org.adempiere.webui.event.DialogEvents;
+import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.window.InfoSchedule;
 import org.adempiere.webui.window.WAssignmentDialog;
 import org.compiere.model.MResourceAssignment;
@@ -125,7 +127,8 @@ public class WSchedule extends Panel implements EventListener
 		hourBand.setIntervalUnit("hour");
 		hourBand.setWidth("40%");
 		hourBand.setIntervalPixels(40);
-		hourBand.setTimeZone(TimeZone.getDefault());
+		hourBand.setTimeZone(SessionManager.getAppDesktop().getClientInfo().timeZone);
+		hourBand.setId("WScheduleHourBand");
 		
 		if (dayBand != null)
 			dayBand.detach();
@@ -135,9 +138,10 @@ public class WSchedule extends Panel implements EventListener
 		dayBand.setWidth("35%");
 		dayBand.setIntervalPixels(100);
 		dayBand.setSyncWith(hourBand.getId());		
-		dayBand.setTimeZone(TimeZone.getDefault());
+		dayBand.setTimeZone(SessionManager.getAppDesktop().getClientInfo().timeZone);
 		// listening band scroll event
 		dayBand.addEventListener("onBandScroll", this);
+		dayBand.setId("WScheduleDayBand");
 		
 		if (mthBand != null)
 			mthBand.detach();
@@ -147,7 +151,7 @@ public class WSchedule extends Panel implements EventListener
 		mthBand.setWidth("25%");
 		mthBand.setIntervalPixels(150);
 		mthBand.setSyncWith(dayBand.getId());		
-		mthBand.setTimeZone(TimeZone.getDefault());
+		mthBand.setTimeZone(SessionManager.getAppDesktop().getClientInfo().timeZone);
 	}
 
 	/**
@@ -182,11 +186,19 @@ public class WSchedule extends Panel implements EventListener
 			MouseEvent me = (MouseEvent) event;
 			if (me.getX() > 0) {
 				MResourceAssignment assignment = new MResourceAssignment(Env.getCtx(), me.getX(), null);
-				WAssignmentDialog wad = new WAssignmentDialog(assignment, false, infoSchedule.isCreateNew());
-				if (!wad.isCancelled()) {
-					_assignmentDialogResult =  wad.getMResourceAssignment();
-					Events.echoEvent("onAssignmentCallback", this, null);				
-				}
+				final WAssignmentDialog assignmentDialog = new WAssignmentDialog(assignment, false, infoSchedule.isCreateNew());
+				assignmentDialog.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+					@Override
+					public void onEvent(Event event) throws Exception {
+						if (!assignmentDialog.isCancelled()) {
+							_assignmentDialogResult =  assignmentDialog.getMResourceAssignment();
+							Events.echoEvent("onAssignmentCallback", WSchedule.this, null);
+						}
+					}
+				});
+				assignmentDialog.setTitle(null);
+				LayoutUtils.openPopupWindow(this, assignmentDialog, "at_pointer");
+				Events.postEvent(new Event(Events.ON_CLICK, assignmentDialog.getDateFrom()));
 			}
 		} else if (event instanceof BandScrollEvent){
 			BandScrollEvent e = (BandScrollEvent) event;

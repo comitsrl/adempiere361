@@ -183,7 +183,6 @@ public class WLocationDialog extends Window implements EventListener
 		this.setWidth("380px");
 		this.setClosable(true);
 		this.setBorder("normal");
-		this.setAttribute("mode","modal");
 	}
 
 	private void initComponents()

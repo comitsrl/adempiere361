@@ -31,6 +31,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import org.adempiere.webui.AdempiereWebUI;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.ConfirmPanel;
 import org.adempiere.webui.component.Label;
@@ -50,15 +51,16 @@ import org.compiere.util.Env;
 import org.compiere.util.Ini;
 import org.compiere.util.Msg;
 import org.zkoss.util.media.Media;
+import org.zkoss.zk.ui.IdSpace;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zul.Borderlayout;
 import org.zkoss.zul.Center;
 import org.zkoss.zul.North;
 import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
-import org.zkoss.zul.Fileupload;
 import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Separator;
 
@@ -170,7 +172,8 @@ public class WFileImport extends ADForm implements EventListener
 		
 		bFile.setLabel(Msg.getMsg(Env.getCtx(), "FileImportFile"));
 		bFile.setTooltiptext(Msg.getMsg(Env.getCtx(), "FileImportFileInfo"));
-		bFile.addEventListener(Events.ON_CLICK, this);
+		bFile.setUpload("true");
+		bFile.addEventListener(Events.ON_UPLOAD, this);
 		
 		fCharset.setMold("select");
 		fCharset.setRows(0);
@@ -272,9 +275,10 @@ public class WFileImport extends ADForm implements EventListener
 	
 	public void onEvent(Event e) throws Exception 
 	{
-		if (e.getTarget() == bFile)
+		if (e instanceof UploadEvent)
 		{
-			cmd_loadFile();
+			UploadEvent ue = (UploadEvent) e;
+			processUploadMedia(ue.getMedia());
 			invalidate();
 		}
 		else if (e.getTarget() == fCharset) 
@@ -313,16 +317,8 @@ public class WFileImport extends ADForm implements EventListener
 			confirmPanel.getButton("Ok").setEnabled(false);
 	}
 	
-	/**************************************************************************
-	 *	Load File
-	 */
 	
-	private void cmd_loadFile()
-	{
-		Media media = null;
-		
-		media = Fileupload.get();
-	
+	private void processUploadMedia(Media media) {
 		if (media == null)
 			return;
 		

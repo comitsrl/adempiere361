@@ -17,6 +17,7 @@ import org.adempiere.webui.component.Window;
 import org.adempiere.webui.desktop.IDesktop;
 import org.adempiere.webui.process.WProcessInfo;
 import org.adempiere.webui.session.SessionManager;
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.window.FDialog;
 import org.adempiere.webui.window.SimplePDFViewer;
 import org.compiere.apps.ProcessCtl;
@@ -75,7 +76,7 @@ import com.lowagie.text.pdf.PdfWriter;
  *  @author     arboleda - globalqss
  *  - Implement ShowHelp option on processes and reports
  */
-public class ProcessDialog extends Window implements EventListener, SystemIDs//, ASyncProcess
+public class ProcessDialog extends Window implements EventListener<Event>, SystemIDs//, ASyncProcess
 {
 	/**
 	 * generate serial version ID
@@ -143,7 +144,6 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 		center.setStyle("border: none");
 		
 		Div div = new Div();
-		div.setAlign("center");
 		Hbox hbox = new Hbox();
 		String label = Msg.getMsg(Env.getCtx(), "Start");
 		bOK = new Button(label.replaceAll("&", ""));
@@ -161,7 +161,7 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 		btn.setSclass("action-image-text-button");
 		hbox.appendChild(btn);		
 		div.appendChild(hbox);
-		div.setStyle("padding: 10px");
+		div.setStyle("padding: 10px; text-align: center; text-align: -webkit-center; text-align: -moz-center; ");
 		
 		South south = new South();
 		layout.appendChild(south);
@@ -387,23 +387,22 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 	}
 	
 	public void onAfterProcess() 
-	{
-		//
-		afterProcessTask();
-
+	{		
 		// Close automatically
 		if (m_IsReport && !m_pi.isError())
 			this.dispose();
 
-		// If the process is a silent one and no errors occured, close the dialog
-		if(m_ShowHelp != null && m_ShowHelp.equals("S"))
-			this.dispose();	
+		if (!afterProcessTask()) {
+			// If the process is a silent one and no errors occured, close the dialog
+			if(m_ShowHelp != null && m_ShowHelp.equals("S"))
+				this.dispose();
+		}
 	}
 	
 	/**************************************************************************
 	 *	Optional Processing Task
 	 */
-	private void afterProcessTask()
+	private boolean afterProcessTask()
 	{
 		//  something to do?
 		if (m_ids != null && m_ids.length > 0)
@@ -411,11 +410,22 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 			log.config("");
 			//	Print invoices
 			if (m_AD_Process_ID == PROCESS_C_INVOICE_GENERATE)
+			{
 				printInvoices();
+				return true;
+			}				
 			else if (m_AD_Process_ID == PROCESS_M_INOUT_GENERATE)
+			{
 				printShipments();
+				return false;
+			}
+			else
+			{
+				return false;
+			}
 		}
-
+		
+		return false;
 	}	//	afterProcessTask
 	
 	/**************************************************************************
@@ -425,13 +435,20 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 	{		
 		if (m_ids == null)
 			return;
-		if (!FDialog.ask(m_WindowNo, this, "PrintShipments"))
-			return;
-				
-		m_messageText.append("<p>").append(Msg.getMsg(Env.getCtx(), "PrintShipments")).append("</p>");
-		message.setContent(m_messageText.toString());
-		showBusyDialog();
-		Clients.response(new AuEcho(this, "onPrintShipments", null));
+		
+		FDialog.ask(m_WindowNo, this, "PrintShipments", new Callback<Boolean>() {
+			
+			@Override
+			public void onCallback(Boolean result) {
+				if (result) {
+					 m_messageText.append("<p>").append(Msg.getMsg(Env.getCtx(), "PrintShipments")).append("</p>");
+					 
+					 message.setContent(m_messageText.toString());
+					 showBusyDialog();
+					 Clients.response(new AuEcho(ProcessDialog.this, "onPrintShipments", null));
+				}
+			}
+		});
 	}	//	printInvoices
 	
 	public void onPrintShipments() 
@@ -487,6 +504,10 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 				log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}
 		}
+		
+		// If the process is a silent one and no errors occured, close the dialog
+		if(m_ShowHelp != null && m_ShowHelp.equals("S"))
+			this.dispose();
 	}
 
 	/**
@@ -496,12 +517,19 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 	{
 		if (m_ids == null)
 			return;
-		if (!FDialog.ask(m_WindowNo, this, "PrintInvoices"))
-			return;
-		m_messageText.append("<p>").append(Msg.getMsg(Env.getCtx(), "PrintInvoices")).append("</p>");
-		message.setContent(m_messageText.toString());
-		showBusyDialog();
-		Clients.response(new AuEcho(this, "onPrintInvoices", null));				
+		FDialog.ask(m_WindowNo, this, "PrintShipments", new Callback<Boolean>() {
+			
+			@Override
+			public void onCallback(Boolean result) {
+				if (result) {
+					 m_messageText.append("<p>").append(Msg.getMsg(Env.getCtx(), "PrintShipments")).append("</p>");
+					 
+					 message.setContent(m_messageText.toString());
+					 showBusyDialog();
+					 Clients.response(new AuEcho(ProcessDialog.this, "onPrintShipments", null));
+				}
+			}
+		});				
 	}	//	printInvoices
 	
 	public void onPrintInvoices()
@@ -554,6 +582,10 @@ public class ProcessDialog extends Window implements EventListener, SystemIDs//,
 				log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}
 		}
+		
+		// If the process is a silent one and no errors occured, close the dialog
+		if(m_ShowHelp != null && m_ShowHelp.equals("S"))
+			this.dispose();
 	}
 
 	public boolean isValid() {

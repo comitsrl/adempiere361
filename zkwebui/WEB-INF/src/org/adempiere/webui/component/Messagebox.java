@@ -19,12 +19,14 @@ package org.adempiere.webui.component;
 
 import java.util.Properties;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.apps.AEnv;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 import org.zkoss.zhtml.Text;
+import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
@@ -39,7 +41,7 @@ import org.zkoss.zul.Separator;
 * @date    Jul 31, 2007
 */
 
-public class Messagebox extends Window implements EventListener
+public class Messagebox extends Window implements EventListener<Event>
 {	
 	/**
 	 * generated serial version ID
@@ -62,6 +64,7 @@ public class Messagebox extends Window implements EventListener
 	private Image img = new Image();
 
 	private int returnValue;
+	private Callback<Integer> callback;
 
 	/** A OK button. */
 	public static final int OK = 0x0001;
@@ -193,8 +196,19 @@ public class Messagebox extends Window implements EventListener
 
 	public int show(String message, String title, int buttons, String icon)
 	{
+		return show(message, title, buttons, icon, null);
+	}
+	
+	public int show(String message, String title, int buttons, String icon, Callback<Integer> callback)
+	{
+		return show(message, title, buttons, icon, callback, false);
+	}
+	
+	public int show(String message, String title, int buttons, String icon, Callback<Integer> callback, boolean modal)
+	{
 		this.msg = message;
 		this.imgSrc = icon;
+		this.callback = callback;
 
 		btnOk.setVisible(false);
 		btnCancel.setVisible(false);
@@ -230,10 +244,7 @@ public class Messagebox extends Window implements EventListener
 		this.setTitle(title);
 		this.setPosition("center");
 		this.setClosable(true);
-		if (Events.inEventListener())
-			this.setAttribute(Window.MODE_KEY, Window.MODE_MODAL);
-		else
-			this.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
+		this.setAttribute(Window.MODE_KEY, modal ? Window.MODE_MODAL : Window.MODE_HIGHLIGHTED);
 		this.setSizable(true);
 
 		this.setVisible(true);
@@ -242,11 +253,21 @@ public class Messagebox extends Window implements EventListener
 		return returnValue;
 	}
 
-	public static int showDialog(String message, String title, int buttons, String icon) throws InterruptedException
+	public static int showDialog(String message, String title, int buttons, String icon) 
+	{
+		return showDialog(message, title, buttons, icon, null);
+	}
+	
+	public static int showDialog(String message, String title, int buttons, String icon, Callback<Integer> callback)
+	{
+		return showDialog(message, title, buttons, icon, callback, false);
+	}
+	
+	public static int showDialog(String message, String title, int buttons, String icon, Callback<Integer> callback, boolean modal) 
 	{
 		Messagebox msg = new Messagebox();
 
-		return msg.show(message, title, buttons, icon);
+		return msg.show(message, title, buttons, icon, callback, modal);
 	}
 
 	public void onEvent(Event event) throws Exception
@@ -284,5 +305,14 @@ public class Messagebox extends Window implements EventListener
 		}
 
 		this.detach();
+	}
+	
+	@Override
+	public void onPageDetached(Page page) {
+		super.onPageDetached(page);
+		if (callback != null)
+		{
+			callback.onCallback(returnValue);
+		}
 	}
 }

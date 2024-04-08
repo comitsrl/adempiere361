@@ -42,6 +42,7 @@ import org.adempiere.webui.panel.ADForm;
 import org.adempiere.webui.panel.CustomForm;
 import org.adempiere.webui.panel.IFormController;
 import org.adempiere.webui.session.SessionManager;
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.window.FDialog;
 import org.compiere.apps.form.PaySelect;
 import org.compiere.model.SystemIDs;
@@ -371,25 +372,33 @@ public class WPaySelect extends PaySelect
 		}
 
 		//  Ask to Post it
-		if (!FDialog.ask(m_WindowNo, form, "VPaySelectGenerate?", "(" + m_ps.getName() + ")"))
-			return;
-		
-		//  Prepare Process 
-		int AD_Proces_ID = PROCESS_C_PAYSELECTION_CREATEPAYMENT;	//	C_PaySelection_CreatePayment
-
-		//	Execute Process
-		ProcessModalDialog dialog = new ProcessModalDialog(this, m_WindowNo, 
-				AD_Proces_ID, X_C_PaySelection.Table_ID, m_ps.getC_PaySelection_ID(), false);
-		if (dialog.isValid()) {
-			try {
-				dialog.setWidth("500px");
-				dialog.setVisible(true);
-				dialog.setPage(form.getPage());
-				dialog.doModal();
-			} catch (SuspendNotAllowedException e) {
-				log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		FDialog.ask(m_WindowNo, form, "VPaySelectGenerate?", "(" + m_ps.getName() + ")", new Callback<Boolean>() {
+			
+			@Override
+			public void onCallback(Boolean result)
+			{
+				if (result)
+				{
+					//  Prepare Process
+					int AD_Proces_ID = PROCESS_C_PAYSELECTION_CREATEPAYMENT;        //      C_PaySelection_CreatePayment
+					
+					//Execute Process
+					ProcessModalDialog dialog = new ProcessModalDialog(WPaySelect.this, m_WindowNo,
+							AD_Proces_ID, X_C_PaySelection.Table_ID, m_ps.getC_PaySelection_ID(), false);
+					
+					if (dialog.isValid()) {
+						try {
+							dialog.setWidth("500px");
+							dialog.setVisible(true);
+							dialog.setPage(form.getPage());
+							dialog.doHighlighted();
+						} catch (SuspendNotAllowedException e) {
+							log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+						}
+					}
+				}
 			}
-		}
+		});
 	}   //  generatePaySelect
 	
 	/**

@@ -49,9 +49,8 @@ import org.zkoss.zul.Borderlayout;
 import org.zkoss.zul.Center;
 import org.zkoss.zul.Space;
 
-public class WCreateFromInvoiceUI extends CreateFromInvoice implements EventListener, ValueChangeListener, SystemIDs
+public class WCreateFromInvoiceUI extends CreateFromInvoice implements EventListener<Event>, ValueChangeListener, SystemIDs
 {
-	private static final long serialVersionUID = 1L;
 	
 	private WCreateFromWindow window;
 	
@@ -378,5 +377,10 @@ public class WCreateFromInvoiceUI extends CreateFromInvoice implements EventList
 	public void closeWindow()
 	{
 		window.dispose();
+	}
+	
+	@Override
+	public Object getWindow() {
+		return window;
 	}
 }

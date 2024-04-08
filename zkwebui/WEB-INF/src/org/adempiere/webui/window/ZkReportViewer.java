@@ -37,6 +37,7 @@ import org.adempiere.webui.component.Label;
 import org.adempiere.webui.component.ListItem;
 import org.adempiere.webui.component.Listbox;
 import org.adempiere.webui.component.Window;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.event.DrillEvent;
 import org.adempiere.webui.event.ZoomEvent;
 import org.adempiere.webui.panel.StatusBarPanel;
@@ -59,6 +60,7 @@ import org.compiere.util.DB;
 import org.compiere.util.Env;
 import org.compiere.util.KeyNamePair;
 import org.compiere.util.Msg;
+import org.compiere.util.Util;
 import org.zkoss.util.media.AMedia;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.Component;
@@ -102,7 +104,7 @@ import org.zkoss.zul.impl.XulElement;
  * 
  * @author Low Heng Sin
  */
-public class ZkReportViewer extends Window implements EventListener<Event>, SystemIDs {
+public class ZkReportViewer extends Window implements EventListener<Event>, SystemIDs, DialogEvents {
 	
 	private static final long serialVersionUID = 4640088641140012438L;
 	/** Window No					*/
@@ -237,31 +239,31 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 		toolBar.appendChild(summary);
 		
 		bCustomize.setImage("/images/Preference24.png");
-		bCustomize.setTooltiptext(Msg.getMsg(Env.getCtx(), "PrintCustomize"));
+		bCustomize.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "PrintCustomize")));
 		toolBar.appendChild(bCustomize);
 		bCustomize.addEventListener(Events.ON_CLICK, this);
 		
 		bFind.setImage("/images/Find24.png");
-		bFind.setTooltiptext(Msg.getMsg(Env.getCtx(), "Find"));
+		bFind.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Find")));
 		toolBar.appendChild(bFind);
 		bFind.addEventListener(Events.ON_CLICK, this);
 		
 		toolBar.appendChild(new Separator("vertical"));
 		
 		bSendMail.setImage("/images/SendMail24.png");
-		bSendMail.setTooltiptext(Msg.getMsg(Env.getCtx(), "SendMail"));
+		bSendMail.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "SendMail")));
 		toolBar.appendChild(bSendMail);
 		bSendMail.addEventListener(Events.ON_CLICK, this);
 		
 		bArchive.setImage("/images/Archive24.png");
-		bArchive.setTooltiptext(Msg.getMsg(Env.getCtx(), "Archive"));
+		bArchive.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Archive")));
 		toolBar.appendChild(bArchive);
 		bArchive.addEventListener(Events.ON_CLICK, this);
 		
 		if (m_isCanExport)
 		{
 			bExport.setImage("/images/ExportX24.png");
-			bExport.setTooltiptext(Msg.getMsg(Env.getCtx(), "Export"));
+			bExport.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Export")));
 			toolBar.appendChild(bExport);
 			bExport.addEventListener(Events.ON_CLICK, this);
 		}
@@ -269,7 +271,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 		toolBar.appendChild(new Separator("vertical"));
 		
 		bRefresh.setImage("/images/Refresh24.png");
-		bRefresh.setTooltiptext(Msg.getMsg(Env.getCtx(), "Refresh"));
+		bRefresh.setTooltiptext(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Refresh")));
 		toolBar.appendChild(bRefresh);
 		bRefresh.addEventListener(Events.ON_CLICK, this);
 
@@ -364,6 +366,9 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 			File file = File.createTempFile(prefix, ".pdf", new File(path));
 			m_reportEngine.createPDF(file);
 			media = new AMedia(file.getName(), "pdf", "application/pdf", file, true);
+			
+			labelDrill.setVisible(false);
+			comboDrill.setVisible(false);
 		} else if ("HTML".equals(previewType.getSelectedItem().getValue())) {
 			String path = System.getProperty("java.io.tmpdir");
 			String prefix = makePrefix(m_reportEngine.getName());
@@ -374,6 +379,9 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 			File file = File.createTempFile(prefix, ".html", new File(path));
 			m_reportEngine.createHTML(file, false, AEnv.getLanguage(Env.getCtx()), new HTMLExtension(Executions.getCurrent().getContextPath(), "rp", this.getUuid()));
 			media = new AMedia(file.getName(), "html", "text/html", file, false);
+			
+			labelDrill.setVisible(false);
+			comboDrill.setVisible(false);
 		} else if ("XLS".equals(previewType.getSelectedItem().getValue())) {
 			String path = System.getProperty("java.io.tmpdir");
 			String prefix = makePrefix(m_reportEngine.getName());
@@ -382,8 +390,11 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 				log.log(Level.FINE, "Path="+path + " Prefix="+prefix);
 			}
 			File file = File.createTempFile(prefix, ".xls", new File(path));
-			m_reportEngine.createXLS(file, AEnv.getLanguage(Env.getCtx()));
+			m_reportEngine.createXLS(file, AEnv.getLanguage(Env.getCtx()));			
 			media = new AMedia(file.getName(), "xls", "application/vnd.ms-excel", file, true);
+			
+			labelDrill.setVisible(false);
+			comboDrill.setVisible(false);
 		}
 		
 		Events.echoEvent("onPreviewReport", this, null);	
@@ -533,7 +544,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 	private void revalidate()
 	{
 		//	Report Info
-		setTitle(Msg.getMsg(Env.getCtx(), "Report") + ": " + m_reportEngine.getName() + "  " + Env.getHeader(Env.getCtx(), 0));
+		setTitle(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Report") + ": " + m_reportEngine.getName() + "  " + Env.getHeader(Env.getCtx(), 0)));
 		StringBuffer sb = new StringBuffer ();
 		sb.append(Msg.getMsg(Env.getCtx(), "DataCols")).append("=")
 			.append(m_reportEngine.getColumnCount())
@@ -700,6 +711,7 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 			winExportFile = new Window();
 			winExportFile.setTitle(Msg.getMsg(Env.getCtx(), "Export") + ": " + getTitle());
 			winExportFile.setWidth("450px");
+			winExportFile.setHeight("300px");
 			winExportFile.setClosable(true);
 			winExportFile.setBorder("normal");
 			winExportFile.setStyle("position:absolute");
@@ -724,16 +736,21 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 			hb.appendChild(div);
 			hb.appendChild(cboType);
 			cboType.setWidth("100%");
+			hb.setVflex("1");
+			hb.setStyle("margin-top: 10px");
 
 			Vbox vb = new Vbox();
-			vb.setWidth("390px");
+			vb.setVflex("1");
+			vb.setWidth("100%");
 			winExportFile.appendChild(vb);
 			vb.appendChild(hb);
 			vb.appendChild(confirmPanel);	
 			confirmPanel.addActionListener(this);
+			confirmPanel.setVflex("0");
 		}
 		
-		AEnv.showCenterScreen(winExportFile);
+		winExportFile.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
+		AEnv.showWindow(winExportFile);
 		
 	}	//	cmd_export
 		
@@ -959,18 +976,25 @@ public class ZkReportViewer extends Window implements EventListener<Event>, Syst
 			bFind.setVisible(false);
 		else
 		{
-            FindWindow find = new FindWindow(m_WindowNo, title, AD_Table_ID, tableName,"", findFields, 1, AD_Tab_ID);
-            if (!find.isCancel())
-            {
-            	m_reportEngine.setQuery(find.getQuery());
-            	try {
-            		renderReport();
-            	} catch (Exception e) {
-        			throw new AdempiereException("Failed to render report", e);
-        		}
-            	revalidate();
-            }
-            find = null;
+			final FindWindow find = new FindWindow(m_WindowNo, title, AD_Table_ID, tableName,m_reportEngine.getWhereExtended(), findFields, 1, AD_Tab_ID);
+			if (!find.isValid())
+				return;
+			find.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+				@Override
+				public void onEvent(Event event) throws Exception {
+					if (!find.isCancel())
+					{
+						m_reportEngine.setQuery(find.getQuery());
+						 try {
+							 renderReport();
+						 } catch (Exception e) {
+							 throw new AdempiereException("Failed to render report", e);
+						 }
+						 revalidate();
+					}
+				}
+			});
+			AEnv.showWindow(find);
 		}
 	}	//	cmd_find
 

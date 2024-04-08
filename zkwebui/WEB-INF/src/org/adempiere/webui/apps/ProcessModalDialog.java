@@ -27,6 +27,7 @@ import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.Panel;
 import org.adempiere.webui.component.VerticalBox;
 import org.adempiere.webui.component.Window;
+import org.adempiere.webui.event.DialogEvents;
 import org.compiere.apps.ProcessCtl;
 import org.compiere.apps.ProcessDialog;
 import org.compiere.process.ProcessInfo;
@@ -56,8 +57,9 @@ import org.zkoss.zul.Html;
  *  @author     arboleda - globalqss
  *  - Implement ShowHelp option on processes and reports
  */
-public class ProcessModalDialog extends Window implements EventListener
+public class ProcessModalDialog extends Window implements EventListener<Event>, DialogEvents
 {
+
 	/**
 	 * generated serial version ID
 	 */
@@ -138,7 +140,7 @@ public class ProcessModalDialog extends Window implements EventListener
 		centerPanel = new Panel();
 		dialogBody.appendChild(centerPanel);
 		div = new Div();
-		div.setAlign("right");
+		div.setStyle("text-align: right");
 		Hbox hbox = new Hbox();
 		Button btn = new Button("Ok");
 		LayoutUtils.addSclass("action-text-button", btn);
@@ -165,6 +167,7 @@ public class ProcessModalDialog extends Window implements EventListener
 	private StringBuffer	m_messageText = new StringBuffer();
 	private String          m_ShowHelp = null; // Determine if a Help Process Window is shown
 	private boolean m_valid = true;
+	private boolean m_cancel = false;
 	
 	private Panel centerPanel = null;
 	private Html message = null;
@@ -206,6 +209,14 @@ public class ProcessModalDialog extends Window implements EventListener
 		return m_valid;
 	}
 
+	/**
+	* @return true if user have press the cancel button to close the dialog
+	*/
+	public boolean isCancel() 
+	{		
+		return m_cancel;
+	}
+	
 	/**
 	 *	Dynamic Init
 	 *  @return true, if there is something to process (start from menu)
@@ -352,11 +363,21 @@ public class ProcessModalDialog extends Window implements EventListener
 		if (component instanceof Button) {
 			Button element = (Button)component;
 			if ("Ok".equalsIgnoreCase(element.getId())) {
-				this.startProcess();
+				onOK();
 			} else if ("Cancel".equalsIgnoreCase(element.getId())) {
-				this.dispose();
+				onCancel();
 			}
 		}		
 	}
+	
+	private void onOK() {
+			this.startProcess();
+		}
+	
+	private void onCancel() {
+			m_cancel = true;
+			this.dispose();
+		}
+
 	
 }	//	ProcessDialog

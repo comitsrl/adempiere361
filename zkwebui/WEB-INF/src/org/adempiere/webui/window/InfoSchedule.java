@@ -26,6 +26,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
+import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.ConfirmPanel;
@@ -38,6 +40,7 @@ import org.adempiere.webui.component.Listbox;
 import org.adempiere.webui.component.Row;
 import org.adempiere.webui.component.Rows;
 import org.adempiere.webui.component.Window;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.panel.StatusBarPanel;
 import org.adempiere.webui.panel.WSchedule;
 import org.compiere.model.MAssignmentSlot;
@@ -50,6 +53,7 @@ import org.compiere.util.Env;
 import org.compiere.util.KeyNamePair;
 import org.compiere.util.Msg;
 import org.compiere.util.TimeUtil;
+import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
@@ -74,9 +78,11 @@ import org.zkoss.zul.Vbox;
 public class InfoSchedule extends Window implements EventListener
 {
 	/**
-	 * 
+	 * @param mAssignment optional assignment
+	 * @param createNew if true, allows to create new assignments
 	 */
 	private static final long serialVersionUID = -5948901371276429661L;
+	private Callback<MResourceAssignment> m_callback;
 
 	/**
 	 *  Constructor
@@ -85,13 +91,30 @@ public class InfoSchedule extends Window implements EventListener
 	 */
 	public InfoSchedule (MResourceAssignment mAssignment, boolean createNew)
 	{
+		this(mAssignment, createNew, (Callback<MResourceAssignment>)null);
+	}
+	
+	/**
+	 *  Constructor
+	 *  @param mAssignment optional assignment
+	 *  @param createNew if true, allows to create new assignments
+	 *  @param listener
+	 */
+	public InfoSchedule (MResourceAssignment mAssignment, boolean createNew, Callback<MResourceAssignment> callback)
+	{
 		super();
 		setTitle(Msg.getMsg(Env.getCtx(), "InfoSchedule"));
 		if (createNew)
-			setAttribute("mode", "modal");
+		{
+			setAttribute(Window.MODE_KEY, Window.MODE_POPUP);
+			this.setWidth("600px");
+		}
 		else
-			setAttribute("mode", "overlapped");
-		this.setWidth("600px");
+		{
+			setAttribute(Window.MODE_KEY, Window.MODE_EMBEDDED);
+			this.setWidth("100%");
+			this.setHeight("100%");
+		}
 //		this.setHeight("600px");
 		this.setClosable(true);
 		this.setBorder("normal");
@@ -106,6 +129,15 @@ public class InfoSchedule extends Window implements EventListener
 		if (m_dateFrom == null)
 			m_dateFrom = new Timestamp(System.currentTimeMillis());
 		m_createNew = createNew;
+		m_callback = callback;
+		if (callback != null) {
+			this.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+				@Override
+				public void onEvent(Event event) throws Exception {
+					m_callback.onCallback(getMResourceAssignment());
+				}
+			});
+		}
 		try
 		{
 			init();
@@ -116,6 +148,7 @@ public class InfoSchedule extends Window implements EventListener
 			log.log(Level.SEVERE, "InfoSchedule", ex);
 		}
 		AEnv.showWindow(this);
+		displayCalendar();
 	}	//	InfoSchedule
 
 	/**
@@ -151,7 +184,8 @@ public class InfoSchedule extends Window implements EventListener
 	//
 	private WSchedule schedulePane = new WSchedule(this);
 	private StatusBarPanel statusBar = new StatusBarPanel();
-	private ConfirmPanel confirmPanel = new ConfirmPanel(true);
+	private ConfirmPanel confirmPanel = null;
+	private Button btnNew;
 
 	/**
 	 * 	Static Layout
@@ -203,7 +237,11 @@ public class InfoSchedule extends Window implements EventListener
 		schedulePane.setWidth("100%");
 		schedulePane.setHeight("400px");
 		Div div = new Div();
-		div.appendChild(confirmPanel);
+		if (m_createNew) 
+		{
+			confirmPanel = new ConfirmPanel(true);
+			div.appendChild(confirmPanel);
+		}
 		div.appendChild(statusBar);
 		mainLayout.appendChild(div);
 		
@@ -232,18 +270,16 @@ public class InfoSchedule extends Window implements EventListener
 		bNext.addEventListener(Events.ON_CLICK, this);
 		//
 		
-		//
-		confirmPanel.addActionListener(Events.ON_CLICK, this);
 		if (createNew) {
-			Button btnNew = new Button();
+			confirmPanel.addActionListener(Events.ON_CLICK, this);
+			btnNew = new Button();
 	        btnNew.setName("btnNew");
 	        btnNew.setId("New");
 	        btnNew.setSrc("/images/New24.png");
 	        
 			confirmPanel.addComponentsLeft(btnNew);			
 			btnNew.addEventListener(Events.ON_CLICK, this);
-		}
-		displayCalendar();
+		}	
 	}	//	dynInit
 
 	/**
@@ -539,8 +575,15 @@ public class InfoSchedule extends Window implements EventListener
 			
 			ma.setAssignDateFrom(TimeUtil.getDayTime(start, slot.getStartTime()));
 			ma.setQty(new BigDecimal(1));
-			WAssignmentDialog vad =  new WAssignmentDialog (ma, false, m_createNew);
-			mAssignmentCallback(vad.getMResourceAssignment());		
+			final WAssignmentDialog vad =  new WAssignmentDialog (ma, false, m_createNew);
+			vad.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+				@Override
+				public void onEvent(Event event) throws Exception {
+					mAssignmentCallback(vad.getMResourceAssignment());
+				}
+			});					
+			vad.setTitle(null);
+			LayoutUtils.openPopupWindow(btnNew, vad, "before_start");
 		} else {
 			FDialog.error(0, this, "No available time slot for the selected day.");
 		}
@@ -559,6 +602,16 @@ public class InfoSchedule extends Window implements EventListener
 		fieldDate.setValue(m_dateFrom); // Elaine 2008/12/15
 	}
 	
+	/* (non-Javadoc)
+	* @see org.zkoss.zk.ui.AbstractComponent#onPageAttached(org.zkoss.zk.ui.Page, org.zkoss.zk.ui.Page)
+	*/
+	@Override
+	public void onPageAttached(Page newpage, Page oldpage) {
+		super.onPageAttached(newpage, oldpage);
+		if (newpage != null) {
+			displayCalendar();
+		}
+	}
 
 	/**
 SELECT o.DocumentNo, ol.Line, ol.Description
