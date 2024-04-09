@@ -287,7 +287,8 @@ public class FindWindow extends Window implements EventListener<Event>,ValueChan
         Center center = new Center();
         layout.appendChild(center);
         center.appendChild(contentSimple);
-        center.setFlex(true);
+        contentSimple.setVflex("1");
+        contentSimple.setHflex("1");
 
         South south = new South();
         layout.appendChild(south);

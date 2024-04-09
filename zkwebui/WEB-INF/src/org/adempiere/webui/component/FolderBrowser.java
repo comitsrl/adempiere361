@@ -72,9 +72,10 @@ public class FolderBrowser extends Window implements EventListener
 		north.appendChild(txtPath);
 		
 		Center center = new Center();
-		center.setFlex(true);
 		contentLayout.appendChild(center);
 		center.appendChild(listDir);
+		listDir.setVflex("1");
+		listDir.setHflex("1");
 		
 		South south = new South();
 		south.setStyle("border: none");

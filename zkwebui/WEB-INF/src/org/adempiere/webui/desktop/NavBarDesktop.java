@@ -78,7 +78,7 @@ import org.zkoss.zul.Vlayout;
 /**
  * @author hengsin
  */
-public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serializable, EventListener, IServerPushCallback
+public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serializable, EventListener<Event>, IServerPushCallback
 {
 
 	private static final long serialVersionUID = 4721048271543882164L;
@@ -146,8 +146,7 @@ public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serial
         leftRegion.setCollapsible(true);
         leftRegion.setSplittable(true);
         leftRegion.setTitle("Navigation");
-        leftRegion.setFlex(true);
-        leftRegion.addEventListener(Events.ON_OPEN, new EventListener() {			
+        leftRegion.addEventListener(Events.ON_OPEN, new EventListener<Event>() {			
 			@Override
 			public void onEvent(Event event) throws Exception {
 				OpenEvent oe = (OpenEvent) event;
@@ -195,7 +194,6 @@ public class NavBarDesktop extends TabbedDesktop implements MenuListener, Serial
 
         windowArea = new Center();
         windowArea.setParent(layout);
-        windowArea.setFlex(true);
 
         windowContainer.createPart(windowArea);
 

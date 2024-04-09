@@ -75,7 +75,7 @@ import org.zkoss.zul.Vlayout;
 /**
  * @author hengsin
  */
-public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Serializable, EventListener, IServerPushCallback
+public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Serializable, EventListener<Event>, IServerPushCallback
 {
 
 	private static final long serialVersionUID = -7483133591812825441L;
@@ -137,8 +137,7 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
         w.setCollapsible(true);
         w.setSplittable(true);
         w.setTitle(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Menu")));
-        w.setFlex(true);
-        w.addEventListener(Events.ON_OPEN, new EventListener() {			
+        w.addEventListener(Events.ON_OPEN, new EventListener<Event>() {			
 			@Override
 			public void onEvent(Event event) throws Exception {
 				OpenEvent oe = (OpenEvent) event;
@@ -156,12 +155,13 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
 
         Center center = new Center();
         center.setParent(layout);
-        center.setFlex(true);
 
         Borderlayout innerLayout = new Borderlayout();
         innerLayout.setHeight("100%");
         innerLayout.setWidth("100%");
         innerLayout.setParent(center);
+        innerLayout.setVflex("1");
+        innerLayout.setHflex("1");
 
         West innerW = new West();
         innerW.setWidth("200px");
@@ -193,7 +193,6 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
 
         windowArea = new Center();
         windowArea.setParent(innerLayout);
-        windowArea.setFlex(true);
 
         windowContainer.createPart(windowArea);
 
