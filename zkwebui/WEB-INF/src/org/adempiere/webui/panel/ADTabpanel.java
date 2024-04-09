@@ -93,6 +93,8 @@ import org.zkoss.zul.impl.XulElement;
 public class ADTabpanel extends Div implements Evaluatee, EventListener<Event>,
 DataStatusListener, IADTabpanel
 {
+	
+	private static final String ON_DEFER_SET_SELECTED_NODE = "onDeferSetSelectedNode";
 	/**
 	 * generated serial version ID
 	 */
@@ -154,6 +156,7 @@ DataStatusListener, IADTabpanel
     private void init()
     {
         initComponents();
+        addEventListener(ON_DEFER_SET_SELECTED_NODE, this);
     }
 
     private void initComponents()
@@ -789,6 +792,10 @@ DataStatusListener, IADTabpanel
         {
         	activateChild(activate, ep);
         }
+        
+        if (gridTab.getRecord_ID() > 0 && gridTab.isTreeTab() && treePanel != null) {
+        	setSelectedNode(gridTab.getRecord_ID());
+        }
     }
 
 	private void activateChild(boolean activate, EmbeddedPanel panel) {
@@ -840,6 +847,11 @@ DataStatusListener, IADTabpanel
     	else if (event.getTarget() == treePanel.getTree()) {
     		Treeitem item =  treePanel.getTree().getSelectedItem();
     		navigateTo((DefaultTreeNode)item.getValue());
+    	}
+    	else if (ON_DEFER_SET_SELECTED_NODE.equals(event.getName())) {
+    		if (gridTab.getRecord_ID() > 0 && gridTab.isTreeTab() && treePanel != null) {
+    			setSelectedNode(gridTab.getRecord_ID());
+    		}
     	}
     }
 
@@ -977,7 +989,7 @@ DataStatusListener, IADTabpanel
 			MTreeNode root = (MTreeNode) treeNode.getData();
 			MTreeNode node = new MTreeNode (gridTab.getRecord_ID(), 0, name, description,
 					root.getNode_ID(), summary, imageIndicator, false, null);
-			DefaultTreeNode newNode = new DefaultTreeNode(node, new ArrayList<Object>());
+			DefaultTreeNode newNode = new DefaultTreeNode(node);
 			model.addNode(newNode);
 			int[] path = model.getPath(newNode);
 			Treeitem ti = treePanel.getTree().renderItemByPath(path);
@@ -989,17 +1001,24 @@ DataStatusListener, IADTabpanel
 		if (recordId <= 0) return;
 
 		//force on init render
-		if (TreeUtils.isOnInitRenderPosted(treePanel.getTree())) {
+		if (TreeUtils.isOnInitRenderPosted(treePanel.getTree()) || treePanel.getTree().getTreechildren() == null) {
 			treePanel.getTree().onInitRender();
 		}
 		
+		SimpleTreeModel model = (SimpleTreeModel) treePanel.getTree().getModel();
 		if (treePanel.getTree().getSelectedItem() != null) {
 			DefaultTreeNode treeNode = (DefaultTreeNode) treePanel.getTree().getSelectedItem().getValue();
 			MTreeNode data = (MTreeNode) treeNode.getData();
-			if (data.getNode_ID() == recordId) return;
+			if (data.getNode_ID() == recordId) {
+				int[] path = model.getPath(treeNode);
+				Treeitem ti = treePanel.getTree().renderItemByPath(path);
+				if (ti.getPage() == null) {
+					Events.echoEvent(ON_DEFER_SET_SELECTED_NODE, this, null);
+				}
+				return;
+			}
 		}
 
-		SimpleTreeModel model = (SimpleTreeModel) treePanel.getTree().getModel();
 		DefaultTreeNode treeNode = model.find(null, recordId);
 		if (treeNode != null) {
 			int[] path = model.getPath(treeNode);
