@@ -420,6 +420,8 @@ public class FindWindow extends Window implements EventListener<Event>,ValueChan
     **/
     private void initPanel()
     {
+    	setShadow(true);
+    	
         winMain = new MultiTabPart();
         winMain.createPart(this);
         winMain.getComponent().setStyle("height: 100%; width: 100%; position: relative;");

@@ -85,7 +85,7 @@ import org.zkoss.zul.Vlayout;
  * @date Mar 2, 2007
  * @version $Revision: 0.10 $
  */
-public class DefaultDesktop extends TabbedDesktop implements MenuListener, Serializable, EventListener, IServerPushCallback
+public class DefaultDesktop extends TabbedDesktop implements MenuListener, Serializable, EventListener<Event>, IServerPushCallback
 {
 	/**
 	 * generated serial version ID 
@@ -130,7 +130,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         	layout.setParent(parent);
         	layout.setWidth("100%");
         	layout.setHeight("100%");
-        	layout.setStyle("position: absolute");
+        	layout.setSclass("desktop-layout");
         }
         else
         	layout.setPage(page);
@@ -140,16 +140,19 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         North n = new North();
         layout.appendChild(n);
         n.setCollapsible(false);
+        n.setSclass("desktop-north");
         pnlHead.setParent(n);
 
         West w = new West();
+        w.setId("desktop-left-column");
         layout.appendChild(w);
         w.setSclass("desktop-left-column");
         w.setCollapsible(true);
         w.setSplittable(true);
         w.setTitle(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Menu")));
         w.setFlex(false);
-        w.addEventListener(Events.ON_OPEN, new EventListener() {
+        w.setHflex("1");
+        w.addEventListener(Events.ON_OPEN, new EventListener<Event>() {
 			@Override
 			public void onEvent(Event event) throws Exception {
 				OpenEvent oe = (OpenEvent) event;
@@ -168,11 +171,13 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
         windowArea = new Center();
         windowArea.setParent(layout);
         windowArea.setFlex(true);
+        windowArea.setSclass("desktop-center");
 
         windowContainer.createPart(windowArea);
 
         homeTab = new Tabpanel();
         windowContainer.addWindow(homeTab, Msg.getMsg(Env.getCtx(), "Home").replaceAll("&", ""), false);
+        homeTab.getLinkedTab().setSclass("desktop-hometab");
         BusyDialog busyDialog = new BusyDialog();
         busyDialog.setShadow(false);
         homeTab.appendChild(busyDialog);
@@ -328,7 +333,7 @@ public class DefaultDesktop extends TabbedDesktop implements MenuListener, Seria
 	        		Toolbarbutton link = new Toolbarbutton();
 		            link.setImage("/images/Zoom16.png");
 		            link.setAttribute("PA_Goal_ID", PA_Goal_ID);
-		            link.addEventListener(Events.ON_CLICK, new EventListener() {
+		            link.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 
 						public void onEvent(Event event) throws Exception {
 							int PA_Goal_ID = (Integer)event.getTarget().getAttribute("PA_Goal_ID");

@@ -131,6 +131,7 @@ public class DPFavourites extends DashboardPanel implements EventListener<Event>
 					btnFavItem.setAttribute(NODE_ID_ATTR, String.valueOf(nd.getNode_ID()));
 					bxFav.appendChild(btnFavItem);
 					btnFavItem.setLabel(label);
+					btnFavItem.setTooltiptext(nd.getDescription());
 					btnFavItem.setImage(getIconFile(nd));
 					btnFavItem.setDraggable(DELETE_FAV_DROPPABLE);
 					btnFavItem.addEventListener(Events.ON_CLICK, this);

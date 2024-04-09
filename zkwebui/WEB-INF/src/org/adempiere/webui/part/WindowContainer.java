@@ -57,6 +57,7 @@ public class WindowContainer extends AbstractUIPart
     protected Component doCreatePart(Component parent)
     {
         tabbox = new Tabbox();
+        tabbox.setSclass("desktop-tabbox");
         
         Tabpanels tabpanels = new Tabpanels();
         Tabs tabs = new Tabs();

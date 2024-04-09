@@ -25,6 +25,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.Center;
 import org.zkoss.zul.West;
 import org.zkoss.zul.Image;
@@ -39,12 +40,13 @@ import org.zkoss.zul.Vbox;
  * @version $Revision: 0.20 $
  */
 
-public class HeaderPanel extends Panel implements EventListener
+public class HeaderPanel extends Panel implements EventListener<Event>
 {
 	private static final long serialVersionUID = -2351317624519209484L;
 
-	private Image image = new Image();
-
+	private Image image;
+	private Button btnMenu;
+	
     public HeaderPanel()
     {
         super();
@@ -57,7 +59,7 @@ public class HeaderPanel extends Panel implements EventListener
 
     	UserPanel userPanel = new UserPanel();
 
-    	image.setSrc(ThemeManager.getSmallLogo());
+    	image  = new Image(ThemeManager.getSmallLogo());
     	image.addEventListener(Events.ON_CLICK, this);
     	image.setStyle("cursor: pointer;");
 
@@ -98,7 +100,7 @@ public class HeaderPanel extends Panel implements EventListener
 			{
 				AboutWindow w = new AboutWindow();
 				w.setPage(this.getPage());
-				w.doModal();
+				w.doHighlighted();
 			}
 		}
 

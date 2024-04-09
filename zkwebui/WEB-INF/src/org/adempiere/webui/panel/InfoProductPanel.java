@@ -453,7 +453,8 @@ public class InfoProductPanel extends InfoPanel implements EventListener
         else
         	borderlayout.setStyle("border: none; position: absolute");
         Center center = new Center();
-        center.setAutoscroll(true);
+        //true will conflict with listbox scrolling
+        center.setAutoscroll(false);
         center.setFlex(true);
 		borderlayout.appendChild(center);
 		center.appendChild(contentPanel);
@@ -466,6 +467,7 @@ public class InfoProductPanel extends InfoPanel implements EventListener
 		south.setTitle(Msg.translate(Env.getCtx(), "WarehouseStock"));
 		south.setTooltiptext(Msg.translate(Env.getCtx(), "WarehouseStock"));
 		borderlayout.appendChild(south);
+		tabbedPane.setSclass("info-product-tabbedpane");
 		south.appendChild(tabbedPane);
 
         Borderlayout mainPanel = new Borderlayout();

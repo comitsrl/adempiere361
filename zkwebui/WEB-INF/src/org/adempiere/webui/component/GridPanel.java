@@ -328,6 +328,7 @@ public class GridPanel extends Borderlayout implements EventListener
 			paging.setTotalSize(tableModel.getRowCount());
 			paging.setDetailed(true);
 			south.appendChild(paging);
+			south.setSclass("adtab-grid-south");
 			paging.addEventListener(ZulEvents.ON_PAGING, this);
 			renderer.setPaging(paging);
 		}

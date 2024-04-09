@@ -130,6 +130,8 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 	{
 		InfoBPartnerPanel info = new InfoBPartnerPanel ( "", WindowNo,
 			!Env.getContext(Env.getCtx(),"IsSOTrx").equals("N"),false, "", false);
+		// FIXME En idempiere es sobre InfoPanel en lugar de InfoBPartnerPanel
+		info.setAttribute(Window.MODE_KEY, Window.MODE_EMBEDDED); 
 		AEnv.showWindow(info);
 	}   //  showBPartner
 
@@ -312,7 +314,7 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 		
         confirmPanel = new ConfirmPanel(true, true, false, true, true, true);  // Elaine 2008/12/16
         confirmPanel.addActionListener(Events.ON_CLICK, this);
-        confirmPanel.setStyle("border-top: 2px groove #444; padding-top: 4px");
+        confirmPanel.setHflex("1");
         
         // Elaine 2008/12/16
 		confirmPanel.getButton(ConfirmPanel.A_CUSTOMIZE).setVisible(hasCustomize());
@@ -330,6 +332,8 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
         this.addEventListener(Events.ON_OK, this);
 
         contentPanel.setOddRowSclass(null);
+        
+        this.setSclass("info-panel");
 	}  //  init
 	protected ConfirmPanel confirmPanel;
 	/** Master (owning) Window  */
