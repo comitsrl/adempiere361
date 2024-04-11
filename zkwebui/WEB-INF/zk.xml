@@ -13,9 +13,9 @@
 	</listener>
 	
 	<!-- uncomment following to debug event flow -->
-       <!-- listener>
+       <listener>
            <listener-class>org.adempiere.webui.util.LogEventInterceptor</listener-class>
-       </listener -->
+       </listener>
 	
 	<log>
 		<description>[Optional] Monitor i3-log.conf and register a
@@ -66,6 +66,11 @@
 	<system-config>
 		<disable-event-thread>true</disable-event-thread>
 	</system-config>
+
+	<library-property>
+        <name>org.zkoss.zul.Button.mold</name>
+  		<value>trendy</value>
+    </library-property>
 
 	<library-property>
 		<name>org.zkoss.zul.theme.fontSizeM

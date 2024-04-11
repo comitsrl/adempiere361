@@ -1,5 +1,5 @@
 (function() {
-  jawwa.atmosphere.startServerPush = function(dtid, timeout) {
+  	jawwa.atmosphere.startServerPush = function(dtid, timeout) {
     var dt = zk.Desktop.$(dtid);
     if (dt._serverpush)
       dt._serverpush.stop();
@@ -7,12 +7,12 @@
     var spush = new jawwa.atmosphere.ServerPush(dt, timeout);
     spush.start();
   };
-  jawwa.atmosphere.stopServerPush = function(dtid) {
+  	jawwa.atmosphere.stopServerPush = function(dtid) {
     var dt = zk.Desktop.$(dtid);
     if (dt._serverpush)
       dt._serverpush.stop();
   };
-  jawwa.atmosphere.ServerPush = zk.$extends(zk.Object, {
+  	jawwa.atmosphere.ServerPush = zk.$extends(zk.Object, {
     desktop: null,
     active: false,
     timeout: 300000,
