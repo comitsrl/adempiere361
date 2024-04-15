@@ -39,7 +39,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Vector;
 import java.util.logging.Level;
 
@@ -1445,12 +1444,5 @@ public class InfoProductPanel extends InfoPanel implements EventListener
 
 		return M_AttributeSet_ID;
 	}
-
-	@Override
-	public String getSortDirection(Comparator cmpr) {
-		// TODO Auto-generated method stub
-		return "natural";
-	}
-
     
 }	//	InfoProduct
