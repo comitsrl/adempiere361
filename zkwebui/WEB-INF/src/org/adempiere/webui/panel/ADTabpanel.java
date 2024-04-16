@@ -847,7 +847,7 @@ DataStatusListener, IADTabpanel
     	}
     	else if (event.getTarget() == treePanel.getTree()) {
     		Treeitem item =  treePanel.getTree().getSelectedItem();
-    		navigateTo((DefaultTreeNode)item.getValue());
+    		navigateTo((DefaultTreeNode<MTreeNode>)item.getValue());
     	}
     	else if (ON_DEFER_SET_SELECTED_NODE.equals(event.getName())) {
     		if (gridTab.getRecord_ID() > 0 && gridTab.isTreeTab() && treePanel != null) {
@@ -856,8 +856,8 @@ DataStatusListener, IADTabpanel
     	}
     }
 
-    private void navigateTo(DefaultTreeNode value) {
-    	MTreeNode treeNode = (MTreeNode) value.getData();
+    private void navigateTo(DefaultTreeNode<MTreeNode> value) {
+    	MTreeNode treeNode = value.getData();
     	//  We Have a TreeNode
 		int nodeID = treeNode.getNode_ID();
 		//  root of tree selected - ignore
@@ -913,7 +913,7 @@ DataStatusListener, IADTabpanel
     		ArrayList<GridField> list = gridTab.getDependantFields(mField.getColumnName());
     		for (int i = 0; i < list.size(); i++)
     		{
-    			GridField dependentField = (GridField)list.get(i);
+    			GridField dependentField = list.get(i);
     		//	log.trace(log.l5_DData, "Dependent Field", dependentField==null ? "null" : dependentField.getColumnName());
     			//  if the field has a lookup
     			if (dependentField != null && dependentField.getLookup() instanceof MLookup)
@@ -964,7 +964,7 @@ DataStatusListener, IADTabpanel
 		SimpleTreeModel model = (SimpleTreeModel) treePanel.getTree().getModel();
 
 		if (treePanel.getTree().getSelectedItem() != null) {
-			DefaultTreeNode treeNode = (DefaultTreeNode) treePanel.getTree().getSelectedItem().getValue();
+			DefaultTreeNode<Object> treeNode = (DefaultTreeNode<Object>) treePanel.getTree().getSelectedItem().getValue();
 			MTreeNode data = (MTreeNode) treeNode.getData();
 			if (data.getNode_ID() == recordId) {
 				model.removeNode(treeNode);
@@ -972,7 +972,7 @@ DataStatusListener, IADTabpanel
 			}
 		}
 
-		DefaultTreeNode treeNode = model.find(null, recordId);
+		DefaultTreeNode<Object> treeNode = model.find(null, recordId);
 		if (treeNode != null) {
 			model.removeNode(treeNode);
 		}
@@ -986,11 +986,11 @@ DataStatusListener, IADTabpanel
 			String imageIndicator = (String)gridTab.getValue("Action");  //  Menu - Action
 			//
 			SimpleTreeModel model = (SimpleTreeModel) treePanel.getTree().getModel();
-			DefaultTreeNode treeNode = model.getRoot();
+			DefaultTreeNode<Object> treeNode = model.getRoot();
 			MTreeNode root = (MTreeNode) treeNode.getData();
 			MTreeNode node = new MTreeNode (gridTab.getRecord_ID(), 0, name, description,
 					root.getNode_ID(), summary, imageIndicator, false, null);
-			DefaultTreeNode newNode = new DefaultTreeNode(node);
+			DefaultTreeNode<Object> newNode = new DefaultTreeNode<Object>(node);
 			model.addNode(newNode);
 			int[] path = model.getPath(newNode);
 			Treeitem ti = treePanel.getTree().renderItemByPath(path);
@@ -1008,7 +1008,7 @@ DataStatusListener, IADTabpanel
 		
 		SimpleTreeModel model = (SimpleTreeModel) treePanel.getTree().getModel();
 		if (treePanel.getTree().getSelectedItem() != null) {
-			DefaultTreeNode treeNode = (DefaultTreeNode) treePanel.getTree().getSelectedItem().getValue();
+			DefaultTreeNode<Object> treeNode = (DefaultTreeNode<Object>) treePanel.getTree().getSelectedItem().getValue();
 			MTreeNode data = (MTreeNode) treeNode.getData();
 			if (data.getNode_ID() == recordId) {
 				int[] path = model.getPath(treeNode);
@@ -1020,7 +1020,7 @@ DataStatusListener, IADTabpanel
 			}
 		}
 
-		DefaultTreeNode treeNode = model.find(null, recordId);
+		DefaultTreeNode<Object> treeNode = model.find(null, recordId);
 		if (treeNode != null) {
 			int[] path = model.getPath(treeNode);
 			Treeitem ti = treePanel.getTree().renderItemByPath(path);
@@ -1058,7 +1058,7 @@ DataStatusListener, IADTabpanel
 		}
 	}
 
-	class ZoomListener implements EventListener {
+	class ZoomListener implements EventListener<Event> {
 
 		private IZoomableEditor searchEditor;
 

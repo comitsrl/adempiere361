@@ -32,13 +32,14 @@ Copyright (C) 2007 Ashley G Ramdass (ADempiere WebUI).
 		</mold>
 	</component>
 
-	<javascript src="/js/calc.js" charset="UTF-8"/>
-	<javascript src="/js/comitsrl.js" charset="UTF-8"/>
+	<javascript src="/js/calc.js" charset="UTF-8"/>	
 	<javascript src="/js/layout.js" charset="UTF-8"/>
 	<javascript src="/js/report.js" charset="UTF-8"/>	
 	<javascript src="/js/persist-min.js" charset="UTF-8"/>
 	<javascript src="/js/token.js" charset="UTF-8"/>
 	<javascript src="/js/window.js" charset="UTF-8"/>
 
-	<!--  javascript package="jawwa.atmosphere" merge="false" -->
+	<!--
+	<javascript src="/js/comitsrl.js" charset="UTF-8"/>  
+	javascript package="jawwa.atmosphere" merge="false" -->
 </language>

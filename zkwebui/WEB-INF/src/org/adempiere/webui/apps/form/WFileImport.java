@@ -72,7 +72,7 @@ import org.zkoss.zul.Separator;
  *  
  */
 
-public class WFileImport extends ADForm implements EventListener
+public class WFileImport extends ADForm implements EventListener<Event>
 {
 	/**
 	 * 

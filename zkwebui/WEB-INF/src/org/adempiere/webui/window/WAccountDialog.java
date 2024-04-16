@@ -75,7 +75,7 @@ import org.zkoss.zul.Vbox;
  * 	@author Low Heng Sin
  */
 public final class WAccountDialog extends Window
-	implements EventListener, DataStatusListener, ValueChangeListener, SystemIDs
+	implements EventListener<Event>, DataStatusListener, ValueChangeListener, SystemIDs
 {
 
 	private static final long serialVersionUID = 7999516267209766287L;

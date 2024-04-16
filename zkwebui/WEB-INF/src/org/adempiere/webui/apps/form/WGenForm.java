@@ -69,7 +69,7 @@ import org.zkoss.zul.Html;
  * Generate custom form window
  * 
  */
-public class WGenForm extends ADForm implements EventListener, WTableModelListener
+public class WGenForm extends ADForm implements EventListener<Event>, WTableModelListener
 {
 	/**
 	 * 

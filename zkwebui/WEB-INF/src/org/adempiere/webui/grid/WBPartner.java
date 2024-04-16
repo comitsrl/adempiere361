@@ -57,7 +57,7 @@ import org.zkoss.zul.Separator;
  *
  */
 
-public class WBPartner extends Window implements EventListener, ValueChangeListener
+public class WBPartner extends Window implements EventListener<Event>, ValueChangeListener
 {
 	/**
 	 * 

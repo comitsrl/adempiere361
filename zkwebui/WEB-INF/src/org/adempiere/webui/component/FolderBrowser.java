@@ -33,7 +33,7 @@ import org.zkoss.zul.South;
  * @author Elaine
  *
  */
-public class FolderBrowser extends Window implements EventListener
+public class FolderBrowser extends Window implements EventListener<Event>
 {
 	/**
 	 * 
