@@ -41,6 +41,7 @@ import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Borderlayout;
 import org.zkoss.zul.Center;
+import org.zkoss.zul.Frozen;
 import org.zkoss.zul.South;
 import org.zkoss.zul.Column;
 import org.zkoss.zul.Div;
@@ -53,7 +54,7 @@ import org.zkoss.zul.event.ZulEvents;
  * @author Low Heng Sin
  *
  */
-public class GridPanel extends Borderlayout implements EventListener
+public class GridPanel extends Borderlayout implements EventListener<Event>
 {
 	/**
 	 * generated serial version ID
@@ -91,11 +92,13 @@ public class GridPanel extends Borderlayout implements EventListener
 
 	private South south;
 
-	private boolean modeless;
+	private boolean modeless = true;
 
 	private String columnOnClick;
 
 	private AbstractADWindowPanel windowPanel;
+	
+	private boolean refreshing;
 
 	public static final String PAGE_SIZE_KEY = "ZK_PAGING_SIZE";
 
@@ -113,7 +116,7 @@ public class GridPanel extends Borderlayout implements EventListener
 	{
 		this.windowNo = windowNo;
 		listbox = new Grid();
-		listbox.setOddRowSclass(null);
+		listbox.addEventListener(ZulEvents.ON_AFTER_RENDER, this);
 		south = new South();
 		this.appendChild(south);
 
@@ -129,7 +132,8 @@ public class GridPanel extends Borderlayout implements EventListener
 		}
 
 		//default false for better performance
-		modeless = MSysConfig.getBooleanValue(MODE_LESS_KEY, false);
+		//default true for better UI experience
+		modeless = MSysConfig.getBooleanValue(MODE_LESS_KEY, true);
 	}
 
 	/**
@@ -185,9 +189,15 @@ public class GridPanel extends Borderlayout implements EventListener
 		}
 		else
 		{
+			refreshing = true;
 			listbox.setModel(listModel);
 			updateListIndex();
+			refreshing = false;
 		}
+	}
+	
+	public boolean isRefreshing() {
+		return refreshing;
 	}
 
 	/**
@@ -263,6 +273,13 @@ public class GridPanel extends Borderlayout implements EventListener
 		if (init) return;
 
 		Columns columns = new Columns();
+		Frozen frozen = new Frozen();
+		frozen.setColumns(1);
+		listbox.appendChild(frozen);
+		org.zkoss.zul.Column indicator = new Column();				
+		indicator.setWidth("30px");
+		
+		columns.appendChild(indicator);
 		listbox.appendChild(columns);
 		columns.setSizable(true);
 		columns.setMenupopup("auto");
@@ -309,7 +326,8 @@ public class GridPanel extends Borderlayout implements EventListener
 		LayoutUtils.addSclass("adtab-grid-panel", this);
 
 		listbox.setVflex(true);
-		listbox.setFixedLayout(true);
+		//true might looks better, false for better performance
+		listbox.setSizedByContent(false);
 		listbox.addEventListener(Events.ON_CLICK, this);
 
 		updateModel();
@@ -409,6 +427,7 @@ public class GridPanel extends Borderlayout implements EventListener
 					}
 				}
 			}
+			event.stopPropagation();
         }
 		else if (event.getTarget() == paging)
 		{
@@ -418,6 +437,11 @@ public class GridPanel extends Borderlayout implements EventListener
 				listModel.setPage(pgNo);
 				onSelectedRowChange(0);
 			}
+		}
+		else if(event.getName().equals(ZulEvents.ON_AFTER_RENDER))
+		{
+			//render all rows of active page to give smooth scrolling performance
+			listbox.renderAll();
 		}
 	}
 
@@ -441,13 +465,14 @@ public class GridPanel extends Borderlayout implements EventListener
 			if (!isRowRendered(row, pgIndex)) {
 				listbox.renderRow(row);
 			} else {
-				Row old = renderer.getCurrentRow();
-				int oldIndex = renderer.getCurrentRowIndex();
+//				Row old = renderer.getCurrentRow();
+//				int oldIndex = renderer.getCurrentRowIndex();
 				renderer.setCurrentRow(row);
-				if (old != null && old != row && oldIndex >= 0 && oldIndex != gridTab.getCurrentRow())
-				{
-					listModel.updateComponent(oldIndex % pageSize);
-				}
+				//remark: following 3 line cause the previously selected row being render twice
+//				if (old != null && old != row && oldIndex >= 0 && oldIndex != gridTab.getCurrentRow())
+//				{
+//					listModel.updateComponent(oldIndex % pageSize);
+//				}
 			}
 			if (modeless && !renderer.isEditing()) {
 				renderer.editCurrentRow();
@@ -465,13 +490,14 @@ public class GridPanel extends Borderlayout implements EventListener
 			if (!isRowRendered(row, rowIndex)) {
 				listbox.renderRow(row);
 			} else {
-				Row old = renderer.getCurrentRow();
-				int oldIndex = renderer.getCurrentRowIndex();
+//				Row old = renderer.getCurrentRow();
+//				int oldIndex = renderer.getCurrentRowIndex();
 				renderer.setCurrentRow(row);
-				if (old != null && old != row && oldIndex >= 0 && oldIndex != gridTab.getCurrentRow())
-				{
-					listModel.updateComponent(oldIndex);
-				}
+				//remark: following 3 line cause the previously selected row being render twice
+//				if (old != null && old != row && oldIndex >= 0 && oldIndex != gridTab.getCurrentRow())
+//				{
+//					listModel.updateComponent(oldIndex);
+//				}
 			}
 			if (modeless && !renderer.isEditing()) {
 				renderer.editCurrentRow();
@@ -526,7 +552,7 @@ public class GridPanel extends Borderlayout implements EventListener
 					if (element instanceof Div) {
 						Div div = (Div) element;
 						if (columnOnClick.equals(div.getAttribute("columnName"))) {
-							cmp = div.getFirstChild().getNextSibling();
+							cmp = div.getFirstChild();
 							Clients.response(new AuScript(null, "scrollToRow('" + cmp.getUuid() + "');"));
 							break;
 						}
