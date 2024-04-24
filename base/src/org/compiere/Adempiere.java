@@ -60,11 +60,11 @@ public final class Adempiere
 	/** Main Version String         */
 	// Conventions for naming second number is even for stable, and odd for unstable
 	// the releases will have a suffix (a) for alpha - (b) for beta - (t) for trunk - (s) for stable - and (LTS) for long term support
-	static public String	MAIN_VERSION	= "361LTS.Final";
+	static public String	MAIN_VERSION	= "362.Final";
 	/** Detail Version as date      Used for Client/Server		*/
-	static public String	DATE_VERSION	= "2012-11-15";
+	static public String	DATE_VERSION	= "2024-04-24";
 	/** Database Version as date    Compared with AD_System		*/
-	static public String	DB_VERSION		= "2012-11-15";
+	static public String	DB_VERSION		= "2024-04-24";
 
 	/** Product Name            */
 	static public final String	NAME 			= "ADempiere\u00AE";
@@ -86,7 +86,7 @@ public final class Adempiere
 	/** Subtitle                */
 	static public final String	SUB_TITLE		= "Smart Suite ERP,CRM and SCM";
 	static public final String	ADEMPIERE_R		= "ADempiere\u00AE";
-	static public final String	COPYRIGHT		= "\u00A9 1999-2012 ADempiere\u00AE";
+	static public final String	COPYRIGHT		= "\u00A9 1999-2024 ADempiere\u00AE";
 
 	static private String		s_ImplementationVersion = null;
 	static private String		s_ImplementationVendor = null;
