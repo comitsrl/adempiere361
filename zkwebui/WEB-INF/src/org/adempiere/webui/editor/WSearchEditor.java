@@ -486,8 +486,6 @@ public class WSearchEditor extends WEditor implements ContextMenuListener, Value
 		 *  - Window closed                 -> ignore       => result == null && !cancalled
 		 */
 
-		Object result[] = null;			
-		boolean cancelled = false;	
 
 		String col = lookup.getColumnName();		//	fully qualified name
 
@@ -516,20 +514,45 @@ public class WSearchEditor extends WEditor implements ContextMenuListener, Value
 			int M_PriceList_ID = Env.getContextAsInt(Env.getCtx(), lookup.getWindowNo(), "M_PriceList_ID");
 
 			//	Show Info
-			InfoProductPanel ip = new InfoProductPanel (lookup.getWindowNo(),
+			final InfoProductPanel ip = new InfoProductPanel (lookup.getWindowNo(),
 					M_Warehouse_ID, M_PriceList_ID, true, queryValue, whereClause);
 
 			ip.setVisible(true);
 			ip.setTitle(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "InfoProduct")));
 			ip.setStyle("border: 2px");
 			ip.setClosable(true);
-			ip.setAttribute("mode", "modal");
+			//ip.setAttribute("mode", "modal");
 			ip.addValueChangeListener(this);
 			infoPanel = ip;
+			ip.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+
+				@Override
+				public void onEvent(Event event) throws Exception {
+					boolean cancelled = ip.isCancelled();
+					Object[] result = ip.getSelectedKeys();
+
+					infoPanel = null;
+					//  Result
+					if (result != null && result.length > 0)
+					{
+						//ensure data binding happen
+						if (result.length > 1)
+							actionCombo (result);
+						else
+							actionCombo (result[0]);
+					}
+					else if (cancelled)
+					{
+						log.config(getColumnName() + " - Result = null (cancelled)");
+						actionCombo(null);
+					}
+					else
+					{
+						log.config(getColumnName() + " - Result = null (not cancelled)");
+					}
+				}
+			});
 			AEnv.showWindow(ip);
-			
-			cancelled = ip.isCancelled();
-			result = ip.getSelectedKeys();
 		}
 		else if (col.equals("C_BPartner_ID"))
 		{
@@ -542,19 +565,44 @@ public class WSearchEditor extends WEditor implements ContextMenuListener, Value
 			if (Env.getContext(Env.getCtx(), lookup.getWindowNo(), "IsSOTrx").equals("N"))
 				isSOTrx = false;
 
-			InfoBPartnerPanel ip = new InfoBPartnerPanel(queryValue, lookup.getWindowNo(), isSOTrx,false, whereClause);
+			final InfoBPartnerPanel ip = new InfoBPartnerPanel(queryValue, lookup.getWindowNo(), isSOTrx,false, whereClause);
 
 			ip.setVisible(true);
 			ip.setTitle(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "InfoBPartner")));
 			ip.setStyle("border: 2px");
 			ip.setClosable(true);
-			ip.setAttribute("mode", "modal");
+			//ip.setAttribute("mode", "modal");
 			ip.addValueChangeListener(this);
 			infoPanel = ip;
-			AEnv.showWindow(ip);
+			ip.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
 
-			cancelled = ip.isCancelled();
-			result = ip.getSelectedKeys();
+				@Override
+				public void onEvent(Event event) throws Exception {
+					boolean cancelled = ip.isCancelled();
+					Object[] result = ip.getSelectedKeys();
+
+					infoPanel = null;
+					//  Result
+					if (result != null && result.length > 0)
+					{
+						//ensure data binding happen
+						if (result.length > 1)
+							actionCombo (result);
+						else
+							actionCombo (result[0]);
+					}
+					else if (cancelled)
+					{
+						log.config(getColumnName() + " - Result = null (cancelled)");
+						actionCombo(null);
+					}
+					else
+					{
+						log.config(getColumnName() + " - Result = null (not cancelled)");
+					}
+				}
+			});
+			AEnv.showWindow(ip);
 		}
 		else	//	General Info
 		{

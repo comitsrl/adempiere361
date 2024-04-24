@@ -62,7 +62,7 @@ public class ListItem extends org.zkoss.zul.Listitem
     
     @Override
     public String toString() {
-    	return getValue().toString();
+    	return getValue() != null ? getValue().toString() : "";
     }
     
 }
