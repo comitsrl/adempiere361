@@ -12,10 +12,11 @@
 		</listener-class>
 	</listener>
 	
-	<!-- uncomment following to debug event flow -->
-       <listener>
+	<!--  <listener>
            <listener-class>org.adempiere.webui.util.LogEventInterceptor</listener-class>
-       </listener>
+       </listener> -->
+       
+      
 	
 	<log>
 		<description>[Optional] Monitor i3-log.conf and register a
@@ -48,10 +49,6 @@
 	<system-config>
 		<id-generator-class>org.adempiere.webui.AdempiereIdGenerator</id-generator-class>
 	</system-config>
-	
-	<system-config>
-		<disable-event-thread>false</disable-event-thread>
-        </system-config>
 
 	<!--
 		polling - org.zkoss.zkex.ui.impl.PollingServerPush
@@ -64,7 +61,7 @@
 	</device-config>
 
 	<system-config>
-		<disable-event-thread>true</disable-event-thread>
+		<disable-event-thread>false</disable-event-thread>
 	</system-config>
 
 	<library-property>
