@@ -47,10 +47,10 @@ import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
 import org.zkoss.zk.ui.WrongValueException;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Separator;
@@ -177,9 +177,9 @@ public class InfoOrderPanel extends InfoPanel implements ValueChangeListener
     
     public void init()
     {
-    	txtDocumentNo.setWidth("100%");
-    	txtDescription.setWidth("100%");
-    	txtOrderRef.setWidth("100%");
+    	txtDocumentNo.setHflex("1");
+    	txtDescription.setHflex("1");
+    	txtOrderRef.setHflex("1");
     	dateFrom.setWidth("165px");
 		dateTo.setWidth("165px");
 		amountFrom.getDecimalbox().setWidth("155px");
@@ -237,7 +237,6 @@ public class InfoOrderPanel extends InfoPanel implements ValueChangeListener
 
         Center center = new Center();
 		layout.appendChild(center);
-		center.setFlex(true);
 		Div div = new Div();
 		div.appendChild(contentPanel);
 		if (isLookup())
@@ -247,14 +246,16 @@ public class InfoOrderPanel extends InfoPanel implements ValueChangeListener
         contentPanel.setVflex(true);
 		div.setStyle("width :100%; height: 100%");
 		center.appendChild(div);
+		div.setVflex("1");
+		div.setHflex("1");
         
 		South south = new South();
 		layout.appendChild(south);
 		southBody = new Vbox();
 		southBody.setWidth("100%");
 		south.appendChild(southBody);
-		southBody.appendChild(confirmPanel);
 		southBody.appendChild(new Separator());
+		southBody.appendChild(confirmPanel);
 		southBody.appendChild(statusBar);
     }
 

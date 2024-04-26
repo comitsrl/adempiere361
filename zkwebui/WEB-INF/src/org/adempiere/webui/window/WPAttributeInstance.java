@@ -37,10 +37,10 @@ import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Hbox;
 
 
@@ -50,7 +50,7 @@ import org.zkoss.zul.Hbox;
  *  @author     Jorg Janke
  *  @version    $Id: PAttributeInstance.java,v 1.3 2006/07/30 00:51:27 jjanke Exp $
  */
-public class WPAttributeInstance extends Window implements EventListener 
+public class WPAttributeInstance extends Window implements EventListener<Event> 
 {
 	/**
 	 * 
@@ -70,7 +70,6 @@ public class WPAttributeInstance extends Window implements EventListener
 	{
 		super ();
 		this.setTitle(Msg.getMsg(Env.getCtx(), "PAttributeInstance") + title);
-		this.setAttribute("modal", Boolean.TRUE);
 		this.setBorder("normal");
 		this.setWidth("500px");
 		this.setHeight("550px");

@@ -23,17 +23,17 @@ import org.compiere.util.ValueNamePair;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 
 /**
  * Directory and File Browser
  * @author Elaine
  *
  */
-public class FolderBrowser extends Window implements EventListener
+public class FolderBrowser extends Window implements EventListener<Event>
 {
 	/**
 	 * 
@@ -72,9 +72,10 @@ public class FolderBrowser extends Window implements EventListener
 		north.appendChild(txtPath);
 		
 		Center center = new Center();
-		center.setFlex(true);
 		contentLayout.appendChild(center);
 		center.appendChild(listDir);
+		listDir.setVflex("1");
+		listDir.setHflex("1");
 		
 		South south = new South();
 		south.setStyle("border: none");

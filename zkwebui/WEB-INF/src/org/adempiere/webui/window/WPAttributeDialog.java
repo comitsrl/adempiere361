@@ -39,6 +39,7 @@ import org.adempiere.webui.component.Row;
 import org.adempiere.webui.component.Rows;
 import org.adempiere.webui.component.Textbox;
 import org.adempiere.webui.component.Window;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.session.SessionManager;
 import org.compiere.model.MAttribute;
 import org.compiere.model.MAttributeInstance;
@@ -62,9 +63,9 @@ import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Menuitem;
 import org.zkoss.zul.Menupopup;
 import org.zkoss.zul.impl.InputElement;
@@ -78,7 +79,7 @@ import org.zkoss.zul.impl.InputElement;
  *  ZK Port
  *  @author Low Heng Sin
  */
-public class WPAttributeDialog extends Window implements EventListener, SystemIDs
+public class WPAttributeDialog extends Window implements EventListener<Event>, SystemIDs
 {
 	/**
 	 * 
@@ -100,7 +101,6 @@ public class WPAttributeDialog extends Window implements EventListener, SystemID
 	{
 		super ();
 		this.setTitle(Msg.translate(Env.getCtx(), "M_AttributeSetInstance_ID"));
-		this.setAttribute("modal", Boolean.TRUE);
 		this.setBorder("normal");
 		this.setWidth("500px");
 		this.setHeight("600px");
@@ -537,8 +537,7 @@ public class WPAttributeDialog extends Window implements EventListener, SystemID
 		//	Select Instance
 		if (e.getTarget() == bSelect)
 		{
-			if (cmd_select())
-				dispose();
+			cmd_select();
 		}
 		//	New/Edit
 		else if (e.getTarget() == cbNewEdit)
@@ -607,7 +606,7 @@ public class WPAttributeDialog extends Window implements EventListener, SystemID
 	 * 	Instance Selection Button
 	 * 	@return true if selected
 	 */
-	private boolean cmd_select()
+	private void cmd_select()
 	{
 		log.config("");
 		
@@ -655,17 +654,22 @@ public class WPAttributeDialog extends Window implements EventListener, SystemID
 			rs = null; pstmt = null;
 		}
 		//		
-		WPAttributeInstance pai = new WPAttributeInstance(title, 
+		final WPAttributeInstance pai = new WPAttributeInstance(title, 
 			M_Warehouse_ID, M_Locator_ID, m_M_Product_ID, m_C_BPartner_ID);
-		if (pai.getM_AttributeSetInstance_ID() != -1)
-		{
-			m_M_AttributeSetInstance_ID = pai.getM_AttributeSetInstance_ID();
-			m_M_AttributeSetInstanceName = pai.getM_AttributeSetInstanceName();
-			m_M_Locator_ID = pai.getM_Locator_ID();
-			m_changed = true;
-			return true;
-		}
-		return false;
+		pai.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+			
+			@Override
+			public void onEvent(Event event) throws Exception {
+				if (pai.getM_AttributeSetInstance_ID() != -1)
+				{
+					m_M_AttributeSetInstance_ID = pai.getM_AttributeSetInstance_ID();
+					m_M_AttributeSetInstanceName = pai.getM_AttributeSetInstanceName();
+					m_M_Locator_ID = pai.getM_Locator_ID();
+					m_changed = true;
+					dispose();
+				}
+			}
+		});
 	}	//	cmd_select
 
 	/**

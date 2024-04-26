@@ -10,12 +10,11 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,    *
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.                     *
  *****************************************************************************/
-package org.adempiere.webui;
+package org.adempiere.util;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
-
-import org.adempiere.webui.session.ServerContext;
+import java.util.Properties;
 
 import net.sf.cglib.proxy.InvocationHandler;
 
@@ -32,7 +31,7 @@ public class ServerContextCallback implements InvocationHandler, Serializable {
 
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		ServerContext context = ServerContext.getCurrentInstance();
+		Properties context = ServerContext.getCurrentInstance();
 		//optimize for the 2 most common access
 		if (method.getName().equals("getProperty")) {
 			Class<?>[] types = method.getParameterTypes();

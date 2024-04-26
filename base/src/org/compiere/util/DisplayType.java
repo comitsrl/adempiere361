@@ -417,7 +417,7 @@ public final class DisplayType implements SystemIDs
 	 *  @param yesNoAsBoolean - yes or no as boolean
 	 *  @return class Integer - BigDecimal - Timestamp - String - Boolean
 	 */
-	public static Class getClass (int displayType, boolean yesNoAsBoolean)
+	public static Class<?> getClass (int displayType, boolean yesNoAsBoolean)
 	{
 		if (isText(displayType) || displayType == List)
 			return String.class;

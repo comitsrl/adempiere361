@@ -34,9 +34,9 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.MouseEvent;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Area;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Html;
@@ -47,7 +47,7 @@ import org.zkoss.zul.Imagemap;
  *
  * 	@author Low Heng Sin
  */
-public class WFPanel extends Borderlayout implements EventListener
+public class WFPanel extends Borderlayout implements EventListener<Event>
 {
 	/**
 	 * 
@@ -110,16 +110,19 @@ public class WFPanel extends Borderlayout implements EventListener
 		center.appendChild(contentPanel);
 		contentPanel.setStyle("width: 100%; heigh: 100%;");
 		center.setAutoscroll(true);
-		center.setFlex(true);
 		
 		South south = new South();
 		this.appendChild(south);
-		south.appendChild(infoTextPane);
-		south.setHeight("15%");
+		Div div = new Div();
+		div.setStyle("width:100%; height: 100%");
+		div.appendChild(infoTextPane);
+		south.appendChild(div);
+		south.setHeight("25%");
 		south.setSplittable(true);
 		south.setCollapsible(true);
 		south.setAutoscroll(true);
-		south.setFlex(true);		
+		div.setVflex("1");
+		div.setHflex("1");
 	}	//	jbInit
 
 	/**

@@ -45,12 +45,13 @@ import org.compiere.util.DisplayType;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Hbox;
 import org.zkoss.zul.Separator;
@@ -67,7 +68,7 @@ import org.zkoss.zul.Vbox;
 * @version	InfoPayment.java Adempiere Swing UI 3.4.1
 */
 
-public class InfoPaymentPanel extends InfoPanel implements ValueChangeListener, EventListener
+public class InfoPaymentPanel extends InfoPanel implements ValueChangeListener, EventListener<Event>
 {
 	/**
 	 * 
@@ -180,7 +181,7 @@ public class InfoPaymentPanel extends InfoPanel implements ValueChangeListener, 
 	
 	private void statInit() throws Exception
 	{
-		fDocumentNo.setWidth("100%");
+		fDocumentNo.setHflex("1");
 		fDateFrom.setWidth("165px");
 		fDateTo.setWidth("165px");
 		fAmtFrom.setWidth("180px");
@@ -245,7 +246,6 @@ public class InfoPaymentPanel extends InfoPanel implements ValueChangeListener, 
 
         Center center = new Center();
 		layout.appendChild(center);
-		center.setFlex(true);
 		Div div = new Div();
 		div.appendChild(contentPanel);
 		if (isLookup())
@@ -255,14 +255,16 @@ public class InfoPaymentPanel extends InfoPanel implements ValueChangeListener, 
         contentPanel.setVflex(true);
 		div.setStyle("width :100%; height: 100%");
 		center.appendChild(div);
+		div.setVflex("1");
+		div.setHflex("1");
         
 		South south = new South();
 		layout.appendChild(south);
 		southBody = new Vbox();
 		southBody.setWidth("100%");
 		south.appendChild(southBody);
-		southBody.appendChild(confirmPanel);
 		southBody.appendChild(new Separator());
+		southBody.appendChild(confirmPanel);
 		southBody.appendChild(statusBar);
 	}
 	

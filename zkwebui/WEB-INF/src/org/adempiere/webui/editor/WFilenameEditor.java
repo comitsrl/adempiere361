@@ -28,7 +28,7 @@ import org.compiere.util.CLogger;
 import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zul.Fileupload;
+import org.zkoss.zk.ui.event.UploadEvent;
 
 /**
  *
@@ -47,7 +47,8 @@ public class WFilenameEditor extends WEditor
 	{
 		super(new FilenameBox(), gridField);
 		getComponent().setButtonImage("/images/Open16.png");
-		getComponent().addEventListener(Events.ON_CLICK, this);
+		getComponent().addEventListener(Events.ON_UPLOAD, this);
+		getComponent().getButton().setUpload("true,native");
 	}
 
 	@Override
@@ -95,44 +96,39 @@ public class WFilenameEditor extends WEditor
 
 	public void onEvent(Event event)
 	{
+		String newValue = null;
+
 		if (Events.ON_CHANGE.equals(event.getName()) || Events.ON_OK.equals(event.getName()))
 		{
-			String newValue = getComponent().getText();
-			if (oldValue != null && newValue != null && oldValue.equals(newValue)) {
-	    	    return;
-	    	}
-	        if (oldValue == null && newValue == null) {
-	        	return;
-	        }
-			ValueChangeEvent changeEvent = new ValueChangeEvent(this, this.getColumnName(), oldValue, newValue);
-			fireValueChange(changeEvent);
-		}
-		else if (Events.ON_CLICK.equals(event.getName()))
-		{
-			cmd_file();
-		}
-	}
+			newValue = getComponent().getText();
 
-	/**
-	 *  Load file
-	 */
-	private void cmd_file()
-	{
-		//  Show File Open Dialog
-		Media file = null;
-
-		try
-		{
-			file = Fileupload.get(true);
-
-			if (file == null)
-				return;
 		}
-		catch (InterruptedException e)
+		else if (event instanceof UploadEvent)
 		{
-			log.warning(e.getLocalizedMessage());
+			UploadEvent ue = (UploadEvent) event;
+			processUploadMedia(ue.getMedia());
 			return;
 		}
+		else
+		{
+			return;
+		}
+		processNewValue(newValue);
+	}
+	protected void processNewValue(String newValue) {
+		if (oldValue != null && newValue != null && oldValue.equals(newValue)) {
+    	    return;
+    	}
+        if (oldValue == null && newValue == null) {
+        	return;
+        }
+		ValueChangeEvent changeEvent = new ValueChangeEvent(this, this.getColumnName(), oldValue, newValue);
+		fireValueChange(changeEvent);
+	}
+		
+	private void processUploadMedia(Media file) {
+		if (file == null)
+			return;
 
 		// String fileName = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + ;
 		// File tempFile = new File(fileName);
@@ -172,7 +168,9 @@ public class WFilenameEditor extends WEditor
 		}
 
 		getComponent().setText(fileName);
-	}   //  cmd_file
+		
+		processNewValue(getComponent().getText());
+	}
 
 	public String[] getEvents()
     {

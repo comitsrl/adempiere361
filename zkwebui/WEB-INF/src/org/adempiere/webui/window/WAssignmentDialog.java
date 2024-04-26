@@ -28,8 +28,8 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.LayoutUtils;
-import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.ConfirmPanel;
 import org.adempiere.webui.component.Datebox;
@@ -55,6 +55,7 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Timebox;
 
 /**
@@ -66,7 +67,7 @@ import org.zkoss.zul.Timebox;
  *  Zk Port
  *  @author Low Heng Sin
  */
-public class WAssignmentDialog extends Window implements EventListener
+public class WAssignmentDialog extends Window implements EventListener<Event>
 {
 	/**
 	 * 
@@ -96,9 +97,9 @@ public class WAssignmentDialog extends Window implements EventListener
 	{
 		super ();
 		this.setTitle(Msg.getMsg(Env.getCtx(), "VAssignmentDialog"));
-		this.setAttribute("mode", "modal");
 		this.setBorder("normal");
 		
+		this.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 		log.config(mAssignment.toString());
 		m_mAssignment = mAssignment;
 		try
@@ -113,8 +114,9 @@ public class WAssignmentDialog extends Window implements EventListener
 			log.log(Level.SEVERE, "", e);
 		}
 		setDisplay();	//	from mAssignment
+		setWidth("600px");
+		setSizable(true);
 		//
-		AEnv.showWindow(this);
 	}	//	VAssignmentDialog
 
 	/**	Assignment						*/
@@ -172,8 +174,11 @@ public class WAssignmentDialog extends Window implements EventListener
 		row.setSpans("1, 2");
 		row.appendChild(LayoutUtils.makeRightAlign(lDate));
 		Div div = new Div();
+		div.setHflex("1");
 		div.appendChild(fDateFrom);
+		fDateFrom.setCols(10);
 		div.appendChild(fTimeFrom);
+		fTimeFrom.setCols(10);
 		fTimeFrom.setStyle("margin-left: 1px");
 		row.appendChild(div);
 		rows.appendChild(row);
@@ -222,7 +227,7 @@ public class WAssignmentDialog extends Window implements EventListener
 		//	Set Resource
 		int S_Resource_ID = m_mAssignment.getS_Resource_ID();
 		
-		for (ListItem item : fResource.getItems()) {
+		for (Listitem item : fResource.getItems()) {
 			if ( (Integer)item.getValue() == S_Resource_ID) {
 				fResource.setSelectedItem(item);
 				break;
@@ -377,14 +382,8 @@ public class WAssignmentDialog extends Window implements EventListener
 		//	Zoom - InfoResource
 		else if (e.getTarget().getId().equals("Zoom"))
 		{
-			InfoSchedule is = new InfoSchedule (m_mAssignment, true);
-			if (is.getMResourceAssignment() != null)
-			{
-				m_mAssignment = is.getMResourceAssignment();
-			//	setDisplay();
-				detach();
-			}
-			is = null;
+			setVisible(false);
+			Events.echoEvent("onShowSchedule", this, null);
 		}
 
 		//	cancel - return
@@ -414,17 +413,41 @@ public class WAssignmentDialog extends Window implements EventListener
 		}		
 	}
 
+	public void onShowSchedule()
+	{
+		InfoSchedule is = new InfoSchedule (m_mAssignment, true, new Callback<MResourceAssignment>() {
+			
+			@Override
+			public void onCallback(MResourceAssignment result) {
+				if (result != null)
+				{
+					m_mAssignment = result;
+					//setDisplay();
+					detach();
+				}
+				else
+				{
+					setVisible(true);
+				}
+			}
+		});
+	}
+	
 	private void getDateAndTimeFrom(Calendar date) {
 		Date dateFrom = fDateFrom.getValue();
 		Date timeFrom = fTimeFrom.getValue();		
 		date.setTime(dateFrom);
 		Calendar time = new GregorianCalendar();
 		time.setTime(timeFrom);
-		date.set(Calendar.HOUR, time.get(Calendar.HOUR));
+		date.set(Calendar.HOUR_OF_DAY, time.get(Calendar.HOUR_OF_DAY));
 		date.set(Calendar.MINUTE, time.get(Calendar.MINUTE));
 	}
 
 	public boolean isCancelled() {
 		return m_cancel;
+	}
+	
+	public Datebox getDateFrom() {
+		return fDateFrom;
 	}
 }	//	VAssignmentDialog

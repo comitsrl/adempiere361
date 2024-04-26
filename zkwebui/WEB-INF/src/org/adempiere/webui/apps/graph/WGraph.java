@@ -55,9 +55,9 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.MouseEvent;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.East;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.East;
 import org.zkoss.zul.Area;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Imagemap;
@@ -310,7 +310,7 @@ public class WGraph extends Div implements IdSpace {
 				count++;
 			}
 
-			myImage.addEventListener(Events.ON_CLICK, new EventListener() {
+			myImage.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 				public void onEvent(Event event) throws Exception {
 					MouseEvent me = (MouseEvent) event;
 					String areaId = me.getArea();
@@ -536,7 +536,7 @@ public class WGraph extends Div implements IdSpace {
 				a.setSclass("pa-hrefNode");
 				td.appendChild(a);
 				a.setId(ZOOM_KEY + k);
-				a.addEventListener(Events.ON_CLICK, new EventListener() {
+				a.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 					public void onEvent(Event event) throws Exception {
 						Component comp = event.getTarget();
 						String id = comp.getId();

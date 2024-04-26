@@ -29,15 +29,22 @@ import org.adempiere.webui.component.Datebox;
 import org.adempiere.webui.component.Label;
 import org.adempiere.webui.event.ValueChangeEvent;
 import org.adempiere.webui.event.ValueChangeListener;
+import org.adempiere.webui.window.WFieldRecordInfo;
 import org.compiere.model.GridField;
 import org.compiere.model.GridTab;
+import org.compiere.model.MRole;
 import org.compiere.util.DisplayType;
+import org.compiere.util.Env;
+import org.compiere.util.Msg;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Menuitem;
+import org.zkoss.zul.Textbox;
+import org.zkoss.zul.impl.InputElement;
 
 /**
  *
@@ -45,7 +52,7 @@ import org.zkoss.zul.Image;
  * @date    Mar 11, 2007
  * @version $Revision: 0.10 $
  */
-public abstract class WEditor implements EventListener, PropertyChangeListener
+public abstract class WEditor implements EventListener<Event>, PropertyChangeListener
 {
 	private static final String[] lISTENER_EVENTS = {};
 
@@ -74,6 +81,10 @@ public abstract class WEditor implements EventListener, PropertyChangeListener
     private String columnName;
 
 	protected boolean hasFocus;
+	
+	protected WEditorPopupMenu popupMenu;
+	
+	private boolean tableEditor;
 
     public WEditor(Component comp, GridField gridField) {
     	this(comp, gridField, -1);
@@ -212,13 +223,13 @@ public abstract class WEditor implements EventListener, PropertyChangeListener
         {
             component.addEventListener(event, this);
         }
-        component.addEventListener(Events.ON_FOCUS, new EventListener() {
+        component.addEventListener(Events.ON_FOCUS, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				hasFocus = true;
 			}
 
         });
-        component.addEventListener(Events.ON_BLUR, new EventListener() {
+        component.addEventListener(Events.ON_BLUR, new EventListener<Event>() {
 			public void onEvent(Event event) throws Exception {
 				hasFocus = false;
 			}
@@ -298,7 +309,7 @@ public abstract class WEditor implements EventListener, PropertyChangeListener
      */
     public WEditorPopupMenu getPopupMenu()
     {
-        return null;
+        return popupMenu;
     }
 
     /**
@@ -465,23 +476,36 @@ public abstract class WEditor implements EventListener, PropertyChangeListener
         	//can't stretch bandbox & datebox
         	if (!(getComponent() instanceof Bandbox) &&
         		!(getComponent() instanceof Datebox)) {
-        		String width = "100%";
+        		String width = tableEditor ? "98%" : "100%";
         		if (getComponent() instanceof Button) {
-        			Button btn = (Button) getComponent();
-        			String zclass = btn.getZclass();
-        			if (gridField.getDisplayType() == DisplayType.Image) {
-        				if (!zclass.contains("image-button-field ")) {
-            				btn.setZclass("image-button-field " + zclass);
-        				}
-        			} else if (!zclass.contains("form-button ")) {
-        				btn.setZclass("form-button " + zclass);
+        			if (!tableEditor) {
+        				Button btn = (Button) getComponent();
+        				String zclass = btn.getZclass();
+        				if (gridField.getDisplayType() == DisplayType.Image) {
+        					if (!zclass.contains("image-button-field ")) {
+        						btn.setZclass("image-button-field " + zclass);
+        					}
+        				} else if (!zclass.contains("form-button ")) {
+        					btn.setZclass("form-button " + zclass);
+        					}
         			}
         		} else if (getComponent() instanceof Image) {
         			Image image = (Image) getComponent();
-        			image.setWidth("48px");
-        			image.setHeight("48px");
+        			image.setWidth("24px");
+        			image.setHeight("24px");
         		} else {
-        			((HtmlBasedComponent)getComponent()).setWidth(width);
+        			if (getComponent() instanceof InputElement && !tableEditor) {
+        				((InputElement)getComponent()).setHflex("1");
+        			} else {
+        				((HtmlBasedComponent)getComponent()).setWidth(width);
+        			}
+        			
+        			if (getComponent() instanceof Textbox && tableEditor) {
+        				 Textbox textbox = (Textbox) getComponent();
+        				 if(textbox.isMultiline()) {
+        					 textbox.setRows(1);
+        				 }
+        			}
         		}
         	}
         }
@@ -504,12 +528,43 @@ public abstract class WEditor implements EventListener, PropertyChangeListener
 		}
 	}
 
-    private static final String STYLE_ZOOMABLE_LABEL = "cursor: pointer; text-decoration: underline;";
-	private static final String STYLE_NORMAL_LABEL = "color:black;";
+	/**
+	 * @return boolean
+	 */
+	protected boolean isShowPreference() {
+		return MRole.getDefault().isShowPreference() && gridField != null && !gridField.isEncrypted() && !gridField.isEncryptedColumn();
+	}
+
+	/**
+	 * @param popupMenu
+	 */
+    protected void addChangeLogMenu(WEditorPopupMenu popupMenu) {
+		if (popupMenu != null && gridField != null && gridField.getGridTab() != null)
+		{
+			WFieldRecordInfo.addMenu(popupMenu);
+		}
+	}
+
+    /**
+     * @param popupMenu
+     */
+	protected void addTextEditorMenu(WEditorPopupMenu popupMenu) {
+		Menuitem editor = new Menuitem(Msg.getMsg(Env.getCtx(), "Editor"), "images/Editor16.png");
+		editor.setAttribute("EVENT", WEditorPopupMenu.EDITOR_EVENT);
+		editor.addEventListener(Events.ON_CLICK, popupMenu);
+		popupMenu.appendChild(editor);
+	}
+
+	private static final String STYLE_ZOOMABLE_LABEL = "cursor: pointer; text-decoration: underline;";
+	private static final String STYLE_NORMAL_LABEL = "color:#333;";
 	private static final String STYLE_EMPTY_MANDATORY_LABEL = "color: red;";
 
 	private void markMandatory(boolean mandatory) {
 		getLabel().setStyle( (getLabel().isZoomable() ? STYLE_ZOOMABLE_LABEL : "") + (mandatory ? STYLE_EMPTY_MANDATORY_LABEL : STYLE_NORMAL_LABEL));
+	}
+	
+	public void setTableEditor(boolean b) {
+		tableEditor = b;
 	}
 	
 }

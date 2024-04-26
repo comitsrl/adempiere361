@@ -47,12 +47,12 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.KeyEvent;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.East;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
-import org.zkoss.zkex.zul.West;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.East;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
+import org.zkoss.zul.West;
 import org.zkoss.zul.Tab;
 
 /**
@@ -97,9 +97,7 @@ public class ADWindowPanel extends AbstractADWindowPanel
         layout = new Borderlayout();
         if (parent != null) {
 	        layout.setParent(parent);
-	        layout.setStyle("position:absolute");
-	        layout.setHeight("100%");
-	        layout.setWidth("100%");
+	        layout.setSclass("adwindow-layout");
         } else {
         	layout.setPage(page);
         }
@@ -109,8 +107,7 @@ public class ADWindowPanel extends AbstractADWindowPanel
 	        North n = new North();
 	        n.setParent(layout);
 	        n.setCollapsible(false);
-	        n.setHeight("30px");
-	        toolbar.setHeight("30px");
+	        n.setSclass("adwindow-north");
 	        toolbar.setParent(n);
 	        toolbar.setWindowNo(getWindowNo());
         }
@@ -118,6 +115,7 @@ public class ADWindowPanel extends AbstractADWindowPanel
         South s = new South();
         layout.appendChild(s);
         s.setCollapsible(false);
+        s.setSclass("adwindow-south");
         statusBar.setParent(s);
         LayoutUtils.addSclass("adwindow-status", statusBar);
 

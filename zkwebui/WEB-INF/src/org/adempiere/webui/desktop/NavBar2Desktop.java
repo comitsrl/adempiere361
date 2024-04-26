@@ -20,8 +20,11 @@ import java.io.Serializable;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 import java.util.logging.Level;
 
+import org.adempiere.util.ServerContext;
+import org.adempiere.webui.apps.BusyDialog;
 import org.adempiere.webui.apps.ProcessDialog;
 import org.adempiere.webui.apps.graph.WGraph;
 import org.adempiere.webui.component.Accordion;
@@ -34,6 +37,7 @@ import org.adempiere.webui.event.MenuListener;
 import org.adempiere.webui.panel.ADForm;
 import org.adempiere.webui.panel.HeaderPanel;
 import org.adempiere.webui.panel.SidePanel;
+import org.adempiere.webui.session.SessionContextListener;
 import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.util.IServerPushCallback;
 import org.adempiere.webui.util.ServerPushTemplate;
@@ -57,21 +61,21 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.event.OpenEvent;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.West;
-import org.zkoss.zkmax.zul.Portalchildren;
-import org.zkoss.zkmax.zul.Portallayout;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.West;
 import org.zkoss.zul.Div;
+import org.zkoss.zul.Hlayout;
 import org.zkoss.zul.Html;
 import org.zkoss.zul.Panel;
 import org.zkoss.zul.Panelchildren;
+import org.zkoss.zul.Vlayout;
 
 /**
  * @author hengsin
  */
-public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Serializable, EventListener, IServerPushCallback
+public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Serializable, EventListener<Event>, IServerPushCallback
 {
 
 	private static final long serialVersionUID = -7483133591812825441L;
@@ -97,6 +101,8 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
 	private int noOfRequest;
 
 	private int noOfWorkflow;
+	
+	private Tabpanel homeTab;
 
     public NavBar2Desktop()
     {
@@ -105,10 +111,7 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
 
     protected Component doCreatePart(Component parent)
     {
-    	SidePanel pnlSide = new SidePanel();
     	HeaderPanel pnlHead = new HeaderPanel();
-
-        pnlSide.getMenuPanel().addMenuListener(this);
 
         layout = new Borderlayout();
         if (parent != null)
@@ -134,8 +137,7 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
         w.setCollapsible(true);
         w.setSplittable(true);
         w.setTitle(Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Menu")));
-        w.setFlex(true);
-        w.addEventListener(Events.ON_OPEN, new EventListener() {			
+        w.addEventListener(Events.ON_OPEN, new EventListener<Event>() {			
 			@Override
 			public void onEvent(Event event) throws Exception {
 				OpenEvent oe = (OpenEvent) event;
@@ -147,16 +149,19 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
         UserPreference pref = SessionManager.getSessionApplication().getUserPreference();
         boolean menuCollapsed= pref.isPropertyBool(UserPreference.P_MENU_COLLAPSED);
         w.setOpen(!menuCollapsed);
-        pnlSide.setParent(w);        
+        
+        SidePanel pnlSide = new SidePanel(w);
+        pnlSide.getMenuPanel().addMenuListener(this);
 
         Center center = new Center();
         center.setParent(layout);
-        center.setFlex(true);
 
         Borderlayout innerLayout = new Borderlayout();
         innerLayout.setHeight("100%");
         innerLayout.setWidth("100%");
         innerLayout.setParent(center);
+        innerLayout.setVflex("1");
+        innerLayout.setHflex("1");
 
         West innerW = new West();
         innerW.setWidth("200px");
@@ -188,28 +193,60 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
 
         windowArea = new Center();
         windowArea.setParent(innerLayout);
-        windowArea.setFlex(true);
 
         windowContainer.createPart(windowArea);
 
-        createHomeTab();
+        homeTab = new Tabpanel();
+        windowContainer.addWindow(homeTab, Msg.getMsg(Env.getCtx(), "Home").replaceAll("&", ""), false);
+        BusyDialog busyDialog = new BusyDialog();
+        busyDialog.setShadow(false);
+        homeTab.appendChild(busyDialog);
+        
+        if (!layout.getDesktop().isServerPushEnabled())
+    	{
+    		layout.getDesktop().enableServerPush(true);
+    	}
+        
+        Runnable runnable = new Runnable() {			
+			public void run() {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {}
+
+				IServerPushCallback callback = new IServerPushCallback() {					
+					public void updateUI() {
+						Properties ctx = (Properties)layout.getDesktop().getSession().getAttribute(SessionContextListener.SESSION_CTX);
+						try {
+							ServerContext.setCurrentInstance(ctx);
+							renderHomeTab();
+						} finally {
+							ServerContext.dispose();
+						}
+					}
+				};
+				ServerPushTemplate template = new ServerPushTemplate(layout.getDesktop());
+				template.executeAsync(callback);
+			}
+		};
+		
+		Thread thread = new Thread(runnable);
+		thread.start();
 
         return layout;
     }
 
-	private void createHomeTab()
-	{
-        Tabpanel homeTab = new Tabpanel();
-        windowContainer.addWindow(homeTab, Util.cleanAmp(Msg.getMsg(Env.getCtx(), "Home")), false);
+	private void renderHomeTab()
+	{       
+		homeTab.getChildren().clear();
 
-        Portallayout portalLayout = new Portallayout();
+        Hlayout portalLayout = new Hlayout();
         portalLayout.setWidth("100%");
         portalLayout.setHeight("100%");
         portalLayout.setStyle("position: absolute; overflow: auto");
         homeTab.appendChild(portalLayout);
 
         // Dashboard content
-        Portalchildren portalchildren = null;
+        Vlayout portalchildren = null;
         int currentColumnNo = 0;
 
         String sql = "SELECT COUNT(DISTINCT COLUMNNO) "
@@ -242,7 +279,7 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
 	        	int columnNo = rs.getInt(X_PA_DashboardContent.COLUMNNAME_ColumnNo);
 	        	if(portalchildren == null || currentColumnNo != columnNo)
 	        	{
-	        		portalchildren = new Portalchildren();
+	        		portalchildren = new Vlayout();
 	                portalLayout.appendChild(portalchildren);
 	                portalchildren.setWidth(width + "%");
 	                portalchildren.setStyle("padding: 5px");
@@ -408,7 +445,7 @@ public class NavBar2Desktop extends TabbedDesktop implements MenuListener, Seria
     	noOfRequest = DPActivities.getRequestCount();
     	noOfWorkflow = DPActivities.getWorkflowCount();
 
-    	template.execute(this);
+    	template.executeAsync(this);
 	}
 
 	/**

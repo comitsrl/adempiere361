@@ -20,6 +20,7 @@ import java.util.Properties;
 
 import net.sf.cglib.proxy.Enhancer;
 
+import org.adempiere.util.ServerContextCallback;
 import org.adempiere.webui.session.SessionManager;
 import org.compiere.util.ContextProvider;
 

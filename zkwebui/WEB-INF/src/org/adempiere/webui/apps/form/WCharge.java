@@ -49,10 +49,10 @@ import org.zkoss.zk.ui.WrongValueException;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Separator;
 
 /**
@@ -66,7 +66,7 @@ import org.zkoss.zul.Separator;
  * @author Andrew Kimball
  *
  */
-public class WCharge extends Charge implements IFormController, EventListener
+public class WCharge extends Charge implements IFormController, EventListener<Event>
 {
     /**
 	 *
@@ -261,10 +261,11 @@ public class WCharge extends Charge implements IFormController, EventListener
 
 		Center center = new Center();
 		center.setBorder("none");
-		center.setFlex(true);
 		center.setAutoscroll(true);
 		borderlayout.appendChild(center);
 		center.appendChild(m_tblData);
+		m_tblData.setVflex("1");
+		m_tblData.setHflex("1");
 
 		South south = new South();
 		south.setBorder("none");

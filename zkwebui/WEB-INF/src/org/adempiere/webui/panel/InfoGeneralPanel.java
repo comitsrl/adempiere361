@@ -40,11 +40,12 @@ import org.compiere.util.DisplayType;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.compiere.util.Util;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Separator;
 import org.zkoss.zul.Vbox;
@@ -54,7 +55,7 @@ import org.zkoss.zul.Vbox;
  * @author Elaine
  * @version	InfoGeneral.java Adempiere Swing UI 3.4.1 
  */
-public class InfoGeneralPanel extends InfoPanel implements EventListener
+public class InfoGeneralPanel extends InfoPanel implements EventListener<Event>
 {
 	/**
 	 * 
@@ -129,12 +130,16 @@ public class InfoGeneralPanel extends InfoPanel implements EventListener
 		rows.appendChild(row);
 		row.appendChild(lbl1.rightAlign());
 		row.appendChild(txt1);
+		txt1.setHflex("1");
 		row.appendChild(lbl2.rightAlign());
 		row.appendChild(txt2);
+		txt2.setHflex("1");
 		row.appendChild(lbl3.rightAlign());
 		row.appendChild(txt3);
+		txt3.setHflex("1");
 		row.appendChild(lbl4.rightAlign());
 		row.appendChild(txt4);
+		txt4.setHflex("1");
 		
 		layout = new Borderlayout();
         layout.setWidth("100%");
@@ -151,7 +156,6 @@ public class InfoGeneralPanel extends InfoPanel implements EventListener
         
         Center center = new Center();
 		layout.appendChild(center);
-		center.setFlex(true);
 		Div div = new Div();
 		div.appendChild(contentPanel);
 		if (isLookup())
@@ -161,14 +165,16 @@ public class InfoGeneralPanel extends InfoPanel implements EventListener
         contentPanel.setVflex(true);
 		div.setStyle("width :100%; height: 100%");
 		center.appendChild(div);
+		div.setVflex("1");
+		div.setHflex("1");
 		
 		South south = new South();
 		layout.appendChild(south);
 		southBody = new Vbox();
 		southBody.setWidth("100%");
 		south.appendChild(southBody);
-		southBody.appendChild(confirmPanel);
 		southBody.appendChild(new Separator());
+		southBody.appendChild(confirmPanel);
 		southBody.appendChild(statusBar);
 	}
 

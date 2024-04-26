@@ -54,7 +54,7 @@ import org.zkoss.zul.Vbox;
  *  @author Jorg Janke
  *  @version  $Id: ValuePreference.java,v 1.2 2006/07/30 00:51:28 jjanke Exp $
  */
-public class ValuePreference extends Window implements EventListener
+public class ValuePreference extends Window implements EventListener<Event>
 {	
 	/**
 	 * 
@@ -67,9 +67,9 @@ public class ValuePreference extends Window implements EventListener
 	 *  @param aValue	value
 	 *  @return ValuePreference or null
 	 */
-	public static ValuePreference start (GridField mField, Object aValue)
+	public static void start (GridField mField, Object aValue)
 	{
-		return start (mField, aValue, null);
+		start (mField, aValue, null);
 	}   //  start
 
 	/**
@@ -79,12 +79,12 @@ public class ValuePreference extends Window implements EventListener
 	 *  @param aDisplayValue	display value
 	 *  @return ValuePreference or null
 	 */
-	public static ValuePreference start (GridField mField, Object aValue, String aDisplayValue)
+	 public static void start (GridField mField, Object aValue, String aDisplayValue)
 	{
 		if (!mField.isEditable(false))
 		{
 			log.info("Field not editable (R/O)");
-			return null;
+			return;
 		}
 		
 		//  Set Value/DisplayValue
@@ -116,7 +116,6 @@ public class ValuePreference extends Window implements EventListener
 			AD_Client_ID, AD_Org_ID, AD_User_ID, AD_Window_ID,
 			Attribute, DisplayAttribute, Value, DisplayValue,
 			displayType, AD_Reference_ID);
-		return vp;
 	}   //  create
 
 	/**

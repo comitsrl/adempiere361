@@ -22,15 +22,19 @@ import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
 
+import org.adempiere.util.ServerContext;
+import org.adempiere.util.ServerContextURLHandler;
 import org.compiere.util.Env;
 import org.zkoss.util.Locales;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Execution;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventThreadCleanup;
 import org.zkoss.zk.ui.event.EventThreadInit;
 import org.zkoss.zk.ui.event.EventThreadResume;
+import org.zkoss.zk.ui.event.EventThreadSuspend;
 import org.zkoss.zk.ui.util.ExecutionCleanup;
 import org.zkoss.zk.ui.util.ExecutionInit;
 
@@ -41,11 +45,45 @@ import org.zkoss.zk.ui.util.ExecutionInit;
  * @version $Revision: 0.10 $
  */
 public class SessionContextListener implements ExecutionInit,
-        ExecutionCleanup, EventThreadInit, EventThreadResume, EventThreadCleanup
+        ExecutionCleanup, EventThreadInit, EventThreadResume, EventThreadCleanup, EventThreadSuspend
 {
 	public static final String SERVLET_SESSION_ID = "servlet.sessionId";
     public static final String SESSION_CTX = "WebUISessionContext";
+    
+    /**
+     * get servlet thread local context from session
+     * @param exec
+     * @param createNew
+     */
+    public static void setupExecutionContextFromSession(Execution exec) {
+    	Session session = exec.getDesktop().getSession();
+		Properties ctx = (Properties)session.getAttribute(SESSION_CTX);
+		HttpSession httpSession = (HttpSession)session.getNativeSession();
+		if (ctx != null)
+		{
+			//verify ctx
+			String cacheId = ctx.getProperty(SERVLET_SESSION_ID);
+			if (cacheId == null || !cacheId.equals(httpSession.getId()) )
+			{
+				ctx = null;
+				session.removeAttribute(SESSION_CTX);
+			}
+		}
+		if (ctx == null)
+		{
+			ctx = new Properties();
+			ctx.put(ServerContextURLHandler.SERVER_CONTEXT_URL_HANDLER, new ServerContextURLHandler() {
+				public void showURL(String url) {
+					SessionManager.getAppDesktop().showURL(url, true);
+				}
+			});
 
+			ctx.setProperty(SERVLET_SESSION_ID, httpSession.getId());
+		    session.setAttribute(SESSION_CTX, ctx);
+		}
+		ServerContext.setCurrentInstance(ctx);
+	}
+    
     /**
      * @param exec
      * @param parent
@@ -56,27 +94,31 @@ public class SessionContextListener implements ExecutionInit,
     {
         if (parent == null)
         {
-        	Properties ctx = (Properties)exec.getDesktop().getSession().getAttribute(SESSION_CTX);
-            if (ctx == null)
-            {
-            	ctx = new Properties();
-            	HttpSession session = (HttpSession)exec.getDesktop().getSession().getNativeSession();
-            	ctx.setProperty(SERVLET_SESSION_ID, session.getId());
-                exec.getDesktop().getSession().setAttribute(SESSION_CTX, ctx);
-            }
-            
-            ServerContext serverContext = ServerContext.getCurrentInstance();
-            if (serverContext == null)
-            {
-            	serverContext = ServerContext.newInstance();
-            }
-            serverContext.clear();
-            serverContext.putAll(ctx);
-            exec.setAttribute(SESSION_CTX, serverContext);
-
-            //set locale
-            Locales.setThreadLocal(Env.getLanguage(ctx).getLocale());
+        	//in servlet thread
+	    	setupExecutionContextFromSession(Executions.getCurrent());
+	    	//set locale
+	        Locales.setThreadLocal(Env.getLanguage(ServerContext.getCurrentInstance()).getLocale());
         }
+//        Properties ctx = (Properties)exec.getDesktop().getSession().getAttribute(SESSION_CTX);
+//        if (ctx == null)
+//        {
+//        	ctx = new Properties();
+//        	HttpSession session = (HttpSession)exec.getDesktop().getSession().getNativeSession();
+//        	ctx.setProperty(SERVLET_SESSION_ID, session.getId());
+//            exec.getDesktop().getSession().setAttribute(SESSION_CTX, ctx);
+//        }
+//        
+//        ServerContext serverContext = ServerContext.getCurrentInstance();
+//        if (serverContext == null)
+//        {
+//        	serverContext = ServerContext.newInstance();
+//        }
+//        serverContext.clear();
+//        serverContext.putAll(ctx);
+//        exec.setAttribute(SESSION_CTX, serverContext);
+//
+//        //set locale
+//        Locales.setThreadLocal(Env.getLanguage(ctx).getLocale());
     }
 
     /**
@@ -85,22 +127,12 @@ public class SessionContextListener implements ExecutionInit,
      * @param errs
      * @see ExecutionCleanup#cleanup(Execution, Execution, List)
      */
-    public void cleanup(Execution exec, Execution parent, List errs)
+    public void cleanup(Execution exec, Execution parent, List<Throwable> errs)
     {
+    	//in servlet thread
         if (parent == null)
         {
-        	Properties ctx = (Properties)exec.getDesktop().getSession().getAttribute(SESSION_CTX);
-        	if (ctx != null)
-        	{
-        		ServerContext serverContext = (ServerContext) Executions.getCurrent().getAttribute(SESSION_CTX);
-        		if (serverContext != null)
-        		{
-        			ctx.clear();
-        			ctx.putAll(serverContext);
-        		}
-        	}
-            ServerContext.dispose();
-            exec.removeAttribute(SESSION_CTX);
+        	ServerContext.dispose();
         }
     }
 
@@ -111,61 +143,46 @@ public class SessionContextListener implements ExecutionInit,
      */
     public void prepare(Component comp, Event evt)
     {
+    	//in servlet thread
+    	//check is thread local context have been setup
+    	if (ServerContext.getCurrentInstance().isEmpty() || !isContextValid())
+    	{
+    		setupExecutionContextFromSession(Executions.getCurrent());
+    	}
     }
-
+    
     /**
+     * copy event thread's ThreadLocal to servlet thread
      * @param comp
-     * @param evt
-     * @see EventThreadInit#init(Component, Event)
-     */
-    public boolean init(Component comp, Event evt)
-    {
-        ServerContext serverContext = (ServerContext) Executions.getCurrent().getAttribute(SESSION_CTX);
-        if (serverContext == null)
-        {
-        	serverContext = ServerContext.newInstance();
-        }
-        else
-        {
-        	ServerContext.setCurrentInstance(serverContext);
-        }
+	 * @param evt
+	 * @throws Exception
+	 * @see {@link EventThreadSuspend#afterSuspend(Component, Event)}
+	 */
+	public void afterSuspend(Component comp, Event evt) throws Exception
+	{
+		//in servlet thread		
+		if (ServerContext.getCurrentInstance().isEmpty() || !isContextValid())
+    	{
+    		setupExecutionContextFromSession(Executions.getCurrent());
+    	}
+	}
 
-        //set locale
-        Locales.setThreadLocal(Env.getLanguage(serverContext).getLocale());
-        
-		return true;
-    }
-
-    /**
+	 /**
+     * get from servlet thread's ThreadLocal
      * @param comp
      * @param evt
      * @see EventThreadResume#beforeResume(Component, Event)
      */
     public void beforeResume(Component comp, Event evt)
     {
-    }
-
-    /**
-     * @param comp
-     * @param evt
-     * @see EventThreadResume#afterResume(Component, Event)
-     */
-    public void afterResume(Component comp, Event evt)
-    {
-    	ServerContext serverContext = (ServerContext) Executions.getCurrent().getAttribute(SESSION_CTX);
-        if (serverContext == null)
+    	//in servlet thread
+    	//check is thread local context have been setup
+    	if (ServerContext.getCurrentInstance().isEmpty() || !isContextValid())
     	{
-    			serverContext = ServerContext.newInstance();
-    		}
-        else
-        {
-        	ServerContext.setCurrentInstance(serverContext);
+    		setupExecutionContextFromSession(Executions.getCurrent());
     	}
-
-        //set locale
-        Locales.setThreadLocal(Env.getLanguage(serverContext).getLocale());
     }
-
+	
     /**
      * @param comp
      * @param evt
@@ -173,25 +190,120 @@ public class SessionContextListener implements ExecutionInit,
      */
     public void abortResume(Component comp, Event evt)
     {
+    	//in servlet thread
+    }
+    
+    /**
+     * copy event thread's ThreadLocal to servlet thread's ThreadLocal
+	 * @param comp
+	 * @param evt
+	 * @see EventThreadCleanup#complete(Component, Event)
+	 */
+	public void complete(Component comp, Event evt) throws Exception
+	{
+		//in servlet thread
+		if (ServerContext.getCurrentInstance().isEmpty() || !isContextValid())
+    	{
+    		setupExecutionContextFromSession(Executions.getCurrent());
+    	}
+	}
+    
+	/**
+     * copy servlet thread's ThreadLocal to event thread's ThreadLocal
+     * @param comp
+     * @param evt
+     * @see EventThreadInit#init(Component, Event)
+     */
+    public boolean init(Component comp, Event evt)
+    {
+    	//in event processing thread
+    	if (ServerContext.getCurrentInstance().isEmpty() || !isContextValid())
+    	{
+    		setupExecutionContextFromSession(Executions.getCurrent());
+    	}
+
+        //set locale
+        Locales.setThreadLocal(Env.getLanguage(ServerContext.getCurrentInstance()).getLocale());
+
+		return true;
     }
 
     /**
+     * get from event thread's ThreadLocal
+	 * @param comp
+	 * @param evt
+	 * @param obj
+	 * @throws Exception
+	 * @see {@link EventThreadSuspend#beforeSuspend(Component, Event, Object)}
+	 */
+	public void beforeSuspend(Component comp, Event evt, Object obj)
+			throws Exception
+	{
+		//in event processing thread
+	}
+    
+	/**
+     * copy servlet thread's ThreadLocal to event thread's ThreadLocal
+     * @param comp
+     * @param evt
+     * @see EventThreadResume#afterResume(Component, Event)
+     */
+    public void afterResume(Component comp, Event evt)
+    {
+    	//in event processing thread
+    	if (ServerContext.getCurrentInstance().isEmpty() || !isContextValid())
+    	{
+    		setupExecutionContextFromSession(Executions.getCurrent());
+    	}
+
+        //set locale
+        Locales.setThreadLocal(Env.getLanguage(ServerContext.getCurrentInstance()).getLocale());
+    }
+
+    /**
+     * get from event thread's ThreadLocal
      * @param comp
      * @param evt
      * @param errs
      * @see EventThreadCleanup#cleanup(Component, Event, List)
      */
-	public void cleanup(Component comp, Event evt, List errs) throws Exception 
+    public void cleanup(Component comp, Event evt, List<Throwable> errs) throws Exception
 	{
-    	ServerContext.dispose();
+		//in event processing thread
+//    	ServerContext.dispose();
 	}
-
-	/**
-	 * @param comp
-	 * @param evt
-	 * @see EventThreadCleanup#complete(Component, Event) 
-	 */
-	public void complete(Component comp, Event evt) throws Exception 
-	{
+	
+    public static boolean isContextValid() {
+		Execution exec = Executions.getCurrent();
+		Properties ctx = ServerContext.getCurrentInstance();
+		if (ctx == null)
+			return false;
+		Session session = exec.getDesktop().getSession();
+		HttpSession httpSession = (HttpSession)session.getNativeSession();
+		//verify ctx
+		String cacheId = ctx.getProperty(SERVLET_SESSION_ID);
+		if (cacheId == null || !cacheId.equals(httpSession.getId()) )
+		{
+			return false;
+		}
+		
+		Properties sessionCtx = (Properties) session.getAttribute(SESSION_CTX);
+		if (sessionCtx != null) 
+		{
+			if (Env.getAD_Client_ID(sessionCtx) != Env.getAD_Client_ID(ctx))
+			{
+				return false;
+			}
+			if (Env.getAD_User_ID(sessionCtx) != Env.getAD_User_ID(ctx))
+			{
+				return false;
+			}			
+			if (Env.getAD_Role_ID(sessionCtx) != Env.getAD_Role_ID(ctx))
+			{
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }

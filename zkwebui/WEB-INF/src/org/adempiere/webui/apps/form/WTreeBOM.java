@@ -59,20 +59,21 @@ import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
-import org.zkoss.zkex.zul.West;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.DefaultTreeNode;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
+import org.zkoss.zul.West;
 import org.zkoss.zul.Separator;
-import org.zkoss.zul.SimpleTreeNode;
 import org.zkoss.zul.Space;
 import org.zkoss.zul.Tree;
+import org.zkoss.zul.TreeNode;
 import org.zkoss.zul.Treecol;
 import org.zkoss.zul.Treecols;
 import org.zkoss.zul.Treeitem;
 
-public class WTreeBOM extends TreeBOM implements IFormController, EventListener {
+public class WTreeBOM extends TreeBOM implements IFormController, EventListener<Event> {
 	
 	private static final String[] LISTENER_EVENTS = {Events.ON_CLICK, Events.ON_CHANGE, Events.ON_OK, Events.ON_SELECT, Events.ON_SELECTION, Events.ON_DOUBLE_CLICK};
 	private int         	m_WindowNo = 0;
@@ -229,7 +230,8 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 		mainLayout.appendChild(center);
 		center.appendChild(dataPane);
 		dataPane.appendChild(tableBOM);
-		center.setFlex(true);
+		dataPane.setHflex("1");
+		dataPane.setVflex("1");
 		center.setAutoscroll(true);
 	}
 	
@@ -264,8 +266,11 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 		if (event.getTarget() instanceof Tree )	
 		{
 			Treeitem ti = m_tree.getSelectedItem(); 
-			if (ti == null)
-				ADialog.beep();
+			if (ti == null) {
+				//ADialog.beep();
+				// TODO: review what is this beep for - no zk6 equivalent
+				log.log(Level.WARNING, "WTreeBOM.onEvent treeItem=null");
+			}			
 			else
 			{
 				mySimpleTreeNode tn = (mySimpleTreeNode)ti.getValue();
@@ -315,10 +320,10 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 		line.add(uom); //  3 C_UOM_ID
 		line.add((BigDecimal) (new BigDecimal(1)).setScale(4, BigDecimal.ROUND_HALF_UP).stripTrailingZeros());  //  4 QtyBOM
 
-		// dummy root node, as first node is not displayed in tree  
-		mySimpleTreeNode parent = new mySimpleTreeNode("Root",new ArrayList<Object>());
+		// dummy root node, as first node is not displayed in tree
+		mySimpleTreeNode parent = new mySimpleTreeNode("Root",new ArrayList<TreeNode<Object>>());
 		//m_root = parent;
-		m_root = new mySimpleTreeNode((Vector<Object>)line,new ArrayList<Object>());
+		m_root = new mySimpleTreeNode((Vector<Object>)line,new ArrayList<TreeNode<Object>>());
 		parent.getChildren().add(m_root);
 
 		dataBOM.clear();
@@ -382,7 +387,9 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 			m_tree.setModel(model);
 		}
 		
-		int[] path = m_tree.getModel().getPath(parent, m_root);
+		//TODO: check zk6 - was:
+		//int[] path = m_tree.getModel().getPath(parent, m_root);
+		int[] path = m_tree.getModel().getPath(m_root);
 		Treeitem ti = m_tree.renderItemByPath(path);
 		m_tree.setSelectedItem(ti);
 		ti.setOpen(true);
@@ -441,7 +448,7 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 		line.add(uom); //  3 C_UOM_ID
 		line.add((BigDecimal) ((bomline.getBOMQty()!=null) ? bomline.getBOMQty() : new BigDecimal(0)).setScale(4, BigDecimal.ROUND_HALF_UP).stripTrailingZeros());  //  4 QtyBOM
 
-		mySimpleTreeNode child = new mySimpleTreeNode(line,new ArrayList<Object>());
+		mySimpleTreeNode child = new mySimpleTreeNode(line,new ArrayList<TreeNode<Object>>());
 		parent.getChildren().add(child);
 		
 		if(m_selected_id == bomline.getM_Product_ID() || getM_Product_ID() == bomline.getM_Product_ID())		
@@ -472,7 +479,7 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
 		if(m_selected_id == bom.getM_ProductBOM_ID() || getM_Product_ID() == bom.getM_ProductBOM_ID())		
 			dataBOM.add(line);
 
-		mySimpleTreeNode child = new mySimpleTreeNode(line,new ArrayList<Object>()); 
+		mySimpleTreeNode child = new mySimpleTreeNode(line,new ArrayList<TreeNode<Object>>()); 
 		parent.getChildren().add(child);
 
 		if(reload)  return;
@@ -532,10 +539,10 @@ public class WTreeBOM extends TreeBOM implements IFormController, EventListener 
  *  - Override toString method for display
  *  
  */
-class mySimpleTreeNode extends SimpleTreeNode
+class mySimpleTreeNode extends DefaultTreeNode<Object>
 {
 
-	public mySimpleTreeNode(Object data, List<Object> children) {
+	public mySimpleTreeNode(Object data, List<TreeNode<Object>> children) {
 		
 		super(data, children);
 		

@@ -44,7 +44,7 @@ import org.zkoss.zul.Vbox;
  * @date    Feb 25, 2007
  * @version $Revision: 0.10 $
  */
-public class UserPanel extends Vbox  implements EventListener
+public class UserPanel extends Vbox  implements EventListener<Event>
 {
 
 	private static final long serialVersionUID = -45350536628290540L;
@@ -66,7 +66,8 @@ public class UserPanel extends Vbox  implements EventListener
 
     private void init()
     {
-    	this.setStyle("text-align:right");
+    	this.setSclass("desktop-user-panel");
+    	
 
     	// Elaine 2008/11/07 - fix the layout problem in IE7
     	this.setWidth("100%");
@@ -74,7 +75,6 @@ public class UserPanel extends Vbox  implements EventListener
     	//
 
     	lblUserNameValue.setValue(getUserName() + "@" + getClientName() + "." + getOrgName());
-    	lblUserNameValue.setStyle("text-align:right");
     	LayoutUtils.addSclass("desktop-header-font", lblUserNameValue);
     	this.appendChild(lblUserNameValue);
 
@@ -82,27 +82,26 @@ public class UserPanel extends Vbox  implements EventListener
 
     	preference.setLabel(Msg.getMsg(Env.getCtx(), "Preference"));
     	preference.addEventListener(Events.ON_CLICK, this);
-    	preference.setStyle("text-align:right");
     	LayoutUtils.addSclass("desktop-header-font", preference);
     	preference.setParent(hbox);
 
     	Separator sep = new Separator("vertical");
     	sep.setBar(true);
+    	sep.setHeight("13px");
     	sep.setParent(hbox);
 
     	role.setLabel(this.getRoleName());
-    	role.addEventListener(Events.ON_CLICK, this);
-    	role.setStyle("text-align:right");
+    	role.addEventListener(Events.ON_CLICK, this);   	
     	LayoutUtils.addSclass("desktop-header-font", role);
     	role.setParent(hbox);
 
     	sep = new Separator("vertical");
     	sep.setBar(true);
+    	sep.setHeight("13px");
     	sep.setParent(hbox);
 
     	logout.setLabel(Msg.getMsg(Env.getCtx(),"Logout"));
     	logout.addEventListener(Events.ON_CLICK, this);
-    	logout.setStyle("text-align:right");
     	LayoutUtils.addSclass("desktop-header-font", logout);
     	logout.setParent(hbox);
 

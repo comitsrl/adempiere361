@@ -24,9 +24,10 @@ import org.adempiere.webui.window.AboutWindow;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.West;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Button;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.West;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Vbox;
 
@@ -39,12 +40,13 @@ import org.zkoss.zul.Vbox;
  * @version $Revision: 0.20 $
  */
 
-public class HeaderPanel extends Panel implements EventListener
+public class HeaderPanel extends Panel implements EventListener<Event>
 {
 	private static final long serialVersionUID = -2351317624519209484L;
 
-	private Image image = new Image();
-
+	private Image image;
+	private Button btnMenu;
+	
     public HeaderPanel()
     {
         super();
@@ -57,7 +59,7 @@ public class HeaderPanel extends Panel implements EventListener
 
     	UserPanel userPanel = new UserPanel();
 
-    	image.setSrc(ThemeManager.getSmallLogo());
+    	image  = new Image(ThemeManager.getSmallLogo());
     	image.addEventListener(Events.ON_CLICK, this);
     	image.setStyle("cursor: pointer;");
 
@@ -86,7 +88,8 @@ public class HeaderPanel extends Panel implements EventListener
     	userPanel.setWidth("100%");
     	userPanel.setHeight("100%");
     	userPanel.setStyle("position: absolute");
-    	center.setFlex(true);
+    	userPanel.setVflex("1");
+    	userPanel.setHflex("1");
     	LayoutUtils.addSclass("desktop-header-right", center);
     	//the following doesn't work when declare as part of the header-right style
     	center.setStyle("background-color: transparent; border: none;");
@@ -98,7 +101,7 @@ public class HeaderPanel extends Panel implements EventListener
 			{
 				AboutWindow w = new AboutWindow();
 				w.setPage(this.getPage());
-				w.doModal();
+				w.doHighlighted();
 			}
 		}
 

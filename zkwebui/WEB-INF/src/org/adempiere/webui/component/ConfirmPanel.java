@@ -229,24 +229,24 @@ public final class ConfirmPanel extends Hbox
     private void init()
     {
         pnlBtnLeft = new Panel();
-        pnlBtnLeft.setAlign("left");
 
+        pnlBtnLeft.setSclass("confirm-panel-left");
         pnlBtnRight = new Panel();
-        pnlBtnRight.setAlign("right");
-
+        pnlBtnRight.setSclass("confirm-panel-right");
+        
         hboxBtnRight = new Hbox();
         hboxBtnRight.appendChild(pnlBtnRight);
-        hboxBtnRight.setWidth("100%");
-        hboxBtnRight.setStyle("text-align:right");
+        hboxBtnRight.setPack("end");
+        hboxBtnRight.setHflex("1");
 
         hboxBtnLeft = new Hbox();
         hboxBtnLeft.appendChild(pnlBtnLeft);
-        hboxBtnLeft.setWidth("100%");
-        hboxBtnLeft.setStyle("text-align:left");
+        hboxBtnLeft.setPack("start");
+        hboxBtnLeft.setHflex("1");
 
         this.appendChild(hboxBtnLeft);
         this.appendChild(hboxBtnRight);
-        this.setWidth("100%");
+        this.setSclass("confirm-panel");
     }
 
     /**
@@ -421,7 +421,7 @@ public final class ConfirmPanel extends Hbox
      * @param event event
      * @param listener listener
      */
-    public void addActionListener(String event, EventListener listener)
+    public void addActionListener(String event, EventListener<?> listener)
     {
         List<?> list1 = pnlBtnLeft.getChildren();
         List<?> list2 = pnlBtnRight.getChildren();
@@ -444,7 +444,7 @@ public final class ConfirmPanel extends Hbox
      * added to ease porting of swing form
      * @param listener
      */
-	public void addActionListener(EventListener listener) {
+	public void addActionListener(EventListener<?> listener) {
 		addActionListener(Events.ON_CLICK, listener);
 	}
 

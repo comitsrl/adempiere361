@@ -6,10 +6,17 @@ import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
+import org.adempiere.webui.LayoutUtils;
+import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.EditorBox;
+import org.adempiere.webui.event.ContextMenuEvent;
+import org.adempiere.webui.event.ContextMenuListener;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.event.ValueChangeEvent;
 import org.adempiere.webui.window.InfoSchedule;
 import org.adempiere.webui.window.WAssignmentDialog;
+import org.adempiere.webui.window.WFieldRecordInfo;
 import org.compiere.model.GridField;
 import org.compiere.model.MResourceAssignment;
 import org.compiere.util.CLogger;
@@ -17,9 +24,10 @@ import org.compiere.util.DB;
 import org.compiere.util.DisplayType;
 import org.compiere.util.Env;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 
-public class WAssignmentEditor extends WEditor {
+public class WAssignmentEditor extends WEditor implements ContextMenuListener {
 	
 	private final static CLogger log = CLogger.getCLogger(WAssignmentEditor.class);
 	
@@ -31,7 +39,7 @@ public class WAssignmentEditor extends WEditor {
 	
 	private DateFormat			m_dateFormat = DisplayType.getDateFormat(DisplayType.DateTime);
 	private NumberFormat		m_qtyFormat = DisplayType.getNumberFormat(DisplayType.Quantity);
-
+	
 	public WAssignmentEditor(GridField gridField) {
 		super(new EditorBox(), gridField);
 		
@@ -41,6 +49,10 @@ public class WAssignmentEditor extends WEditor {
 	private void initComponents() {
 		getComponent().getTextbox().setReadonly(true);
 		getComponent().setButtonImage("images/Assignment10.png");
+		
+		popupMenu = new WEditorPopupMenu(true, false, false);
+		popupMenu.addMenuListener(this);
+		addChangeLogMenu(popupMenu);
 	}
 
 	
@@ -123,12 +135,12 @@ public class WAssignmentEditor extends WEditor {
 		}
 
 	}
-
+		
 	public void onEvent(Event event) throws Exception {
 		//
 		if (Events.ON_CLICK.equalsIgnoreCase(event.getName()))
 		{
-			Integer oldValue = (Integer)getValue();
+			final Integer oldValue = (Integer)getValue();
 			int S_ResourceAssignment_ID = oldValue == null ? 0 : oldValue.intValue();
 			MResourceAssignment ma = new MResourceAssignment(Env.getCtx(), S_ResourceAssignment_ID, null);
 			if (S_ResourceAssignment_ID == 0) {
@@ -143,23 +155,54 @@ public class WAssignmentEditor extends WEditor {
 			//	Start VAssignment Dialog
 			if (S_ResourceAssignment_ID != 0)
 			{
-				WAssignmentDialog vad = new WAssignmentDialog (ma, true, true);
-				ma = vad.getMResourceAssignment();
+				final WAssignmentDialog vad = new WAssignmentDialog (ma, true, true);
+				vad.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+					@Override
+					public void onEvent(Event event) throws Exception {
+						MResourceAssignment ma = vad.getMResourceAssignment();
+						processNewValue(oldValue, ma);
+					}
+				});
+				vad.setTitle(null);
+				LayoutUtils.openPopupWindow(this.getComponent().getTextbox(), vad);
 			}
 			//	Start InfoSchedule directly
 			else
 			{
-				InfoSchedule is = new InfoSchedule(ma, true);
-				ma = is.getMResourceAssignment();
+				final InfoSchedule is = new InfoSchedule(ma, true, new Callback<MResourceAssignment>() {
+					
+					@Override
+					public void onCallback(MResourceAssignment ma) {
+						processNewValue(oldValue, ma);
+					}
+				});
 			}
+		}
+	}
+
+	@Override
+	public void onMenu(ContextMenuEvent evt) {
+		if (WEditorPopupMenu.CHANGE_LOG_EVENT.equals(evt.getContextEvent()))
+		{
+			WFieldRecordInfo.start(gridField);
+		} else if (WEditorPopupMenu.ZOOM_EVENT.equals(evt.getContextEvent()))
+		{
+			actionZoom();
+		}
+		
+	}
+
+	private void actionZoom() {
+		AEnv.zoom(gridField.getGridTab().getAD_Table_ID(), (Integer)getValue());
+	}
 	
-			//	Set Value
-			if (ma != null && ma.getS_ResourceAssignment_ID() != 0)
-			{
-				setValue(new Integer(ma.getS_ResourceAssignment_ID()));
-				ValueChangeEvent vce = new ValueChangeEvent(this, gridField.getColumnName(), oldValue, getValue());
-				fireValueChange(vce);
-			}
+	private void processNewValue(final Integer oldValue, MResourceAssignment ma) {
+		// Set Value
+		if (ma != null && ma.getS_ResourceAssignment_ID() != 0)
+		{
+			setValue(new Integer(ma.getS_ResourceAssignment_ID()));
+			ValueChangeEvent vce = new ValueChangeEvent(WAssignmentEditor.this, gridField.getColumnName(), oldValue, getValue());
+			fireValueChange(vce);
 		}
 	}
 

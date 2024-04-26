@@ -25,18 +25,16 @@ import org.adempiere.webui.component.Textbox;
 import org.adempiere.webui.component.Window;
 import org.adempiere.webui.event.ContextMenuEvent;
 import org.adempiere.webui.event.ContextMenuListener;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.event.ValueChangeEvent;
 import org.adempiere.webui.session.SessionManager;
 import org.adempiere.webui.window.WFieldRecordInfo;
 import org.adempiere.webui.window.WTextEditorDialog;
 import org.compiere.model.GridField;
-import org.compiere.model.MRole;
 import org.compiere.util.DisplayType;
-import org.compiere.util.Env;
-import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zul.Menuitem;
 
 /**
  *
@@ -46,15 +44,12 @@ import org.zkoss.zul.Menuitem;
  */
 public class WStringEditor extends WEditor implements ContextMenuListener
 {
-    private static final String EDITOR_EVENT = "EDITOR";
-
 	private static final String[] LISTENER_EVENTS = {Events.ON_CHANGE, Events.ON_OK};
 
     private String oldValue;
 
-    private WEditorPopupMenu	popupMenu;
-
-    private boolean tableEditor = false;
+    @SuppressWarnings("unused")
+	private boolean tableEditor = false;
 
     /**
      * to ease porting of swing form
@@ -140,18 +135,10 @@ public class WStringEditor extends WEditor implements ContextMenuListener
 	        if (getComponent() instanceof Textbox)
 	        	((Textbox)getComponent()).setObscureType(obscureType);
 
-	        popupMenu = new WEditorPopupMenu(false, false, true);
-	        Menuitem editor = new Menuitem(Msg.getMsg(Env.getCtx(), "Editor"), "images/Editor16.png");
-	        editor.setAttribute("EVENT", EDITOR_EVENT);
-	        editor.addEventListener(Events.ON_CLICK, popupMenu);
-	        popupMenu.appendChild(editor);
-	        
-	        if (gridField != null && gridField.getGridTab() != null)
-			{
-				WFieldRecordInfo.addMenu(popupMenu);
-			}
+	        popupMenu = new WEditorPopupMenu(false, false, isShowPreference());
+	        addTextEditorMenu(popupMenu);
+	        addChangeLogMenu(popupMenu);
 
-	        getComponent().setContext(popupMenu.getId());
 
 	        if (gridField.isAutocomplete()) {
 	        	Combobox combo = (Combobox)getComponent();
@@ -166,7 +153,7 @@ public class WStringEditor extends WEditor implements ContextMenuListener
 		}
     }
 
-    public void onEvent(Event event)
+	public void onEvent(Event event)
     {
     	if (Events.ON_CHANGE.equals(event.getName()) || Events.ON_OK.equals(event.getName()))
     	{
@@ -227,32 +214,32 @@ public class WStringEditor extends WEditor implements ContextMenuListener
         return LISTENER_EVENTS;
     }
 
-    public WEditorPopupMenu getPopupMenu()
-	{
-	   	return popupMenu;
-	}
-
     public void onMenu(ContextMenuEvent evt)
 	{
 		if (WEditorPopupMenu.PREFERENCE_EVENT.equals(evt.getContextEvent()))
 		{
-			if (MRole.getDefault().isShowPreference())
+			if (isShowPreference())
 				ValuePreference.start (this.getGridField(), getValue());
 			return;
 		}
-		else if (EDITOR_EVENT.equals(evt.getContextEvent()))
+		else if (WEditorPopupMenu.EDITOR_EVENT.equals(evt.getContextEvent()))
 		{
-			WTextEditorDialog dialog = new WTextEditorDialog(this.getColumnName(), getDisplay(),
+			final WTextEditorDialog dialog = new WTextEditorDialog(this.getColumnName(), getDisplay(),
 					isReadWrite(), gridField.getFieldLength());
-			dialog.setAttribute(Window.MODE_KEY, Window.MODE_MODAL);
+			dialog.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
+			dialog.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+				@Override
+				public void onEvent(Event event) throws Exception {
+					if (!dialog.isCancelled()) {
+						getComponent().setText(dialog.getText());
+						String newText = getComponent().getValue();
+						ValueChangeEvent changeEvent = new ValueChangeEvent(WStringEditor.this, WStringEditor.this.getColumnName(), oldValue, newText);
+						WStringEditor.super.fireValueChange(changeEvent);
+						oldValue = newText;
+					}
+				}
+			});
 			SessionManager.getAppDesktop().showWindow(dialog);
-			if (!dialog.isCancelled()) {
-				getComponent().setText(dialog.getText());
-				String newText = getComponent().getValue();
-		        ValueChangeEvent changeEvent = new ValueChangeEvent(this, this.getColumnName(), oldValue, newText);
-		        super.fireValueChange(changeEvent);
-		        oldValue = newText;
-			}
 		}
 		else if (WEditorPopupMenu.CHANGE_LOG_EVENT.equals(evt.getContextEvent()))
 		{

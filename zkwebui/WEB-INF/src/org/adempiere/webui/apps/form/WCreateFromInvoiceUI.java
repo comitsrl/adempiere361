@@ -45,13 +45,12 @@ import org.compiere.util.KeyNamePair;
 import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
 import org.zkoss.zul.Space;
 
-public class WCreateFromInvoiceUI extends CreateFromInvoice implements EventListener, ValueChangeListener, SystemIDs
+public class WCreateFromInvoiceUI extends CreateFromInvoice implements EventListener<Event>, ValueChangeListener, SystemIDs
 {
-	private static final long serialVersionUID = 1L;
 	
 	private WCreateFromWindow window;
 	
@@ -378,5 +377,10 @@ public class WCreateFromInvoiceUI extends CreateFromInvoice implements EventList
 	public void closeWindow()
 	{
 		window.dispose();
+	}
+	
+	@Override
+	public Object getWindow() {
+		return window;
 	}
 }

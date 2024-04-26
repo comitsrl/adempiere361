@@ -46,6 +46,7 @@ import org.adempiere.webui.component.Window;
 import org.adempiere.webui.editor.WButtonEditor;
 import org.adempiere.webui.editor.WDateEditor;
 import org.adempiere.webui.editor.WNumberEditor;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.window.FDialog;
 import org.compiere.model.GridTab;
 import org.compiere.model.MCash;
@@ -71,11 +72,12 @@ import org.compiere.util.ValueNamePair;
 import org.zkoss.zk.au.out.AuEcho;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Space;
 
 /**
@@ -110,7 +112,7 @@ import org.zkoss.zul.Space;
  * 				<li>BF [ 1789949 ] VPayment: is displaying just "CashNotCreated"
  */
 public class WPayment extends Window
-	implements EventListener
+	implements EventListener<Event>, DialogEvents
 {
 	/**
 	 * 
@@ -129,7 +131,6 @@ public class WPayment extends Window
 	{
 		super();
 		this.setTitle(Msg.getMsg(Env.getCtx(), "Payment"));
-		this.setAttribute("mode", "modal");
 		m_WindowNo = WindowNo;
 		m_isSOTrx = "Y".equals(Env.getContext(Env.getCtx(), WindowNo, "IsSOTrx"));
 		m_mTab = mTab;
@@ -939,6 +940,7 @@ public class WPayment extends Window
 		}
 	}	//	actionPerformed
 
+	
 	public void lockUI() {
 		if (m_isLocked) return;
 		

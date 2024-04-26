@@ -31,7 +31,6 @@ import org.adempiere.webui.event.ValueChangeEvent;
 import org.adempiere.webui.window.WFieldRecordInfo;
 import org.compiere.model.GridField;
 import org.compiere.model.Lookup;
-import org.compiere.model.MRole;
 import org.compiere.util.CLogger;
 import org.compiere.util.DisplayType;
 import org.compiere.util.Env;
@@ -63,7 +62,6 @@ ContextMenuListener, IZoomableEditor
     
     private Lookup  lookup;
     private Object oldValue;
-    private WEditorPopupMenu popupMenu;
        
     public WTableDirEditor(GridField gridField)
     {
@@ -144,12 +142,8 @@ ContextMenuListener, IZoomableEditor
         
         if (gridField != null) 
         {
-        	popupMenu = new WEditorPopupMenu(zoom, true, true);
-        	if (gridField != null &&  gridField.getGridTab() != null)
-    		{
-    			WFieldRecordInfo.addMenu(popupMenu);
-    		}
-        	getComponent().setContext(popupMenu.getId());
+        	popupMenu = new WEditorPopupMenu(zoom, true, isShowPreference());
+        	addChangeLogMenu(popupMenu);
         }
     }
 
@@ -359,11 +353,6 @@ ContextMenuListener, IZoomableEditor
     public void intervalRemoved(ListDataEvent e)
     {}
     
-    public WEditorPopupMenu getPopupMenu()
-    {
-    	return popupMenu;
-    }
-    
     public void actionRefresh()
     {    	
 		if (lookup != null)
@@ -400,7 +389,7 @@ ContextMenuListener, IZoomableEditor
 		}
 		else if (WEditorPopupMenu.PREFERENCE_EVENT.equals(evt.getContextEvent()))
 		{
-			if (MRole.getDefault().isShowPreference())
+			if (isShowPreference())
 				ValuePreference.start (this.getGridField(), getValue());
 			return;
 		}

@@ -55,7 +55,7 @@ import org.zkoss.zul.ListitemRendererExt;
  * @author Andrew Kimball
  *
  */
-public class WListItemRenderer implements ListitemRenderer, EventListener, ListitemRendererExt
+public class WListItemRenderer implements ListitemRenderer<Object>, EventListener<Event>, ListitemRendererExt
 {
 	/** Array of listeners for changes in the table components. */
 	protected ArrayList<TableValueChangeListener> m_listeners =
@@ -70,7 +70,7 @@ public class WListItemRenderer implements ListitemRenderer, EventListener, Listi
 
     private Listbox listBox;
 
-	private EventListener cellListener;
+	private EventListener<Event> cellListener;
 
 	/**
 	 * Default constructor.
@@ -122,9 +122,10 @@ public class WListItemRenderer implements ListitemRenderer, EventListener, Listi
 	/* (non-Javadoc)
 	 * @see org.zkoss.zul.ListitemRenderer#render(org.zkoss.zul.Listitem, java.lang.Object)
 	 */
-	public void render(Listitem item, Object data) throws Exception
+	@Override
+	public void render(Listitem item, Object data, int index) throws Exception
 	{
-		render((ListItem)item, data);
+		render((ListItem)item, data, index);
 	}
 
 	/**
@@ -137,7 +138,7 @@ public class WListItemRenderer implements ListitemRenderer, EventListener, Listi
 	 * @throws Exception
 	 * @see {@link #render(Listitem, Object)}
 	 */
-	private void render(ListItem item, Object data)
+	private void render(ListItem item, Object data, int index)
 	{
 		Listcell listcell = null;
 		int colIndex = 0;
@@ -759,7 +760,7 @@ public class WListItemRenderer implements ListitemRenderer, EventListener, Listi
 		}
 	}
 
-	class CellListener implements EventListener {
+	class CellListener implements EventListener<Event> {
 
 		public CellListener() {
 		}

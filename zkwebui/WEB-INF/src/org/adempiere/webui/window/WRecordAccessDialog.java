@@ -46,7 +46,7 @@ import org.zkoss.zul.Toolbarbutton;
  *  @author <a href="mailto:elaine.tan@idalica.com">Elaine</a>
  *  @date December 9, 2008
  */
-public class WRecordAccessDialog extends Window implements EventListener 
+public class WRecordAccessDialog extends Window implements EventListener<Event> 
 {
 	/**
 	 * 
@@ -63,7 +63,7 @@ public class WRecordAccessDialog extends Window implements EventListener
 	{
 		super();
 		setTitle(Msg.translate(Env.getCtx(), "RecordAccessDialog"));
-		setAttribute("modal", Boolean.TRUE);
+		setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 		setBorder("normal");		
 		setWidth("600px");
 		setSizable(true);
@@ -80,7 +80,6 @@ public class WRecordAccessDialog extends Window implements EventListener
 		{
 			log.log(Level.SEVERE, "", e);
 		}
-		AEnv.showWindow(this);
 	}	//	RecordAccessDialog
 
 	private int				m_AD_Table_ID;

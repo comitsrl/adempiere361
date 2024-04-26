@@ -18,6 +18,7 @@ package org.adempiere.webui.apps.form;
 
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.apps.BusyDialog;
 import org.adempiere.webui.component.ConfirmPanel;
 import org.adempiere.webui.component.Grid;
@@ -43,9 +44,9 @@ import org.zkoss.zk.au.out.AuEcho;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.South;
 
 /**
  *	Merge Dialog.
@@ -54,7 +55,7 @@ import org.zkoss.zkex.zul.South;
  *	@author Jorg Janke
  *	@version $Id: VMerge.java,v 1.2 2006/07/30 00:51:28 jjanke Exp $
  */
-public class WMerge extends Merge implements IFormController, EventListener
+public class WMerge extends Merge implements IFormController, EventListener<Event>
 {
 	/**
 	 * 
@@ -238,17 +239,28 @@ public class WMerge extends Merge implements IFormController, EventListener
 
 		m_msg = Msg.getMsg(Env.getCtx(), "MergeFrom") + " = " + from_Info
 			+ "\n" + Msg.getMsg(Env.getCtx(), "MergeTo") + " = " + to_Info;				
-		if (!FDialog.ask(m_WindowNo, form, "MergeQuestion", m_msg))
-			return;
 		
-		updateDeleteTable(columnName);
+		final String columnNameRef = columnName;
+		final int fromIdRef = from_ID;
+		final int toIdRef = to_ID;
+		FDialog.ask(m_WindowNo, form, "MergeQuestion", m_msg, new Callback<Boolean>() {
+			
+			@Override
+			public void onCallback(Boolean result)
+			{
+				if (result)
+				{
+					progressWindow = new BusyDialog();
+					progressWindow.setPage(form.getPage());
+					progressWindow.doHighlighted();
+					
+					runnable = new MergeRunnable(columnNameRef, fromIdRef, toIdRef);
+					Clients.response(new AuEcho(form, "runProcess", null));
+				}
+			}
+		});
 
-		progressWindow = new BusyDialog();
-		progressWindow.setPage(form.getPage());
-		progressWindow.doHighlighted();
 		
-		runnable = new MergeRunnable(columnName, from_ID, to_ID);
-		Clients.response(new AuEcho(form, "runProcess", null));
 	}   //  actionPerformed
 	
 	class MergeRunnable implements Runnable {
@@ -265,7 +277,7 @@ public class WMerge extends Merge implements IFormController, EventListener
 				m_success = merge (columnName, from_ID, to_ID);
 				postMerge(columnName, to_ID);
 			} finally{
-				Clients.showBusy(null, false);
+				Clients.clearBusy();
 				Clients.response(new AuEcho(form, "onAfterProcess", null));
 			}
 		}		

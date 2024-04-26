@@ -21,6 +21,7 @@ import java.sql.Clob;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
+import org.adempiere.webui.AdempiereWebUI;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.Panel;
@@ -33,10 +34,11 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zk.ui.event.UploadEvent;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Filedownload;
 import org.zkoss.zul.Fileupload;
 import org.zkoss.zul.Hbox;
@@ -47,7 +49,7 @@ import org.zkoss.zul.Iframe;
  * @author Low Heng Sin
  *
  */
-public class WMediaDialog extends Window implements EventListener
+public class WMediaDialog extends Window implements EventListener<Event>
 {
 	/**
 	 * 
@@ -186,6 +188,8 @@ public class WMediaDialog extends Window implements EventListener
 		
 		confirmPanel.appendChild(bCancel);
 		confirmPanel.appendChild(bOk);
+		
+		addEventListener(Events.ON_UPLOAD, this);
 	}
 	
 	/**
@@ -307,6 +311,11 @@ public class WMediaDialog extends Window implements EventListener
 		{
 			save();
 		}
+		else if (e instanceof UploadEvent)
+		{
+			UploadEvent ue = (UploadEvent) e;
+			processUploadMedia(ue.getMedia());
+		}
 	}	//	onEvent
 	
 	/**************************************************************************
@@ -315,21 +324,14 @@ public class WMediaDialog extends Window implements EventListener
 	
 	private void loadFile()
 	{
-		log.info("");
-		
-		Media media = null;
-		
-		try 
-		{
-			media = Fileupload.get(); 
-			
-			if (media == null)
-				return;
-		}
-		catch (InterruptedException e) 
-		{
-			e.printStackTrace();
-		}
+		Media media = Fileupload.get();
+		if (AdempiereWebUI.isEventThreadEnabled())
+			processUploadMedia(media);
+	} //      getFileName
+
+	private void processUploadMedia(Media media) {
+		if (media == null)
+			return;
 	
 		String fileName = media.getName(); 
 		log.config(fileName);
@@ -338,7 +340,7 @@ public class WMediaDialog extends Window implements EventListener
 		m_data = media.getByteData();
 		displayData();
 		
-	}	//	getFileName
+	}
 
 	/**
 	 *	download

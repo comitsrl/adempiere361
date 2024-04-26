@@ -17,7 +17,6 @@
 
 package org.adempiere.webui.component;
 
-import org.zkoss.zk.ui.Component;
 
 /**
  *
@@ -28,20 +27,13 @@ import org.zkoss.zk.ui.Component;
 public class Grid extends org.zkoss.zul.Grid
 {
 	private static final long serialVersionUID = -4483759833677794926L;
-	private boolean noStrip = false;
-	private String oddRowSclass;
 
     public Grid() {
 		super();
-		//cache default
-		oddRowSclass = super.getOddRowSclass();
-		super.setOddRowSclass(oddRowSclass);
 	}
 
 	public void makeNoStrip() {
-    	setStyle("border: none");
-    	setOddRowSclass(null);
-        noStrip = true;
+		setOddRowSclass("z-dummy");
     }
 
 	public Rows newRows() {
@@ -51,29 +43,4 @@ public class Grid extends org.zkoss.zul.Grid
 		return rows;
 	}    
 	
-	public boolean insertBefore(Component child, Component refChild) {
-		boolean b = super.insertBefore(child, refChild);
-		if (b && child instanceof Rows && noStrip) {
-			Rows rows = (Rows) child;
-			rows.setNoStrip(true);
-		}
-		return b;
-	}
-
-	@Override
-	public String getOddRowSclass() {
-		if (oddRowSclass == null)
-			return null;
-		else
-			return super.getOddRowSclass();
-	}
-
-	@Override
-	public void setOddRowSclass(String scls) {
-		if (scls != null && scls.length() == 0)
-			oddRowSclass = null;
-		else
-			oddRowSclass = scls;
-		super.setOddRowSclass(scls);
-	}
 }

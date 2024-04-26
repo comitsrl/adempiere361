@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.ConfirmPanel;
 import org.adempiere.webui.component.Grid;
@@ -54,13 +55,14 @@ import org.compiere.util.DB;
 import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Caption;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Groupbox;
@@ -73,10 +75,11 @@ import org.zkoss.zul.Vbox;
  * 	@author Low Heng Sin
  */
 public final class WAccountDialog extends Window
-	implements EventListener, DataStatusListener, ValueChangeListener, SystemIDs
+	implements EventListener<Event>, DataStatusListener, ValueChangeListener, SystemIDs
 {
 
 	private static final long serialVersionUID = 7999516267209766287L;
+	private Callback<Integer> m_callback;
 
 	/**
 	 * 	Constructor
@@ -85,17 +88,18 @@ public final class WAccountDialog extends Window
 	 *  @param C_AcctSchema_ID as
 	 */
 	public WAccountDialog (String title,
-		MAccountLookup mAccount, int C_AcctSchema_ID)
+		MAccountLookup mAccount, int C_AcctSchema_ID, Callback<Integer> callback)
 	{
 		super ();
 		this.setTitle(title);
 		this.setHeight("500px");
-		this.setWidth("700px");
+		this.setWidth("750px");
 
 		log.config("C_AcctSchema_ID=" + C_AcctSchema_ID
 			+ ", C_ValidCombination_ID=" + mAccount.C_ValidCombination_ID);
 		m_mAccount = mAccount;
 		m_C_AcctSchema_ID = C_AcctSchema_ID;
+		m_callback = callback;
 		m_WindowNo = SessionManager.getAppDesktop().registerWindow(this);
 		try
 		{
@@ -184,6 +188,7 @@ public final class WAccountDialog extends Window
 		//
 		Caption caption = new Caption(Msg.getMsg(Env.getCtx(),"Parameter"));
 		parameterPanel.appendChild(caption);
+		parameterPanel.setHflex("1");
 		parameterPanel.setStyle("background-color: transparent;");
 		toolBar.setOrient("vertical");
 		toolBar.setStyle("border: none; margin: 5px");
@@ -212,19 +217,9 @@ public final class WAccountDialog extends Window
 
 		Borderlayout layout = new Borderlayout();
 		layout.setParent(this);
-		if (AEnv.isFirefox2())
-		{
-			layout.setHeight("93%");
-			layout.setWidth("98%");
-			layout.setStyle("background-color: transparent; position: absolute;");
-			this.setStyle("position: relative;");
-		}
-		else
-		{
-			layout.setHeight("100%");
-			layout.setWidth("100%");
-			layout.setStyle("background-color: transparent;");
-		}
+		layout.setHeight("100%");
+		layout.setWidth("100%");
+		layout.setStyle("background-color: transparent;");
 
 		North nRegion = new North();
 		nRegion.setParent(layout);
@@ -251,7 +246,6 @@ public final class WAccountDialog extends Window
 
 		this.setBorder("normal");
 		this.setClosable(false);
-		this.setAttribute("modal", Boolean.TRUE);
 
 		this.setSizable(true);
 	}	//	jbInit
@@ -306,7 +300,7 @@ public final class WAccountDialog extends Window
 		parameterLayout.makeNoStrip();
 		parameterLayout.setOddRowSclass("even");
 		parameterLayout.setParent(parameterPanel);
-		parameterLayout.setStyle("background-color: transparent;");
+		parameterLayout.setStyle("background-color: transparent; margin:none; border:none; padding:none;");
 
 		m_rows = new Rows();
 		m_rows.setParent(parameterLayout);
@@ -497,6 +491,7 @@ public final class WAccountDialog extends Window
 		m_row.appendChild(div);
 
 		m_row.appendChild(editor.getComponent());
+		editor.fillHorizontal();
 		editor.dynamicDisplay();
 		//
 		m_newRow = !m_newRow;
@@ -589,6 +584,17 @@ public final class WAccountDialog extends Window
 		this.onClose();
 	}	//	dispose
 
+	/* (non-Javadoc)
+	 * @see org.adempiere.webui.component.Window#onPageDetached(org.zkoss.zk.ui.Page)
+	 */
+	@Override
+	public void onPageDetached(Page page) {
+		super.onPageDetached(page);
+		if (m_callback != null) {
+			m_callback.onCallback(getValue());
+		}
+	}
+	
 	/**
 	 *	Save Selection
 	 */

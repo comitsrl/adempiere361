@@ -20,10 +20,10 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Vbox;
 
@@ -32,7 +32,7 @@ import org.zkoss.zul.Vbox;
  * @author hengsin
  *
  */
-public class Accordion extends Borderlayout implements EventListener {
+public class Accordion extends Borderlayout implements EventListener<Event> {
 	
 	private static final long serialVersionUID = 5898232602746332810L;
 	
@@ -54,8 +54,7 @@ public class Accordion extends Borderlayout implements EventListener {
 		north.setCollapsible(false);
 		
 		Center center = new Center();
-		center.setFlex(true);
-		appendChild(new Center());
+		appendChild(center);
 		
 		South south = new South();
 		appendChild(south);

@@ -49,10 +49,10 @@ import org.zkoss.zhtml.Text;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Listhead;
 import org.zkoss.zul.Listheader;
@@ -70,7 +70,7 @@ import org.zkoss.zul.Listheader;
  * Zk Port
  * @author Low Heng Sin
  */
-public class WRecordInfo extends Window implements EventListener
+public class WRecordInfo extends Window implements EventListener<Event>
 {
 	/**
 	 * 
@@ -86,7 +86,6 @@ public class WRecordInfo extends Window implements EventListener
 	{
 		super ();
 		this.setTitle(title);
-		this.setAttribute("modal", Boolean.TRUE);
 		this.setWidth("500px");
 		this.setHeight("400px");
 		this.setBorder("normal");
@@ -101,6 +100,7 @@ public class WRecordInfo extends Window implements EventListener
 		{
 			log.log(Level.SEVERE, "", e);
 		}
+		this.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 		AEnv.showCenterScreen(this);
 	}	//	RecordInfo
 

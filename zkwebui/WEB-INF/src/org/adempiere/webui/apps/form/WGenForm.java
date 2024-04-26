@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.LayoutUtils;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.apps.BusyDialog;
@@ -57,10 +58,10 @@ import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Html;
 
@@ -68,7 +69,7 @@ import org.zkoss.zul.Html;
  * Generate custom form window
  * 
  */
-public class WGenForm extends ADForm implements EventListener, WTableModelListener
+public class WGenForm extends ADForm implements EventListener<Event>, WTableModelListener
 {
 	/**
 	 * 
@@ -114,7 +115,8 @@ public class WGenForm extends ADForm implements EventListener, WTableModelListen
 			center.setStyle("border: none");
 			contentPane.appendChild(center);
 			center.appendChild(tabbedPane);
-			center.setFlex(true);
+			tabbedPane.setVflex("1");
+			tabbedPane.setHflex("1");
 			South south = new South();
 			south.setStyle("border: none");
 			contentPane.appendChild(south);
@@ -166,7 +168,8 @@ public class WGenForm extends ADForm implements EventListener, WTableModelListen
 		Center center = new Center();
 		selPanel.appendChild(center);
 		center.appendChild(miniTable);
-		center.setFlex(true);
+		miniTable.setVflex("1");
+		miniTable.setHflex("1");
 		miniTable.setHeight("99%");
 		confirmPanelSel.addActionListener(this);
 		//
@@ -206,7 +209,7 @@ public class WGenForm extends ADForm implements EventListener, WTableModelListen
 
 	public void postQueryEvent() 
     {
-		Clients.showBusy(Msg.getMsg(Env.getCtx(), "Processing"), true);
+		Clients.showBusy(Msg.getMsg(Env.getCtx(), "Processing"));
     	Events.echoEvent("onExecuteQuery", this, null);
     }
     
@@ -221,7 +224,7 @@ public class WGenForm extends ADForm implements EventListener, WTableModelListen
     	}
     	finally
     	{
-    		Clients.showBusy(null, false);
+    		Clients.clearBusy();
     	}
     }
     
@@ -339,11 +342,18 @@ public class WGenForm extends ADForm implements EventListener, WTableModelListen
 	public void onAfterProcess()
 	{
 		//	OK to print
-		if (FDialog.ask(getWindowNo(), this, genForm.getAskPrintMsg()))
-		{
-			Clients.showBusy("Processing...", true);
-			Clients.response(new AuEcho(this, "onPrint", null));			
-		}	//	OK to print
+		FDialog.ask(getWindowNo(), this, genForm.getAskPrintMsg(), new Callback<Boolean>() {
+			
+			@Override
+			public void onCallback(Boolean result)
+			{
+				if (result)
+				{
+					Clients.showBusy("Processing...");
+					Clients.response(new AuEcho(WGenForm.this, "onPrint", null));
+				}
+			}
+		});
 	}
 	
 	public void onPrint() 
@@ -378,14 +388,14 @@ public class WGenForm extends ADForm implements EventListener, WTableModelListen
 				File outFile = File.createTempFile(genForm.getClass().getName(), ".pdf");					
 				AEnv.mergePdf(pdfList, outFile);
 
-				Clients.showBusy(null, false);
+				Clients.clearBusy();
 				Window win = new SimplePDFViewer(getFormName(), new FileInputStream(outFile));
 				SessionManager.getAppDesktop().showWindow(win, "center");
 			} catch (Exception e) {
 				log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 			}
 		} else if (pdfList.size() > 0) {
-			Clients.showBusy(null, false);
+			Clients.clearBusy();
 			try {
 				Window win = new SimplePDFViewer(getFormName(), new FileInputStream(pdfList.get(0)));
 				SessionManager.getAppDesktop().showWindow(win, "center");

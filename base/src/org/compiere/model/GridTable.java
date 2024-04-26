@@ -594,6 +594,11 @@ public class GridTable extends AbstractTableModel
 			return false;
 		}
 
+		if (!m_open)
+		{
+			m_open = true;
+		}
+		
 		//	Start Loading
 		m_loader = new Loader();
 		m_rowCount = m_loader.open(maxRows);
@@ -619,7 +624,6 @@ public class GridTable extends AbstractTableModel
 		}
 		else
 			m_loader.close();
-		m_open = true;
 		//
 		m_changed = false;
 		m_rowChanged = -1;

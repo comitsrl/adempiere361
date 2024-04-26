@@ -72,7 +72,7 @@ import org.zkoss.zul.event.ZulEvents;
  * @author Elaine
  * @version	Info.java Adempiere Swing UI 3.4.1
  */
-public abstract class InfoPanel extends Window implements EventListener, WTableModelListener, ListModelExt
+public abstract class InfoPanel extends Window implements EventListener<Event>, WTableModelListener, ListModelExt<Object>
 {
 	
 	/**
@@ -130,6 +130,8 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 	{
 		InfoBPartnerPanel info = new InfoBPartnerPanel ( "", WindowNo,
 			!Env.getContext(Env.getCtx(),"IsSOTrx").equals("N"),false, "", false);
+		// FIXME En idempiere es sobre InfoPanel en lugar de InfoBPartnerPanel
+		info.setAttribute(Window.MODE_KEY, Window.MODE_EMBEDDED); 
 		AEnv.showWindow(info);
 	}   //  showBPartner
 
@@ -292,7 +294,7 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 	{
 		if (isLookup())
 		{
-			setAttribute(Window.MODE_KEY, Window.MODE_MODAL);
+			setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 			setBorder("normal");
 			setClosable(true);
 			int height = SessionManager.getAppDesktop().getClientInfo().desktopHeight * 85 / 100;
@@ -312,7 +314,7 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 		
         confirmPanel = new ConfirmPanel(true, true, false, true, true, true);  // Elaine 2008/12/16
         confirmPanel.addActionListener(Events.ON_CLICK, this);
-        confirmPanel.setStyle("border-top: 2px groove #444; padding-top: 4px");
+        confirmPanel.setHflex("1");
         
         // Elaine 2008/12/16
 		confirmPanel.getButton(ConfirmPanel.A_CUSTOMIZE).setVisible(hasCustomize());
@@ -330,6 +332,8 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
         this.addEventListener(Events.ON_OK, this);
 
         contentPanel.setOddRowSclass(null);
+        
+        this.setSclass("info-panel");
 	}  //  init
 	protected ConfirmPanel confirmPanel;
 	/** Master (owning) Window  */
@@ -644,7 +648,7 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 	}
 
     private void addDoubleClickListener() {
-		Iterator<?> i = contentPanel.getListenerIterator(Events.ON_DOUBLE_CLICK);
+    	Iterator<EventListener<? extends Event>> i = contentPanel.getListenerIterator(Events.ON_DOUBLE_CLICK);
 		while (i.hasNext()) {
 			if (i.next() == this)
 				return;
@@ -1218,7 +1222,7 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
 	        this.detach();
     }   //  dispose
         
-	public void sort(Comparator cmpr, boolean ascending) {
+	public void sort(Comparator<Object> cmpr, boolean ascending) {
 		WListItemRenderer.ColumnComparator lsc = (WListItemRenderer.ColumnComparator) cmpr;
 		if (m_useDatabasePaging)
 		{
@@ -1290,4 +1294,10 @@ public abstract class InfoPanel extends Window implements EventListener, WTableM
     		}
     	}
     }
+    
+	@Override
+	public String getSortDirection(Comparator<Object> cmpr) {
+		return "natural";
+	}
+
 }	//	Info

@@ -19,6 +19,7 @@ package org.adempiere.webui.window;
 import java.io.InputStream;
 import java.util.logging.Level;
 
+import org.adempiere.webui.AdempiereWebUI;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.Button;
 import org.adempiere.webui.component.ConfirmPanel;
@@ -34,10 +35,11 @@ import org.zkoss.util.media.Media;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zk.ui.event.UploadEvent;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Fileupload;
 import org.zkoss.zul.Image;
 import org.zkoss.zul.Separator;
@@ -50,7 +52,7 @@ import org.zkoss.zul.Separator;
  *  @author Low Heng Sin 
  *  
  */
-public class WImageDialog extends Window implements EventListener
+public class WImageDialog extends Window implements EventListener<Event>
 {
 	/**
 	 * 
@@ -148,12 +150,21 @@ public class WImageDialog extends Window implements EventListener
 		//
 		fileButton.addEventListener(Events.ON_CLICK, this);
 		confirmPanel.addActionListener(Events.ON_CLICK, this);
+		
+		addEventListener(Events.ON_UPLOAD, this);
 	}   //  init
 
 	public void onEvent(Event e) throws Exception {
-		if (e.getTarget() == fileButton)
+		
+		if (e instanceof UploadEvent)
+		{
+			UploadEvent ue = (UploadEvent) e;
+			processUploadMedia(ue.getMedia());
+		}
+		else if (e.getTarget() == fileButton)
+		{
 			cmd_file();
-
+		}		
 		else if (e.getTarget().getId().equals(ConfirmPanel.A_OK))
 		{
 			if (image.getContent() != null)
@@ -192,20 +203,14 @@ public class WImageDialog extends Window implements EventListener
 	private void cmd_file()
 	{
 		//  Show File Open Dialog
-		Media imageFile = null;
+		Media media = Fileupload.get();
+		if (AdempiereWebUI.isEventThreadEnabled())
+			processUploadMedia(media);
+	}   //  cmd_file
 		
-		try 
-		{
-			imageFile = Fileupload.get(); 
-			
-			if (imageFile == null)
-				return;
-		}
-		catch (InterruptedException e) 
-		{
-			log.warning(e.getLocalizedMessage());
+	private void processUploadMedia(Media imageFile) {
+		if (imageFile == null)
 			return;
-		}
 
 		String fileName = imageFile.getName();
 		
@@ -238,7 +243,7 @@ public class WImageDialog extends Window implements EventListener
 			m_mImage.setBinaryData(image.getContent().getByteData());
 		else
 			m_mImage.setBinaryData(null);
-	}   //  cmd_file
+	}
 
 	/**
 	 * 	Get Image ID

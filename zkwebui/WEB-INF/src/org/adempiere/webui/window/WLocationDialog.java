@@ -69,7 +69,7 @@ import org.zkoss.zk.ui.event.Events;
  * 				 - Show GoogleMap on Location Dialog (integrate approach from LBR)	
  * 				 - http://jira.idempiere.com/browse/IDEMPIERE-147
  **/
-public class WLocationDialog extends Window implements EventListener
+public class WLocationDialog extends Window implements EventListener<Event>
 {
 	/**
 	 * 
@@ -180,10 +180,11 @@ public class WLocationDialog extends Window implements EventListener
 		setRegion();
 		initLocation();
 		//               
-		this.setWidth("290px");
+		this.setWidth("380px");
 		this.setClosable(true);
 		this.setBorder("normal");
-		this.setAttribute("mode","modal");
+		this.setShadow(true);
+		this.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 	}
 
 	private void initComponents()

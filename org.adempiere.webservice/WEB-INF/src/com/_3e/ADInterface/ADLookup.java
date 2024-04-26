@@ -63,7 +63,7 @@ public class ADLookup {
 	}
 	
 	
-	public ArrayList GetLookupData()
+	public ArrayList<?> GetLookupData()
 	{
 		
 		return null;

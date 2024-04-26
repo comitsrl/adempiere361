@@ -46,9 +46,9 @@ import org.compiere.util.NamePair;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Listhead;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Menuitem;
@@ -57,7 +57,7 @@ import org.zkoss.zul.Menuitem;
  * Change History for field
  * @author Low Heng Sin
  */
-public class WFieldRecordInfo extends Window implements EventListener
+public class WFieldRecordInfo extends Window implements EventListener<Event>
 {
  	private static final long serialVersionUID = 3859352394520596098L;
 	private int AD_Table_ID;
@@ -75,7 +75,7 @@ public class WFieldRecordInfo extends Window implements EventListener
 	{
 		super ();
 		this.setTitle(title);
-		this.setAttribute("modal", Boolean.TRUE);
+		this.setAttribute(Window.MODE_KEY, Window.MODE_HIGHLIGHTED);
 		this.setWidth("640px");
 		this.setHeight("480px");
 		this.setBorder("normal");

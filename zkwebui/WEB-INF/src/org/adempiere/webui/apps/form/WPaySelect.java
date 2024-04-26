@@ -42,6 +42,7 @@ import org.adempiere.webui.panel.ADForm;
 import org.adempiere.webui.panel.CustomForm;
 import org.adempiere.webui.panel.IFormController;
 import org.adempiere.webui.session.SessionManager;
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.window.FDialog;
 import org.compiere.apps.form.PaySelect;
 import org.compiere.model.SystemIDs;
@@ -56,10 +57,10 @@ import org.zkoss.zk.ui.SuspendNotAllowedException;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.Clients;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Separator;
 import org.zkoss.zul.Space;
 
@@ -371,27 +372,33 @@ public class WPaySelect extends PaySelect
 		}
 
 		//  Ask to Post it
-		if (!FDialog.ask(m_WindowNo, form, "VPaySelectGenerate?", "(" + m_ps.getName() + ")"))
-			return;
-		
-		//  Prepare Process 
-		int AD_Proces_ID = PROCESS_C_PAYSELECTION_CREATEPAYMENT;	//	C_PaySelection_CreatePayment
-
-		//	Execute Process
-		ProcessModalDialog dialog = new ProcessModalDialog(this, m_WindowNo, 
-				AD_Proces_ID, X_C_PaySelection.Table_ID, m_ps.getC_PaySelection_ID(), false);
-		if (dialog.isValid()) {
-			try {
-				dialog.setWidth("500px");
-				dialog.setVisible(true);
-				dialog.setPage(form.getPage());
-				dialog.doModal();
-			} catch (SuspendNotAllowedException e) {
-				log.log(Level.SEVERE, e.getLocalizedMessage(), e);
-			} catch (InterruptedException e) {
-				log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+		FDialog.ask(m_WindowNo, form, "VPaySelectGenerate?", "(" + m_ps.getName() + ")", new Callback<Boolean>() {
+			
+			@Override
+			public void onCallback(Boolean result)
+			{
+				if (result)
+				{
+					//  Prepare Process
+					int AD_Proces_ID = PROCESS_C_PAYSELECTION_CREATEPAYMENT;        //      C_PaySelection_CreatePayment
+					
+					//Execute Process
+					ProcessModalDialog dialog = new ProcessModalDialog(WPaySelect.this, m_WindowNo,
+							AD_Proces_ID, X_C_PaySelection.Table_ID, m_ps.getC_PaySelection_ID(), false);
+					
+					if (dialog.isValid()) {
+						try {
+							dialog.setWidth("500px");
+							dialog.setVisible(true);
+							dialog.setPage(form.getPage());
+							dialog.doHighlighted();
+						} catch (SuspendNotAllowedException e) {
+							log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+						}
+					}
+				}
 			}
-		}
+		});
 	}   //  generatePaySelect
 	
 	/**
@@ -402,7 +409,7 @@ public class WPaySelect extends PaySelect
 	{
 		if (m_isLock) return;
 		m_isLock = true;
-		Clients.showBusy(null, true);
+		Clients.showBusy(null);
 	}   //  lockUI
 
 	/**
@@ -414,7 +421,7 @@ public class WPaySelect extends PaySelect
 		if (!m_isLock) return;
 		m_isLock = false;
 		m_pi = pi;
-		Clients.showBusy(null, false);	
+		Clients.clearBusy();	
 		
 		//TODO: The response returned is always Cancel
 //		if (!FDialog.ask(0, form, "VPaySelectPrint?", "(" + m_pi.getSummary() + ")"))

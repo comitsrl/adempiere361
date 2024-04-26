@@ -61,7 +61,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
 	 */
 	private static final long serialVersionUID = 5233006056333191551L;
 
-	private static final String TOOLBAR_BUTTON_STYLE = "background-color: transparent; display:inline-block; margin-left: 1px; margin-right: 1px; width: 26px; height: 24px;";
 
 	private static final String EMBEDDED_TOOLBAR_BUTTON_STYLE = "background-color: transparent; display:inline-block; margin-left: 1px; margin-right: 1px; width: 20px; height: 18px;";
 
@@ -218,7 +217,6 @@ public class CWindowToolbar extends FToolbar implements EventListener
         }
         else
         {
-        	btn.setStyle(TOOLBAR_BUTTON_STYLE);
         	btn.setSclass("toolbar-button");
         }
         buttons.put(name, btn);

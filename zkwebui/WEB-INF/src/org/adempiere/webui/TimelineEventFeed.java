@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.adempiere.util.ServerContext;
 import org.adempiere.webui.component.ZkCssHelper;
-import org.adempiere.webui.session.ServerContext;
 import org.adempiere.webui.session.SessionContextListener;
 import org.compiere.model.MAssignmentSlot;
 import org.compiere.model.ScheduleUtil;
@@ -42,14 +42,17 @@ public class TimelineEventFeed extends HttpServlet {
              return;
         } 
         
-        ServerContext serverContext = ServerContext.getCurrentInstance();
-        if (serverContext == null) {
-        	serverContext = ServerContext.newInstance();
+        ServerContext.setCurrentInstance(ctx);
+        try {
+        	doGet0(req, resp);
+        } finally {
+        	ServerContext.dispose();
         }
-        serverContext.clear();
-        serverContext.putAll(ctx);
-         
-		int resourceId  = 0;
+	} 
+	
+    private void doGet0(HttpServletRequest req, HttpServletResponse resp) 
+    		throws IOException {
+    	int resourceId  = 0;
 		String resourceIdParam = req.getParameter("S_Resource_ID");
 		if (resourceIdParam != null && resourceIdParam.trim().length() > 0) {
 			try {
@@ -120,11 +123,13 @@ public class TimelineEventFeed extends HttpServlet {
 			}
 			if (slot.getMAssignment() != null) {
 				//encode assignment id as coordinate x
-				String link = "<a href=\"javascript:void(0)\" onclick=\"" 
-					+ "ad_closeBuble('" + timeLineId + "');"
-				    + "zkau.send({uuid: '" + uuid + "', cmd: 'onClick', data: " 
-				    + "[" + slot.getMAssignment().getS_ResourceAssignment_ID() + ", 0]" 
-				    + ", ctl: true})\">Edit</a>";
+				String link = "<a href=\"javascript:void(0)\" onclick=\""
+						+ "_ad_closeBuble(jq(this));"
+						+ "var widget = zk.Widget.$('" + uuid+"');"
+						+ "var event = new zk.Event(widget, 'onClick', {x:" 
+						+ slot.getMAssignment().getS_ResourceAssignment_ID() + ",y: 0}, {toServer: true});"
+						+ "zAu.send(event);"
+					    + "\">Edit</a>";
 				xml.append("\r\n").append(XMLs.encodeText(link));
 			}
 			xml.append("\r\n").append("</event>").append("\r\n");
@@ -136,5 +141,5 @@ public class TimelineEventFeed extends HttpServlet {
 		BufferedWriter buffer = new BufferedWriter(writer);
 		buffer.write(xml.toString());
 		buffer.flush();
-	}	
+    }      				
 }

@@ -48,6 +48,7 @@ import javax.swing.JFrame;
 import javax.swing.RepaintManager;
 import javax.swing.SwingUtilities;
 
+import org.adempiere.util.ServerContextProvider;
 import org.compiere.Adempiere;
 import org.compiere.db.CConnection;
 import org.compiere.model.MClient;
@@ -74,12 +75,14 @@ public final class Env
 	/**	Logging								*/
 	private static CLogger				s_log = CLogger.getCLogger(Env.class);
 		
-	private static ContextProvider contextProvider = new DefaultContextProvider();
-	
+	private final static ContextProvider clientContextProvider = new DefaultContextProvider();
+
+   /**
+    * @param provider
+    * @deprecated
+    */
 	public static void setContextProvider(ContextProvider provider)
 	{
-		contextProvider = provider;
-		getCtx().put(LANGUAGE, Language.getBaseAD_Language());
 	}
 	
 	/**
@@ -210,9 +213,15 @@ public final class Env
 	 */
 	public static final Properties getCtx()
 	{
-		return contextProvider.getContext();
+		return getContextProvider().getContext();
 	}   //  getCtx
 
+	public static ContextProvider getContextProvider() {
+		if (Ini.isClient())
+			return clientContextProvider;
+		else
+			return ServerContextProvider.INSTANCE;
+	}
 	/**
 	 * Set Context
 	 * @param ctx context
@@ -1636,7 +1645,7 @@ public final class Env
 	public static void startBrowser (String url)
 	{
 		s_log.info(url);
-		contextProvider.showURL(url);
+		getContextProvider().showURL(url);
 	}   //  startBrowser
 	
 	/**

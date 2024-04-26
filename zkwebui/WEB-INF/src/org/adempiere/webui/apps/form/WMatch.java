@@ -56,10 +56,10 @@ import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.event.Events;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Separator;
 import org.zkoss.zul.Space;
 
@@ -70,7 +70,7 @@ import org.zkoss.zul.Space;
  *  @version    $Id: VMatch.java,v 1.2 2006/07/30 00:51:28 jjanke Exp $
  */
 public class WMatch extends Match
-	implements IFormController, EventListener, WTableModelListener
+	implements IFormController, EventListener<Event>, WTableModelListener
 {
 	/**
 	 * 
@@ -272,7 +272,8 @@ public class WMatch extends Match
 		Center center = new Center();
 		mainLayout.appendChild(center);
 		center.appendChild(centerPanel);
-		center.setFlex(true);
+		centerPanel.setHflex("1");
+		centerPanel.setVflex("1");
 		centerLayout.setWidth("100%");
 		centerLayout.setHeight("100%");
 		north = new North();
@@ -298,9 +299,10 @@ public class WMatch extends Match
 		center = new Center();
 		centerLayout.appendChild(center);
 		center.setStyle("border: none");
-		center.setFlex(false);
-//		center.setHeight("6%");
+		//		center.setHeight("6%");
 		center.appendChild(xPanel);
+		xPanel.setVflex("1");
+		xPanel.setHflex("1");
 		xPanel.appendChild(sameBPartner);
 		xPanel.appendChild(new Space());
 		xPanel.appendChild(sameProduct);

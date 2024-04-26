@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 
+import org.adempiere.webui.util.Callback;
 import org.adempiere.webui.component.Combinationbox;
 import org.adempiere.webui.event.ContextMenuEvent;
 import org.adempiere.webui.event.ContextMenuListener;
@@ -45,8 +46,6 @@ public class WAccountEditor extends WEditor implements ContextMenuListener
 
 	private Object m_value;
 
-	private WEditorPopupMenu popupMenu;
-
 	/**	Logger			*/
 	private static CLogger log = CLogger.getCLogger(WAccountEditor.class);
 
@@ -59,11 +58,7 @@ public class WAccountEditor extends WEditor implements ContextMenuListener
 		
 		popupMenu = new WEditorPopupMenu(false, false, true);
 		popupMenu.addMenuListener(this);
-		if (gridField != null && gridField.getGridTab() != null)
-		{
-			WFieldRecordInfo.addMenu(popupMenu);
-		}
-		getComponent().setContext(popupMenu.getId());
+		addChangeLogMenu(popupMenu);
 	}
 
 	@Override
@@ -90,7 +85,7 @@ public class WAccountEditor extends WEditor implements ContextMenuListener
 	{
 		return getComponent().getText();
 	}
-
+	
 	/**
 	 *	Button - Start Dialog
 	 */
@@ -102,18 +97,25 @@ public class WAccountEditor extends WEditor implements ContextMenuListener
 		{
 			C_AcctSchema_ID = Env.getContextAsInt(Env.getCtx(), "$C_AcctSchema_ID");
 		}
-		WAccountDialog ad = new WAccountDialog (gridField.getHeader(), m_mAccount, C_AcctSchema_ID);
+		new WAccountDialog (gridField.getHeader(), m_mAccount, C_AcctSchema_ID, new Callback<Integer>() {
+			
+			@Override
+			public void onCallback(Integer result) {
+				Integer newValue = result;
+				
+				if (newValue == null)
+					return;
+				
+				Object oldValue = m_value;
+				
+				// set & redisplay
+				setValue(newValue);
+				ValueChangeEvent changeEvent = new ValueChangeEvent(WAccountEditor.this, getColumnName(), oldValue, newValue);
+				
+				fireValueChange(changeEvent);
+			}
+		});
 		//
-		Integer newValue = ad.getValue();
-		if (newValue == null)
-			return;
-
-		Object oldValue = m_value;
-
-		//	set & redisplay
-		setValue(newValue);
-		ValueChangeEvent changeEvent = new ValueChangeEvent(this, this.getColumnName(), oldValue, newValue);
-		fireValueChange(changeEvent);
 	}	//	cmd_button
 
 	/**

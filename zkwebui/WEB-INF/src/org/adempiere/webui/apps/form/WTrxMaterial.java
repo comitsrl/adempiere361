@@ -50,10 +50,10 @@ import org.compiere.util.Env;
 import org.compiere.util.Msg;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
-import org.zkoss.zkex.zul.Borderlayout;
-import org.zkoss.zkex.zul.Center;
-import org.zkoss.zkex.zul.North;
-import org.zkoss.zkex.zul.South;
+import org.zkoss.zul.Borderlayout;
+import org.zkoss.zul.Center;
+import org.zkoss.zul.North;
+import org.zkoss.zul.South;
 import org.zkoss.zul.Separator;
 
 /**
@@ -63,7 +63,7 @@ import org.zkoss.zul.Separator;
  * @version $Id: VTrxMaterial.java,v 1.3 2006/07/30 00:51:28 jjanke Exp $
  */
 public class WTrxMaterial extends TrxMaterial
-	implements IFormController, EventListener, ValueChangeListener
+	implements IFormController, EventListener<Event>, ValueChangeListener
 {
 	/**
 	 * 
@@ -212,8 +212,9 @@ public class WTrxMaterial extends TrxMaterial
 			m_gridController.switchRowPresentation();
 		Center center = new Center();
 		mainLayout.appendChild(center);
-		center.setFlex(true);
 		center.appendChild(m_gridController);
+		m_gridController.setVflex("1");
+		m_gridController.setHflex("1");
 	}   //  dynInit
 
 

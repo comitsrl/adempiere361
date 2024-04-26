@@ -24,10 +24,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 
+import org.adempiere.webui.LayoutUtils;
+import org.adempiere.webui.ValuePreference;
 import org.adempiere.webui.apps.AEnv;
 import org.adempiere.webui.component.EditorBox;
 import org.adempiere.webui.event.ContextMenuEvent;
 import org.adempiere.webui.event.ContextMenuListener;
+import org.adempiere.webui.event.DialogEvents;
 import org.adempiere.webui.event.ValueChangeEvent;
 import org.adempiere.webui.window.WFieldRecordInfo;
 import org.adempiere.webui.window.WLocatorDialog;
@@ -54,15 +57,13 @@ import org.zkoss.zk.ui.event.Events;
  * @date    Jul 23, 2007
  */
 
-public class WLocatorEditor extends WEditor implements EventListener, PropertyChangeListener, ContextMenuListener, IZoomableEditor, SystemIDs
+public class WLocatorEditor extends WEditor implements EventListener<Event>, PropertyChangeListener, ContextMenuListener, IZoomableEditor, SystemIDs
 {
 	private static final String[] LISTENER_EVENTS = {Events.ON_CLICK};
     
 	private MLocatorLookup m_mLocator;
 	private Object m_value;
 	private int m_WindowNo;
-	
-	private WEditorPopupMenu popupMenu;
 	
 	private static CLogger log = CLogger.getCLogger(WLocatorEditor.class);
 	/**
@@ -114,12 +115,8 @@ public class WLocatorEditor extends WEditor implements EventListener, PropertyCh
 		
 		if (gridField != null) 
         {
-        	popupMenu = new WEditorPopupMenu(true, true, false);
-        	if (gridField != null && gridField.getGridTab() != null)
-    		{
-    			WFieldRecordInfo.addMenu(popupMenu);
-    		}
-        	getComponent().setContext(popupMenu.getId());
+        	popupMenu = new WEditorPopupMenu(true, true, isShowPreference());
+        	addChangeLogMenu(popupMenu);
         }			
 	}
 
@@ -233,27 +230,25 @@ public class WLocatorEditor extends WEditor implements EventListener, PropertyCh
 			m_mLocator.setOnly_Warehouse_ID(only_Warehouse_ID);
 			m_mLocator.setOnly_Product_ID(getOnly_Product_ID());
 			
-			WLocatorDialog ld = new WLocatorDialog(Msg.translate(Env.getCtx(), getColumnName()),
+			final WLocatorDialog ld = new WLocatorDialog(Msg.translate(Env.getCtx(), getColumnName()),
 				m_mLocator, M_Locator_ID, isMandatory(), only_Warehouse_ID, this.m_WindowNo);
 			
+			ld.addEventListener(DialogEvents.ON_WINDOW_CLOSE, new EventListener<Event>() {
+				 @Override
+				 public void onEvent(Event event) throws Exception {
+					 m_mLocator.setOnly_Warehouse_ID(0);
+					// redisplay
+					 
+					if (!ld.isChanged())
+						return;
+					setValue (ld.getValue(), true);
+				 }
+			});			
 			//	display
-			ld.setVisible(true);
-			AEnv.showWindow(ld);
-			
-			m_mLocator.setOnly_Warehouse_ID(0);
-	
-			//	redisplay
-			
-			if (!ld.isChanged())
-				return;
-			setValue (ld.getValue(), true);
+			ld.setTitle(null);
+			LayoutUtils.openPopupWindow(getComponent(), ld);
 		}
 	}
-	
-	public WEditorPopupMenu getPopupMenu()
-    {
-    	return popupMenu;
-    }
 	
 	public void actionRefresh()
     {    	
@@ -298,6 +293,11 @@ public class WLocatorEditor extends WEditor implements EventListener, PropertyCh
 		else if (WEditorPopupMenu.CHANGE_LOG_EVENT.equals(evt.getContextEvent()))
 		{
 			WFieldRecordInfo.start(gridField);
+		} 
+		else if (WEditorPopupMenu.PREFERENCE_EVENT.equals(evt.getContextEvent()))
+		{
+			if (isShowPreference())
+				ValuePreference.start (this.getGridField(), getValue());
 		}
 	}
 	

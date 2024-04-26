@@ -56,7 +56,7 @@ import org.zkoss.zul.Vbox;
  * @author Elaine
  *
  */
-public class InfoPAttributePanel extends Window implements EventListener
+public class InfoPAttributePanel extends Window implements EventListener<Event>
 {
 	/**
 	 * 
