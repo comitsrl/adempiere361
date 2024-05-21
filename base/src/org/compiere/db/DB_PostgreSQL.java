@@ -18,25 +18,39 @@
  *****************************************************************************/
 package org.compiere.db;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.Properties;
+import java.util.Random;
 import java.util.logging.Level;
 
 import javax.sql.ConnectionPoolDataSource;
 import javax.sql.DataSource;
 import javax.sql.RowSet;
 
+import org.adempiere.exceptions.DBException;
 import org.compiere.dbPort.Convert;
 import org.compiere.dbPort.Convert_PostgreSQL;
+import org.compiere.util.CCache;
 import org.compiere.util.CLogger;
 import org.compiere.util.DB;
 import org.compiere.util.DisplayType;
 import org.compiere.util.Ini;
+import org.compiere.util.Trx;
+import org.compiere.util.Util;
+import org.jfree.io.IOUtils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -54,6 +68,8 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class DB_PostgreSQL implements AdempiereDatabase
 {
 
+	private static final String POOL_PROPERTIES = "pool.properties";
+	
     public Convert getConvert() {
 		return m_convert;
 	}
@@ -84,6 +100,7 @@ public class DB_PostgreSQL implements AdempiereDatabase
 	/** Cached Database Name	*/
 	private String			m_dbName = null;
         
+	@SuppressWarnings("unused")
     private String				m_userName = null;
     
     /** Connection String       	*/
@@ -96,6 +113,10 @@ public class DB_PostgreSQL implements AdempiereDatabase
      
     public static final String NATIVE_MARKER = "NATIVE_"+Database.DB_POSTGRESQL+"_KEYWORK";
 
+    private CCache<String, String> convertCache = new CCache<String, String>("SQLConvertCache", 100, 0);
+
+    private Random rand = new Random();
+    
 	/**
 	 *  Get Database Name
 	 *  @return database short name
@@ -269,8 +290,10 @@ public class DB_PostgreSQL implements AdempiereDatabase
         {
             sb.append("# Connections: ").append(m_ds.getNumConnections());
             sb.append(" , # Busy Connections: ").append(m_ds.getNumBusyConnections());
-            sb.append(" , # Idle Connections: ").append(m_ds.getNumIdleConnections());
+            sb.append(" , # Idle Connections: ").append(m_ds.getNumIdleConnections());  
             sb.append(" , # Orphaned Connections: ").append(m_ds.getNumUnclosedOrphanedConnections());
+            sb.append(" , # Max Statements Cache Per Session: ").append(m_ds.getMaxStatementsPerConnection());
+            sb.append(" , # Active Transactions: ").append(Trx.getActiveTransactions().length);
         }
         catch (Exception e)
         {}
@@ -286,23 +309,19 @@ public class DB_PostgreSQL implements AdempiereDatabase
 	 */
 	public String convertStatement (String oraStatement)
 	{
+		String cache = convertCache.get(oraStatement);
+		if (cache != null) {
+			Convert.logMigrationScript(oraStatement, cache);
+			return cache;
+		}
+		
 		String retValue[] = m_convert.convert(oraStatement);
 		
         //begin vpj-cd e-evolution 03/14/2005
-		if (retValue.length == 0 )
+		if (retValue == null || retValue.length == 0 )
 			return  oraStatement;
         //end vpj-cd e-evolution 03/14/2005
 		
-		if (retValue == null)
-        //begin vpj-cd 24/06/2005 e-evolution	
-		{	
-			log.log(Level.SEVERE,("DB_PostgreSQL.convertStatement - Not Converted (" + oraStatement + ") - "
-					+ m_convert.getConversionError()));
-			throw new IllegalArgumentException
-				("DB_PostgreSQL.convertStatement - Not Converted (" + oraStatement + ") - "
-					+ m_convert.getConversionError());
-		}
-		//		end vpj-cd 24/06/2005 e-evolution
 		if (retValue.length != 1)
 			//begin vpj-cd 24/06/2005 e-evolution
 			{
@@ -313,6 +332,9 @@ public class DB_PostgreSQL implements AdempiereDatabase
 					+ " (" + oraStatement + ") - " + m_convert.getConversionError());
 			}
 			//end vpj-cd 24/06/2005 e-evolution
+		
+		convertCache.put(oraStatement, retValue[0]);
+		
 		//  Diagnostics (show changed, but not if AD_Error
 		if (log.isLoggable(Level.FINE))
 		{
@@ -507,31 +529,106 @@ public class DB_PostgreSQL implements AdempiereDatabase
 		boolean autoCommit, int transactionIsolation)
 		throws Exception
 	{
-		if (m_ds == null)
-			getDataSource(connection);
-		//
-		Connection conn = m_ds.getConnection();
-		if (conn != null) {
-			//
-			conn.setAutoCommit(autoCommit);
-			conn.setTransactionIsolation(transactionIsolation);
-			
-			try
-	        {
-                int numConnections = m_ds.getNumBusyConnections();
-	            if(numConnections >= m_maxbusyconnections && m_maxbusyconnections > 0)
-	            {
-	                log.warning(getStatus());
-	                //hengsin: make a best effort to reclaim leak connection
-	                Runtime.getRuntime().runFinalization();
-	            }
-	        }
-	        catch (Exception ex)
-	        {}
-		}
-		return conn;
+		Connection conn = null;
+        Exception exception = null;
+        try
+        {
+            if (m_ds == null)
+                getDataSource(connection);
+
+            //
+            try
+            {
+            	int numConnections = m_ds.getNumBusyConnections();
+        		if(numConnections >= m_maxbusyconnections && m_maxbusyconnections > 0)
+        		{
+        			//system is under heavy load, wait between 20 to 40 seconds
+        			int randomNum = rand.nextInt(40 - 20 + 1) + 20;
+        			Thread.sleep(randomNum * 1000);
+        		}
+        		conn = m_ds.getConnection();
+        		if (conn == null) {
+        			//try again after 10 to 30 seconds
+        			int randomNum = rand.nextInt(30 - 10 + 1) + 10;
+        			Thread.sleep(randomNum * 1000);
+        			conn = m_ds.getConnection();
+        		}
+
+                if (conn != null)
+                {
+                    if (conn.getTransactionIsolation() != transactionIsolation)
+                        conn.setTransactionIsolation(transactionIsolation);
+                    if (conn.getAutoCommit() != autoCommit)
+                        conn.setAutoCommit(autoCommit);
+                }
+            }
+            catch (Exception e)
+            {
+                exception = e;
+                conn = null;
+            }
+
+            if (conn == null && exception != null)
+            {
+            	//log might cause infinite loop since it will try to acquire database connection again
+            	/*
+                log.log(Level.SEVERE, exception.toString());
+                log.fine(toString()); */
+            	System.err.println(exception.toString());
+            }
+        }
+        catch (Exception e)
+        {
+            exception = e;
+        }
+
+        try
+        {
+        	if (conn != null) {
+        		boolean trace = "true".equalsIgnoreCase(System.getProperty("org.adempiere.db.traceStatus"));
+        		int numConnections = m_ds.getNumBusyConnections();
+        		if (numConnections > 1)
+        		{
+	    			if (trace)
+	    			{
+	    				log.warning(getStatus());
+	    			}
+	    			if(numConnections >= m_maxbusyconnections && m_maxbusyconnections > 0)
+		            {
+	    				if (!trace)
+	    					log.warning(getStatus());
+		                //hengsin: make a best effort to reclaim leak connection
+		                Runtime.getRuntime().runFinalization();
+		            }
+        		}
+        	} else {
+        		//don't use log.severe here as it will try to access db again
+        		System.err.println("Failed to acquire new connection. Status=" + getStatus());
+        	}
+        }
+        catch (Exception ex)
+        {
+        }
+        if (exception != null)
+            throw exception;
+        return conn;
 	}	//	getCachedConnection
 	
+	private String getFileName ()
+	{
+		//
+		String base = null;
+		if (Ini.isClient())
+			base = System.getProperty("user.home");
+		else
+			base = Ini.getAdempiereHome();
+		
+		if (base != null && !base.endsWith(File.separator))
+			base += File.separator;
+		
+		//
+		return base + getName() + File.separator + POOL_PROPERTIES;
+	}	//	getFileName	
 
 	/**
 	 * 	Create DataSource (Client)
@@ -542,6 +639,91 @@ public class DB_PostgreSQL implements AdempiereDatabase
 	{
 		if (m_ds != null)
 			return m_ds;
+		
+		
+		InputStream inputStream = null;
+		
+		//check property file from home
+		String propertyFilename = getFileName();
+		File propertyFile = null;
+		if (!Util.isEmpty(propertyFilename))
+		{
+			propertyFile = new File(propertyFilename);
+			if (propertyFile.exists() && propertyFile.canRead())
+			{
+				try {
+					inputStream = new FileInputStream(propertyFile);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		//fall back to default config
+		URL url = null;
+		if (inputStream == null)
+		{
+			propertyFile = null;
+			String resourcePath = Ini.isClient()
+					? "META-INF/pool/client.properties"
+					: "META-INF/pool/server.properties";
+			url = getClass().getClassLoader().getResource(resourcePath);
+			try
+			{
+				inputStream = url.openStream();
+			} catch(IOException e)
+			{
+				throw new DBException(e);
+			}
+		}
+		
+		Properties poolProperties = new Properties();
+		try {
+			poolProperties.load(inputStream);
+			inputStream.close();
+			inputStream = null;
+		} catch (IOException e) {
+			throw new DBException(e);
+		}
+
+		//auto create property file at home folder from default config
+		if (propertyFile == null)			
+		{
+			String directoryName = propertyFilename.substring(0,  propertyFilename.length() - (POOL_PROPERTIES.length()+1));
+			File dir = new File(directoryName);
+			if (!dir.exists())
+				dir.mkdir();
+			propertyFile = new File(propertyFilename);
+			try {
+				FileOutputStream fos = new FileOutputStream(propertyFile);
+				inputStream = url.openStream();
+				IOUtils.getInstance().copyStreams(inputStream, fos);
+				fos.close();
+				inputStream.close();
+				inputStream = null;
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		if (inputStream != null)
+		{
+			try {
+				inputStream.close();
+			} catch (IOException e) {}
+		}
+		
+		int idleConnectionTestPeriod = getIntProperty(poolProperties, "IdleConnectionTestPeriod", 1200);
+		int acquireRetryAttempts = getIntProperty(poolProperties, "AcquireRetryAttempts", 2);
+		int maxIdleTimeExcessConnections = getIntProperty(poolProperties, "MaxIdleTimeExcessConnections", 1200);
+		int maxIdleTime = getIntProperty(poolProperties, "MaxIdleTime", 1200);
+		int unreturnedConnectionTimeout = getIntProperty(poolProperties, "UnreturnedConnectionTimeout", 0);
+		boolean testConnectionOnCheckin = getBooleanProperty(poolProperties, "TestConnectionOnCheckin", false);
+		boolean testConnectionOnCheckout = getBooleanProperty(poolProperties, "TestConnectionOnCheckout", false);
+		int checkoutTimeout = getIntProperty(poolProperties, "CheckoutTimeout", 0);
 		
         try
         {
@@ -555,34 +737,49 @@ public class DB_PostgreSQL implements AdempiereDatabase
             cpds.setUser(connection.getDbUid());
             cpds.setPassword(connection.getDbPwd());
             cpds.setPreferredTestQuery(DEFAULT_CONN_TEST_SQL);
-            cpds.setIdleConnectionTestPeriod(1200);
-            //cpds.setTestConnectionOnCheckin(true);
-            //cpds.setTestConnectionOnCheckout(true);
-            cpds.setAcquireRetryAttempts(2);
-            //cpds.setCheckoutTimeout(60);
+            cpds.setIdleConnectionTestPeriod(idleConnectionTestPeriod);
+            cpds.setMaxIdleTimeExcessConnections(maxIdleTimeExcessConnections);
+            cpds.setMaxIdleTime(maxIdleTime);
+            cpds.setTestConnectionOnCheckin(testConnectionOnCheckin);
+            cpds.setTestConnectionOnCheckout(testConnectionOnCheckout);
+            cpds.setAcquireRetryAttempts(acquireRetryAttempts);
+            if (checkoutTimeout > 0)
+            	cpds.setCheckoutTimeout(checkoutTimeout);
 
             if (Ini.isClient())
             {
-                cpds.setInitialPoolSize(1);
-                cpds.setMinPoolSize(1);
-                cpds.setMaxPoolSize(15);
-                cpds.setMaxIdleTimeExcessConnections(1200);
-                cpds.setMaxIdleTime(900);
-                m_maxbusyconnections = 10;
+            	int maxPoolSize = getIntProperty(poolProperties, "MaxPoolSize", 15);
+            	int initialPoolSize = getIntProperty(poolProperties, "InitialPoolSize", 1);
+            	int minPoolSize = getIntProperty(poolProperties, "MinPoolSize", 1);
+                cpds.setInitialPoolSize(initialPoolSize);
+                cpds.setMinPoolSize(minPoolSize);
+                cpds.setMaxPoolSize(maxPoolSize);
+
+                m_maxbusyconnections = (int) (maxPoolSize * 0.9);
             }
             else
             {
-                cpds.setInitialPoolSize(10);
-                cpds.setMinPoolSize(5);
-                cpds.setMaxPoolSize(150);
-                cpds.setMaxIdleTimeExcessConnections(1200);
-                cpds.setMaxIdleTime(1200);
-                m_maxbusyconnections = 120;
+            	int maxPoolSize = getIntProperty(poolProperties, "MaxPoolSize", 400);
+            	int initialPoolSize = getIntProperty(poolProperties, "InitialPoolSize", 10);
+            	int minPoolSize = getIntProperty(poolProperties, "MinPoolSize", 5);
+                cpds.setInitialPoolSize(initialPoolSize);
+                cpds.setInitialPoolSize(initialPoolSize);
+                cpds.setMinPoolSize(minPoolSize);
+                cpds.setMaxPoolSize(maxPoolSize);
+                m_maxbusyconnections = (int) (maxPoolSize * 0.9);
+                
+              //statement pooling
+                int maxStatementsPerConnection = getIntProperty(poolProperties, "MaxStatementsPerConnection", 0);
+                if (maxStatementsPerConnection > 0)
+                	cpds.setMaxStatementsPerConnection(maxStatementsPerConnection);
             }
 
-            //the following sometimes kill active connection!
-            //cpds.setUnreturnedConnectionTimeout(1200);
-            //cpds.setDebugUnreturnedConnectionStackTraces(true);
+            if (unreturnedConnectionTimeout > 0)
+            {
+	            //the following sometimes kill active connection!
+	            cpds.setUnreturnedConnectionTimeout(1200);
+	            cpds.setDebugUnreturnedConnectionStackTraces(true);
+            }
 
             m_ds = cpds;
         }
@@ -823,5 +1020,31 @@ public class DB_PostgreSQL implements AdempiereDatabase
 
 	public boolean isPagingSupported() {
 		return true;
+	}
+	
+	private int getIntProperty(Properties properties, String key, int defaultValue)
+	{
+		int i = defaultValue;
+		try
+		{
+			String s = properties.getProperty(key);
+			if (s != null && s.trim().length() > 0)
+				i = Integer.parseInt(s);
+		}
+		catch (Exception e) {}
+		return i;
+	}
+
+	private boolean getBooleanProperty(Properties properties, String key, boolean defaultValue)
+	{
+		boolean b = defaultValue;
+		try
+		{
+			String s = properties.getProperty(key);
+			if (s != null && s.trim().length() > 0)
+				b = Boolean.valueOf(s);
+		}
+		catch (Exception e) {}
+		return b;
 	}
 }   //  DB_PostgreSQL

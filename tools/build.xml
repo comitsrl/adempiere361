@@ -196,6 +196,7 @@
 			<!-- ECS -->
 			<fileset dir="${build.dir}">
 				<include name="**/apache/ecs/**" />
+				<include name="**/META-INF/**" />
 			</fileset>
 			<!-- Installing Script Based in JSR 223 Scripting APIs -->
 			<zipfileset src="lib/script-api.jar">
@@ -336,6 +337,7 @@
 			<!-- ECS -->
 			<fileset dir="${build.dir}">
 				<include name="**/apache/ecs/**" />
+				<include name="**/META-INF/**" />
 			</fileset>
 			<!-- Tree CellEditor -->
 			<fileset dir="${build.dir}">
